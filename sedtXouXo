@@ -13,6 +13,9 @@ deploymentTarget = "autoscale"
 localPort = 5000
 externalPort = 80
 
+[[ports]]
+
+
 [agent]
 expertMode = true
 
@@ -32,10 +35,10 @@ args = "Start application"
 name = "Start application"
 author = "agent"
 
-[workflows.workflow.metadata]
-outputType = "webview"
-
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "php -S 0.0.0.0:5000 router.php"
 waitForPort = 5000
+
+[workflows.workflow.metadata]
+outputType = "webview"
