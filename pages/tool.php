@@ -88,7 +88,7 @@
 </section>
 
 <style>
-.autocomplete-list{position:absolute;width:100%;background:var(--white);border:2px solid var(--primary);border-top:0;border-radius:0 0 var(--radius-sm) var(--radius-sm);max-height:200px;overflow-y:auto;z-index:50;box-shadow:var(--shadow-md)}
+.autocomplete-list{position:absolute;width:100%;background:var(--white);border:2px solid var(--primary);border-top:none;border-radius:0 0 var(--radius-sm) var(--radius-sm);max-height:200px;overflow-y:auto;z-index:50;box-shadow:var(--shadow-md)}
 .comune-wrapper{position:relative}
 .ac-item{padding:.625rem 1rem;cursor:pointer;font-size:.9375rem;transition:background .15s}
 .ac-item:hover{background:var(--primary-light)}

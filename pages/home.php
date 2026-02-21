@@ -2,34 +2,115 @@
     <div class="container">
         <h1>Calcola il tuo Codice Fiscale Online</h1>
         <p>Strumento gratuito, veloce e preciso per generare il Codice Fiscale italiano. Inserisci i tuoi dati e ottieni il risultato in pochi secondi.</p>
-        <a href="/calcola" class="hero-cta">Calcola Ora &rarr;</a>
     </div>
 </section>
 
-<section class="section">
+<div class="flag-divider"></div>
+
+<section class="home-tool-section">
     <div class="container">
-        <h2 class="section-title">Perché usare il nostro strumento?</h2>
-        <p class="section-subtitle">Il modo più semplice e veloce per calcolare il tuo Codice Fiscale italiano.</p>
-        <div class="features-grid">
-            <div class="card feature-card">
-                <div class="feature-icon">&#9889;</div>
+        <div class="tool-card">
+            <div class="tool-header">
+                <h2>Inserisci i tuoi Dati</h2>
+                <p>Compila il modulo per generare il Codice Fiscale</p>
+            </div>
+            <div class="tool-body">
+                <form id="cf-form" novalidate>
+                    <div class="form-group">
+                        <label for="cognome">Cognome *</label>
+                        <input type="text" id="cognome" name="cognome" placeholder="Es. Rossi" required autocomplete="family-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="nome">Nome *</label>
+                        <input type="text" id="nome" name="nome" placeholder="Es. Mario" required autocomplete="given-name">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="sesso">Sesso *</label>
+                            <select id="sesso" name="sesso" required>
+                                <option value="">Seleziona...</option>
+                                <option value="M">Maschio (M)</option>
+                                <option value="F">Femmina (F)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="data_nascita">Data di Nascita *</label>
+                            <input type="date" id="data_nascita" name="data_nascita" required>
+                        </div>
+                    </div>
+                    <div class="form-group comune-wrapper">
+                        <label for="comune">Comune di Nascita *</label>
+                        <input type="text" id="comune" name="comune" placeholder="Inizia a digitare il nome del comune..." required autocomplete="off">
+                        <div id="comune-list" class="autocomplete-list" style="display:none"></div>
+                        <div class="form-hint">Digita almeno 2 lettere per la ricerca automatica</div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Calcola Codice Fiscale</button>
+                </form>
+
+                <div id="result-box" class="result-box">
+                    <div class="result-label">Il tuo Codice Fiscale:</div>
+                    <div id="result-code" class="result-code"></div>
+                    <div class="result-actions">
+                        <button onclick="copyCF()" class="copy-btn">Copia</button>
+                    </div>
+                </div>
+
+                <div class="disclaimer-box">
+                    <strong>Disclaimer:</strong> Questo strumento calcola il Codice Fiscale secondo l'algoritmo ufficiale. Il risultato potrebbe non corrispondere al codice ufficiale rilasciato dall'Agenzia delle Entrate in caso di omocodia. Per il codice fiscale ufficiale, rivolgiti all'Agenzia delle Entrate.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="trust-section">
+    <div class="container">
+        <h2 class="section-title">Perché Scegliere il Nostro Strumento?</h2>
+        <p class="section-subtitle">Affidabile, sicuro e utilizzato da migliaia di utenti ogni giorno.</p>
+        <div class="trust-grid">
+            <div class="trust-card">
+                <div class="trust-card-icon green">&#10003;</div>
+                <h3>Algoritmo Ufficiale</h3>
+                <p>Calcolo conforme alle specifiche dell'Agenzia delle Entrate.</p>
+            </div>
+            <div class="trust-card">
+                <div class="trust-card-icon red">&#128274;</div>
+                <h3>Privacy Garantita</h3>
+                <p>Nessun dato viene salvato o condiviso. Mai.</p>
+            </div>
+            <div class="trust-card">
+                <div class="trust-card-icon green">&#128176;</div>
+                <h3>100% Gratuito</h3>
+                <p>Nessun costo nascosto, nessuna registrazione richiesta.</p>
+            </div>
+            <div class="trust-card">
+                <div class="trust-card-icon red">&#9889;</div>
                 <h3>Veloce e Istantaneo</h3>
-                <p>Calcolo immediato del Codice Fiscale. Nessuna attesa, nessuna registrazione richiesta.</p>
+                <p>Risultato in meno di un secondo, ovunque ti trovi.</p>
             </div>
-            <div class="card feature-card">
-                <div class="feature-icon">&#10003;</div>
-                <h3>Preciso e Affidabile</h3>
-                <p>Algoritmo conforme alle specifiche dell'Agenzia delle Entrate per un risultato accurato.</p>
+        </div>
+    </div>
+</section>
+
+<section class="how-it-works">
+    <div class="container">
+        <h2 class="section-title">Come Funziona</h2>
+        <p class="section-subtitle">Genera il tuo Codice Fiscale in soli 3 semplici passaggi.</p>
+        <div class="steps-grid">
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <h3>Inserisci i Dati</h3>
+                <p>Compila il modulo con nome, cognome, data di nascita, sesso e comune di nascita.</p>
             </div>
-            <div class="card feature-card">
-                <div class="feature-icon">&#128274;</div>
-                <h3>Sicuro e Privato</h3>
-                <p>I tuoi dati non vengono salvati. Il calcolo avviene in tempo reale senza memorizzazione.</p>
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <h3>Clicca Calcola</h3>
+                <p>Premi il pulsante "Calcola Codice Fiscale" e attendi il risultato immediato.</p>
             </div>
-            <div class="card feature-card">
-                <div class="feature-icon">&#128241;</div>
-                <h3>Mobile Friendly</h3>
-                <p>Funziona perfettamente su smartphone, tablet e desktop. Sempre accessibile.</p>
+            <div class="step-card">
+                <div class="step-number" style="background:var(--accent)">3</div>
+                <h3>Copia il Risultato</h3>
+                <p>Il tuo Codice Fiscale apparirà subito. Copialo con un click!</p>
             </div>
         </div>
     </div>
@@ -105,9 +186,18 @@
     <div class="container">
         <h2>Pronto a calcolare il tuo Codice Fiscale?</h2>
         <p>Usa il nostro strumento gratuito per generare il tuo Codice Fiscale in pochi secondi.</p>
-        <a href="/calcola" class="cta-btn">Calcola Ora &rarr;</a>
+        <a href="#cf-form" class="cta-btn" onclick="document.getElementById('cf-form').scrollIntoView({behavior:'smooth'});return false;">Calcola Ora &rarr;</a>
     </div>
 </section>
+
+<style>
+.autocomplete-list{position:absolute;width:100%;background:var(--white);border:2px solid var(--primary);border-top:0;border-radius:0 0 var(--radius-sm) var(--radius-sm);max-height:200px;overflow-y:auto;z-index:50;box-shadow:var(--shadow-md)}
+.comune-wrapper{position:relative}
+.ac-item{padding:.625rem 1rem;cursor:pointer;font-size:.9375rem;transition:background .15s}
+.ac-item:hover{background:var(--primary-light)}
+.ac-item small{color:var(--text-light)}
+.ac-item.no-result{color:var(--text-light);cursor:default}
+</style>
 
 <script type="application/ld+json">
 {
@@ -169,6 +259,31 @@
                 "@type": "Answer",
                 "text": "L'omocodia si verifica quando due persone hanno lo stesso Codice Fiscale calcolato. L'Agenzia delle Entrate interviene modificando alcuni caratteri del codice."
             }
+        }
+    ]
+}
+</script>
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "Come Calcolare il Codice Fiscale Online",
+    "description": "Genera il tuo Codice Fiscale italiano in 3 semplici passaggi usando il nostro strumento gratuito.",
+    "step": [
+        {
+            "@type": "HowToStep",
+            "name": "Inserisci i Dati",
+            "text": "Compila il modulo con nome, cognome, data di nascita, sesso e comune di nascita."
+        },
+        {
+            "@type": "HowToStep",
+            "name": "Clicca Calcola",
+            "text": "Premi il pulsante Calcola Codice Fiscale e attendi il risultato immediato."
+        },
+        {
+            "@type": "HowToStep",
+            "name": "Copia il Risultato",
+            "text": "Il tuo Codice Fiscale apparirà subito. Copialo con un click."
         }
     ]
 }

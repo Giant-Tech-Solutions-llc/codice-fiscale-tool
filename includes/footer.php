@@ -1,6 +1,7 @@
     </main>
     <footer class="site-footer">
-        <div class="container">
+        <div class="footer-flag"></div>
+        <div class="container footer-content">
             <div class="footer-grid">
                 <div class="footer-col">
                     <div class="footer-logo">
