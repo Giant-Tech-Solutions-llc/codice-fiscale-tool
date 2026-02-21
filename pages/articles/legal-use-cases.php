@@ -1,0 +1,72 @@
+<article class="article-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> <span>&rsaquo;</span> Utilizzi Legali del Codice Fiscale</nav>
+    <h1>Utilizzi Legali del Codice Fiscale in Italia</h1>
+    <div class="article-meta">Ultimo aggiornamento: <?php echo date('d/m/Y'); ?> | Tempo di lettura: 6 minuti</div>
+
+    <p>Il <strong>Codice Fiscale</strong> è uno degli identificativi più importanti nel sistema giuridico e amministrativo italiano. Il suo utilizzo è regolamentato dalla legge e copre una vasta gamma di ambiti.</p>
+
+    <h2>Ambito Fiscale</h2>
+    <ul>
+        <li><strong>Dichiarazione dei redditi</strong> (Modello 730, Modello Redditi)</li>
+        <li>Comunicazioni con l'<strong>Agenzia delle Entrate</strong></li>
+        <li>Pagamento di <strong>imposte e tasse</strong> (F24)</li>
+        <li>Registrazione di <strong>contratti di locazione</strong></li>
+        <li><strong>Fatturazione</strong> (sia emissione che ricezione)</li>
+    </ul>
+
+    <h2>Ambito Lavorativo</h2>
+    <ul>
+        <li><strong>Contratto di lavoro</strong> (subordinato, autonomo, parasubordinato)</li>
+        <li>Comunicazioni obbligatorie con l'<strong>INPS</strong></li>
+        <li>Iscrizione a <strong>ordini professionali</strong></li>
+        <li><strong>Busta paga</strong> e adempimenti contributivi</li>
+    </ul>
+
+    <h2>Ambito Sanitario</h2>
+    <ul>
+        <li>Iscrizione al <strong>Servizio Sanitario Nazionale</strong></li>
+        <li>Scelta del <strong>medico di base</strong></li>
+        <li><strong>Prenotazione visite</strong> ed esami</li>
+        <li>Accesso al <strong>Fascicolo Sanitario Elettronico</strong></li>
+        <li><strong>Ricette mediche</strong> e farmaceutiche</li>
+    </ul>
+
+    <h2>Ambito Bancario e Finanziario</h2>
+    <ul>
+        <li>Apertura di <strong>conti correnti</strong></li>
+        <li>Richiesta di <strong>mutui e prestiti</strong></li>
+        <li>Stipula di <strong>polizze assicurative</strong></li>
+        <li>Operazioni di <strong>investimento</strong></li>
+    </ul>
+
+    <h2>Ambito Immobiliare</h2>
+    <ul>
+        <li><strong>Compravendita</strong> di immobili</li>
+        <li><strong>Registrazione catastale</strong></li>
+        <li><strong>Contratti di affitto</strong></li>
+        <li><strong>Volture</strong> e successioni</li>
+    </ul>
+
+    <h2>Ambito Scolastico e Universitario</h2>
+    <ul>
+        <li>Iscrizione a <strong>scuole</strong> di ogni grado</li>
+        <li>Iscrizione <strong>universitaria</strong></li>
+        <li>Richiesta di <strong>borse di studio</strong></li>
+    </ul>
+
+    <h2>Obblighi e sanzioni</h2>
+    <p>La legge italiana prevede l'obbligo di indicare il Codice Fiscale in numerosi documenti ufficiali. La <strong>mancata indicazione</strong> può comportare sanzioni amministrative e l'impossibilità di completare determinate operazioni.</p>
+
+    <div class="internal-links">
+        <h3>Articoli correlati</h3>
+        <ul>
+            <li><a href="/cos-e-il-codice-fiscale">Cos'è il Codice Fiscale</a></li>
+            <li><a href="/codice-fiscale-vs-partita-iva">CF vs Partita IVA</a></li>
+            <li><a href="/codice-fiscale-estero">CF per stranieri</a></li>
+            <li><a href="/calcola">Calcola il tuo CF</a></li>
+        </ul>
+    </div>
+</article>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Utilizzi Legali del Codice Fiscale","author":{"@type":"Organization","name":"<?php echo SITE_NAME; ?>"},"datePublished":"2024-01-15","dateModified":"<?php echo date('Y-m-d'); ?>"}
+</script>

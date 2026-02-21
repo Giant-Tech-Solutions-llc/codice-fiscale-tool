@@ -1,0 +1,114 @@
+<section class="tool-section">
+    <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Home</a> <span>&rsaquo;</span> Calcola Codice Fiscale
+        </nav>
+        <div class="tool-card">
+            <div class="tool-header">
+                <h1>Calcola il tuo Codice Fiscale</h1>
+                <p>Inserisci i tuoi dati anagrafici per generare il Codice Fiscale</p>
+            </div>
+            <div class="tool-body">
+                <form id="cf-form" novalidate>
+                    <div class="form-group">
+                        <label for="cognome">Cognome *</label>
+                        <input type="text" id="cognome" name="cognome" placeholder="Es. Rossi" required autocomplete="family-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="nome">Nome *</label>
+                        <input type="text" id="nome" name="nome" placeholder="Es. Mario" required autocomplete="given-name">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="sesso">Sesso *</label>
+                            <select id="sesso" name="sesso" required>
+                                <option value="">Seleziona...</option>
+                                <option value="M">Maschio (M)</option>
+                                <option value="F">Femmina (F)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="data_nascita">Data di Nascita *</label>
+                            <input type="date" id="data_nascita" name="data_nascita" required>
+                        </div>
+                    </div>
+                    <div class="form-group comune-wrapper">
+                        <label for="comune">Comune di Nascita *</label>
+                        <input type="text" id="comune" name="comune" placeholder="Inizia a digitare il nome del comune..." required autocomplete="off">
+                        <div id="comune-list" class="autocomplete-list" style="display:none"></div>
+                        <div class="form-hint">Digita almeno 2 lettere per la ricerca automatica</div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Calcola Codice Fiscale</button>
+                </form>
+
+                <div id="result-box" class="result-box">
+                    <div class="result-label">Il tuo Codice Fiscale è:</div>
+                    <div id="result-code" class="result-code"></div>
+                    <div class="result-actions">
+                        <button onclick="copyCF()" class="copy-btn">Copia</button>
+                    </div>
+                </div>
+
+                <div class="trust-bar">
+                    <div class="trust-item">
+                        <svg class="trust-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                        Calcolo preciso
+                    </div>
+                    <div class="trust-item">
+                        <svg class="trust-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/></svg>
+                        Dati non salvati
+                    </div>
+                    <div class="trust-item">
+                        <svg class="trust-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"/></svg>
+                        100% gratuito
+                    </div>
+                </div>
+
+                <div class="disclaimer-box">
+                    <strong>Disclaimer:</strong> Questo strumento calcola il Codice Fiscale secondo l'algoritmo ufficiale. Il risultato potrebbe non corrispondere al codice ufficiale rilasciato dall'Agenzia delle Entrate in caso di omocodia. Per il codice fiscale ufficiale, rivolgiti all'Agenzia delle Entrate.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="internal-links">
+            <h3>Approfondisci</h3>
+            <ul>
+                <li><a href="/cos-e-il-codice-fiscale">Cos'è il Codice Fiscale?</a></li>
+                <li><a href="/come-si-calcola-il-codice-fiscale">Come si Calcola</a></li>
+                <li><a href="/esempi-codice-fiscale">Esempi di CF</a></li>
+                <li><a href="/codice-fiscale-vs-partita-iva">CF vs Partita IVA</a></li>
+                <li><a href="/recupero-codice-fiscale">Recupero CF</a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<style>
+.autocomplete-list{position:absolute;width:100%;background:var(--white);border:2px solid var(--primary);border-top:0;border-radius:0 0 var(--radius-sm) var(--radius-sm);max-height:200px;overflow-y:auto;z-index:50;box-shadow:var(--shadow-md)}
+.comune-wrapper{position:relative}
+.ac-item{padding:.625rem 1rem;cursor:pointer;font-size:.9375rem;transition:background .15s}
+.ac-item:hover{background:var(--primary-light)}
+.ac-item small{color:var(--text-light)}
+.ac-item.no-result{color:var(--text-light);cursor:default}
+</style>
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calcola Codice Fiscale Online",
+    "url": "<?php echo SITE_URL; ?>/calcola",
+    "description": "Genera il tuo Codice Fiscale italiano inserendo i tuoi dati anagrafici. Strumento gratuito e preciso.",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "All",
+    "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+    }
+}
+</script>

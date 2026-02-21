@@ -1,0 +1,58 @@
+<div class="legal-page">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> <span>&rsaquo;</span> GDPR</nav>
+    <h1>Informativa GDPR - Trattamento Dati Personali</h1>
+    <p class="last-updated">Ultimo aggiornamento: <?php echo date('d/m/Y'); ?></p>
+
+    <p>Informativa ai sensi degli artt. 13 e 14 del Regolamento UE 2016/679 (GDPR).</p>
+
+    <h2>Titolare del Trattamento</h2>
+    <p><?php echo SITE_NAME; ?> - Email: <a href="mailto:<?php echo SITE_EMAIL; ?>"><?php echo SITE_EMAIL; ?></a></p>
+
+    <h2>Tipologie di Dati Trattati</h2>
+    <h3>Dati di navigazione</h3>
+    <p>I sistemi informatici raccolgono alcuni dati la cui trasmissione è implicita nell'uso dei protocolli di comunicazione di Internet (indirizzi IP, tipo di browser, parametri del sistema operativo).</p>
+
+    <h3>Dati forniti volontariamente</h3>
+    <p>I dati inseriti nello strumento di calcolo del Codice Fiscale (nome, cognome, data di nascita, sesso, comune) vengono elaborati in tempo reale e <strong>non vengono memorizzati</strong> in alcun database.</p>
+
+    <h2>Base Giuridica del Trattamento</h2>
+    <ul>
+        <li><strong>Consenso</strong> (art. 6.1.a GDPR): per cookie analitici e di profilazione</li>
+        <li><strong>Legittimo interesse</strong> (art. 6.1.f GDPR): per dati di navigazione e sicurezza</li>
+        <li><strong>Esecuzione del servizio</strong> (art. 6.1.b GDPR): per l'erogazione del servizio di calcolo</li>
+    </ul>
+
+    <h2>Periodo di Conservazione</h2>
+    <ul>
+        <li>Dati inseriti nello strumento: <strong>non conservati</strong></li>
+        <li>Dati di navigazione: massimo <strong>24 mesi</strong></li>
+        <li>Cookie: secondo le specifiche della <a href="/cookie-policy">Cookie Policy</a></li>
+    </ul>
+
+    <h2>Destinatari dei Dati</h2>
+    <p>I dati possono essere comunicati a:</p>
+    <ul>
+        <li>Fornitori di servizi di hosting e infrastruttura</li>
+        <li>Fornitori di servizi di analisi (dati anonimi e aggregati)</li>
+        <li>Autorità competenti, su richiesta</li>
+    </ul>
+
+    <h2>Trasferimento dei Dati</h2>
+    <p>Alcuni fornitori di servizi potrebbero trattare dati al di fuori dell'UE. In tal caso, il trasferimento avviene nel rispetto delle garanzie previste dal GDPR (decisioni di adeguatezza, clausole contrattuali standard).</p>
+
+    <h2>Diritti dell'Interessato</h2>
+    <p>Ai sensi degli artt. 15-22 del GDPR, hai diritto di:</p>
+    <ul>
+        <li>Accesso ai dati (art. 15)</li>
+        <li>Rettifica (art. 16)</li>
+        <li>Cancellazione - "diritto all'oblio" (art. 17)</li>
+        <li>Limitazione del trattamento (art. 18)</li>
+        <li>Portabilità dei dati (art. 20)</li>
+        <li>Opposizione (art. 21)</li>
+        <li>Revoca del consenso (art. 7)</li>
+    </ul>
+    <p>Puoi esercitare i tuoi diritti contattandoci a: <a href="mailto:<?php echo SITE_EMAIL; ?>"><?php echo SITE_EMAIL; ?></a></p>
+
+    <h2>Reclamo</h2>
+    <p>Hai il diritto di proporre reclamo all'Autorità Garante per la Protezione dei Dati Personali (garanteprivacy.it).</p>
+</div>

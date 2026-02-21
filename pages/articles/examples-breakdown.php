@@ -1,0 +1,66 @@
+<article class="article-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> <span>&rsaquo;</span> Esempi di Codice Fiscale</nav>
+    <h1>Esempi di Codice Fiscale con Spiegazione Dettagliata</h1>
+    <div class="article-meta">Ultimo aggiornamento: <?php echo date('d/m/Y'); ?> | Tempo di lettura: 8 minuti</div>
+
+    <p>Vediamo alcuni <strong>esempi pratici</strong> di come viene calcolato il Codice Fiscale, analizzando ogni singolo carattere del codice risultante.</p>
+
+    <h2>Esempio 1: Mario Rossi</h2>
+    <p><strong>Dati:</strong> Mario Rossi, maschio, nato il 15 marzo 1985 a Roma</p>
+    <p><strong>Codice Fiscale: RSSMRA85C15H501S</strong></p>
+    <ul>
+        <li><strong>RSS</strong> → Cognome ROSSI: consonanti R, S, S</li>
+        <li><strong>MRA</strong> → Nome MARIO: consonanti M, R + vocale A</li>
+        <li><strong>85</strong> → Anno 1985: ultime due cifre</li>
+        <li><strong>C</strong> → Mese Marzo: lettera C</li>
+        <li><strong>15</strong> → Giorno 15 (maschio: nessuna modifica)</li>
+        <li><strong>H501</strong> → Roma: codice catastale</li>
+        <li><strong>S</strong> → Carattere di controllo calcolato</li>
+    </ul>
+
+    <h2>Esempio 2: Anna Bianchi</h2>
+    <p><strong>Dati:</strong> Anna Bianchi, femmina, nata il 22 luglio 1990 a Milano</p>
+    <p><strong>Codice Fiscale: BNC NNA 90 L 62 F205 ?</strong> (calcolato con il nostro strumento)</p>
+    <ul>
+        <li><strong>BNC</strong> → Cognome BIANCHI: consonanti B, N, C (si fermano a 3)</li>
+        <li><strong>NNA</strong> → Nome ANNA: consonante N, N + vocale A</li>
+        <li><strong>90</strong> → Anno 1990</li>
+        <li><strong>L</strong> → Mese Luglio</li>
+        <li><strong>62</strong> → Giorno 22 + 40 (donna) = 62</li>
+        <li><strong>F205</strong> → Milano: codice catastale</li>
+    </ul>
+
+    <h2>Esempio 3: Nome con 4+ consonanti</h2>
+    <p><strong>Dati:</strong> Alessandro Verdi, maschio, nato il 1 gennaio 2000 a Napoli</p>
+    <ul>
+        <li><strong>VRD</strong> → Cognome VERDI: consonanti V, R, D</li>
+        <li><strong>LSN</strong> → Nome ALESSANDRO: consonanti L, S, S, N, D, R (6 consonanti → 1a, 3a, 4a = L, S, N)</li>
+        <li><strong>00</strong> → Anno 2000</li>
+        <li><strong>A</strong> → Mese Gennaio</li>
+        <li><strong>01</strong> → Giorno 1</li>
+        <li><strong>F839</strong> → Napoli: codice catastale</li>
+    </ul>
+
+    <h2>Tabella dei mesi</h2>
+    <p>Per riferimento, ecco la tabella completa delle lettere associate ai mesi:</p>
+    <ul>
+        <li>Gennaio = A, Febbraio = B, Marzo = C, Aprile = D</li>
+        <li>Maggio = E, Giugno = H, Luglio = L, Agosto = M</li>
+        <li>Settembre = P, Ottobre = R, Novembre = S, Dicembre = T</li>
+    </ul>
+
+    <h2>Prova tu stesso</h2>
+    <p>Usa il nostro <a href="/calcola"><strong>calcolatore gratuito</strong></a> per verificare il Codice Fiscale con i tuoi dati o per sperimentare con dati di esempio.</p>
+
+    <div class="internal-links">
+        <h3>Articoli correlati</h3>
+        <ul>
+            <li><a href="/come-si-calcola-il-codice-fiscale">Come si calcola il CF</a></li>
+            <li><a href="/cos-e-il-codice-fiscale">Cos'è il Codice Fiscale</a></li>
+            <li><a href="/calcola">Calcola il tuo CF</a></li>
+        </ul>
+    </div>
+</article>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Esempi di Codice Fiscale con Spiegazione","author":{"@type":"Organization","name":"<?php echo SITE_NAME; ?>"},"datePublished":"2024-01-15","dateModified":"<?php echo date('Y-m-d'); ?>"}
+</script>

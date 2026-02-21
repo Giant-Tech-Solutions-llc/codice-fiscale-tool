@@ -1,0 +1,44 @@
+<article class="article-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> <span>&rsaquo;</span> Codice Fiscale vs Partita IVA</nav>
+    <h1>Codice Fiscale vs Partita IVA: Differenze e Quando Servono</h1>
+    <div class="article-meta">Ultimo aggiornamento: <?php echo date('d/m/Y'); ?> | Tempo di lettura: 6 minuti</div>
+
+    <p>Spesso si fa confusione tra <strong>Codice Fiscale</strong> e <strong>Partita IVA</strong>. Sebbene entrambi siano codici identificativi emessi dall'Agenzia delle Entrate, hanno funzioni e caratteristiche molto diverse.</p>
+
+    <h2>Cos'è il Codice Fiscale?</h2>
+    <p>Il Codice Fiscale è un codice alfanumerico di <strong>16 caratteri</strong> assegnato a ogni persona fisica in Italia. Viene attribuito <strong>alla nascita</strong> (o al momento della registrazione per i cittadini stranieri) e resta invariato per tutta la vita. Serve per identificare la persona nei rapporti con la Pubblica Amministrazione e per tutti gli adempimenti fiscali personali.</p>
+
+    <h2>Cos'è la Partita IVA?</h2>
+    <p>La Partita IVA è un codice numerico di <strong>11 cifre</strong> assegnato a chi esercita un'attività economica autonoma (liberi professionisti, imprenditori, società). È obbligatoria per emettere fatture, gestire l'IVA e operare nel commercio.</p>
+
+    <h2>Le differenze principali</h2>
+    <ul>
+        <li><strong>Formato:</strong> CF = 16 caratteri alfanumerici; P.IVA = 11 cifre</li>
+        <li><strong>Assegnazione:</strong> CF = alla nascita; P.IVA = su richiesta per attività economica</li>
+        <li><strong>Obbligatorietà:</strong> CF = per tutti; P.IVA = solo per chi ha attività autonoma</li>
+        <li><strong>Contenuto:</strong> CF = contiene dati anagrafici codificati; P.IVA = numero progressivo</li>
+        <li><strong>Durata:</strong> CF = permanente; P.IVA = può essere chiusa e riaperta</li>
+        <li><strong>Uso:</strong> CF = identificazione personale; P.IVA = attività commerciali e fiscali</li>
+    </ul>
+
+    <h2>Quando serve il Codice Fiscale?</h2>
+    <p>Il Codice Fiscale è necessario per qualsiasi rapporto con lo Stato italiano: dal contratto di lavoro all'apertura di un conto corrente, dall'iscrizione al SSN alla dichiarazione dei redditi.</p>
+
+    <h2>Quando serve la Partita IVA?</h2>
+    <p>La Partita IVA è necessaria quando si avvia un'attività professionale o commerciale in forma autonoma. È indispensabile per emettere fatture, detrarre l'IVA sugli acquisti e adempiere agli obblighi fiscali dell'attività.</p>
+
+    <h2>Si possono avere entrambi?</h2>
+    <p>Assolutamente <strong>sì</strong>. Anzi, chi ha una Partita IVA ha sempre anche un Codice Fiscale. Per le <strong>ditte individuali</strong>, la Partita IVA è spesso uguale al Codice Fiscale numerico. Le <strong>società</strong> hanno una Partita IVA a sé stante.</p>
+
+    <div class="internal-links">
+        <h3>Articoli correlati</h3>
+        <ul>
+            <li><a href="/cos-e-il-codice-fiscale">Cos'è il Codice Fiscale</a></li>
+            <li><a href="/utilizzi-legali-codice-fiscale">Utilizzi legali del CF</a></li>
+            <li><a href="/calcola">Calcola il tuo CF</a></li>
+        </ul>
+    </div>
+</article>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Codice Fiscale vs Partita IVA: Differenze","author":{"@type":"Organization","name":"<?php echo SITE_NAME; ?>"},"datePublished":"2024-01-15","dateModified":"<?php echo date('Y-m-d'); ?>"}
+</script>

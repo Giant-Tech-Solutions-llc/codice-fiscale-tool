@@ -1,0 +1,77 @@
+<article class="article-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a> <span>&rsaquo;</span> <a href="/cos-e-il-codice-fiscale">Cos'è il Codice Fiscale</a>
+    </nav>
+    <h1>Cos'è il Codice Fiscale? Guida Completa</h1>
+    <div class="article-meta">Ultimo aggiornamento: <?php echo date('d/m/Y'); ?> | Tempo di lettura: 8 minuti</div>
+
+    <p>Il <strong>Codice Fiscale</strong> è un codice alfanumerico di <strong>16 caratteri</strong> utilizzato dalla Repubblica Italiana per identificare in modo univoco le persone fisiche ai fini fiscali e amministrativi. È stato introdotto con il <strong>D.P.R. 29 settembre 1973, n. 605</strong> e viene rilasciato dall'<strong>Agenzia delle Entrate</strong>.</p>
+
+    <h2>A cosa serve il Codice Fiscale?</h2>
+    <p>Il Codice Fiscale è indispensabile per una vasta gamma di attività quotidiane e burocratiche in Italia:</p>
+    <ul>
+        <li><strong>Dichiarazione dei redditi</strong> e adempimenti fiscali</li>
+        <li><strong>Apertura di un conto corrente</strong> bancario o postale</li>
+        <li><strong>Stipula di contratti</strong> di lavoro, affitto e acquisto</li>
+        <li><strong>Iscrizione al Servizio Sanitario Nazionale</strong> (SSN)</li>
+        <li><strong>Iscrizione scolastica e universitaria</strong></li>
+        <li><strong>Richiesta di prestazioni previdenziali</strong> (INPS)</li>
+        <li><strong>Acquisto e immatricolazione di veicoli</strong></li>
+        <li><strong>Operazioni immobiliari</strong> (compravendita, registrazione contratti)</li>
+    </ul>
+
+    <h2>Come è composto il Codice Fiscale?</h2>
+    <p>Il Codice Fiscale è formato da 16 caratteri alfanumerici, ciascuno con un significato specifico:</p>
+    <ul>
+        <li><strong>3 caratteri</strong> per il cognome (consonanti, poi vocali)</li>
+        <li><strong>3 caratteri</strong> per il nome (consonanti, poi vocali, con regola speciale per 4+ consonanti)</li>
+        <li><strong>2 cifre</strong> per l'anno di nascita</li>
+        <li><strong>1 lettera</strong> per il mese di nascita (A=Gennaio, B=Febbraio, ecc.)</li>
+        <li><strong>2 cifre</strong> per il giorno di nascita (per le donne si aggiunge 40)</li>
+        <li><strong>4 caratteri</strong> per il codice catastale del comune di nascita (o stato estero)</li>
+        <li><strong>1 carattere</strong> di controllo (checksum)</li>
+    </ul>
+
+    <h2>Chi deve avere il Codice Fiscale?</h2>
+    <p>Il Codice Fiscale è obbligatorio per:</p>
+    <ul>
+        <li>Tutti i <strong>cittadini italiani</strong>, dalla nascita</li>
+        <li><strong>Cittadini stranieri</strong> che hanno rapporti fiscali o amministrativi con l'Italia</li>
+        <li><strong>Residenti all'estero</strong> con interessi in Italia</li>
+        <li><strong>Persone giuridiche</strong> (in forma di Partita IVA o codice fiscale numerico)</li>
+    </ul>
+
+    <h2>Differenza tra Codice Fiscale e Tessera Sanitaria</h2>
+    <p>La <strong>Tessera Sanitaria</strong> (o Tessera Europea di Assicurazione Malattia - TEAM) contiene il Codice Fiscale stampato sul fronte. Dal 2011, la tessera sanitaria ha sostituito il vecchio tesserino plastificato del codice fiscale. La tessera sanitaria ha una <strong>validità di 6 anni</strong> e viene rinnovata automaticamente.</p>
+
+    <h2>Cos'è l'omocodia?</h2>
+    <p>L'<strong>omocodia</strong> si verifica quando due o più persone hanno lo stesso Codice Fiscale calcolato con l'algoritmo standard, perché condividono cognome, nome, data e luogo di nascita simili. In tal caso, l'Agenzia delle Entrate interviene sostituendo una o più cifre con lettere equivalenti, generando un codice unico. Solo l'Agenzia delle Entrate può risolvere i casi di omocodia.</p>
+
+    <blockquote>
+        <strong>Nota importante:</strong> Il Codice Fiscale calcolato online potrebbe non corrispondere a quello ufficiale in caso di omocodia. Per ottenere il codice fiscale ufficiale, è necessario rivolgersi all'Agenzia delle Entrate.
+    </blockquote>
+
+    <div class="internal-links">
+        <h3>Articoli correlati</h3>
+        <ul>
+            <li><a href="/come-si-calcola-il-codice-fiscale">Come si calcola il Codice Fiscale</a></li>
+            <li><a href="/codice-fiscale-vs-partita-iva">Codice Fiscale vs Partita IVA</a></li>
+            <li><a href="/codice-fiscale-estero">CF per Stranieri</a></li>
+            <li><a href="/esempi-codice-fiscale">Esempi di CF</a></li>
+            <li><a href="/calcola">Calcola il tuo CF</a></li>
+        </ul>
+    </div>
+</article>
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Cos'è il Codice Fiscale? Guida Completa",
+    "description": "Scopri cos'è il Codice Fiscale italiano, a cosa serve, come è composto e perché è fondamentale.",
+    "author": {"@type": "Organization", "name": "<?php echo SITE_NAME; ?>"},
+    "publisher": {"@type": "Organization", "name": "<?php echo SITE_NAME; ?>"},
+    "datePublished": "2024-01-15",
+    "dateModified": "<?php echo date('Y-m-d'); ?>"
+}
+</script>

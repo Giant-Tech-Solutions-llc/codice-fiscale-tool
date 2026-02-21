@@ -1,0 +1,57 @@
+<article class="article-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> <span>&rsaquo;</span> Codice Fiscale per Stranieri</nav>
+    <h1>Codice Fiscale per Stranieri e Residenti all'Estero</h1>
+    <div class="article-meta">Ultimo aggiornamento: <?php echo date('d/m/Y'); ?> | Tempo di lettura: 7 minuti</div>
+
+    <p>Il <strong>Codice Fiscale</strong> non è riservato solo ai cittadini italiani. Anche gli <strong>stranieri</strong> e i <strong>residenti all'estero</strong> possono e devono ottenerlo quando hanno rapporti fiscali, lavorativi o amministrativi con l'Italia.</p>
+
+    <h2>Quando uno straniero ha bisogno del Codice Fiscale?</h2>
+    <ul>
+        <li>Per <strong>lavorare in Italia</strong> (assunzione regolare)</li>
+        <li>Per <strong>aprire un conto corrente</strong> italiano</li>
+        <li>Per <strong>acquistare un immobile</strong> in Italia</li>
+        <li>Per <strong>stipulare contratti</strong> (affitto, utenze, assicurazioni)</li>
+        <li>Per <strong>iscriversi al SSN</strong></li>
+        <li>Per <strong>questioni ereditarie</strong> in Italia</li>
+        <li>Per <strong>ottenere il permesso di soggiorno</strong></li>
+    </ul>
+
+    <h2>Come ottenere il Codice Fiscale dall'estero?</h2>
+    <p>I cittadini stranieri possono richiedere il Codice Fiscale attraverso diversi canali:</p>
+
+    <h3>1. Ambasciata o Consolato Italiano</h3>
+    <p>Il modo più comune per chi si trova all'estero. È necessario presentarsi con un <strong>documento di identità valido</strong> (passaporto) e compilare il modulo di richiesta. Il codice viene rilasciato immediatamente.</p>
+
+    <h3>2. Agenzia delle Entrate in Italia</h3>
+    <p>Chi si trova già in Italia può recarsi presso qualsiasi ufficio dell'<strong>Agenzia delle Entrate</strong> con il passaporto e, se disponibile, il permesso di soggiorno.</p>
+
+    <h3>3. Sportello Unico per l'Immigrazione</h3>
+    <p>Per i cittadini extra-UE che richiedono il permesso di soggiorno, il Codice Fiscale viene spesso attribuito automaticamente durante la procedura.</p>
+
+    <h2>Documenti necessari</h2>
+    <ul>
+        <li><strong>Passaporto</strong> in corso di validità</li>
+        <li><strong>Modulo di richiesta</strong> (Modello AA4/8)</li>
+        <li>Eventuale <strong>permesso di soggiorno</strong></li>
+        <li><strong>Certificato di nascita</strong> (per alcuni paesi, con apostille)</li>
+    </ul>
+
+    <h2>Codice Fiscale per nati all'estero</h2>
+    <p>Per chi è nato all'estero, nel Codice Fiscale al posto del codice catastale del comune compare il <strong>codice dello stato estero</strong>, che inizia con la lettera <strong>Z</strong> seguita da tre cifre.</p>
+
+    <h2>Cittadini UE vs extra-UE</h2>
+    <p>I <strong>cittadini UE</strong> possono ottenere il Codice Fiscale con procedure semplificate grazie alla libera circolazione. I <strong>cittadini extra-UE</strong> necessitano generalmente di un visto o permesso di soggiorno valido.</p>
+
+    <div class="internal-links">
+        <h3>Articoli correlati</h3>
+        <ul>
+            <li><a href="/cos-e-il-codice-fiscale">Cos'è il Codice Fiscale</a></li>
+            <li><a href="/recupero-codice-fiscale">Recupero CF smarrito</a></li>
+            <li><a href="/utilizzi-legali-codice-fiscale">Utilizzi legali del CF</a></li>
+            <li><a href="/calcola">Calcola il tuo CF</a></li>
+        </ul>
+    </div>
+</article>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Codice Fiscale per Stranieri e Residenti all'Estero","author":{"@type":"Organization","name":"<?php echo SITE_NAME; ?>"},"datePublished":"2024-01-15","dateModified":"<?php echo date('Y-m-d'); ?>"}
+</script>
