@@ -654,9 +654,19 @@ img{max-width:100%;height:auto;display:block}
 .footer-flag{height:3px;background:linear-gradient(90deg,#1E7F4F 33%,#ffffff 33%,#ffffff 66%,#E63946 66%)}
 .footer-content{padding:3.5rem 0 0}
 .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2.5rem;padding-bottom:2rem}
-.footer-logo{display:flex;align-items:center;gap:.625rem;margin-bottom:1rem}
-.footer-logo .logo-icon{background:var(--primary);font-size:.75rem;width:36px;height:36px}
-.footer-logo .logo-text{color:var(--white);font-weight:700;font-size:1.0625rem}
+.footer-logo{display:flex;align-items:center;gap:.5rem;margin-bottom:1rem}
+.footer-logo .logo-icon{
+  background:var(--primary);
+  color:var(--white);
+  font-size:.75rem;
+  width:32px;height:32px;
+  min-width:32px;
+  display:flex;align-items:center;justify-content:center;
+  border-radius:8px;
+  font-weight:700;
+  letter-spacing:.02em;
+}
+.footer-logo .logo-text{color:var(--white);font-weight:600;font-size:1rem;letter-spacing:-.01em}
 .footer-desc{font-size:.875rem;color:#9CA3AF;line-height:1.7;max-width:280px}
 .footer-col h3{color:var(--white);font-size:.875rem;margin-bottom:1rem;font-weight:600;text-transform:uppercase;letter-spacing:.04em}
 .footer-col ul{list-style:none}
