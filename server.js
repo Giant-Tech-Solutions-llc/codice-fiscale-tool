@@ -352,7 +352,4 @@ app.use((req, res) => {
   const locals = getLocals(req, 'Pagina non trovata | ' + SITE_NAME, 'La pagina che stai cercando non esiste.', '404');
   res.render('404', locals);
 });
-
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`Server running on http://0.0.0.0:${PORT}`);
-});
+module.exports = app;
