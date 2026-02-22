@@ -77,6 +77,142 @@ function getLocals(req, pageTitle, pageDescription, route) {
   };
 }
 
+function jsonLd(obj) {
+  return '<script type="application/ld+json">' + JSON.stringify(obj) + '</script>';
+}
+
+function buildOrganizationSchema(siteUrl) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: SITE_NAME,
+    url: siteUrl,
+    logo: siteUrl + '/favicon.svg',
+    email: SITE_EMAIL,
+    sameAs: [],
+    description: 'Strumento gratuito per il calcolo del Codice Fiscale italiano. Algoritmo ufficiale, nessuna registrazione richiesta.'
+  };
+}
+
+function buildBreadcrumbSchema(siteUrl, items) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((item, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: item.name,
+      item: item.url ? siteUrl + item.url : undefined
+    }))
+  };
+}
+
+function buildToolSchema(siteUrl) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: 'Calcola Codice Fiscale Online',
+    url: siteUrl + '/tools/codice-fiscale-generator',
+    description: 'Genera il tuo Codice Fiscale italiano inserendo i tuoi dati anagrafici. Strumento gratuito, veloce e preciso con algoritmo ufficiale.',
+    applicationCategory: 'UtilityApplication',
+    operatingSystem: 'All',
+    browserRequirements: 'Requires JavaScript',
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'EUR'
+    },
+    provider: {
+      '@type': 'Organization',
+      name: SITE_NAME,
+      url: siteUrl
+    },
+    featureList: [
+      'Calcolo Codice Fiscale con algoritmo ufficiale',
+      'Ricerca comune di nascita con autocompletamento',
+      'Copia negli appunti con un click',
+      'Nessuna registrazione richiesta',
+      'Gratuito e senza limiti di utilizzo'
+    ],
+    inLanguage: 'it'
+  };
+}
+
+function buildFaqSchema(faqs) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map(faq => ({
+      '@type': 'Question',
+      name: faq.q,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.a
+      }
+    }))
+  };
+}
+
+const homeFaqs = [
+  { q: "Cos'è il Codice Fiscale e a cosa serve?", a: "Il Codice Fiscale è un codice alfanumerico di 16 caratteri che identifica in modo univoco ogni persona fisica in Italia ai fini fiscali e amministrativi. Serve per contratti, dichiarazioni dei redditi, iscrizione al SSN e ogni rapporto con la Pubblica Amministrazione." },
+  { q: 'Il Codice Fiscale generato online è ufficialmente valido?', a: "Il nostro strumento applica l'algoritmo ufficiale dell'Agenzia delle Entrate. Il risultato è corretto nella stragrande maggioranza dei casi. Tuttavia, in caso di omocodia, l'Agenzia assegna un codice modificato." },
+  { q: 'I miei dati personali vengono salvati?', a: 'No. Il calcolo avviene in tempo reale e nessun dato personale viene memorizzato sui nostri server. Non utilizziamo cookie di profilazione e non condividiamo dati con terze parti.' },
+  { q: 'Posso calcolare il CF per un cittadino straniero?', a: "Sì. Il Codice Fiscale può essere calcolato anche per cittadini stranieri, a condizione di conoscere il comune italiano o lo stato estero di nascita così come registrato nel database dell'Agenzia delle Entrate." },
+  { q: 'Cosa significa omocodia e come si risolve?', a: "L'omocodia si verifica quando due o più persone generano lo stesso Codice Fiscale. L'Agenzia delle Entrate risolve il conflitto sostituendo uno o più caratteri numerici con lettere secondo una tabella predefinita." },
+  { q: 'Come posso recuperare il Codice Fiscale se l\'ho smarrito?', a: "Puoi recuperare il tuo Codice Fiscale online tramite il sito dell'Agenzia delle Entrate, recandoti di persona presso un ufficio dell'Agenzia, oppure chiamando il numero verde 800.90.96.96." }
+];
+
+const pillarFaqs = [
+  { q: 'Quanti caratteri ha il Codice Fiscale?', a: 'Il Codice Fiscale delle persone fisiche è composto da 16 caratteri alfanumerici. Le persone giuridiche hanno un codice numerico di 11 cifre.' },
+  { q: 'Il Codice Fiscale può cambiare nel tempo?', a: 'In linea generale il Codice Fiscale rimane invariato per tutta la vita. Può essere modificato solo in caso di correzione di errori anagrafici, rettifica del sesso, o per risolvere una situazione di omocodia.' },
+  { q: 'Come si calcola il carattere di controllo?', a: 'I primi 15 caratteri del CF vengono convertiti in valori numerici usando due tabelle distinte per le posizioni pari e dispari. La somma totale viene divisa per 26 e il resto determina la lettera di controllo.' },
+  { q: "Che differenza c'è tra tessera sanitaria e Codice Fiscale?", a: 'La tessera sanitaria è il documento fisico su cui è stampato il Codice Fiscale. Il CF è il codice in sé. La tessera sanitaria ha anche funzione di Carta Nazionale dei Servizi per l\'accesso ai servizi digitali della PA.' },
+  { q: 'Un calcolatore online è affidabile?', a: "I calcolatori online come il nostro applicano lo stesso algoritmo usato dall'Agenzia delle Entrate e producono risultati corretti nella quasi totalità dei casi. L'unica eccezione riguarda le omocodie." },
+  { q: 'Dove trovo il codice catastale del mio comune?', a: "Il codice catastale di ogni comune italiano è consultabile sul sito dell'Agenzia delle Entrate o dell'ISTAT. Il nostro strumento include un database aggiornato con tutti i codici catastali." }
+];
+
+const routeBreadcrumbs = {
+  '': [{ name: 'Home', url: '/' }],
+  'calcola': [{ name: 'Home', url: '/' }, { name: 'Calcola Codice Fiscale' }],
+  'codice-fiscale': [{ name: 'Home', url: '/' }, { name: 'Guida Codice Fiscale' }],
+  'cos-e-il-codice-fiscale': [{ name: 'Home', url: '/' }, { name: 'Guida', url: '/codice-fiscale' }, { name: "Cos'è il Codice Fiscale" }],
+  'come-si-calcola-il-codice-fiscale': [{ name: 'Home', url: '/' }, { name: 'Guida', url: '/codice-fiscale' }, { name: 'Come si Calcola' }],
+  'codice-fiscale-vs-partita-iva': [{ name: 'Home', url: '/' }, { name: 'Guida', url: '/codice-fiscale' }, { name: 'CF vs Partita IVA' }],
+  'codice-fiscale-estero': [{ name: 'Home', url: '/' }, { name: 'Guida', url: '/codice-fiscale' }, { name: 'CF per Stranieri' }],
+  'recupero-codice-fiscale': [{ name: 'Home', url: '/' }, { name: 'Guida', url: '/codice-fiscale' }, { name: 'Recupero CF' }],
+  'utilizzi-legali-codice-fiscale': [{ name: 'Home', url: '/' }, { name: 'Guida', url: '/codice-fiscale' }, { name: 'Utilizzi Legali' }],
+  'esempi-codice-fiscale': [{ name: 'Home', url: '/' }, { name: 'Guida', url: '/codice-fiscale' }, { name: 'Esempi' }],
+  'chi-siamo': [{ name: 'Home', url: '/' }, { name: 'Chi Siamo' }],
+  'contatti': [{ name: 'Home', url: '/' }, { name: 'Contatti' }],
+  'privacy-policy': [{ name: 'Home', url: '/' }, { name: 'Privacy Policy' }],
+  'termini-condizioni': [{ name: 'Home', url: '/' }, { name: 'Termini e Condizioni' }],
+  'disclaimer': [{ name: 'Home', url: '/' }, { name: 'Disclaimer' }],
+  'cookie-policy': [{ name: 'Home', url: '/' }, { name: 'Cookie Policy' }],
+  'dmca': [{ name: 'Home', url: '/' }, { name: 'DMCA' }],
+  'politica-editoriale': [{ name: 'Home', url: '/' }, { name: 'Politica Editoriale' }],
+  'gdpr': [{ name: 'Home', url: '/' }, { name: 'GDPR' }],
+  'mappa-del-sito': [{ name: 'Home', url: '/' }, { name: 'Mappa del Sito' }]
+};
+
+function getStructuredData(siteUrl, routeKey) {
+  const schemas = [];
+  schemas.push(jsonLd(buildOrganizationSchema(siteUrl)));
+  const crumbs = routeBreadcrumbs[routeKey];
+  if (crumbs) {
+    schemas.push(jsonLd(buildBreadcrumbSchema(siteUrl, crumbs)));
+  }
+  if (routeKey === '' || routeKey === 'calcola') {
+    schemas.push(jsonLd(buildToolSchema(siteUrl)));
+  }
+  if (routeKey === '') {
+    schemas.push(jsonLd(buildFaqSchema(homeFaqs)));
+  }
+  if (routeKey === 'codice-fiscale') {
+    schemas.push(jsonLd(buildFaqSchema(pillarFaqs)));
+  }
+  return schemas.join('\n');
+}
+
 const routes = {
   '': { page: 'home', title: 'Calcola Codice Fiscale Online Gratis | ' + SITE_NAME, description: 'Calcola il tuo Codice Fiscale italiano online gratis. Strumento veloce, preciso e facile da usare. Genera il codice fiscale in pochi secondi.' },
   'calcola': { page: 'tool', title: 'Calcola Codice Fiscale - Generatore Online Gratuito | ' + SITE_NAME, description: 'Genera il tuo Codice Fiscale italiano inserendo i tuoi dati anagrafici. Strumento gratuito, veloce e preciso con validazione in tempo reale.' },
@@ -107,6 +243,13 @@ app.use('/tools', (req, res, next) => {
     'Genera il tuo Codice Fiscale italiano inserendo i tuoi dati anagrafici. Strumento gratuito, veloce e preciso.',
     'tools' + req.path
   );
+  const siteUrl = getSiteUrl(req);
+  const toolCrumbs = [{ name: 'Home', url: '/' }, { name: 'Calcola Codice Fiscale' }];
+  locals.structuredData = [
+    jsonLd(buildOrganizationSchema(siteUrl)),
+    jsonLd(buildBreadcrumbSchema(siteUrl, toolCrumbs)),
+    jsonLd(buildToolSchema(siteUrl))
+  ].join('\n');
   Object.assign(res.locals, locals);
   next();
 }, toolRoutes);
@@ -188,6 +331,7 @@ function renderPage(req, res, routeKey) {
     return res.render('404', locals);
   }
   const locals = getLocals(req, routeData.title, routeData.description, routeKey);
+  locals.structuredData = getStructuredData(locals.siteUrl, routeKey);
   res.render(routeData.page, locals);
 }
 

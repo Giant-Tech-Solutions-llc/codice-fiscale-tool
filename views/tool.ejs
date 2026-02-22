@@ -107,22 +107,3 @@
 .ac-item small{color:var(--text-light)}
 .ac-item.no-result{color:var(--text-light);cursor:default}
 </style>
-
-<% if (typeof canonicalUrl !== 'undefined' && canonicalUrl.indexOf('/calcola') !== -1) { %>
-<script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "Calcola Codice Fiscale Online",
-    "url": "<%= siteUrl %>/calcola",
-    "description": "Genera il tuo Codice Fiscale italiano inserendo i tuoi dati anagrafici. Strumento gratuito e preciso.",
-    "applicationCategory": "UtilityApplication",
-    "operatingSystem": "All",
-    "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "EUR"
-    }
-}
-</script>
-<% } %>
