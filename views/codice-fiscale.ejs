@@ -1,0 +1,473 @@
+<section class="cf-page">
+  <div class="cf-container">
+    <div class="cf-card">
+      <div class="cf-card__header">
+        <h1 class="cf-card__title">Calcola Codice Fiscale</h1>
+        <p class="cf-card__subtitle">Inserisci i tuoi dati anagrafici per generare il tuo Codice Fiscale italiano</p>
+      </div>
+
+      <div class="cf-card__body">
+        <% if (typeof errors !== 'undefined' && errors.length > 0) { %>
+        <div class="cf-alert cf-alert--error" role="alert">
+          <svg class="cf-alert__icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/></svg>
+          <ul class="cf-alert__list">
+            <% errors.forEach(function(err) { %>
+            <li><%= err %></li>
+            <% }); %>
+          </ul>
+        </div>
+        <% } %>
+
+        <% var fd = (typeof formData !== 'undefined' && formData) ? formData : { cognome: '', nome: '', sesso: '', data_nascita: '', comune: '' }; %>
+        <form id="cf-form" method="POST" action="/tools/codice-fiscale-generator" novalidate>
+          <div class="cf-field">
+            <label class="cf-label" for="cognome">Cognome</label>
+            <input class="cf-input" type="text" id="cognome" name="cognome" placeholder="Es. Rossi" required autocomplete="family-name" value="<%= fd.cognome %>">
+          </div>
+
+          <div class="cf-field">
+            <label class="cf-label" for="nome">Nome</label>
+            <input class="cf-input" type="text" id="nome" name="nome" placeholder="Es. Mario" required autocomplete="given-name" value="<%= fd.nome %>">
+          </div>
+
+          <fieldset class="cf-field cf-field--toggle">
+            <legend class="cf-label">Sesso</legend>
+            <div class="cf-toggle" role="radiogroup" aria-label="Seleziona il sesso">
+              <input type="radio" id="sesso-m" name="sesso" value="M" class="cf-toggle__input" <%= fd.sesso === 'M' ? 'checked' : '' %>>
+              <label for="sesso-m" class="cf-toggle__btn">Maschio</label>
+              <input type="radio" id="sesso-f" name="sesso" value="F" class="cf-toggle__input" <%= fd.sesso === 'F' ? 'checked' : '' %>>
+              <label for="sesso-f" class="cf-toggle__btn">Femmina</label>
+            </div>
+          </fieldset>
+
+          <div class="cf-field">
+            <label class="cf-label" for="data_nascita">Data di Nascita</label>
+            <input class="cf-input" type="date" id="data_nascita" name="data_nascita" required value="<%= fd.data_nascita %>">
+          </div>
+
+          <div class="cf-field cf-field--comune">
+            <label class="cf-label" for="comune">Comune di Nascita</label>
+            <input class="cf-input" type="text" id="comune" name="comune" placeholder="Inizia a digitare il comune..." required autocomplete="off" value="<%= fd.comune %>">
+            <div id="comune-list" class="cf-autocomplete" role="listbox" aria-label="Suggerimenti comuni"></div>
+          </div>
+
+          <button type="submit" class="cf-btn">Genera Codice Fiscale</button>
+        </form>
+
+        <% var cfResult = (typeof result !== 'undefined') ? result : null; %>
+        <% if (cfResult) { %>
+        <div class="cf-result" role="status" aria-live="polite">
+          <span class="cf-result__label">Il tuo Codice Fiscale</span>
+          <output class="cf-result__code" id="cf-output"><%= cfResult %></output>
+          <button type="button" class="cf-copy" id="cf-copy-btn" aria-label="Copia Codice Fiscale negli appunti">
+            <svg class="cf-copy__icon" id="cf-copy-icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M8 2a1 1 0 000 2h2a1 1 0 100-2H8z"/><path d="M3 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v6h-4.586l1.293-1.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L10.414 13H15v3a2 2 0 01-2 2H5a2 2 0 01-2-2V5z"/></svg>
+            <span id="cf-copy-text">Copia</span>
+          </button>
+        </div>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.cf-page {
+  padding: 32px 0 48px;
+  min-height: calc(100vh - 200px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.cf-container {
+  width: 100%;
+  max-width: 480px;
+  padding: 0 16px;
+}
+
+.cf-card {
+  background: var(--white);
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, .08), 0 1px 3px rgba(0, 0, 0, .04);
+  overflow: hidden;
+}
+
+.cf-card__header {
+  background: linear-gradient(135deg, #006B35, #008C45);
+  padding: 32px 24px;
+  text-align: center;
+  color: var(--white);
+}
+
+.cf-card__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -.02em;
+  margin-bottom: 8px;
+}
+
+.cf-card__subtitle {
+  font-size: .875rem;
+  opacity: .85;
+  line-height: 1.5;
+}
+
+.cf-card__body {
+  padding: 24px;
+}
+
+.cf-alert {
+  display: flex;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+
+.cf-alert--error {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #991b1b;
+}
+
+.cf-alert__icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: #dc2626;
+}
+
+.cf-alert__list {
+  list-style: none;
+  font-size: .875rem;
+  line-height: 1.6;
+}
+
+.cf-field {
+  margin-bottom: 24px;
+  border: none;
+  padding: 0;
+}
+
+.cf-label {
+  display: block;
+  font-size: .8125rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 8px;
+  letter-spacing: .01em;
+}
+
+.cf-input {
+  display: block;
+  width: 100%;
+  height: 48px;
+  padding: 0 16px;
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: var(--font);
+  color: var(--text);
+  background: var(--white);
+  transition: border-color .2s, box-shadow .2s;
+  -webkit-appearance: none;
+}
+
+.cf-input::placeholder {
+  color: #9ca3af;
+}
+
+.cf-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+.cf-toggle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  background: #f3f4f6;
+  border-radius: 8px;
+  padding: 4px;
+}
+
+.cf-toggle__input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  width: 0;
+  height: 0;
+}
+
+.cf-toggle__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  border-radius: 6px;
+  font-size: .9375rem;
+  font-weight: 500;
+  color: var(--text-light);
+  cursor: pointer;
+  transition: background .2s, color .2s, box-shadow .2s;
+  user-select: none;
+}
+
+.cf-toggle__input:checked + .cf-toggle__btn {
+  background: var(--white);
+  color: var(--primary);
+  font-weight: 600;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .1);
+}
+
+.cf-toggle__input:focus-visible + .cf-toggle__btn {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.cf-field--comune {
+  position: relative;
+}
+
+.cf-autocomplete {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--white);
+  border: 2px solid var(--primary);
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 50;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+}
+
+.cf-autocomplete[data-open="true"] {
+  display: block;
+}
+
+.cf-ac-item {
+  padding: 12px 16px;
+  cursor: pointer;
+  font-size: .9375rem;
+  transition: background .15s;
+}
+
+.cf-ac-item:hover,
+.cf-ac-item:focus {
+  background: var(--primary-light);
+}
+
+.cf-ac-item small {
+  color: var(--text-light);
+  margin-left: 4px;
+}
+
+.cf-ac-item--empty {
+  color: var(--text-light);
+  cursor: default;
+}
+
+.cf-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 48px;
+  background: var(--primary);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: var(--font);
+  cursor: pointer;
+  transition: background .2s, transform .1s;
+  margin-top: 8px;
+}
+
+.cf-btn:hover {
+  background: var(--primary-dark);
+}
+
+.cf-btn:active {
+  transform: scale(.98);
+}
+
+.cf-btn:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.cf-result {
+  margin-top: 24px;
+  padding: 24px;
+  background: var(--primary-light);
+  border: 2px solid var(--primary);
+  border-radius: 12px;
+  text-align: center;
+  animation: cfFadeIn .4s ease;
+}
+
+.cf-result__label {
+  display: block;
+  font-size: .8125rem;
+  font-weight: 600;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  margin-bottom: 8px;
+}
+
+.cf-result__code {
+  display: block;
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: .15em;
+  color: var(--text);
+  font-family: 'Courier New', monospace;
+  word-break: break-all;
+  padding: 8px 0;
+}
+
+.cf-copy {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 16px;
+  padding: 8px 20px;
+  background: var(--primary);
+  color: var(--white);
+  border: none;
+  border-radius: 6px;
+  font-size: .875rem;
+  font-weight: 600;
+  font-family: var(--font);
+  cursor: pointer;
+  transition: background .2s;
+}
+
+.cf-copy:hover {
+  background: var(--primary-dark);
+}
+
+.cf-copy--done {
+  background: var(--text);
+}
+
+.cf-copy__icon {
+  width: 16px;
+  height: 16px;
+}
+
+@keyframes cfFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (min-width: 640px) {
+  .cf-page {
+    padding: 48px 0 64px;
+  }
+  .cf-container {
+    max-width: 520px;
+  }
+  .cf-card__header {
+    padding: 40px 32px;
+  }
+  .cf-card__title {
+    font-size: 1.75rem;
+  }
+  .cf-card__body {
+    padding: 32px;
+  }
+  .cf-result__code {
+    font-size: 2rem;
+  }
+}
+</style>
+
+<script>
+(function () {
+  var copyBtn = document.getElementById('cf-copy-btn');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', function () {
+      var code = document.getElementById('cf-output');
+      if (!code) return;
+      var text = code.textContent.trim();
+      if (!text) return;
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(onCopied).catch(fallbackCopy);
+      } else {
+        fallbackCopy();
+      }
+
+      function fallbackCopy() {
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); onCopied(); } catch (e) {}
+        document.body.removeChild(ta);
+      }
+
+      function onCopied() {
+        var label = document.getElementById('cf-copy-text');
+        copyBtn.classList.add('cf-copy--done');
+        if (label) label.textContent = 'Copiato!';
+        setTimeout(function () {
+          copyBtn.classList.remove('cf-copy--done');
+          if (label) label.textContent = 'Copia';
+        }, 2000);
+      }
+    });
+  }
+
+  var comuneInput = document.getElementById('comune');
+  var comuneList = document.getElementById('comune-list');
+  if (comuneInput && comuneList) {
+    var debounce;
+    comuneInput.addEventListener('input', function () {
+      clearTimeout(debounce);
+      var q = this.value.trim();
+      if (q.length < 2) { comuneList.removeAttribute('data-open'); comuneList.innerHTML = ''; return; }
+      debounce = setTimeout(function () {
+        fetch('/api/comuni?q=' + encodeURIComponent(q))
+          .then(function (r) { return r.json(); })
+          .then(function (data) {
+            if (!data.length) {
+              comuneList.innerHTML = '<div class="cf-ac-item cf-ac-item--empty">Nessun comune trovato</div>';
+            } else {
+              comuneList.innerHTML = data.map(function (c) {
+                return '<div class="cf-ac-item" role="option" data-nome="' + c.nome + '">' + c.nome + ' <small>(' + c.codice + ')</small></div>';
+              }).join('');
+            }
+            comuneList.setAttribute('data-open', 'true');
+          });
+      }, 200);
+    });
+
+    comuneList.addEventListener('click', function (e) {
+      var item = e.target.closest('.cf-ac-item[data-nome]');
+      if (!item) return;
+      comuneInput.value = item.getAttribute('data-nome');
+      comuneList.removeAttribute('data-open');
+      comuneList.innerHTML = '';
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('.cf-field--comune')) {
+        comuneList.removeAttribute('data-open');
+      }
+    });
+  }
+})();
+</script>

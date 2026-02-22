@@ -35,11 +35,14 @@ function sanitise(body) {
   };
 }
 
+const VIEW = 'codice-fiscale';
+const EMPTY_FORM = { cognome: '', nome: '', sesso: '', data_nascita: '', comune: '' };
+
 function showForm(req, res) {
-  res.render('tool', {
+  res.render(VIEW, {
     result: null,
     errors: [],
-    formData: { cognome: '', nome: '', sesso: '', data_nascita: '', comune: '' }
+    formData: EMPTY_FORM
   });
 }
 
@@ -48,7 +51,7 @@ function handleCalculation(req, res) {
   const errors = validateInputs(raw);
 
   if (errors.length > 0) {
-    return res.status(422).render('tool', {
+    return res.status(422).render(VIEW, {
       result: null,
       errors,
       formData: raw
@@ -64,13 +67,13 @@ function handleCalculation(req, res) {
       municipality: raw.comune
     });
 
-    return res.render('tool', {
+    return res.render(VIEW, {
       result: codiceFiscale,
       errors: [],
       formData: raw
     });
   } catch (err) {
-    return res.status(422).render('tool', {
+    return res.status(422).render(VIEW, {
       result: null,
       errors: [err.message],
       formData: raw
