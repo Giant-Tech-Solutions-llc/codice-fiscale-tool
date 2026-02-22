@@ -1,5 +1,7 @@
 const express = require('express');
 const path = require('path');
+const compression = require('compression');
+const helmet = require('helmet');
 const expressLayouts = require('express-ejs-layouts');
 const { calcola, cercaComune } = require('./src/codiceFiscale');
 const toolRoutes = require('./routes/tool.routes');
@@ -11,6 +13,20 @@ const SITE_NAME = 'Codice Fiscale Online';
 const SITE_EMAIL = 'info@codicefiscaleonline.com';
 const SITE_LANG = 'it';
 
+app.use(compression({ level: 6, threshold: 1024 }));
+
+app.use(helmet({
+  contentSecurityPolicy: false,
+  crossOriginEmbedderPolicy: false,
+  crossOriginOpenerPolicy: false,
+  crossOriginResourcePolicy: false
+}));
+app.use((req, res, next) => {
+  res.setHeader('Permissions-Policy', 'geolocation=(), camera=(), microphone=()');
+  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+  next();
+});
+
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
@@ -19,12 +35,16 @@ app.set('layout', 'layouts/main');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public'), { maxAge: 0 }));
+
+app.use(express.static(path.join(__dirname, 'public'), {
+  maxAge: '7d',
+  immutable: false,
+  etag: true,
+  lastModified: true
+}));
 
 app.use((req, res, next) => {
-  res.set('Cache-Control', 'no-cache, no-store, must-revalidate');
-  res.set('Pragma', 'no-cache');
-  res.set('Expires', '0');
+  res.set('Cache-Control', 'no-cache');
   next();
 });
 
