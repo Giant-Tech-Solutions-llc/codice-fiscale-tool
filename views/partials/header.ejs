@@ -2,9 +2,12 @@
     <nav class="container nav-container">
         <a href="/" class="logo" aria-label="<%= siteName %> - Home">
             <span class="logo-icon">CF</span>
-            <span class="logo-text"><%= siteName %></span>
+            <span class="logo-block">
+                <span class="logo-text"><%= siteName %></span>
+                <span class="logo-tagline">Generatore basato su algoritmo ufficiale</span>
+            </span>
         </a>
-        <button class="mobile-menu-btn" aria-label="Menu" aria-expanded="false">
+        <button class="mobile-menu-btn" aria-label="Apri menu di navigazione" aria-expanded="false">
             <span></span><span></span><span></span>
         </button>
         <ul class="nav-menu" role="menubar">
@@ -23,7 +26,7 @@
             <li role="none"><a href="/#come-funziona" role="menuitem">Come Funziona</a></li>
             <li role="none"><a href="/chi-siamo" role="menuitem">Chi Siamo</a></li>
             <li role="none"><a href="/contatti" role="menuitem">Contatti</a></li>
-            <li role="none"><a href="/calcola" class="nav-cta" role="menuitem">Calcola Codice Fiscale</a></li>
+            <li role="none" class="nav-cta-wrapper"><a href="/calcola" class="nav-cta" role="menuitem">Calcola Codice Fiscale <span class="nav-cta-arrow">&rarr;</span></a></li>
         </ul>
     </nav>
 </header>

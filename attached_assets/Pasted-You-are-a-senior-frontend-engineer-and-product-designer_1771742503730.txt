@@ -1,0 +1,141 @@
+You are a senior frontend engineer and product designer.
+
+TASK:
+Refine and upgrade the website header to premium SaaS-level quality.
+
+IMPORTANT:
+- Do NOT change backend logic.
+- Do NOT change routing.
+- Do NOT change navigation structure.
+- Only improve UI, spacing, interaction, and visual polish.
+
+--------------------------------------------------
+1️⃣ HEADER STRUCTURE REFINEMENT
+--------------------------------------------------
+
+Keep current structure:
+
+Left:
+- CF logo badge
+- "Codice Fiscale Online"
+
+Right:
+- Guide
+- Come Funziona
+- Chi Siamo
+- Contatti
+- "Calcola Codice Fiscale" CTA button
+
+Do NOT add new navigation items.
+
+--------------------------------------------------
+2️⃣ VISUAL HIERARCHY IMPROVEMENTS
+--------------------------------------------------
+
+A) Logo Block
+
+- Increase CF badge size by 10–15%.
+- Increase brand text font-weight to 600.
+- Ensure vertical alignment between logo icon and text is perfect.
+- Add 8px spacing between badge and text.
+
+Optional (Desktop only):
+Under brand name (small muted text 12px):
+"Generatore basato su algoritmo ufficiale"
+Hide this on mobile.
+
+--------------------------------------------------
+3️⃣ SPACING & CONTAINER
+--------------------------------------------------
+
+- Use max-width container (1200px).
+- 32px padding left and right.
+- Minimum 24px spacing between navigation items.
+- Header height desktop: 68px.
+- Header height mobile: 56px.
+
+--------------------------------------------------
+4️⃣ STICKY + SCROLL STATE
+--------------------------------------------------
+
+Make header sticky.
+
+On scroll:
+- Add white background.
+- Add subtle bottom border (#E5E7EB).
+- Add soft shadow (very light).
+- Smooth transition 150ms.
+
+Do NOT make it heavy or dark.
+
+--------------------------------------------------
+5️⃣ NAVIGATION HOVER EFFECTS
+--------------------------------------------------
+
+For navigation links:
+
+On hover:
+- Text color changes to primary green (#1E7F4F).
+- Smooth transition (150ms ease).
+- No underline.
+- No jumpy movement.
+
+--------------------------------------------------
+6️⃣ CTA BUTTON REFINEMENT
+--------------------------------------------------
+
+Button specs:
+
+- Height: 44–48px.
+- Border-radius: 12px.
+- Font-weight: 600.
+- Add subtle shadow.
+
+On hover:
+- Slight darker green.
+- translateY(-1px).
+- Smooth transition (150ms).
+
+Optional:
+Add arrow icon →
+"Calcola Codice Fiscale →"
+
+--------------------------------------------------
+7️⃣ ACCESSIBILITY
+--------------------------------------------------
+
+Ensure:
+
+- Proper contrast ratio.
+- Visible focus state for keyboard navigation.
+- aria-label on logo linking to homepage.
+
+--------------------------------------------------
+8️⃣ MOBILE HEADER
+--------------------------------------------------
+
+- Logo left.
+- Hamburger right.
+- Navigation collapses into clean mobile menu.
+- Maintain CTA inside mobile menu.
+- Large tap targets (minimum 44px height).
+
+Do NOT overcrowd mobile header.
+
+--------------------------------------------------
+9️⃣ DO NOT
+--------------------------------------------------
+
+- Do NOT change color palette.
+- Do NOT add dropdown menus.
+- Do NOT add animations beyond subtle transitions.
+- Do NOT increase header height excessively.
+- Do NOT use heavy shadows.
+
+--------------------------------------------------
+
+Deliver:
+- Updated header EJS markup.
+- Updated CSS styles.
+- Minimal JS for scroll state.
+- Clean, readable, structured code.
