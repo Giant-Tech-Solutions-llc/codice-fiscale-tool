@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const expressLayouts = require('express-ejs-layouts');
 const { calcola, cercaComune } = require('./src/codiceFiscale');
+const toolRoutes = require('./routes/tool.routes');
 
 const app = express();
 const PORT = 5000;
@@ -77,6 +78,17 @@ const routes = {
   'gdpr': { page: 'gdpr', title: 'Informativa GDPR | ' + SITE_NAME, description: 'Informativa sul trattamento dei dati personali ai sensi del GDPR.' },
   'mappa-del-sito': { page: 'sitemap-html', title: 'Mappa del Sito | ' + SITE_NAME, description: 'Mappa del sito completa di ' + SITE_NAME + '. Trova tutte le pagine.' }
 };
+
+app.use('/tools', (req, res, next) => {
+  const locals = getLocals(
+    req,
+    'Calcola Codice Fiscale - Generatore Online Gratuito | ' + SITE_NAME,
+    'Genera il tuo Codice Fiscale italiano inserendo i tuoi dati anagrafici. Strumento gratuito, veloce e preciso.',
+    'tools' + req.path
+  );
+  Object.assign(res.locals, locals);
+  next();
+}, toolRoutes);
 
 app.post('/api/calcola', (req, res) => {
   const { cognome, nome, sesso, data_nascita, comune } = req.body;

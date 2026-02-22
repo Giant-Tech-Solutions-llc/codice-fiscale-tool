@@ -7,6 +7,10 @@ Italian Tax ID Code (Codice Fiscale) generator website built with Node.js/Expres
 ```
 /
 ├── server.js              # Express server with all routes (port 5000)
+├── routes/
+│   └── tool.routes.js     # Express router: GET/POST /tools/codice-fiscale-generator
+├── controllers/
+│   └── tool.controller.js # Tool controller: validate, sanitise, call service, render
 ├── src/
 │   ├── codiceFiscale.js         # CF calculation engine (used by server routes)
 │   ├── codiceFiscale.service.js # CF service module (generate + validate, JSDoc, mock comuni)
@@ -58,10 +62,14 @@ Italian Tax ID Code (Codice Fiscale) generator website built with Node.js/Expres
 - All AdSense-required legal pages
 
 ## API Endpoints
-- POST /api/calcola - Calculate Codice Fiscale
+- POST /api/calcola - Calculate Codice Fiscale (JSON API, used by client-side JS)
 - GET /api/comuni?q=query - Search municipalities
 - GET /sitemap.xml - XML sitemap
 - GET /robots.txt - Robots file
+
+## Tool Routes (MVC)
+- GET  /tools/codice-fiscale-generator — Renders calculator form (controller → service → EJS)
+- POST /tools/codice-fiscale-generator — Validates input, generates CF server-side, re-renders with result/errors
 
 ## Technical Details
 - **Language**: Node.js 20 with Express
@@ -73,6 +81,9 @@ Italian Tax ID Code (Codice Fiscale) generator website built with Node.js/Expres
 - **Deployment**: Autoscale with `node server.js`
 
 ## Recent Changes
+- Created routes/tool.routes.js + controllers/tool.controller.js: MVC route for /tools/codice-fiscale-generator (GET/POST), input validation with regex field rules, sanitisation, calls codiceFiscale.service.js, server-side rendering with error/result/formData locals
+- Updated views/tool.ejs: server-side error display, form value persistence, result rendering, schema gated to /calcola only
+- Mounted tool routes in server.js at /tools with layout locals middleware
 - Created src/codiceFiscale.service.js: clean service module with generate() + validate() + helpers, full JSDoc, mock municipality mapping
 - Refactored EJS layout system: created layouts/main.ejs + partials/header.ejs + partials/footer.ejs with express-ejs-layouts
 - Layout supports dynamic title, meta description, canonical, OpenGraph, Twitter cards, structured data placeholder

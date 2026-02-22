@@ -9,41 +9,53 @@
                 <p>Inserisci i tuoi dati anagrafici per generare il Codice Fiscale</p>
             </div>
             <div class="tool-body">
-                <form id="cf-form" novalidate>
+                <% if (typeof errors !== 'undefined' && errors.length > 0) { %>
+                <div class="error-box" role="alert">
+                    <ul>
+                        <% errors.forEach(function(err) { %>
+                        <li><%= err %></li>
+                        <% }); %>
+                    </ul>
+                </div>
+                <% } %>
+
+                <% var fd = (typeof formData !== 'undefined' && formData) ? formData : { cognome: '', nome: '', sesso: '', data_nascita: '', comune: '' }; %>
+                <form id="cf-form" method="POST" action="/tools/codice-fiscale-generator" novalidate>
                     <div class="form-group">
                         <label for="cognome">Cognome *</label>
-                        <input type="text" id="cognome" name="cognome" placeholder="Es. Rossi" required autocomplete="family-name">
+                        <input type="text" id="cognome" name="cognome" placeholder="Es. Rossi" required autocomplete="family-name" value="<%= fd.cognome %>">
                     </div>
                     <div class="form-group">
                         <label for="nome">Nome *</label>
-                        <input type="text" id="nome" name="nome" placeholder="Es. Mario" required autocomplete="given-name">
+                        <input type="text" id="nome" name="nome" placeholder="Es. Mario" required autocomplete="given-name" value="<%= fd.nome %>">
                     </div>
                     <div class="form-row">
                         <div class="form-group">
                             <label for="sesso">Sesso *</label>
                             <select id="sesso" name="sesso" required>
                                 <option value="">Seleziona...</option>
-                                <option value="M">Maschio (M)</option>
-                                <option value="F">Femmina (F)</option>
+                                <option value="M" <%= fd.sesso === 'M' ? 'selected' : '' %>>Maschio (M)</option>
+                                <option value="F" <%= fd.sesso === 'F' ? 'selected' : '' %>>Femmina (F)</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="data_nascita">Data di Nascita *</label>
-                            <input type="date" id="data_nascita" name="data_nascita" required>
+                            <input type="date" id="data_nascita" name="data_nascita" required value="<%= fd.data_nascita %>">
                         </div>
                     </div>
                     <div class="form-group comune-wrapper">
                         <label for="comune">Comune di Nascita *</label>
-                        <input type="text" id="comune" name="comune" placeholder="Inizia a digitare il nome del comune..." required autocomplete="off">
+                        <input type="text" id="comune" name="comune" placeholder="Inizia a digitare il nome del comune..." required autocomplete="off" value="<%= fd.comune %>">
                         <div id="comune-list" class="autocomplete-list" style="display:none"></div>
                         <div class="form-hint">Digita almeno 2 lettere per la ricerca automatica</div>
                     </div>
                     <button type="submit" class="btn btn-primary">Calcola Codice Fiscale</button>
                 </form>
 
-                <div id="result-box" class="result-box">
+                <% var cfResult = (typeof result !== 'undefined') ? result : null; %>
+                <div id="result-box" class="result-box" <% if (!cfResult) { %>style="display:none"<% } %>>
                     <div class="result-label">Il tuo Codice Fiscale è:</div>
-                    <div id="result-code" class="result-code"></div>
+                    <div id="result-code" class="result-code"><%= cfResult || '' %></div>
                     <div class="result-actions">
                         <button onclick="copyCF()" class="copy-btn">Copia</button>
                     </div>
@@ -96,6 +108,7 @@
 .ac-item.no-result{color:var(--text-light);cursor:default}
 </style>
 
+<% if (typeof canonicalUrl !== 'undefined' && canonicalUrl.indexOf('/calcola') !== -1) { %>
 <script type="application/ld+json">
 {
     "@context": "https://schema.org",
@@ -112,3 +125,4 @@
     }
 }
 </script>
+<% } %>
