@@ -11,9 +11,11 @@ Italian Tax ID Code (Codice Fiscale) generator website built with Node.js/Expres
 │   ├── codiceFiscale.js   # CF calculation engine (JS)
 │   └── comuni.json        # Italian municipalities database (JSON)
 ├── views/
-│   ├── layout/
-│   │   ├── header.ejs     # HTML head, nav, header template
-│   │   └── footer.ejs     # Footer, closing HTML template
+│   ├── layouts/
+│   │   └── main.ejs       # Main layout (HTML shell, SEO meta, OG tags, structured data slot)
+│   ├── partials/
+│   │   ├── header.ejs     # Semantic header with nav
+│   │   └── footer.ejs     # Semantic footer
 │   ├── home.ejs           # Homepage with hero, calculator, FAQ
 │   ├── tool.ejs           # Calculator tool page
 │   ├── 404.ejs            # 404 error page
@@ -62,13 +64,17 @@ Italian Tax ID Code (Codice Fiscale) generator website built with Node.js/Expres
 
 ## Technical Details
 - **Language**: Node.js 20 with Express
-- **Templating**: EJS
+- **Templating**: EJS with express-ejs-layouts (layout: views/layouts/main.ejs)
+- **Layout System**: main.ejs layout + partials (header.ejs, footer.ejs), dynamic SEO via controller locals
 - **Server**: Express on port 5000
 - **Routing**: Clean URLs via Express routes
 - **No database required**: Municipality data stored in JSON
 - **Deployment**: Autoscale with `node server.js`
 
 ## Recent Changes
+- Refactored EJS layout system: created layouts/main.ejs + partials/header.ejs + partials/footer.ejs with express-ejs-layouts
+- Layout supports dynamic title, meta description, canonical, OpenGraph, Twitter cards, structured data placeholder
+- All SEO values passed dynamically from controller (getLocals in server.js), nothing hardcoded in layout
 - Migrated from PHP to Node.js/Express for Replit deployment compatibility
 - Created all EJS templates matching PHP page content
 - Set up autoscale deployment configuration

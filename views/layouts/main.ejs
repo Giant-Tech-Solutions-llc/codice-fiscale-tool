@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="<%= siteLang %>">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= pageTitle %></title>
+    <meta name="description" content="<%= pageDescription %>">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="<%= canonicalUrl %>">
+    <meta property="og:title" content="<%= ogTitle || pageTitle %>">
+    <meta property="og:description" content="<%= ogDescription || pageDescription %>">
+    <meta property="og:url" content="<%= ogUrl || canonicalUrl %>">
+    <meta property="og:type" content="<%= ogType || 'website' %>">
+    <meta property="og:site_name" content="<%= siteName %>">
+    <meta property="og:locale" content="it_IT">
+    <% if (ogImage) { %>
+    <meta property="og:image" content="<%= ogImage %>">
+    <% } %>
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<%= ogTitle || pageTitle %>">
+    <meta name="twitter:description" content="<%= ogDescription || pageDescription %>">
+    <% if (ogImage) { %>
+    <meta name="twitter:image" content="<%= ogImage %>">
+    <% } %>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23008C45'/><text x='50' y='68' font-family='Arial' font-size='50' font-weight='bold' fill='white' text-anchor='middle'>CF</text></svg>" type="image/svg+xml">
+    <link rel="stylesheet" href="/css/style.css">
+    <%- extraHead %>
+</head>
+<body>
+    <%- include('../partials/header') %>
+    <main id="main-content">
+        <%- body %>
+    </main>
+    <%- include('../partials/footer') %>
+    <% if (structuredData) { %>
+    <%- structuredData %>
+    <% } %>
+    <script src="/js/app.js" defer></script>
+</body>
+</html>

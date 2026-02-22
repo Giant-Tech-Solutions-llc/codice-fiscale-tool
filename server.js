@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const expressLayouts = require('express-ejs-layouts');
 const { calcola, cercaComune } = require('./src/codiceFiscale');
 
 const app = express();
@@ -11,6 +12,9 @@ const SITE_LANG = 'it';
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
+
+app.use(expressLayouts);
+app.set('layout', 'layouts/main');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -40,6 +44,12 @@ function getLocals(req, pageTitle, pageDescription, route) {
     pageTitle,
     pageDescription,
     canonicalUrl: siteUrl + '/' + (route || ''),
+    ogTitle: '',
+    ogDescription: '',
+    ogUrl: '',
+    ogType: 'website',
+    ogImage: '',
+    structuredData: '',
     today: now.toLocaleDateString('it-IT', { day: '2-digit', month: '2-digit', year: 'numeric' }),
     todayISO: now.toISOString().split('T')[0],
     extraHead: ''
