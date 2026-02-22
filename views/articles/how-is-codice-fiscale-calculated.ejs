@@ -1,0 +1,89 @@
+<%- include('../layout/header') %>
+<article class="article-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a> <span>&rsaquo;</span> <a href="/come-si-calcola-il-codice-fiscale">Come si Calcola il Codice Fiscale</a>
+    </nav>
+    <h1>Come si Calcola il Codice Fiscale? Spiegazione Completa</h1>
+    <div class="article-meta">Ultimo aggiornamento: <%= today %> | Tempo di lettura: 10 minuti</div>
+
+    <p>Il <strong>Codice Fiscale</strong> viene calcolato seguendo un algoritmo preciso definito dal Ministero delle Finanze. Ogni sezione del codice corrisponde a dati anagrafici specifici della persona. Vediamo nel dettaglio come funziona ogni passaggio.</p>
+
+    <h2>Passaggio 1: Cognome (3 caratteri)</h2>
+    <p>Dal cognome vengono estratte le <strong>consonanti</strong> nell'ordine in cui appaiono. Se le consonanti non sono sufficienti (meno di 3), si aggiungono le <strong>vocali</strong> nell'ordine. Se il cognome ha meno di 3 lettere totali, si completa con la lettera <strong>X</strong>.</p>
+    <ul>
+        <li><strong>ROSSI</strong> → RSS (consonanti R, S, S)</li>
+        <li><strong>FO</strong> → FOX (consonante F, vocale O, lettera X)</li>
+        <li><strong>AIELLO</strong> → LLA (consonanti L, L, poi vocali A, I, E, O → LLA)</li>
+    </ul>
+
+    <h2>Passaggio 2: Nome (3 caratteri)</h2>
+    <p>Per il nome, la regola è simile al cognome con una <strong>differenza fondamentale</strong>: se il nome ha <strong>4 o più consonanti</strong>, si prendono la <strong>prima, terza e quarta</strong> consonante. Altrimenti si segue la regola standard.</p>
+    <ul>
+        <li><strong>MARIO</strong> → MRA (consonanti M, R: insufficienti per la regola speciale → MR + vocale A = MRA)</li>
+        <li><strong>ALESSANDRO</strong> → LSN (consonanti L,S,S,N,D,R → 6 consonanti → 1a, 3a, 4a = L, S, N = LSN)</li>
+        <li><strong>ADA</strong> → DAA (consonante D, vocali A, A)</li>
+    </ul>
+
+    <h2>Passaggio 3: Anno di Nascita (2 cifre)</h2>
+    <p>Si prendono le <strong>ultime due cifre</strong> dell'anno di nascita:</p>
+    <ul>
+        <li><strong>1985</strong> → 85</li>
+        <li><strong>2001</strong> → 01</li>
+    </ul>
+
+    <h2>Passaggio 4: Mese di Nascita (1 lettera)</h2>
+    <p>Ogni mese corrisponde a una <strong>lettera specifica</strong>:</p>
+    <ul>
+        <li>Gennaio = <strong>A</strong>, Febbraio = <strong>B</strong>, Marzo = <strong>C</strong>, Aprile = <strong>D</strong></li>
+        <li>Maggio = <strong>E</strong>, Giugno = <strong>H</strong>, Luglio = <strong>L</strong>, Agosto = <strong>M</strong></li>
+        <li>Settembre = <strong>P</strong>, Ottobre = <strong>R</strong>, Novembre = <strong>S</strong>, Dicembre = <strong>T</strong></li>
+    </ul>
+
+    <h2>Passaggio 5: Giorno di Nascita e Sesso (2 cifre)</h2>
+    <p>Il giorno di nascita viene inserito direttamente per gli <strong>uomini</strong> (da 01 a 31). Per le <strong>donne</strong>, al giorno si aggiunge <strong>40</strong> (quindi da 41 a 71).</p>
+    <ul>
+        <li>Uomo nato il 15 → <strong>15</strong></li>
+        <li>Donna nata il 15 → <strong>55</strong></li>
+    </ul>
+
+    <h2>Passaggio 6: Comune di Nascita (4 caratteri)</h2>
+    <p>Ogni comune italiano ha un <strong>codice catastale</strong> univoco di 4 caratteri (una lettera e tre cifre). Ad esempio:</p>
+    <ul>
+        <li>Roma = <strong>H501</strong></li>
+        <li>Milano = <strong>F205</strong></li>
+        <li>Napoli = <strong>F839</strong></li>
+    </ul>
+    <p>Per i nati all'estero, si utilizza il codice dello <strong>stato estero</strong> (inizia con Z).</p>
+
+    <h2>Passaggio 7: Carattere di Controllo (1 lettera)</h2>
+    <p>L'ultimo carattere è un <strong>checksum</strong> calcolato con un algoritmo specifico: i 15 caratteri precedenti vengono convertiti in valori numerici, con tabelle diverse per le posizioni pari e dispari. La somma viene divisa per 26 e il resto determina la lettera di controllo (A=0, B=1, ..., Z=25).</p>
+
+    <div class="internal-links">
+        <h3>Articoli correlati</h3>
+        <ul>
+            <li><a href="/cos-e-il-codice-fiscale">Cos'è il Codice Fiscale</a></li>
+            <li><a href="/esempi-codice-fiscale">Esempi pratici di CF</a></li>
+            <li><a href="/calcola">Calcola il tuo CF</a></li>
+            <li><a href="/codice-fiscale-vs-partita-iva">CF vs Partita IVA</a></li>
+        </ul>
+    </div>
+</article>
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "Come si Calcola il Codice Fiscale",
+    "description": "Guida passo-passo per calcolare il Codice Fiscale italiano.",
+    "step": [
+        {"@type": "HowToStep", "name": "Calcola il cognome", "text": "Estrai le consonanti del cognome, poi le vocali se necessario. Usa 3 caratteri."},
+        {"@type": "HowToStep", "name": "Calcola il nome", "text": "Estrai le consonanti del nome. Se sono 4 o più, prendi la 1a, 3a e 4a."},
+        {"@type": "HowToStep", "name": "Anno di nascita", "text": "Prendi le ultime 2 cifre dell'anno di nascita."},
+        {"@type": "HowToStep", "name": "Mese di nascita", "text": "Converti il mese in lettera secondo la tabella ufficiale."},
+        {"@type": "HowToStep", "name": "Giorno e sesso", "text": "Inserisci il giorno. Per le donne aggiungi 40."},
+        {"@type": "HowToStep", "name": "Comune di nascita", "text": "Trova il codice catastale del comune di nascita."},
+        {"@type": "HowToStep", "name": "Carattere di controllo", "text": "Calcola il checksum con l'algoritmo di conversione pari/dispari."}
+    ]
+}
+</script>
+<%- include('../layout/footer') %>

@@ -1,0 +1,35 @@
+<%- include('layout/header') %>
+<div class="legal-page">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> <span>&rsaquo;</span> DMCA</nav>
+    <h1>DMCA Policy</h1>
+    <p class="last-updated">Ultimo aggiornamento: <%= today %></p>
+
+    <h2>Rispetto del Copyright</h2>
+    <p><%= siteName %> rispetta i diritti di proprietà intellettuale altrui e si aspetta che i propri utenti facciano lo stesso. Rispondiamo alle segnalazioni di presunte violazioni del copyright in conformità con il Digital Millennium Copyright Act (DMCA).</p>
+
+    <h2>Come segnalare una violazione</h2>
+    <p>Se ritieni che un contenuto presente sul nostro sito violi i tuoi diritti di copyright, inviaci una notifica DMCA che includa:</p>
+    <ul>
+        <li>Identificazione dell'opera protetta da copyright</li>
+        <li>Identificazione del materiale che si ritiene violi il copyright con informazioni sufficienti per localizzarlo sul sito</li>
+        <li>Le tue informazioni di contatto (nome, indirizzo, telefono, email)</li>
+        <li>Una dichiarazione in buona fede che l'uso del materiale non è autorizzato dal titolare del copyright</li>
+        <li>Una dichiarazione, sotto pena di falsa testimonianza, che le informazioni nella notifica sono accurate e che sei autorizzato ad agire per conto del titolare del copyright</li>
+        <li>La tua firma fisica o elettronica</li>
+    </ul>
+
+    <h2>Invio della segnalazione</h2>
+    <p>Invia la tua segnalazione DMCA a: <a href="mailto:<%= siteEmail %>"><%= siteEmail %></a></p>
+
+    <h2>Procedura</h2>
+    <p>Dopo aver ricevuto una notifica valida, provvederemo a:</p>
+    <ul>
+        <li>Rimuovere o disabilitare l'accesso al materiale contestato</li>
+        <li>Notificare l'utente responsabile del caricamento</li>
+        <li>Per violazioni ripetute, procedere alla terminazione dell'account</li>
+    </ul>
+
+    <h2>Contro-notifica</h2>
+    <p>Se ritieni che il materiale sia stato rimosso per errore, puoi inviare una contro-notifica contenente le informazioni richieste dalla legge.</p>
+</div>
+<%- include('layout/footer') %>

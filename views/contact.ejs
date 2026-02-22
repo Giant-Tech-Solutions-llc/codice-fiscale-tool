@@ -1,0 +1,40 @@
+<%- include('layout/header') %>
+<div class="legal-page">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> <span>&rsaquo;</span> Contatti</nav>
+    <h1>Contatti</h1>
+
+    <p>Hai domande sul Codice Fiscale, suggerimenti per migliorare il nostro servizio o vuoi segnalare un problema? Siamo qui per aiutarti.</p>
+
+    <h2>Scrivici</h2>
+    <p>Puoi contattarci via email all'indirizzo: <a href="mailto:<%= siteEmail %>"><strong><%= siteEmail %></strong></a></p>
+
+    <h2>Modulo di Contatto</h2>
+    <div class="contact-form">
+        <form id="contact-form" onsubmit="event.preventDefault(); alert('Grazie per il tuo messaggio! Ti risponderemo il prima possibile.'); this.reset();">
+            <div class="form-group">
+                <label for="contact-name">Nome e Cognome *</label>
+                <input type="text" id="contact-name" name="name" required placeholder="Il tuo nome">
+            </div>
+            <div class="form-group">
+                <label for="contact-email">Email *</label>
+                <input type="email" id="contact-email" name="email" required placeholder="La tua email">
+            </div>
+            <div class="form-group">
+                <label for="contact-subject">Oggetto *</label>
+                <input type="text" id="contact-subject" name="subject" required placeholder="Oggetto del messaggio">
+            </div>
+            <div class="form-group">
+                <label for="contact-message">Messaggio *</label>
+                <textarea id="contact-message" name="message" required placeholder="Scrivi il tuo messaggio..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Invia Messaggio</button>
+        </form>
+    </div>
+
+    <h2>Tempi di Risposta</h2>
+    <p>Ci impegniamo a rispondere a tutte le richieste entro <strong>48 ore lavorative</strong>. Per questioni urgenti, specifica "URGENTE" nell'oggetto del messaggio.</p>
+
+    <h2>Note Importanti</h2>
+    <p>Non forniamo consulenza fiscale o legale. Per questioni relative al tuo Codice Fiscale ufficiale, ti consigliamo di contattare l'<strong>Agenzia delle Entrate</strong> o un professionista abilitato.</p>
+</div>
+<%- include('layout/footer') %>

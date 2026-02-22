@@ -1,63 +1,74 @@
 # Codice Fiscale Online
 
 ## Overview
-Italian Tax ID Code (Codice Fiscale) generator website built in pure PHP. Features a working calculator tool, SEO-optimized content pages, and all AdSense compliance pages. Designed for WordPress migration compatibility.
+Italian Tax ID Code (Codice Fiscale) generator website built with Node.js/Express and EJS templating. Features a working calculator tool with official algorithm, SEO-optimized content pages (pillar + cluster strategy), all AdSense compliance pages, and modern mobile-first design with Italian flag color theme (green/white/red).
 
 ## Project Architecture
 ```
 /
-├── index.php              # Main entry point / router
-├── router.php             # PHP built-in server router
-├── includes/
-│   ├── config.php         # Site configuration, routes, helpers
-│   ├── header.php         # HTML head, nav, header template
-│   └── footer.php         # Footer, closing HTML template
+├── server.js              # Express server with all routes (port 5000)
 ├── src/
-│   ├── CodiceFiscale.php  # CF calculation engine class
-│   └── comuni.php         # Italian municipalities database
-├── pages/
-│   ├── home.php           # Homepage with hero, features, FAQ
-│   ├── tool.php           # Calculator tool page
-│   ├── 404.php            # 404 error page
-│   ├── sitemap-xml.php    # XML sitemap generator
-│   ├── sitemap-html.php   # HTML sitemap page
-│   ├── privacy.php        # Privacy Policy
-│   ├── terms.php          # Terms and Conditions
-│   ├── disclaimer.php     # Disclaimer
-│   ├── about.php          # About Us
-│   ├── contact.php        # Contact page
-│   ├── cookie-policy.php  # Cookie Policy
-│   ├── dmca.php           # DMCA Policy
-│   ├── editorial-policy.php # Editorial Policy
-│   ├── gdpr.php           # GDPR Disclosure
+│   ├── codiceFiscale.js   # CF calculation engine (JS)
+│   └── comuni.json        # Italian municipalities database (JSON)
+├── views/
+│   ├── layout/
+│   │   ├── header.ejs     # HTML head, nav, header template
+│   │   └── footer.ejs     # Footer, closing HTML template
+│   ├── home.ejs           # Homepage with hero, calculator, FAQ
+│   ├── tool.ejs           # Calculator tool page
+│   ├── 404.ejs            # 404 error page
+│   ├── sitemap-html.ejs   # HTML sitemap page
+│   ├── privacy.ejs        # Privacy Policy
+│   ├── terms.ejs          # Terms and Conditions
+│   ├── disclaimer.ejs     # Disclaimer
+│   ├── about.ejs          # About Us
+│   ├── contact.ejs        # Contact page
+│   ├── cookie-policy.ejs  # Cookie Policy
+│   ├── dmca.ejs           # DMCA Policy
+│   ├── editorial-policy.ejs # Editorial Policy
+│   ├── gdpr.ejs           # GDPR Disclosure
 │   └── articles/          # SEO content articles
-│       ├── what-is-codice-fiscale.php
-│       ├── how-is-codice-fiscale-calculated.php
-│       ├── codice-fiscale-vs-partita-iva.php
-│       ├── codice-fiscale-abroad.php
-│       ├── lost-codice-fiscale-recovery.php
-│       ├── legal-use-cases.php
-│       └── examples-breakdown.php
-├── assets/
+│       ├── what-is-codice-fiscale.ejs
+│       ├── how-is-codice-fiscale-calculated.ejs
+│       ├── codice-fiscale-vs-partita-iva.ejs
+│       ├── codice-fiscale-abroad.ejs
+│       ├── lost-codice-fiscale-recovery.ejs
+│       ├── legal-use-cases.ejs
+│       └── examples-breakdown.ejs
+├── public/
 │   ├── css/style.css      # Main stylesheet
 │   └── js/app.js          # Client-side JavaScript
+├── pages/                 # Legacy PHP pages (kept for reference)
+├── includes/              # Legacy PHP includes
+├── assets/                # Legacy PHP assets
 ```
 
 ## Key Features
 - Codice Fiscale calculation with official algorithm
-- Municipality autocomplete search
+- Municipality autocomplete search (1,291 comuni)
 - Copy-to-clipboard functionality
 - JSON-LD structured data (FAQ, HowTo, Article, WebApplication)
 - XML and HTML sitemaps
 - robots.txt
 - Mobile-first responsive design
+- Italian flag color theme (green #008C45, white, red #CD212A)
 - All AdSense-required legal pages
 
+## API Endpoints
+- POST /api/calcola - Calculate Codice Fiscale
+- GET /api/comuni?q=query - Search municipalities
+- GET /sitemap.xml - XML sitemap
+- GET /robots.txt - Robots file
+
 ## Technical Details
-- **Language**: PHP 8.2
-- **Server**: PHP built-in server on port 5000
-- **Routing**: Single entry point (index.php) with clean URLs
-- **No database required**: Municipality data stored in PHP array
+- **Language**: Node.js 20 with Express
+- **Templating**: EJS
+- **Server**: Express on port 5000
+- **Routing**: Clean URLs via Express routes
+- **No database required**: Municipality data stored in JSON
+- **Deployment**: Autoscale with `node server.js`
 
 ## Recent Changes
-- Initial build: Complete site with all pages and tool functionality
+- Migrated from PHP to Node.js/Express for Replit deployment compatibility
+- Created all EJS templates matching PHP page content
+- Set up autoscale deployment configuration

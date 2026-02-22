@@ -1,13 +1,14 @@
 run = "php -S 0.0.0.0:8000 -t ."
 
 entrypoint = "index.php"
+modules = ["nodejs-20"]
 
 [nix]
 channel = "stable-22_11"
 
 [deployment]
-run = ["php", "-S", "0.0.0.0:5000", "-t", ".", "index.php"]
-deploymentTarget = "vm"
+deploymentTarget = "autoscale"
+run = ["node", "server.js"]
 
 [[ports]]
 localPort = 5000
@@ -37,5 +38,5 @@ outputType = "webview"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "php -S 0.0.0.0:5000 -t . index.php"
+args = "node server.js"
 waitForPort = 5000

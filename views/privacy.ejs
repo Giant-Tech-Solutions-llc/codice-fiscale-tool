@@ -1,0 +1,56 @@
+<%- include('layout/header') %>
+<div class="legal-page">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> <span>&rsaquo;</span> Privacy Policy</nav>
+    <h1>Privacy Policy</h1>
+    <p class="last-updated">Ultimo aggiornamento: <%= today %></p>
+
+    <h2>Titolare del Trattamento</h2>
+    <p><%= siteName %> ("<strong>noi</strong>", "<strong>nostro</strong>") è il titolare del trattamento dei dati personali raccolti attraverso questo sito web. Per qualsiasi domanda relativa alla privacy, contattaci all'indirizzo: <a href="mailto:<%= siteEmail %>"><%= siteEmail %></a>.</p>
+
+    <h2>Dati raccolti</h2>
+    <h3>Dati inseriti nello strumento di calcolo</h3>
+    <p>I dati anagrafici inseriti nel calcolatore del Codice Fiscale (nome, cognome, data di nascita, sesso, comune di nascita) <strong>non vengono salvati, memorizzati o trasmessi a terzi</strong>. Il calcolo avviene in tempo reale e i dati vengono elaborati esclusivamente per generare il risultato richiesto.</p>
+
+    <h3>Dati di navigazione</h3>
+    <p>Durante la navigazione, vengono raccolti automaticamente alcuni dati tecnici:</p>
+    <ul>
+        <li>Indirizzo IP (in forma anonimizzata)</li>
+        <li>Tipo di browser e sistema operativo</li>
+        <li>Pagine visitate e durata della visita</li>
+        <li>Sito di provenienza (referrer)</li>
+    </ul>
+
+    <h2>Finalità del trattamento</h2>
+    <ul>
+        <li>Erogazione del servizio di calcolo del Codice Fiscale</li>
+        <li>Miglioramento dell'esperienza utente</li>
+        <li>Analisi statistiche aggregate e anonime</li>
+        <li>Adempimento di obblighi legali</li>
+    </ul>
+
+    <h2>Cookie</h2>
+    <p>Questo sito utilizza cookie tecnici e, previo consenso, cookie analitici e di profilazione. Per maggiori informazioni, consulta la nostra <a href="/cookie-policy">Cookie Policy</a>.</p>
+
+    <h2>Condivisione dei dati</h2>
+    <p>Non vendiamo, scambiamo o trasferiamo a terzi i tuoi dati personali, ad eccezione di fornitori di servizi fidati che ci assistono nel funzionamento del sito, a condizione che si impegnino a mantenere riservate queste informazioni.</p>
+
+    <h2>Diritti dell'interessato</h2>
+    <p>Ai sensi del GDPR (Regolamento UE 2016/679), hai diritto di:</p>
+    <ul>
+        <li>Accedere ai tuoi dati personali</li>
+        <li>Rettificare dati inesatti</li>
+        <li>Cancellare i tuoi dati ("diritto all'oblio")</li>
+        <li>Limitare il trattamento</li>
+        <li>Opporti al trattamento</li>
+        <li>Portabilità dei dati</li>
+        <li>Revocare il consenso in qualsiasi momento</li>
+    </ul>
+    <p>Per esercitare i tuoi diritti, contattaci a: <a href="mailto:<%= siteEmail %>"><%= siteEmail %></a>.</p>
+
+    <h2>Sicurezza</h2>
+    <p>Adottiamo misure di sicurezza tecniche e organizzative adeguate per proteggere i dati personali da accessi non autorizzati, perdita o distruzione.</p>
+
+    <h2>Modifiche alla Privacy Policy</h2>
+    <p>Ci riserviamo il diritto di aggiornare questa Privacy Policy. Le modifiche saranno pubblicate su questa pagina con la data di aggiornamento.</p>
+</div>
+<%- include('layout/footer') %>
