@@ -6,7 +6,7 @@ entrypoint = "index.php"
 channel = "stable-22_11"
 
 [deployment]
-run = ["php", "-S", "0.0.0.0:5000", "index.php"]
+run = ["php", "-S", "0.0.0.0:5000", "-t", ".", "index.php"]
 deploymentTarget = "autoscale"
 
 [[ports]]
@@ -37,5 +37,5 @@ outputType = "webview"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "php -S 0.0.0.0:5000 index.php"
+args = "php -S 0.0.0.0:5000 -t . index.php"
 waitForPort = 5000
