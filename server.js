@@ -60,6 +60,7 @@ function getLocals(req, pageTitle, pageDescription, route) {
 const routes = {
   '': { page: 'home', title: 'Calcola Codice Fiscale Online Gratis | ' + SITE_NAME, description: 'Calcola il tuo Codice Fiscale italiano online gratis. Strumento veloce, preciso e facile da usare. Genera il codice fiscale in pochi secondi.' },
   'calcola': { page: 'tool', title: 'Calcola Codice Fiscale - Generatore Online Gratuito | ' + SITE_NAME, description: 'Genera il tuo Codice Fiscale italiano inserendo i tuoi dati anagrafici. Strumento gratuito, veloce e preciso con validazione in tempo reale.' },
+  'codice-fiscale': { page: 'codice-fiscale-pillar', title: 'Codice Fiscale: Guida Completa al Codice Fiscale Italiano | ' + SITE_NAME, description: "Guida completa al Codice Fiscale italiano: cos'è, come si calcola, come ottenerlo, recuperarlo e quando è obbligatorio. Aggiornata al " + new Date().getFullYear() + '.' },
   'cos-e-il-codice-fiscale': { page: 'articles/what-is-codice-fiscale', title: "Cos'è il Codice Fiscale? Guida Completa | " + SITE_NAME, description: "Scopri cos'è il Codice Fiscale italiano, a cosa serve, come è composto e perché è fondamentale per ogni cittadino e residente in Italia." },
   'come-si-calcola-il-codice-fiscale': { page: 'articles/how-is-codice-fiscale-calculated', title: 'Come si Calcola il Codice Fiscale? Spiegazione Completa | ' + SITE_NAME, description: "Guida dettagliata su come viene calcolato il Codice Fiscale italiano. Scopri l'algoritmo, le regole e ogni passaggio del calcolo." },
   'codice-fiscale-vs-partita-iva': { page: 'articles/codice-fiscale-vs-partita-iva', title: 'Codice Fiscale vs Partita IVA: Differenze | ' + SITE_NAME, description: "Qual è la differenza tra Codice Fiscale e Partita IVA? Scopri quando serve l'uno o l'altro e le differenze fondamentali." },
@@ -123,6 +124,7 @@ app.get('/sitemap.xml', (req, res) => {
   const urls = [
     { path: '', priority: '1.0' },
     { path: 'calcola', priority: '0.9' },
+    { path: 'codice-fiscale', priority: '0.9' },
     { path: 'cos-e-il-codice-fiscale', priority: '0.8' },
     { path: 'come-si-calcola-il-codice-fiscale', priority: '0.8' },
     { path: 'codice-fiscale-vs-partita-iva', priority: '0.7' },

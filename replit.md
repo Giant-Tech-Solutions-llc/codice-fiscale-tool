@@ -21,8 +21,10 @@ Italian Tax ID Code (Codice Fiscale) generator website built with Node.js/Expres
 │   ├── partials/
 │   │   ├── header.ejs     # Semantic header with nav
 │   │   └── footer.ejs     # Semantic footer
-│   ├── home.ejs           # Homepage with hero, calculator, FAQ
-│   ├── tool.ejs           # Calculator tool page
+│   ├── home.ejs           # Homepage: hero, CTA, calculator, trust signals, cluster links, FAQ
+│   ├── codice-fiscale.ejs # Dedicated tool page (card layout, gender toggle, copy btn)
+│   ├── codice-fiscale-pillar.ejs # SEO pillar page (1500+ words, TOC, 12 sections, FAQ schema)
+│   ├── tool.ejs           # Legacy calculator tool page (/calcola route)
 │   ├── 404.ejs            # 404 error page
 │   ├── sitemap-html.ejs   # HTML sitemap page
 │   ├── privacy.ejs        # Privacy Policy
@@ -81,6 +83,9 @@ Italian Tax ID Code (Codice Fiscale) generator website built with Node.js/Expres
 - **Deployment**: Autoscale with `node server.js`
 
 ## Recent Changes
+- Rebuilt views/home.ejs with SEO architecture: clear H1, hero CTA to /tools, embedded calculator, trust signals, "How It Works" steps, 7 cluster article cards, 6 FAQ items with FAQPage microdata, structured data placeholder
+- Created views/codice-fiscale-pillar.ejs: 1786-word pillar page with 12 H2 sections, sticky TOC with anchor links, internal links to all 7 cluster articles + tool, FAQPage microdata (6 Qs), Article schema, breadcrumb
+- Added /codice-fiscale route in server.js routes + sitemap.xml
 - Created routes/tool.routes.js + controllers/tool.controller.js: MVC route for /tools/codice-fiscale-generator (GET/POST), input validation with regex field rules, sanitisation, calls codiceFiscale.service.js, server-side rendering with error/result/formData locals
 - Updated views/tool.ejs: server-side error display, form value persistence, result rendering, schema gated to /calcola only
 - Mounted tool routes in server.js at /tools with layout locals middleware

@@ -1,0 +1,327 @@
+<article class="pillar-page" itemscope itemtype="https://schema.org/Article">
+  <meta itemprop="datePublished" content="<%= todayISO %>">
+  <meta itemprop="dateModified" content="<%= todayISO %>">
+  <meta itemprop="author" content="<%= siteName %>">
+
+  <header class="pillar-hero">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a> <span>&rsaquo;</span> <span>Codice Fiscale</span>
+      </nav>
+      <h1 itemprop="headline">Codice Fiscale: Guida Completa al Codice Fiscale Italiano</h1>
+      <p class="pillar-hero__lead" itemprop="description">Tutto quello che devi sapere sul Codice Fiscale italiano: cos'è, come si calcola, come ottenerlo, come recuperarlo e quando è obbligatorio. La guida definitiva aggiornata al <%= today %>.</p>
+      <a href="/tools/codice-fiscale-generator" class="hero-cta">Calcola il tuo Codice Fiscale &rarr;</a>
+    </div>
+  </header>
+
+  <div class="flag-divider"></div>
+
+  <div class="container">
+    <div class="pillar-layout">
+      <nav class="pillar-toc" aria-label="Indice dei contenuti">
+        <h2 class="pillar-toc__title">Indice dei Contenuti</h2>
+        <ol class="pillar-toc__list">
+          <li><a href="#definizione">Cos'è il Codice Fiscale</a></li>
+          <li><a href="#struttura">Struttura dei 16 Caratteri</a></li>
+          <li><a href="#algoritmo">Come si Calcola il Codice Fiscale</a></li>
+          <li><a href="#ottenere">Come Ottenere il Codice Fiscale</a></li>
+          <li><a href="#stranieri">Codice Fiscale per Stranieri</a></li>
+          <li><a href="#recupero">Come Recuperare il CF Smarrito</a></li>
+          <li><a href="#omocodia">Omocodia: Codici Fiscali Duplicati</a></li>
+          <li><a href="#utilizzi">Quando è Obbligatorio il CF</a></li>
+          <li><a href="#differenze">Codice Fiscale vs Partita IVA</a></li>
+          <li><a href="#esempi">Esempi Pratici Commentati</a></li>
+          <li><a href="#strumento">Calcola il tuo Codice Fiscale</a></li>
+          <li><a href="#faq">Domande Frequenti</a></li>
+        </ol>
+      </nav>
+
+      <div class="pillar-content" itemprop="articleBody">
+
+        <!-- SECTION 1: Definition ≈ 150 words -->
+        <section id="definizione" class="pillar-section">
+          <h2>Cos'è il Codice Fiscale</h2>
+          <p>Il Codice Fiscale è un codice alfanumerico di 16 caratteri introdotto dal D.P.R. 29 settembre 1973, n. 605, che identifica in modo univoco ogni persona fisica residente o operante in Italia ai fini fiscali e amministrativi.</p>
+          <p>Viene assegnato dall'Agenzia delle Entrate al momento della nascita (per i cittadini italiani) oppure su richiesta (per i cittadini stranieri) ed è utilizzato in ogni rapporto con la Pubblica Amministrazione, il sistema sanitario, le banche e i datori di lavoro.</p>
+          <p>Il Codice Fiscale non è un semplice identificativo numerico: la sua struttura codifica informazioni anagrafiche fondamentali della persona — cognome, nome, data di nascita, sesso e luogo di nascita — rendendolo un documento dal significato intrinseco.</p>
+          <p><a href="/cos-e-il-codice-fiscale">Approfondimento: cos'è il Codice Fiscale e la sua storia &rarr;</a></p>
+        </section>
+
+        <!-- SECTION 2: Structure ≈ 200 words -->
+        <section id="struttura" class="pillar-section">
+          <h2>Struttura dei 16 Caratteri del Codice Fiscale</h2>
+          <p>Il Codice Fiscale è composto da 16 caratteri alfanumerici, ciascuno con un significato preciso. La struttura segue uno schema fisso definito dall'Agenzia delle Entrate:</p>
+
+          <div class="pillar-breakdown">
+            <h3>Scomposizione Posizionale</h3>
+            <dl class="pillar-dl">
+              <div class="pillar-dl__item">
+                <dt>Posizioni 1–3</dt>
+                <dd>Tre lettere ricavate dal <strong>cognome</strong> (consonanti, poi vocali)</dd>
+              </div>
+              <div class="pillar-dl__item">
+                <dt>Posizioni 4–6</dt>
+                <dd>Tre lettere ricavate dal <strong>nome</strong> (regola speciale per nomi con 4+ consonanti)</dd>
+              </div>
+              <div class="pillar-dl__item">
+                <dt>Posizioni 7–8</dt>
+                <dd>Due cifre dell'<strong>anno di nascita</strong></dd>
+              </div>
+              <div class="pillar-dl__item">
+                <dt>Posizione 9</dt>
+                <dd>Una lettera per il <strong>mese di nascita</strong> (A=Gennaio … T=Dicembre)</dd>
+              </div>
+              <div class="pillar-dl__item">
+                <dt>Posizioni 10–11</dt>
+                <dd>Due cifre per il <strong>giorno di nascita</strong> (per le donne si aggiunge 40)</dd>
+              </div>
+              <div class="pillar-dl__item">
+                <dt>Posizioni 12–15</dt>
+                <dd>Una lettera e tre cifre: il <strong>codice catastale del comune</strong> (o stato estero) di nascita</dd>
+              </div>
+              <div class="pillar-dl__item">
+                <dt>Posizione 16</dt>
+                <dd>Il <strong>carattere di controllo</strong> (CIN), calcolato algoritmicamente</dd>
+              </div>
+            </dl>
+          </div>
+          <p><a href="/esempi-codice-fiscale">Vedi esempi pratici con scomposizione completa &rarr;</a></p>
+        </section>
+
+        <!-- SECTION 3: Algorithm ≈ 200 words -->
+        <section id="algoritmo" class="pillar-section">
+          <h2>Come si Calcola il Codice Fiscale</h2>
+          <p>Il calcolo del Codice Fiscale segue un algoritmo deterministico definito nel decreto ministeriale. Il processo si articola in cinque fasi principali:</p>
+
+          <h3>Fase 1: Codifica del Cognome</h3>
+          <p>Si estraggono le consonanti del cognome in ordine. Se le consonanti sono meno di tre, si aggiungono le vocali. Se il cognome ha meno di tre lettere totali, si completa con la lettera X.</p>
+
+          <h3>Fase 2: Codifica del Nome</h3>
+          <p>Per il nome la regola è simile, con un'eccezione fondamentale: se il nome contiene quattro o più consonanti, si prendono la prima, la terza e la quarta, saltando la seconda.</p>
+
+          <h3>Fase 3: Codifica della Data di Nascita e del Sesso</h3>
+          <p>L'anno è rappresentato dalle ultime due cifre. Il mese è codificato con una lettera secondo la tabella ufficiale. Il giorno corrisponde al numero del giorno per i maschi; per le femmine si somma 40.</p>
+
+          <h3>Fase 4: Codice del Comune di Nascita</h3>
+          <p>A ogni comune italiano è assegnato un codice catastale di quattro caratteri (una lettera seguita da tre cifre). Per i nati all'estero si utilizza il codice dello stato.</p>
+
+          <h3>Fase 5: Carattere di Controllo</h3>
+          <p>I 15 caratteri precedenti vengono elaborati con la tabella dei valori pari/dispari. La somma modulo 26 produce una lettera di controllo (CIN) che costituisce il 16° carattere.</p>
+
+          <p><a href="/come-si-calcola-il-codice-fiscale">Leggi la spiegazione completa dell'algoritmo con formule &rarr;</a></p>
+        </section>
+
+        <!-- SECTION 4: How to obtain ≈ 120 words -->
+        <section id="ottenere" class="pillar-section">
+          <h2>Come Ottenere il Codice Fiscale</h2>
+          <p>Il Codice Fiscale viene attribuito automaticamente alla nascita per i cittadini italiani. L'Agenzia delle Entrate lo assegna sulla base dei dati anagrafici comunicati dal Comune di residenza.</p>
+
+          <h3>Per i Neonati</h3>
+          <p>Il Codice Fiscale viene generato automaticamente al momento della registrazione dell'atto di nascita presso l'anagrafe comunale.</p>
+
+          <h3>Per gli Adulti senza CF</h3>
+          <p>È possibile richiedere l'attribuzione del Codice Fiscale presso un qualsiasi ufficio dell'Agenzia delle Entrate, presentando un documento di identità valido e compilando il modello AA4/8.</p>
+
+          <h3>Per le Persone Giuridiche</h3>
+          <p>Le società e gli enti ricevono un Codice Fiscale numerico di 11 cifre, che per le imprese spesso coincide con la Partita IVA.</p>
+        </section>
+
+        <!-- SECTION 5: Foreigners ≈ 130 words -->
+        <section id="stranieri" class="pillar-section">
+          <h2>Codice Fiscale per Stranieri e Residenti all'Estero</h2>
+          <p>I cittadini stranieri possono ottenere il Codice Fiscale italiano quando hanno necessità di interagire con il sistema fiscale o amministrativo italiano. La procedura varia in base alla situazione del richiedente.</p>
+
+          <h3>Cittadini UE</h3>
+          <p>Possono richiederlo direttamente presso un ufficio dell'Agenzia delle Entrate con passaporto o carta d'identità del paese di appartenenza.</p>
+
+          <h3>Cittadini Extra-UE</h3>
+          <p>Devono presentare il passaporto e, se disponibile, il permesso di soggiorno. In alternativa possono rivolgersi al consolato italiano nel proprio paese.</p>
+
+          <h3>Codice del Luogo di Nascita per gli Stranieri</h3>
+          <p>Per i nati all'estero, la posizione 12–15 del CF contiene il codice dello stato estero di nascita (es. Z404 per la Romania, Z330 per il Marocco) anziché il codice catastale di un comune italiano.</p>
+
+          <p><a href="/codice-fiscale-estero">Guida completa al CF per stranieri &rarr;</a></p>
+        </section>
+
+        <!-- SECTION 6: Recovery ≈ 120 words -->
+        <section id="recupero" class="pillar-section">
+          <h2>Come Recuperare il Codice Fiscale Smarrito</h2>
+          <p>Smarrire la tessera sanitaria o dimenticare il proprio Codice Fiscale è un inconveniente comune. Esistono diversi modi per recuperarlo rapidamente.</p>
+
+          <h3>Online tramite l'Agenzia delle Entrate</h3>
+          <p>Accedendo al portale dell'Agenzia delle Entrate con SPID, CIE o CNS è possibile visualizzare e stampare il proprio Codice Fiscale in qualsiasi momento.</p>
+
+          <h3>Di Persona</h3>
+          <p>Recandoti presso un ufficio dell'Agenzia delle Entrate con un documento di identità valido puoi ottenere un duplicato della tessera sanitaria.</p>
+
+          <h3>Tramite App e Servizi Digitali</h3>
+          <p>L'app IO della Pubblica Amministrazione e il Fascicolo Sanitario Elettronico permettono di accedere al proprio Codice Fiscale in formato digitale.</p>
+
+          <p><a href="/recupero-codice-fiscale">Procedura dettagliata per il recupero &rarr;</a></p>
+        </section>
+
+        <!-- SECTION 7: Omocodia ≈ 100 words -->
+        <section id="omocodia" class="pillar-section">
+          <h2>Omocodia: Cosa Succede con Codici Fiscali Duplicati</h2>
+          <p>L'omocodia si verifica quando l'algoritmo standard produce lo stesso Codice Fiscale per due persone diverse — tipicamente individui con lo stesso cognome, nome, data e luogo di nascita.</p>
+          <p>In questi casi l'Agenzia delle Entrate interviene sostituendo progressivamente le cifre del codice (partendo dall'ultima) con lettere equivalenti secondo una tabella di corrispondenza predefinita, generando così un codice univoco per ciascuna persona.</p>
+          <p>Solo l'Agenzia delle Entrate può risolvere le omocodie. I calcolatori online, incluso il nostro, generano il Codice Fiscale standard e non possono prevedere eventuali modifiche per omocodia.</p>
+        </section>
+
+        <!-- SECTION 8: Legal uses ≈ 130 words -->
+        <section id="utilizzi" class="pillar-section">
+          <h2>Quando è Obbligatorio il Codice Fiscale</h2>
+          <p>Il Codice Fiscale è richiesto in numerosi contesti della vita quotidiana e professionale in Italia. Ecco le situazioni principali:</p>
+
+          <h3>Rapporti con la PA</h3>
+          <p>Dichiarazione dei redditi, iscrizione all'anagrafe, rilascio di documenti, pratiche INPS e INAIL.</p>
+
+          <h3>Sanità</h3>
+          <p>Iscrizione al Servizio Sanitario Nazionale, prenotazione visite mediche, ritiro referti e ricette.</p>
+
+          <h3>Lavoro e Previdenza</h3>
+          <p>Assunzione, buste paga, contributi previdenziali, apertura posizioni assicurative.</p>
+
+          <h3>Operazioni Finanziarie</h3>
+          <p>Apertura conti correnti, stipula di contratti assicurativi, compravendite immobiliari, registrazione contratti di affitto.</p>
+
+          <h3>Contratti e Acquisti</h3>
+          <p>Utenze domestiche (luce, gas, acqua, internet), contratti telefonici, acquisto di veicoli.</p>
+
+          <p><a href="/utilizzi-legali-codice-fiscale">Elenco completo degli utilizzi legali &rarr;</a></p>
+        </section>
+
+        <!-- SECTION 9: CF vs Partita IVA ≈ 100 words -->
+        <section id="differenze" class="pillar-section">
+          <h2>Codice Fiscale vs Partita IVA: Le Differenze</h2>
+          <p>Codice Fiscale e Partita IVA sono entrambi identificativi fiscali, ma hanno scopi e strutture diversi.</p>
+
+          <h3>Codice Fiscale</h3>
+          <p>Assegnato a tutte le persone fisiche, 16 caratteri alfanumerici, identifica la persona nei rapporti fiscali e amministrativi generali.</p>
+
+          <h3>Partita IVA</h3>
+          <p>Assegnata a chi esercita un'attività economica (imprese, professionisti, lavoratori autonomi), 11 cifre numeriche, necessaria per emettere fatture e versare l'IVA.</p>
+
+          <h3>Quando Coincidono</h3>
+          <p>Per le ditte individuali, la Partita IVA corrisponde numericamente al Codice Fiscale dell'imprenditore. Per le società, sono sempre diversi.</p>
+
+          <p><a href="/codice-fiscale-vs-partita-iva">Confronto dettagliato CF vs P.IVA &rarr;</a></p>
+        </section>
+
+        <!-- SECTION 10: Examples ≈ 130 words -->
+        <section id="esempi" class="pillar-section">
+          <h2>Esempi Pratici di Codice Fiscale</h2>
+          <p>Per capire concretamente come funziona il Codice Fiscale, analizziamo un esempio reale scomponendolo carattere per carattere.</p>
+
+          <h3>Esempio: Mario Rossi</h3>
+          <p>Dati: Mario Rossi, maschio, nato il 15 marzo 1985 a Roma.</p>
+          <p>Codice Fiscale risultante: <strong>RSSMRA85C15H501R</strong></p>
+
+          <div class="pillar-example">
+            <p><strong>RSS</strong> — cognome Rossi (consonanti R, S, S)</p>
+            <p><strong>MRA</strong> — nome Mario (consonanti M, R + vocale A)</p>
+            <p><strong>85</strong> — anno 1985</p>
+            <p><strong>C</strong> — mese marzo</p>
+            <p><strong>15</strong> — giorno 15 (maschio)</p>
+            <p><strong>H501</strong> — codice catastale di Roma</p>
+            <p><strong>R</strong> — carattere di controllo</p>
+          </div>
+
+          <p><a href="/esempi-codice-fiscale">Altri esempi con scomposizione dettagliata &rarr;</a></p>
+        </section>
+
+        <!-- SECTION 11: Tool CTA ≈ 50 words -->
+        <section id="strumento" class="pillar-section pillar-section--cta">
+          <h2>Calcola il tuo Codice Fiscale</h2>
+          <p>Usa il nostro strumento gratuito per generare il tuo Codice Fiscale in pochi secondi. Inserisci i dati anagrafici e ottieni il risultato istantaneamente.</p>
+          <a href="/tools/codice-fiscale-generator" class="btn btn-primary" style="max-width:400px;margin:1rem auto 0;display:flex">Calcola Codice Fiscale &rarr;</a>
+        </section>
+
+        <!-- SECTION 12: FAQ ≈ 200 words -->
+        <section id="faq" class="pillar-section">
+          <h2>Domande Frequenti sul Codice Fiscale</h2>
+
+          <div class="faq-list" itemscope itemtype="https://schema.org/FAQPage">
+            <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+              <div class="faq-question" itemprop="name">Quanti caratteri ha il Codice Fiscale?</div>
+              <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                <div itemprop="text"><p>Il Codice Fiscale delle persone fisiche è composto da 16 caratteri alfanumerici. Le persone giuridiche (società ed enti) hanno un codice numerico di 11 cifre.</p></div>
+              </div>
+            </div>
+
+            <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+              <div class="faq-question" itemprop="name">Il Codice Fiscale può cambiare nel tempo?</div>
+              <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                <div itemprop="text"><p>In linea generale il Codice Fiscale rimane invariato per tutta la vita. Può essere modificato solo in caso di correzione di errori anagrafici, rettifica del sesso, o per risolvere una situazione di omocodia.</p></div>
+              </div>
+            </div>
+
+            <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+              <div class="faq-question" itemprop="name">Come si calcola il carattere di controllo?</div>
+              <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                <div itemprop="text"><p>I primi 15 caratteri del CF vengono convertiti in valori numerici usando due tabelle distinte per le posizioni pari e dispari. La somma totale viene divisa per 26 e il resto determina la lettera di controllo (0=A, 1=B, …, 25=Z). <a href="/come-si-calcola-il-codice-fiscale">Vedi l'algoritmo completo</a>.</p></div>
+              </div>
+            </div>
+
+            <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+              <div class="faq-question" itemprop="name">Che differenza c'è tra tessera sanitaria e Codice Fiscale?</div>
+              <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                <div itemprop="text"><p>La tessera sanitaria è il documento fisico (una carta plastificata con chip) su cui è stampato il Codice Fiscale. Il CF è il codice in sé. La tessera sanitaria ha anche funzione di Carta Nazionale dei Servizi (CNS) per l'accesso ai servizi digitali della PA.</p></div>
+              </div>
+            </div>
+
+            <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+              <div class="faq-question" itemprop="name">Un calcolatore online è affidabile?</div>
+              <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                <div itemprop="text"><p>I calcolatori online come il nostro applicano lo stesso algoritmo usato dall'Agenzia delle Entrate e producono risultati corretti nella quasi totalità dei casi. L'unica eccezione riguarda le omocodie, che possono essere risolte solo dall'Agenzia stessa.</p></div>
+              </div>
+            </div>
+
+            <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+              <div class="faq-question" itemprop="name">Dove trovo il codice catastale del mio comune?</div>
+              <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                <div itemprop="text"><p>Il codice catastale di ogni comune italiano è consultabile sul sito dell'Agenzia delle Entrate o dell'ISTAT. Il nostro strumento di calcolo include un database aggiornato con tutti i codici catastali dei comuni italiani.</p></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </div>
+</article>
+
+<style>
+.pillar-hero{background:linear-gradient(135deg,#006B35 0%,#008C45 40%,#00A550 100%);color:var(--white);padding:3rem 0 2.5rem;position:relative;overflow:hidden}
+.pillar-hero::before{content:'';position:absolute;top:0;right:0;width:40%;height:100%;background:linear-gradient(135deg,transparent 0%,rgba(205,33,42,.12) 100%);pointer-events:none}
+.pillar-hero h1{font-size:2rem;font-weight:700;line-height:1.25;letter-spacing:-.02em;margin-bottom:1rem;position:relative}
+.pillar-hero__lead{font-size:1.0625rem;opacity:.9;max-width:680px;line-height:1.6;margin-bottom:1.5rem;position:relative}
+.pillar-layout{display:grid;grid-template-columns:1fr;gap:2rem;padding:2.5rem 0 3rem}
+.pillar-toc{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;box-shadow:var(--shadow);position:sticky;top:80px;align-self:start}
+.pillar-toc__title{font-size:1rem;font-weight:700;margin-bottom:1rem;color:var(--text)}
+.pillar-toc__list{list-style:decimal;padding-left:1.25rem;font-size:.9375rem;line-height:2}
+.pillar-toc__list a{color:var(--text);transition:color .2s}
+.pillar-toc__list a:hover{color:var(--primary)}
+.pillar-content{min-width:0}
+.pillar-section{margin-bottom:3rem;padding-bottom:2rem;border-bottom:1px solid var(--border)}
+.pillar-section:last-child{border-bottom:none}
+.pillar-section h2{font-size:1.5rem;font-weight:700;margin-bottom:1rem;letter-spacing:-.01em;color:var(--text)}
+.pillar-section h3{font-size:1.125rem;font-weight:600;margin:1.25rem 0 .5rem;color:var(--text)}
+.pillar-section p{font-size:1rem;line-height:1.7;margin-bottom:.75rem;color:var(--text)}
+.pillar-section a{font-weight:600}
+.pillar-section--cta{text-align:center;padding:2rem;background:var(--primary-light);border-radius:var(--radius);border-bottom:none}
+.pillar-dl{margin:1rem 0 1.5rem}
+.pillar-dl__item{display:grid;grid-template-columns:140px 1fr;gap:.5rem;padding:.625rem 0;border-bottom:1px solid var(--border);font-size:.9375rem}
+.pillar-dl__item:last-child{border-bottom:none}
+.pillar-dl__item dt{font-weight:600;color:var(--primary)}
+.pillar-dl__item dd{color:var(--text);line-height:1.5}
+.pillar-example{background:var(--bg);border-radius:var(--radius-sm);padding:1.25rem;margin:1rem 0;font-size:.9375rem;line-height:1.8}
+.pillar-example p{margin-bottom:.25rem}
+.faq-list{max-width:100%}
+@media(min-width:900px){
+  .pillar-hero h1{font-size:2.5rem}
+  .pillar-layout{grid-template-columns:260px 1fr;gap:3rem}
+}
+</style>
+
+<%- structuredData %>
