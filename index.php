@@ -1,4 +1,34 @@
 <?php
+$uri_path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+
+$mime_types = [
+    'css' => 'text/css',
+    'js' => 'application/javascript',
+    'png' => 'image/png',
+    'jpg' => 'image/jpeg',
+    'jpeg' => 'image/jpeg',
+    'gif' => 'image/gif',
+    'svg' => 'image/svg+xml',
+    'ico' => 'image/x-icon',
+    'woff' => 'font/woff',
+    'woff2' => 'font/woff2',
+    'ttf' => 'font/ttf',
+    'webp' => 'image/webp',
+];
+
+if (strpos($uri_path, '/assets/') === 0) {
+    $assets_dir = realpath(__DIR__ . '/assets');
+    $file_path = realpath(__DIR__ . $uri_path);
+    if ($file_path !== false && strpos($file_path, $assets_dir) === 0 && is_file($file_path)) {
+        $ext = strtolower(pathinfo($file_path, PATHINFO_EXTENSION));
+        if (isset($mime_types[$ext])) {
+            header('Content-Type: ' . $mime_types[$ext]);
+            readfile($file_path);
+            exit;
+        }
+    }
+}
+
 header('Cache-Control: no-cache, no-store, must-revalidate');
 header('Pragma: no-cache');
 header('Expires: 0');
