@@ -1,10 +1,25 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const menuBtn = document.querySelector('.mobile-menu-btn');
-    const navMenu = document.querySelector('.nav-menu');
+    var header = document.getElementById('site-header');
+    if (header) {
+        var scrollHandler = function() {
+            if (window.scrollY > 10) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        };
+        window.addEventListener('scroll', scrollHandler, { passive: true });
+        scrollHandler();
+    }
+
+    var menuBtn = document.querySelector('.mobile-menu-btn');
+    var navMenu = document.querySelector('.nav-menu');
     if (menuBtn) {
         menuBtn.addEventListener('click', function() {
             navMenu.classList.toggle('active');
+            menuBtn.classList.toggle('active');
             this.setAttribute('aria-expanded', navMenu.classList.contains('active'));
+            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
         });
     }
 
@@ -18,16 +33,16 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    const form = document.getElementById('cf-form');
+    var form = document.getElementById('cf-form');
     if (form) {
-        const comuneInput = document.getElementById('comune');
-        const comuneList = document.getElementById('comune-list');
-        let debounceTimer;
+        var comuneInput = document.getElementById('comune');
+        var comuneList = document.getElementById('comune-list');
+        var debounceTimer;
 
         if (comuneInput && comuneList) {
             comuneInput.addEventListener('input', function() {
                 clearTimeout(debounceTimer);
-                const query = this.value.trim();
+                var query = this.value.trim();
                 if (query.length < 2) {
                     comuneList.innerHTML = '';
                     comuneList.style.display = 'none';
@@ -70,23 +85,35 @@ document.addEventListener('DOMContentLoaded', function() {
             var errors = [];
             var cognome = document.getElementById('cognome').value.trim();
             var nome = document.getElementById('nome').value.trim();
-            var sesso = document.getElementById('sesso').value;
+            var sessoEl = document.querySelector('input[name="sesso"]:checked');
+            var sesso = sessoEl ? sessoEl.value : '';
             var dataNascita = document.getElementById('data_nascita').value;
             var comune = document.getElementById('comune').value.trim();
 
             document.querySelectorAll('.error-msg').forEach(function(el) { el.remove(); });
             document.querySelectorAll('.error').forEach(function(el) { el.classList.remove('error'); });
+            var genderToggle = form.querySelector('.gender-toggle');
+            if (genderToggle) genderToggle.style.borderColor = '';
 
             if (!cognome) showError('cognome', 'Il cognome è obbligatorio');
             if (!nome) showError('nome', 'Il nome è obbligatorio');
-            if (!sesso) showError('sesso', 'Seleziona il sesso');
+            if (!sesso) {
+                var toggle = form.querySelector('.gender-toggle');
+                if (toggle) {
+                    toggle.style.borderColor = '#E63946';
+                    var errDiv = document.createElement('div');
+                    errDiv.className = 'error-msg';
+                    errDiv.textContent = 'Seleziona il sesso';
+                    toggle.parentNode.appendChild(errDiv);
+                }
+            }
             if (!dataNascita) showError('data_nascita', 'La data di nascita è obbligatoria');
             if (!comune) showError('comune', 'Il comune di nascita è obbligatorio');
 
             if (document.querySelectorAll('.error-msg').length > 0) return;
 
             var btn = form.querySelector('.btn-primary');
-            btn.textContent = 'Calcolo in corso...';
+            btn.classList.add('loading');
             btn.disabled = true;
 
             fetch('/api/calcola', {
@@ -102,7 +129,7 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .then(function(r) { return r.json(); })
             .then(function(data) {
-                btn.textContent = 'Calcola Codice Fiscale';
+                btn.classList.remove('loading');
                 btn.disabled = false;
                 if (data.success) {
                     var resultBox = document.getElementById('result-box');
@@ -112,21 +139,40 @@ document.addEventListener('DOMContentLoaded', function() {
                     resultBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 } else {
                     data.errors.forEach(function(err) {
-                        alert(err);
+                        showToast(err);
                     });
                 }
             })
             .catch(function() {
-                btn.textContent = 'Calcola Codice Fiscale';
+                btn.classList.remove('loading');
                 btn.disabled = false;
-                alert('Errore di connessione. Riprova.');
+                showToast('Errore di connessione. Riprova.');
+            });
+        });
+
+        form.querySelectorAll('input[name="sesso"]').forEach(function(radio) {
+            radio.addEventListener('change', function() {
+                var toggle = form.querySelector('.gender-toggle');
+                if (toggle) toggle.style.borderColor = '';
+                var errMsg = toggle.parentNode.querySelector('.error-msg');
+                if (errMsg) errMsg.remove();
             });
         });
     }
 
     document.querySelectorAll('.faq-question').forEach(function(q) {
         q.addEventListener('click', function() {
-            this.parentElement.classList.toggle('open');
+            var item = this.parentElement;
+            var isOpen = item.classList.contains('open');
+            item.classList.toggle('open');
+            var answer = item.querySelector('.faq-answer');
+            if (answer) {
+                if (!isOpen) {
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                } else {
+                    answer.style.maxHeight = '0';
+                }
+            }
         });
     });
 });
@@ -146,11 +192,28 @@ function copyCF() {
     var code = document.getElementById('result-code').textContent;
     navigator.clipboard.writeText(code).then(function() {
         var btn = document.querySelector('.copy-btn');
-        btn.textContent = 'Copiato!';
+        var originalHTML = btn.innerHTML;
+        btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Copiato!';
         btn.classList.add('copied');
+        showToast('Codice Fiscale copiato!');
         setTimeout(function() {
-            btn.textContent = 'Copia';
+            btn.innerHTML = originalHTML;
             btn.classList.remove('copied');
         }, 2000);
     });
+}
+
+function showToast(message) {
+    var toast = document.getElementById('toast');
+    if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'toast';
+        toast.className = 'toast';
+        document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.classList.add('show');
+    setTimeout(function() {
+        toast.classList.remove('show');
+    }, 3000);
 }

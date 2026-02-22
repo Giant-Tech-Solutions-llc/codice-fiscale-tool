@@ -52,15 +52,27 @@ Italian Tax ID Code (Codice Fiscale) generator website built with Node.js/Expres
 ├── assets/                # Legacy PHP assets
 ```
 
+## Design System
+- **Primary**: #1E7F4F (Italian green)
+- **Accent**: #E63946 (rare use)
+- **Background**: #F8FAFC
+- **Text**: #111827 primary, #4B5563 secondary
+- **Typography**: System font stack (no Google Fonts), H1 36px bold, H2 28px semibold, body 16px
+- **Spacing**: 8pt system, 80px section padding desktop, 48px mobile
+- **Cards**: 16px radius, soft shadows, clean elevation hierarchy
+- **No external CSS/font dependencies**
+
 ## Key Features
 - Codice Fiscale calculation with official algorithm
 - Municipality autocomplete search (1,291 comuni)
-- Copy-to-clipboard functionality
+- Copy-to-clipboard with toast confirmation
 - JSON-LD structured data (FAQ, HowTo, Article, WebApplication)
 - XML and HTML sitemaps
 - robots.txt
-- Mobile-first responsive design
-- Italian flag color theme (green #008C45, white, red #CD212A)
+- Mobile-first responsive design with sticky navbar
+- Premium SaaS-quality UI with two-column hero layout
+- Pill-style gender toggle, loading state button spinner
+- Sticky bottom CTA on mobile
 - All AdSense-required legal pages
 
 ## API Endpoints
@@ -83,16 +95,20 @@ Italian Tax ID Code (Codice Fiscale) generator website built with Node.js/Expres
 - **Deployment**: Autoscale with `node server.js`
 
 ## Recent Changes
-- Rebuilt views/home.ejs with SEO architecture: clear H1, hero CTA to /tools, embedded calculator, trust signals, "How It Works" steps, 7 cluster article cards, 6 FAQ items with FAQPage microdata, structured data placeholder
-- Created views/codice-fiscale-pillar.ejs: 1786-word pillar page with 12 H2 sections, sticky TOC with anchor links, internal links to all 7 cluster articles + tool, FAQPage microdata (6 Qs), Article schema, breadcrumb
-- Added /codice-fiscale route in server.js routes + sitemap.xml
-- Created routes/tool.routes.js + controllers/tool.controller.js: MVC route for /tools/codice-fiscale-generator (GET/POST), input validation with regex field rules, sanitisation, calls codiceFiscale.service.js, server-side rendering with error/result/formData locals
-- Updated views/tool.ejs: server-side error display, form value persistence, result rendering, schema gated to /calcola only
-- Mounted tool routes in server.js at /tools with layout locals middleware
-- Created src/codiceFiscale.service.js: clean service module with generate() + validate() + helpers, full JSDoc, mock municipality mapping
-- Refactored EJS layout system: created layouts/main.ejs + partials/header.ejs + partials/footer.ejs with express-ejs-layouts
-- Layout supports dynamic title, meta description, canonical, OpenGraph, Twitter cards, structured data placeholder
-- All SEO values passed dynamically from controller (getLocals in server.js), nothing hardcoded in layout
-- Migrated from PHP to Node.js/Express for Replit deployment compatibility
-- Created all EJS templates matching PHP page content
-- Set up autoscale deployment configuration
+- **Homepage UI/UX redesign** (Feb 2026): Complete visual overhaul following premium SaaS design spec
+  - New design system: #1E7F4F primary, system fonts, 8pt spacing, soft shadows
+  - Two-column hero with floating tool card, trust bullets, soft gradient background
+  - Sticky navbar with green CTA button, scroll shadow effect, animated hamburger menu
+  - Pill-style gender toggle replacing dropdown, 48px inputs, loading spinner on submit
+  - Toast notification system for copy confirmation and errors
+  - Clickable guide cards with category tags, improved FAQ accordion animations
+  - Softer green CTA section with privacy reassurance line
+  - Footer with legal disclaimer ("non affiliato all'Agenzia delle Entrate")
+  - Mobile: sticky bottom CTA bar, body overflow lock on menu open, large tap targets
+  - Removed Google Fonts dependency (system font stack only)
+- Rebuilt views/home.ejs with SEO architecture
+- Created views/codice-fiscale-pillar.ejs: pillar page with TOC, FAQ schema
+- MVC tool routes at /tools/codice-fiscale-generator
+- JSON-LD structured data (Organization, BreadcrumbList, WebApplication, FAQPage)
+- Refactored EJS layout system with express-ejs-layouts
+- Migrated from PHP to Node.js/Express

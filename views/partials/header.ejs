@@ -1,4 +1,4 @@
-<header class="site-header">
+<header class="site-header" id="site-header">
     <nav class="container nav-container">
         <a href="/" class="logo" aria-label="<%= siteName %> - Home">
             <span class="logo-icon">CF</span>
@@ -8,10 +8,8 @@
             <span></span><span></span><span></span>
         </button>
         <ul class="nav-menu" role="menubar">
-            <li role="none"><a href="/" role="menuitem">Home</a></li>
-            <li role="none"><a href="/calcola" role="menuitem">Calcola CF</a></li>
             <li role="none" class="has-dropdown">
-                <a href="/cos-e-il-codice-fiscale" role="menuitem" aria-haspopup="true">Guide</a>
+                <a href="/codice-fiscale" role="menuitem" aria-haspopup="true">Guide</a>
                 <ul class="dropdown" role="menu">
                     <li role="none"><a href="/cos-e-il-codice-fiscale" role="menuitem">Cos'è il Codice Fiscale</a></li>
                     <li role="none"><a href="/come-si-calcola-il-codice-fiscale" role="menuitem">Come si Calcola</a></li>
@@ -22,8 +20,10 @@
                     <li role="none"><a href="/esempi-codice-fiscale" role="menuitem">Esempi CF</a></li>
                 </ul>
             </li>
+            <li role="none"><a href="/#come-funziona" role="menuitem">Come Funziona</a></li>
             <li role="none"><a href="/chi-siamo" role="menuitem">Chi Siamo</a></li>
             <li role="none"><a href="/contatti" role="menuitem">Contatti</a></li>
+            <li role="none"><a href="/calcola" class="nav-cta" role="menuitem">Calcola Codice Fiscale</a></li>
         </ul>
     </nav>
 </header>
