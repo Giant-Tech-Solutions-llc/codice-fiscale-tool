@@ -3,52 +3,163 @@
     <h1>Privacy Policy</h1>
     <p class="last-updated">Ultimo aggiornamento: <%= today %></p>
 
-    <h2>Titolare del Trattamento</h2>
-    <p><%= siteName %> ("<strong>noi</strong>", "<strong>nostro</strong>") è il titolare del trattamento dei dati personali raccolti attraverso questo sito web. Per qualsiasi domanda relativa alla privacy, contattaci all'indirizzo: <a href="mailto:<%= siteEmail %>"><%= siteEmail %></a>.</p>
+    <h2>1. Titolare del Trattamento</h2>
+    <p><%= siteName %> ("<strong>noi</strong>", "<strong>nostro</strong>") è il titolare del trattamento dei dati personali ai sensi del Regolamento (UE) 2016/679 (GDPR).</p>
+    <p>Contatto: <a href="mailto:<%= siteEmail %>"><%= siteEmail %></a></p>
 
-    <h2>Dati raccolti</h2>
-    <h3>Dati inseriti nello strumento di calcolo</h3>
-    <p>I dati anagrafici inseriti nel calcolatore del Codice Fiscale (nome, cognome, data di nascita, sesso, comune di nascita) <strong>non vengono salvati, memorizzati o trasmessi a terzi</strong>. Il calcolo avviene in tempo reale e i dati vengono elaborati esclusivamente per generare il risultato richiesto.</p>
+    <h2>2. Dati Raccolti</h2>
 
-    <h3>Dati di navigazione</h3>
-    <p>Durante la navigazione, vengono raccolti automaticamente alcuni dati tecnici:</p>
+    <h3>2.1 Dati inseriti nel calcolatore</h3>
+    <p>I dati anagrafici inseriti nello strumento di calcolo del Codice Fiscale (cognome, nome, data di nascita, sesso, comune di nascita) <strong>non vengono salvati, memorizzati o trasmessi a terzi</strong>. Il calcolo avviene lato server in tempo reale; nessun dato viene conservato dopo la generazione del risultato.</p>
+
+    <h3>2.2 Dati di navigazione</h3>
+    <p>Il server raccoglie automaticamente:</p>
     <ul>
-        <li>Indirizzo IP (in forma anonimizzata)</li>
-        <li>Tipo di browser e sistema operativo</li>
-        <li>Pagine visitate e durata della visita</li>
-        <li>Sito di provenienza (referrer)</li>
+        <li>Indirizzo IP (anonimizzato tramite mascheramento dell'ultimo ottetto)</li>
+        <li>Tipo e versione del browser</li>
+        <li>Sistema operativo</li>
+        <li>Pagine visitate e timestamp di accesso</li>
+        <li>URL di provenienza (referrer)</li>
+    </ul>
+    <p>Questi dati sono utilizzati esclusivamente per il funzionamento tecnico del sito e per analisi statistiche aggregate. Non vengono utilizzati per identificare l'utente.</p>
+
+    <h2>3. Base Giuridica del Trattamento</h2>
+    <ul>
+        <li><strong>Legittimo interesse</strong> (Art. 6.1.f GDPR): funzionamento tecnico del sito, sicurezza, analisi aggregate</li>
+        <li><strong>Consenso</strong> (Art. 6.1.a GDPR): cookie analitici, cookie pubblicitari, personalizzazione degli annunci</li>
     </ul>
 
-    <h2>Finalità del trattamento</h2>
+    <h2>4. Cookie</h2>
+
+    <h3>4.1 Cookie tecnici (necessari)</h3>
+    <p>Utilizzati per il corretto funzionamento del sito. Non richiedono consenso. Includono cookie di sessione e preferenze di navigazione.</p>
+
+    <h3>4.2 Cookie analitici (Google Analytics)</h3>
+    <p>Utilizziamo Google Analytics per raccogliere dati statistici anonimi sull'utilizzo del sito. Google Analytics imposta i seguenti cookie:</p>
     <ul>
-        <li>Erogazione del servizio di calcolo del Codice Fiscale</li>
-        <li>Miglioramento dell'esperienza utente</li>
-        <li>Analisi statistiche aggregate e anonime</li>
-        <li>Adempimento di obblighi legali</li>
+        <li><strong>_ga</strong>: distingue gli utenti. Durata: 2 anni.</li>
+        <li><strong>_ga_*</strong>: mantiene lo stato della sessione. Durata: 2 anni.</li>
+    </ul>
+    <p>L'indirizzo IP viene anonimizzato prima della trasmissione ai server di Google. Questi cookie vengono attivati solo dopo il consenso dell'utente.</p>
+    <p>Informativa di Google: <a href="https://policies.google.com/privacy" rel="noopener noreferrer" target="_blank">policies.google.com/privacy</a></p>
+
+    <h3>4.3 Cookie pubblicitari (Google AdSense)</h3>
+    <p>Questo sito utilizza Google AdSense per visualizzare annunci pubblicitari. Google e i suoi partner pubblicitari possono impostare cookie per:</p>
+    <ul>
+        <li>Mostrare annunci basati sulle visite precedenti dell'utente a questo o ad altri siti</li>
+        <li>Misurare l'efficacia delle campagne pubblicitarie</li>
+        <li>Limitare il numero di visualizzazioni di un annuncio</li>
+    </ul>
+    <p>Gli utenti possono disattivare la pubblicità personalizzata visitando <a href="https://www.google.com/settings/ads" rel="noopener noreferrer" target="_blank">Impostazioni annunci di Google</a> oppure <a href="https://www.aboutads.info/choices/" rel="noopener noreferrer" target="_blank">aboutads.info</a>.</p>
+    <p>Questi cookie vengono attivati solo dopo il consenso dell'utente.</p>
+
+    <h3>4.4 Gestione del consenso</h3>
+    <p>Al primo accesso al sito viene mostrato un banner per la gestione del consenso ai cookie. L'utente può:</p>
+    <ul>
+        <li>Accettare tutti i cookie</li>
+        <li>Rifiutare i cookie non necessari</li>
+        <li>Modificare le preferenze in qualsiasi momento tramite il link "Cookie Policy" nel footer</li>
+    </ul>
+    <p>Per la policy completa sui cookie, consulta la nostra <a href="/cookie-policy">Cookie Policy</a>.</p>
+
+    <h2>5. Google Analytics</h2>
+    <p>Utilizziamo Google Analytics 4 (GA4) come servizio di analisi web fornito da Google LLC. GA4 raccoglie dati sulle interazioni degli utenti con il sito in forma aggregata e anonima.</p>
+    <p>Misure adottate per la tutela della privacy:</p>
+    <ul>
+        <li>Anonimizzazione dell'IP attiva per impostazione predefinita</li>
+        <li>Nessuna raccolta di dati demografici o interessi</li>
+        <li>Nessun tracciamento cross-site</li>
+        <li>Dati conservati per 14 mesi, poi eliminati automaticamente</li>
     </ul>
 
-    <h2>Cookie</h2>
-    <p>Questo sito utilizza cookie tecnici e, previo consenso, cookie analitici e di profilazione. Per maggiori informazioni, consulta la nostra <a href="/cookie-policy">Cookie Policy</a>.</p>
-
-    <h2>Condivisione dei dati</h2>
-    <p>Non vendiamo, scambiamo o trasferiamo a terzi i tuoi dati personali, ad eccezione di fornitori di servizi fidati che ci assistono nel funzionamento del sito, a condizione che si impegnino a mantenere riservate queste informazioni.</p>
-
-    <h2>Diritti dell'interessato</h2>
-    <p>Ai sensi del GDPR (Regolamento UE 2016/679), hai diritto di:</p>
+    <h2>6. Google AdSense</h2>
+    <p>Utilizziamo Google AdSense per mostrare annunci pubblicitari. Google AdSense è un servizio fornito da Google LLC che utilizza cookie e tecnologie di tracciamento per mostrare annunci pertinenti.</p>
+    <p>Dati trattati da Google AdSense:</p>
     <ul>
-        <li>Accedere ai tuoi dati personali</li>
-        <li>Rettificare dati inesatti</li>
-        <li>Cancellare i tuoi dati ("diritto all'oblio")</li>
-        <li>Limitare il trattamento</li>
-        <li>Opporti al trattamento</li>
-        <li>Portabilità dei dati</li>
-        <li>Revocare il consenso in qualsiasi momento</li>
+        <li>Identificatori del dispositivo e del browser</li>
+        <li>Indirizzo IP (per geolocalizzazione approssimativa)</li>
+        <li>Dati di navigazione e interazione con gli annunci</li>
     </ul>
-    <p>Per esercitare i tuoi diritti, contattaci a: <a href="mailto:<%= siteEmail %>"><%= siteEmail %></a>.</p>
+    <p>Google agisce come responsabile del trattamento per i dati raccolti tramite AdSense. Per maggiori informazioni: <a href="https://policies.google.com/technologies/ads" rel="noopener noreferrer" target="_blank">Come Google utilizza i dati</a>.</p>
+    <p>L'utente può disattivare la pubblicità personalizzata in qualsiasi momento senza influire sull'accesso al sito.</p>
 
-    <h2>Sicurezza</h2>
-    <p>Adottiamo misure di sicurezza tecniche e organizzative adeguate per proteggere i dati personali da accessi non autorizzati, perdita o distruzione.</p>
+    <h2>7. Condivisione dei Dati con Terze Parti</h2>
+    <p>I dati possono essere condivisi esclusivamente con:</p>
+    <ul>
+        <li><strong>Google LLC</strong> (Analytics e AdSense) — con sede negli USA. Il trasferimento è regolato dal EU-U.S. Data Privacy Framework.</li>
+        <li><strong>Provider di hosting</strong> — per l'erogazione del servizio web. I server si trovano nell'Unione Europea o in paesi con decisione di adeguatezza.</li>
+    </ul>
+    <p>Non vendiamo, scambiamo o cediamo dati personali a terzi per finalità diverse da quelle indicate in questa policy.</p>
 
-    <h2>Modifiche alla Privacy Policy</h2>
-    <p>Ci riserviamo il diritto di aggiornare questa Privacy Policy. Le modifiche saranno pubblicate su questa pagina con la data di aggiornamento.</p>
+    <h2>8. Conservazione dei Dati</h2>
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>Tipo di dato</th>
+                <th>Durata di conservazione</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Dati del calcolatore</td>
+                <td>Nessuna conservazione (elaborazione in tempo reale)</td>
+            </tr>
+            <tr>
+                <td>Log del server</td>
+                <td>90 giorni</td>
+            </tr>
+            <tr>
+                <td>Cookie analitici (Google Analytics)</td>
+                <td>14 mesi</td>
+            </tr>
+            <tr>
+                <td>Cookie pubblicitari (Google AdSense)</td>
+                <td>Fino a 13 mesi (gestiti da Google)</td>
+            </tr>
+            <tr>
+                <td>Dati di consenso cookie</td>
+                <td>12 mesi dalla data del consenso</td>
+            </tr>
+        </tbody>
+    </table>
+    <p>Alla scadenza dei periodi indicati, i dati vengono eliminati automaticamente o resi anonimi in modo irreversibile.</p>
+
+    <h2>9. Diritti dell'Interessato</h2>
+    <p>Ai sensi degli articoli 15-22 del GDPR, hai diritto di:</p>
+    <ul>
+        <li><strong>Accesso</strong> (Art. 15): ottenere conferma del trattamento e copia dei dati</li>
+        <li><strong>Rettifica</strong> (Art. 16): correggere dati inesatti o incompleti</li>
+        <li><strong>Cancellazione</strong> (Art. 17): richiedere la cancellazione dei dati ("diritto all'oblio")</li>
+        <li><strong>Limitazione</strong> (Art. 18): limitare il trattamento in determinate circostanze</li>
+        <li><strong>Portabilità</strong> (Art. 20): ricevere i dati in formato strutturato e leggibile</li>
+        <li><strong>Opposizione</strong> (Art. 21): opporsi al trattamento basato su legittimo interesse</li>
+        <li><strong>Revoca del consenso</strong> (Art. 7.3): revocare il consenso in qualsiasi momento senza pregiudicare la liceità del trattamento precedente</li>
+    </ul>
+    <p>Per esercitare questi diritti, scrivi a: <a href="mailto:<%= siteEmail %>"><%= siteEmail %></a>. Risponderemo entro 30 giorni dalla ricezione della richiesta.</p>
+
+    <h2>10. Reclamo all'Autorità di Controllo</h2>
+    <p>Se ritieni che il trattamento dei tuoi dati violi il GDPR, hai diritto di presentare reclamo al Garante per la Protezione dei Dati Personali:</p>
+    <ul>
+        <li>Sito web: <a href="https://www.garanteprivacy.it" rel="noopener noreferrer" target="_blank">www.garanteprivacy.it</a></li>
+        <li>Email: <a href="mailto:protocollo@gpdp.it">protocollo@gpdp.it</a></li>
+    </ul>
+
+    <h2>11. Sicurezza</h2>
+    <p>Adottiamo misure tecniche e organizzative per proteggere i dati personali, tra cui:</p>
+    <ul>
+        <li>Connessione HTTPS con crittografia TLS</li>
+        <li>Anonimizzazione degli indirizzi IP</li>
+        <li>Accesso ai dati limitato al personale autorizzato</li>
+        <li>Monitoraggio periodico della sicurezza</li>
+    </ul>
+
+    <h2>12. Contatti</h2>
+    <p>Per qualsiasi domanda relativa a questa Privacy Policy o al trattamento dei dati:</p>
+    <ul>
+        <li><strong>Email</strong>: <a href="mailto:<%= siteEmail %>"><%= siteEmail %></a></li>
+        <li><strong>Pagina contatti</strong>: <a href="/contatti">codicefiscaleonline.com/contatti</a></li>
+    </ul>
+
+    <h2>13. Modifiche alla Privacy Policy</h2>
+    <p>Questa policy può essere aggiornata per riflettere modifiche normative o operative. La data di aggiornamento è indicata in cima alla pagina. In caso di modifiche sostanziali, verrà mostrato un avviso sul sito.</p>
 </div>

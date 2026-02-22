@@ -134,6 +134,10 @@ img{max-width:100%;height:auto;display:block}
 .legal-page ul{margin-bottom:1rem;padding-left:1.5rem}
 .legal-page li{margin-bottom:.5rem}
 .legal-page .last-updated{color:var(--text-light);font-size:.875rem;margin-bottom:2rem}
+.legal-page .data-table{width:100%;border-collapse:collapse;margin:1rem 0 1.5rem;font-size:.9375rem}
+.legal-page .data-table th,.legal-page .data-table td{padding:.75rem 1rem;border:1px solid var(--border);text-align:left}
+.legal-page .data-table th{background:var(--bg);font-weight:600;font-size:.875rem;text-transform:uppercase;letter-spacing:.02em}
+.legal-page .data-table tr:hover td{background:var(--bg)}
 
 .contact-form{max-width:600px;margin:0 auto}
 .contact-form .form-group{margin-bottom:1.25rem}
