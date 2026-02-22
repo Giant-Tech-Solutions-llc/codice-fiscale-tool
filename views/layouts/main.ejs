@@ -22,9 +22,9 @@
     <% if (ogImage) { %>
     <meta name="twitter:image" content="<%= ogImage %>">
     <% } %>
-    <link rel="preload" href="/css/style.min.css" as="style">
+    <link rel="preload" href="/css/style.min.css?v=<%= typeof cssVersion !== 'undefined' ? cssVersion : '2' %>" as="style">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%231E7F4F'/><text x='50' y='68' font-family='Arial' font-size='50' font-weight='bold' fill='white' text-anchor='middle'>CF</text></svg>" type="image/svg+xml">
-    <link rel="stylesheet" href="/css/style.min.css">
+    <link rel="stylesheet" href="/css/style.min.css?v=<%= typeof cssVersion !== 'undefined' ? cssVersion : '2' %>">
     <%- extraHead %>
 </head>
 <body>
@@ -36,6 +36,6 @@
     <% if (structuredData) { %>
     <%- structuredData %>
     <% } %>
-    <script src="/js/app.js" defer></script>
+    <script src="/js/app.js?v=<%= typeof cssVersion !== 'undefined' ? cssVersion : '2' %>" defer></script>
 </body>
 </html>

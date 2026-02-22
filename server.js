@@ -37,14 +37,18 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname, 'public'), {
-  maxAge: '7d',
-  immutable: false,
+  maxAge: 0,
   etag: true,
-  lastModified: true
+  lastModified: true,
+  setHeaders: function(res, filePath) {
+    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+    res.setHeader('Pragma', 'no-cache');
+    res.setHeader('Expires', '0');
+  }
 }));
 
 app.use((req, res, next) => {
-  res.set('Cache-Control', 'no-cache');
+  res.set('Cache-Control', 'no-cache, no-store, must-revalidate');
   next();
 });
 
@@ -73,7 +77,8 @@ function getLocals(req, pageTitle, pageDescription, route) {
     structuredData: '',
     today: now.toLocaleDateString('it-IT', { day: '2-digit', month: '2-digit', year: 'numeric' }),
     todayISO: now.toISOString().split('T')[0],
-    extraHead: ''
+    extraHead: '',
+    cssVersion: Date.now()
   };
 }
 
