@@ -8,8 +8,9 @@ Italian Tax ID Code (Codice Fiscale) generator website built with Node.js/Expres
 /
 ├── server.js              # Express server with all routes (port 5000)
 ├── src/
-│   ├── codiceFiscale.js   # CF calculation engine (JS)
-│   └── comuni.json        # Italian municipalities database (JSON)
+│   ├── codiceFiscale.js         # CF calculation engine (used by server routes)
+│   ├── codiceFiscale.service.js # CF service module (generate + validate, JSDoc, mock comuni)
+│   └── comuni.json              # Italian municipalities database (JSON)
 ├── views/
 │   ├── layouts/
 │   │   └── main.ejs       # Main layout (HTML shell, SEO meta, OG tags, structured data slot)
@@ -72,6 +73,7 @@ Italian Tax ID Code (Codice Fiscale) generator website built with Node.js/Expres
 - **Deployment**: Autoscale with `node server.js`
 
 ## Recent Changes
+- Created src/codiceFiscale.service.js: clean service module with generate() + validate() + helpers, full JSDoc, mock municipality mapping
 - Refactored EJS layout system: created layouts/main.ejs + partials/header.ejs + partials/footer.ejs with express-ejs-layouts
 - Layout supports dynamic title, meta description, canonical, OpenGraph, Twitter cards, structured data placeholder
 - All SEO values passed dynamically from controller (getLocals in server.js), nothing hardcoded in layout
