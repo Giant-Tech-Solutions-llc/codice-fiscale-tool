@@ -1,0 +1,262 @@
+You are a senior product designer and senior frontend engineer with 10+ years of SaaS experience.
+
+TASK:
+Redesign the homepage UI/UX of the Codice Fiscale Generator website to make it:
+
+- Modern
+- Clean
+- Minimalist
+- Authority-driven
+- SEO-optimized
+- Mobile-first
+- AdSense-compliant
+- High trust
+- Premium SaaS quality
+
+IMPORTANT:
+Do NOT modify backend logic.
+Do NOT change routing.
+Do NOT modify business logic.
+Only redesign UI structure, layout, spacing, typography, and interaction.
+
+---------------------------------------
+SECTION 1 — GLOBAL DESIGN SYSTEM
+---------------------------------------
+
+Implement a consistent design system:
+
+COLOR SYSTEM:
+- Primary: #1E7F4F (Italian green)
+- Accent (rare use): #E63946
+- Background: #F8FAFC
+- Card background: #FFFFFF
+- Border: #E5E7EB
+- Text primary: #111827
+- Text secondary: #4B5563
+
+TYPOGRAPHY:
+- System font stack (no Google fonts)
+- H1: 36px, bold
+- H2: 28px, semibold
+- H3: 20px
+- Body: 16px
+- Small text: 14px
+
+SPACING:
+- Use 8pt spacing system
+- Large section padding (80px desktop / 48px mobile)
+
+CARDS:
+- Border radius: 16px
+- Soft shadow (subtle)
+- No heavy shadows
+- Clean elevation hierarchy
+
+---------------------------------------
+SECTION 2 — NAVBAR REDESIGN
+---------------------------------------
+
+Requirements:
+
+- Sticky on scroll
+- White background
+- Subtle bottom border
+- Add primary CTA button on right:
+  "Calcola Codice Fiscale"
+
+Layout:
+Left:
+  Logo + Name
+Right:
+  Guide
+  Come Funziona
+  Chi Siamo
+  Contatti
+  CTA Button (green filled)
+
+CTA button:
+- Rounded 12px
+- Slight hover elevation
+- Smooth transition
+
+---------------------------------------
+SECTION 3 — HERO REDESIGN (CRITICAL)
+---------------------------------------
+
+Replace current full-green heavy block.
+
+New layout:
+
+Two-column layout (desktop)
+Single column (mobile)
+
+LEFT SIDE:
+- H1:
+  "Generatore Codice Fiscale Italiano Online"
+- Short paragraph (max 2 lines)
+- 3 trust bullet points:
+   ✔ Basato su algoritmo ufficiale
+   ✔ Nessun dato salvato
+   ✔ Gratuito e immediato
+- Primary CTA button
+
+RIGHT SIDE:
+- Floating tool preview card
+- White card
+- Soft shadow
+- Elevated visually above background
+
+BACKGROUND:
+- Very soft gradient using green (not heavy block)
+- More white space
+
+---------------------------------------
+SECTION 4 — TOOL CARD REDESIGN
+---------------------------------------
+
+Improve the form UI:
+
+FORM FIELDS:
+- 48px height inputs
+- Rounded 12px
+- Clear labels above inputs
+- Placeholder subtle
+- Focus state: green border
+
+GENDER FIELD:
+Replace dropdown with toggle buttons:
+[M]  [F]
+- Pill-style
+- Active state green
+- Smooth transition
+
+DATE:
+- Native date picker
+- Large clickable area
+
+BUTTON:
+- Full width
+- 52px height
+- Slight gradient
+- Hover effect
+- Loading state animation
+
+RESULT DISPLAY:
+- Separate result card section
+- Light green background
+- Large font (22px+)
+- Copy button with toast confirmation
+- Optional: secondary link "Verifica Codice"
+
+DISCLAIMER:
+- Move outside form card
+- Small text
+- Subtle gray border
+
+---------------------------------------
+SECTION 5 — WHY SECTION
+---------------------------------------
+
+Make cards more premium:
+
+- Increase icon size
+- Add subtle hover lift
+- Improve spacing
+- Stronger copy clarity
+
+Keep 4 columns desktop
+2 columns tablet
+1 column mobile
+
+---------------------------------------
+SECTION 6 — HOW IT WORKS
+---------------------------------------
+
+Improve hierarchy:
+
+- Larger step numbers
+- Circular green numbered badges
+- Add subtle connecting line
+- Reduce excessive vertical spacing
+
+---------------------------------------
+SECTION 7 — GUIDE SECTION
+---------------------------------------
+
+Improve content cards:
+
+- Make entire card clickable
+- Add subtle border
+- Add tag label at top (e.g., "Guida Base")
+- Improve hover state
+- Improve typography hierarchy
+
+---------------------------------------
+SECTION 8 — FAQ SECTION
+---------------------------------------
+
+Improve accordion:
+
+- Clean animation
+- Larger clickable area
+- Clear plus/minus icon
+- Proper spacing between items
+
+---------------------------------------
+SECTION 9 — FINAL CTA
+---------------------------------------
+
+Redesign final block:
+
+- Softer green background
+- Centered content
+- Add reassurance line:
+  "Nessun dato viene salvato"
+
+---------------------------------------
+SECTION 10 — FOOTER IMPROVEMENTS
+---------------------------------------
+
+- Improve spacing
+- Add legal clarity line:
+  "Questo sito non è affiliato all’Agenzia delle Entrate."
+- Improve link grouping
+- Increase contrast
+
+---------------------------------------
+SECTION 11 — MOBILE OPTIMIZATION
+---------------------------------------
+
+Must ensure:
+
+- Mobile-first layout
+- Large tap targets
+- Sticky bottom CTA on mobile
+- Adequate spacing between sections
+- Tool scrolls into view after submission
+
+---------------------------------------
+CONSTRAINTS
+---------------------------------------
+
+DO NOT:
+- Use heavy frameworks
+- Add unnecessary animations
+- Add external UI libraries
+- Overuse green color
+- Break semantic HTML
+- Remove SEO structure
+
+PRIORITIES:
+1. Clarity
+2. Authority
+3. Trust
+4. Accessibility
+5. Clean spacing
+6. Premium feel
+
+Deliver:
+- Updated EJS layout
+- Updated CSS
+- Minimal JS improvements for interaction
+- Clean, structured code
