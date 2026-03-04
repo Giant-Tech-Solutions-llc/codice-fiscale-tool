@@ -6,6 +6,7 @@ const expressLayouts = require('express-ejs-layouts');
 const { calcola, cercaComune } = require('./src/codiceFiscale');
 const { decode: decodeCF, validate: validateCF } = require('./src/codiceFiscale.service');
 const toolRoutes = require('./routes/tool.routes');
+const createToolsRouter = require('./routes/tools');
 
 const app = express();
 const PORT = 5000;
@@ -240,8 +241,6 @@ const routes = {
   'politica-editoriale': { page: 'editorial-policy', title: 'Politica Editoriale | ' + SITE_NAME, description: 'La nostra politica editoriale. Come creiamo e verifichiamo i contenuti.' },
   'gdpr': { page: 'gdpr', title: 'Informativa GDPR | ' + SITE_NAME, description: 'Informativa sul trattamento dei dati personali ai sensi del GDPR.' },
   'mappa-del-sito': { page: 'sitemap-html', title: 'Mappa del Sito | ' + SITE_NAME, description: 'Mappa del sito completa di ' + SITE_NAME + '. Trova tutte le pagine.' },
-  'codice-fiscale-inverso': { page: 'codice-fiscale-inverso', title: 'Codice Fiscale Inverso - Decodifica Online | ' + SITE_NAME, description: 'Decodifica il Codice Fiscale italiano: scopri data di nascita, sesso, comune e il significato di ogni carattere. Strumento gratuito e immediato.' },
-  'verifica-codice-fiscale': { page: 'verifica-codice-fiscale', title: 'Verifica Codice Fiscale - Controlla Validità | ' + SITE_NAME, description: 'Verifica se un Codice Fiscale italiano è valido. Controlla formato, data di nascita e carattere di controllo. Strumento gratuito online.' }
 };
 
 app.use('/tools', (req, res, next) => {
@@ -261,6 +260,8 @@ app.use('/tools', (req, res, next) => {
   Object.assign(res.locals, locals);
   next();
 }, toolRoutes);
+
+app.use('/', createToolsRouter(getLocals, getStructuredData));
 
 app.post('/api/calcola', (req, res) => {
   const { cognome, nome, sesso, data_nascita, comune } = req.body;

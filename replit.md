@@ -8,7 +8,8 @@ Italian Tax ID Code (Codice Fiscale) generator website built with Node.js/Expres
 /
 ├── server.js              # Express server with all routes (port 5000)
 ├── routes/
-│   └── tool.routes.js     # Express router: GET/POST /tools/codice-fiscale-generator
+│   ├── tool.routes.js     # Express router: GET/POST /tools/codice-fiscale-generator
+│   └── tools.js           # Express router factory: GET /codice-fiscale-inverso, GET /verifica-codice-fiscale
 ├── controllers/
 │   └── tool.controller.js # Tool controller: validate, sanitise, call service, render
 ├── src/
