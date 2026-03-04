@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guida Completa al Codice Fiscale Inverso – Come Decodificare il CF | Calcolo Codice Fiscale</title>
+  <meta name="description" content="Guida completa al calcolo del codice fiscale inverso: come funziona la decodifica, cosa si può ricavare dal CF, tabella mesi, esempio pratico e strumento online gratuito." />
+  <link rel="canonical" href="https://www.calcolocodicefiscale.it.com/guide/codice-fiscale-inverso" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Guida Completa al Codice Fiscale Inverso",
+    "description": "Come decodificare un codice fiscale italiano: data di nascita, sesso, comune di nascita e analisi carattere per carattere.",
+    "author": {"@type": "Organization", "name": "Codice Fiscale Online"},
+    "publisher": {"@type": "Organization", "name": "Codice Fiscale Online", "url": "https://www.calcolocodicefiscale.it.com/"},
+    "url": "https://www.calcolocodicefiscale.it.com/guide/codice-fiscale-inverso",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type":"ListItem","position":1,"name":"Home","item":"https://www.calcolocodicefiscale.it.com/"},
+        {"@type":"ListItem","position":2,"name":"Guide","item":"https://www.calcolocodicefiscale.it.com/codice-fiscale"},
+        {"@type":"ListItem","position":3,"name":"Codice Fiscale Inverso","item":"https://www.calcolocodicefiscale.it.com/guide/codice-fiscale-inverso"}
+      ]
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+  <%- include('../partials/header') %>
+
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <div class="container">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><a href="/codice-fiscale">Guide</a></li>
+        <li aria-current="page">Codice Fiscale Inverso</li>
+      </ol>
+    </div>
+  </nav>
+
+  <main class="guide-page">
+    <div class="container guide-container">
+
+      <article class="guide-article" itemscope itemtype="https://schema.org/Article">
+
+        <header class="guide-header">
+          <h1 itemprop="headline">Guida Completa al Codice Fiscale Inverso</h1>
+          <p class="guide-intro" itemprop="description">
+            Il <strong>codice fiscale inverso</strong> permette di risalire ai dati anagrafici di una persona a partire dai 16 caratteri del codice fiscale italiano. In questa guida spieghiamo come funziona la decodifica, cosa si può ottenere e come utilizzare il nostro strumento gratuito.
+          </p>
+          <div class="guide-cta-inline">
+            <a href="/codice-fiscale-inverso" class="btn btn--primary">Prova il Tool Inverso →</a>
+          </div>
+        </header>
+
+        <nav class="guide-toc" aria-label="Indice della guida">
+          <h2>Indice</h2>
+          <ol>
+            <li><a href="#cos-e">Cos'è il codice fiscale inverso</a></li>
+            <li><a href="#come-funziona">Come funziona la decodifica</a></li>
+            <li><a href="#struttura">Struttura del codice fiscale</a></li>
+            <li><a href="#tabella-mesi">Tabella codici mese</a></li>
+            <li><a href="#esempio">Esempio pratico passo per passo</a></li>
+            <li><a href="#cosa-si-ottiene">Cosa si ottiene e cosa no</a></li>
+            <li><a href="#omocodia">Omocodia e casi particolari</a></li>
+            <li><a href="#faq">Domande frequenti</a></li>
+          </ol>
+        </nav>
+
+        <section id="cos-e">
+          <h2>Cos'è il codice fiscale inverso?</h2>
+          <p>
+            Il <strong>calcolo del codice fiscale inverso</strong> è il processo opposto alla generazione del CF: anziché creare un codice partendo dai dati anagrafici, si parte dal codice per ricavare i dati. Questo è possibile perché l'algoritmo del codice fiscale italiano codifica in modo deterministico alcune informazioni all'interno della stringa di 16 caratteri.
+          </p>
+          <p>
+            Questa operazione è utile per: verificare la coerenza di un CF, capire a quale anno, mese e giorno si riferisce, scoprire il comune di nascita codificato, o semplicemente per curiosità su come è strutturato il proprio codice fiscale.
+          </p>
+        </section>
+
+        <section id="come-funziona">
+          <h2>Come funziona la decodifica del CF</h2>
+          <p>
+            Il codice fiscale italiano è composto da 16 caratteri alfanumerici. Ogni segmento porta una specifica informazione anagrafica. La decodifica consiste nell'analizzare ogni segmento secondo le regole definite dall'Agenzia delle Entrate.
+          </p>
+          <p>
+            La procedura di <strong>calcolo inverso codice fiscale</strong> segue questi passaggi: si isola ogni segmento, si applica la regola di decodifica corrispondente, e si ricompongono le informazioni in output leggibile.
+          </p>
+        </section>
+
+        <section id="struttura">
+          <h2>Struttura del codice fiscale</h2>
+          <table class="guide-table" aria-label="Struttura del codice fiscale italiano">
+            <thead>
+              <tr>
+                <th>Posizioni</th>
+                <th>Caratteri</th>
+                <th>Contenuto</th>
+                <th>Regola di decodifica</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1–3</td>
+                <td>3 lettere</td>
+                <td>Cognome</td>
+                <td>Consonanti estratte dal cognome (non reversibile al cognome completo)</td>
+              </tr>
+              <tr>
+                <td>4–6</td>
+                <td>3 lettere</td>
+                <td>Nome</td>
+                <td>Consonanti/vocali del nome (non reversibile al nome completo)</td>
+              </tr>
+              <tr>
+                <td>7–8</td>
+                <td>2 cifre</td>
+                <td>Anno di nascita</td>
+                <td>Ultime due cifre dell'anno (es. 85 = 1985 o 2085)</td>
+              </tr>
+              <tr>
+                <td>9</td>
+                <td>1 lettera</td>
+                <td>Mese di nascita</td>
+                <td>Codice lettera (A=Gen, B=Feb, C=Mar, D=Apr, E=Mag, H=Giu, L=Lug, M=Ago, P=Set, R=Ott, S=Nov, T=Dic)</td>
+              </tr>
+              <tr>
+                <td>10–11</td>
+                <td>2 cifre</td>
+                <td>Giorno + Sesso</td>
+                <td>Maschio: 01–31 (giorno). Femmina: 41–71 (giorno + 40)</td>
+              </tr>
+              <tr>
+                <td>12–15</td>
+                <td>1 lettera + 3 cifre</td>
+                <td>Comune/Stato estero di nascita</td>
+                <td>Codice catastale (es. H501 = Roma, Z401 = Germania)</td>
+              </tr>
+              <tr>
+                <td>16</td>
+                <td>1 lettera</td>
+                <td>Carattere di controllo</td>
+                <td>Calcolato dall'algoritmo ufficiale per verificare l'integrità</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section id="tabella-mesi">
+          <h2>Tabella codici mese del codice fiscale</h2>
+          <p>Il carattere in posizione 9 indica il mese di nascita tramite una lettera codice. Ecco la tabella completa:</p>
+          <table class="guide-table guide-table--compact" aria-label="Codici mese del codice fiscale">
+            <thead>
+              <tr><th>Lettera</th><th>Mese</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="mono">A</td><td>Gennaio</td></tr>
+              <tr><td class="mono">B</td><td>Febbraio</td></tr>
+              <tr><td class="mono">C</td><td>Marzo</td></tr>
+              <tr><td class="mono">D</td><td>Aprile</td></tr>
+              <tr><td class="mono">E</td><td>Maggio</td></tr>
+              <tr><td class="mono">H</td><td>Giugno</td></tr>
+              <tr><td class="mono">L</td><td>Luglio</td></tr>
+              <tr><td class="mono">M</td><td>Agosto</td></tr>
+              <tr><td class="mono">P</td><td>Settembre</td></tr>
+              <tr><td class="mono">R</td><td>Ottobre</td></tr>
+              <tr><td class="mono">S</td><td>Novembre</td></tr>
+              <tr><td class="mono">T</td><td>Dicembre</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section id="esempio">
+          <h2>Esempio pratico: decodificare RSSMRA85M01H501Z</h2>
+          <p>Prendiamo il codice fiscale di esempio <strong class="mono">RSSMRA85M01H501Z</strong> e decodifichiamolo passo per passo:</p>
+          <ul>
+            <li><strong>RSS</strong> (pos. 1–3): Cognome → consonanti RSS (probabile cognome "Rossi")</li>
+            <li><strong>MRA</strong> (pos. 4–6): Nome → consonanti MRA (probabile nome "Mario")</li>
+            <li><strong>85</strong> (pos. 7–8): Anno → 1985</li>
+            <li><strong>M</strong> (pos. 9): Mese → Agosto</li>
+            <li><strong>01</strong> (pos. 10–11): Giorno/Sesso → 01 ≤ 40, quindi Maschio, giorno 1</li>
+            <li><strong>H501</strong> (pos. 12–15): Codice catastale → Roma</li>
+            <li><strong>Z</strong> (pos. 16): Carattere di controllo → verificato corretto</li>
+          </ul>
+          <p><strong>Risultato:</strong> Maschio nato il 1° agosto 1985 a Roma.</p>
+          <div class="guide-cta-inline">
+            <a href="/codice-fiscale-inverso" class="btn btn--primary">Prova con il tuo CF →</a>
+          </div>
+        </section>
+
+        <section id="cosa-si-ottiene">
+          <h2>Cosa si ottiene e cosa non si ottiene dalla decodifica</h2>
+          <p>
+            Con il <strong>calcolo codice fiscale inverso online</strong> è possibile ottenere con certezza: <strong>data di nascita</strong> (giorno, mese, anno), <strong>sesso</strong> (Maschio o Femmina) e <strong>codice catastale del comune/stato di nascita</strong> (e quindi la denominazione del luogo, se presente nel database).
+          </p>
+          <p>
+            Non è invece possibile risalire al <strong>nome e cognome completi</strong>, perché dal CF vengono estratte solo alcune consonanti/vocali che non identificano univocamente le parole originali.
+          </p>
+        </section>
+
+        <section id="omocodia">
+          <h2>Omocodia e casi particolari</h2>
+          <p>
+            L'omocodia si verifica quando due o più persone hanno gli stessi dati anagrafici e quindi genererebbero lo stesso codice fiscale. In questi casi, l'Agenzia delle Entrate sostituisce alcune cifre numeriche con lettere secondo una tabella predefinita (0=L, 1=M, 2=N, 3=P, 4=Q, 5=R, 6=S, 7=T, 8=U, 9=V). Un CF con omocodia sarà comunque decodificabile applicando questa sostituzione inversa.
+          </p>
+          <p>
+            Per i <strong>cittadini stranieri</strong>, il codice catastale in posizione 12–15 inizia con "Z" seguito da 3 cifre, che identificano lo stato estero di nascita (es. Z401 = Germania, Z112 = Francia).
+          </p>
+        </section>
+
+        <section id="faq">
+          <h2>Domande Frequenti</h2>
+          <div class="faq-list">
+
+            <details class="faq-item">
+              <summary class="faq-question">Come si risale alla data di nascita dal codice fiscale?</summary>
+              <div class="faq-answer">
+                <p>I caratteri 7–8 danno le ultime due cifre dell'anno, il carattere 9 dà il mese tramite codice lettera, e i caratteri 10–11 danno il giorno (per le femmine bisogna sottrarre 40).</p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-question">Posso risalire al nome e cognome dal CF inverso?</summary>
+              <div class="faq-answer">
+                <p>No, non è possibile risalire con certezza al nome e cognome completi, poiché vengono codificate solo alcune consonanti/vocali che non identificano univocamente le parole originali.</p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-question">Il CF inverso funziona anche per stranieri?</summary>
+              <div class="faq-answer">
+                <p>Sì. Se il codice catastale inizia con "Z", indica uno stato estero. Il nostro strumento riconosce e mostra il codice catastale, che puoi confrontare con l'elenco ufficiale degli stati esteri.</p>
+              </div>
+            </details>
+
+          </div>
+        </section>
+
+        <!-- Internal linking -->
+        <aside class="guide-related" aria-labelledby="related-title">
+          <h2 id="related-title">Guide correlate</h2>
+          <ul>
+            <li><a href="/come-si-calcola-il-codice-fiscale">Come si calcola il Codice Fiscale</a></li>
+            <li><a href="/cos-e-il-codice-fiscale">Cos'è il Codice Fiscale</a></li>
+            <li><a href="/esempi-codice-fiscale">Esempi di Codice Fiscale</a></li>
+            <li><a href="/verifica-codice-fiscale">Verifica Codice Fiscale</a></li>
+          </ul>
+        </aside>
+
+      </article>
+
+      <!-- Sidebar -->
+      <aside class="guide-sidebar">
+        <div class="sidebar-card">
+          <h3>Strumenti</h3>
+          <ul>
+            <li><a href="/calcola">Calcolo Codice Fiscale</a></li>
+            <li><a href="/codice-fiscale-inverso"><strong>CF Inverso (Decodifica)</strong></a></li>
+            <li><a href="/verifica-codice-fiscale">Verifica CF</a></li>
+          </ul>
+        </div>
+        <div class="sidebar-card sidebar-cta">
+          <p>Prova subito la decodifica gratuita</p>
+          <a href="/codice-fiscale-inverso" class="btn btn--primary btn--block">Decodifica CF →</a>
+        </div>
+      </aside>
+
+    </div>
+  </main>
+
+  <%- include('../partials/footer') %>
+</body>
+</html>
