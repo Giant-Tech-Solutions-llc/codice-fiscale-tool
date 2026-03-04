@@ -81,16 +81,16 @@ Italian Tax ID Code (Codice Fiscale) generator website built with Node.js/Expres
 
 ## API Endpoints
 - POST /api/calcola - Calculate Codice Fiscale (JSON API, used by client-side JS)
-- POST /api/inverso - Decode/reverse a Codice Fiscale (returns segments, decoded data)
-- POST /api/verifica - Validate a Codice Fiscale (returns checks, verdict, extracted data)
+- POST /api/inverso - Decode/reverse a Codice Fiscale (legacy server endpoint, kept for backwards compat)
+- POST /api/verifica - Validate a Codice Fiscale (legacy server endpoint, kept for backwards compat)
 - GET /api/comuni?q=query - Search municipalities
 - GET /sitemap.xml - XML sitemap
 - GET /robots.txt - Robots file
 
 ## Tool Pages
 - /calcola — Main calculator tool (legacy route)
-- /codice-fiscale-inverso — Reverse decoder tool (purple/indigo theme, AJAX)
-- /verifica-codice-fiscale — Validator tool (green theme, AJAX)
+- /codice-fiscale-inverso — Reverse decoder tool (fully client-side JS, no server API calls)
+- /verifica-codice-fiscale — Validator tool (fully client-side JS, no server API calls)
 
 ## Tool Routes (MVC)
 - GET  /tools/codice-fiscale-generator — Renders calculator form (controller → service → EJS)
@@ -108,11 +108,11 @@ Italian Tax ID Code (Codice Fiscale) generator website built with Node.js/Expres
 - **Reverse Lookup**: COMUNI_REVERSE map built from comuni.json for cadastral code → municipality name
 
 ## Recent Changes
-- **New tools added** (Mar 2026):
-  - Codice Fiscale Inverso (/codice-fiscale-inverso): reverse decoder with visual color-coded character breakdown, data cards, detail table, AJAX-powered
-  - Verifica Codice Fiscale (/verifica-codice-fiscale): validator with valid/invalid verdict badge, format/date/checksum checks, quick extract panel, AJAX-powered
-  - Added decode() function to codiceFiscale.service.js with reverse municipality lookup
-  - New API endpoints: POST /api/inverso, POST /api/verifica
+- **Tools migrated to client-side** (Mar 2026):
+  - Codice Fiscale Inverso (/codice-fiscale-inverso): reverse decoder with visual color-coded character breakdown, data cards, detail table — fully client-side JS with omocodia support, no data sent to server
+  - Verifica Codice Fiscale (/verifica-codice-fiscale): validator with valid/invalid verdict badge, format/date/checksum checks, quick extract panel — fully client-side JS, no data sent to server
+  - Both tools include reset buttons and auto-uppercase input
+  - Server-side decode()/validate() and API endpoints kept for backwards compatibility
   - Updated navigation with "Strumenti" dropdown, footer links, homepage tools section, HTML sitemap
 - **Homepage UI/UX redesign** (Feb 2026): Complete visual overhaul following premium SaaS design spec
   - New design system: #1E7F4F primary, system fonts, 8pt spacing, soft shadows

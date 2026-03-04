@@ -7,15 +7,16 @@
       </div>
 
       <div class="cf-card__body">
-        <form id="verifica-form" method="POST" novalidate>
-          <div class="cf-field">
-            <label class="cf-label" for="codice_fiscale">Codice Fiscale</label>
-            <input class="cf-input" type="text" id="codice_fiscale" name="codice_fiscale" placeholder="Es. RSSMRA85C15H501R" required autocomplete="off" maxlength="16" style="text-transform:uppercase;font-family:'Courier New',monospace;letter-spacing:.1em;font-size:1.1rem">
-          </div>
-          <button type="submit" class="cf-btn" id="verifica-btn">Verifica Codice Fiscale</button>
-        </form>
+        <div class="cf-field">
+          <label class="cf-label" for="cf-verifica-input">Codice Fiscale</label>
+          <input class="cf-input" type="text" id="cf-verifica-input" name="codice_fiscale" placeholder="Es. RSSMRA85C15H501R" required autocomplete="off" maxlength="16" style="text-transform:uppercase;font-family:'Courier New',monospace;letter-spacing:.1em;font-size:1.1rem">
+        </div>
+        <div style="display:flex;gap:8px">
+          <button type="button" class="cf-btn" id="verifica-btn" style="flex:1">Verifica Codice Fiscale</button>
+          <button type="button" class="cf-btn" id="verifica-reset-btn" style="flex:0 0 auto;width:48px;background:var(--text-light);font-size:1.2rem" aria-label="Reset" title="Reset">↺</button>
+        </div>
 
-        <div id="verifica-result" class="verifica-result" style="display:none">
+        <div id="verifica-result" class="verifica-result" hidden>
 
           <div id="verdict-badge" class="verdict-badge">
             <div class="verdict-icon" id="verdict-icon"></div>
@@ -23,23 +24,27 @@
             <div class="verdict-sub" id="verdict-sub"></div>
           </div>
 
-          <div id="verifica-code-display" style="text-align:center;margin-bottom:1.5rem">
-            <span style="display:block;font-size:.8125rem;font-weight:600;color:var(--primary);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.5rem">Codice Fiscale</span>
-            <output id="verifica-cf-output" style="display:block;font-size:1.75rem;font-weight:700;letter-spacing:.15em;color:var(--text);font-family:'Courier New',monospace;word-break:break-all;padding:.5rem 0"></output>
-            <button type="button" class="cf-copy" id="verifica-copy-btn" aria-label="Copia Codice Fiscale negli appunti" style="margin-top:.75rem">
-              <svg class="cf-copy__icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M8 2a1 1 0 000 2h2a1 1 0 100-2H8z"/><path d="M3 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v6h-4.586l1.293-1.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L10.414 13H15v3a2 2 0 01-2 2H5a2 2 0 01-2-2V5z"/></svg>
-              <span id="verifica-copy-text">Copia</span>
-            </button>
-          </div>
-
           <div class="check-list" id="check-list">
             <h3>Dettaglio Verifiche</h3>
             <ul class="check-items" id="check-items"></ul>
           </div>
 
-          <div class="quick-extract" id="quick-extract" style="display:none">
+          <div class="quick-extract" id="quick-extract" hidden>
             <h3>Dati Estratti</h3>
-            <div class="quick-extract__grid" id="qe-grid"></div>
+            <div class="quick-extract__grid">
+              <div class="qe-item">
+                <span class="qe-label">Data di Nascita</span>
+                <span class="qe-value" id="qe-nascita"></span>
+              </div>
+              <div class="qe-item">
+                <span class="qe-label">Sesso</span>
+                <span class="qe-value" id="qe-sesso"></span>
+              </div>
+              <div class="qe-item">
+                <span class="qe-label">Codice Comune</span>
+                <span class="qe-value" id="qe-comune"></span>
+              </div>
+            </div>
           </div>
 
         </div>
@@ -406,141 +411,167 @@
 </style>
 
 <script>
-(function () {
-  var form = document.getElementById('verifica-form');
-  var input = document.getElementById('codice_fiscale');
-  var resultSection = document.getElementById('verifica-result');
-  var verdictBadge = document.getElementById('verdict-badge');
-  var verdictIcon = document.getElementById('verdict-icon');
-  var verdictText = document.getElementById('verdict-text');
-  var verdictSub = document.getElementById('verdict-sub');
-  var checkItems = document.getElementById('check-items');
-  var quickExtract = document.getElementById('quick-extract');
-  var qeGrid = document.getElementById('qe-grid');
-  var cfOutput = document.getElementById('verifica-cf-output');
-  var codeDisplay = document.getElementById('verifica-code-display');
+'use strict';
 
-  if (form) {
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var cf = input.value.trim().toUpperCase();
-      if (!cf) return;
+const VALID_MONTHS = new Set(['A','B','C','D','E','H','L','M','P','R','S','T']);
 
-      var btn = document.getElementById('verifica-btn');
-      btn.disabled = true;
-      btn.textContent = 'Verifica in corso...';
+const MONTH_NAMES = {
+  A:'Gennaio', B:'Febbraio', C:'Marzo', D:'Aprile', E:'Maggio', H:'Giugno',
+  L:'Luglio', M:'Agosto', P:'Settembre', R:'Ottobre', S:'Novembre', T:'Dicembre'
+};
 
-      fetch('/api/verifica', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ codice_fiscale: cf })
-      })
-      .then(function (r) { return r.json(); })
-      .then(function (data) {
-        btn.disabled = false;
-        btn.textContent = 'Verifica Codice Fiscale';
-        renderResult(data);
-      })
-      .catch(function () {
-        btn.disabled = false;
-        btn.textContent = 'Verifica Codice Fiscale';
-        alert('Errore durante la verifica. Riprova.');
-      });
-    });
+const ODD_VALUES = {
+  '0':1,'1':0,'2':5,'3':7,'4':9,'5':13,'6':15,'7':17,'8':19,'9':21,
+  A:1,B:0,C:5,D:7,E:9,F:13,G:15,H:17,I:19,J:21,K:2,L:4,M:18,N:20,
+  O:11,P:3,Q:6,R:8,S:12,T:14,U:16,V:10,W:22,X:25,Y:24,Z:23
+};
+const EVEN_VALUES = {
+  '0':0,'1':1,'2':2,'3':3,'4':4,'5':5,'6':6,'7':7,'8':8,'9':9,
+  A:0,B:1,C:2,D:3,E:4,F:5,G:6,H:7,I:8,J:9,K:10,L:11,M:12,N:13,
+  O:14,P:15,Q:16,R:17,S:18,T:19,U:20,V:21,W:22,X:23,Y:24,Z:25
+};
+const CONTROL_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+function validateCF(raw) {
+  const cf = raw.trim().toUpperCase();
+  const checks = [];
+  let firstFail = null;
+
+  function check(label, condition, detail, failDetail) {
+    const passed = condition;
+    checks.push({ label, passed, detail: passed ? detail : failDetail });
+    if (!passed && !firstFail) firstFail = { label, detail: failDetail };
+    return passed;
   }
 
-  function renderResult(data) {
-    resultSection.style.display = 'block';
-    resultSection.style.animation = 'none';
-    resultSection.offsetHeight;
-    resultSection.style.animation = 'cfFadeIn .4s ease';
+  const lengthOk = check(
+    'Lunghezza (16 caratteri)',
+    cf.length === 16,
+    `${cf.length} caratteri rilevati – corretto`,
+    `${cf.length} caratteri rilevati – devono essere esattamente 16`
+  );
+  if (!lengthOk) return { passed: false, checks, extracted: null, firstFail };
 
-    verdictBadge.className = 'verdict-badge ' + (data.valid ? 'verdict-valid' : 'verdict-invalid');
-    verdictIcon.textContent = data.valid ? '✓' : '✗';
-    verdictText.textContent = data.valid ? 'Codice Fiscale Valido' : 'Codice Fiscale Non Valido';
-    verdictSub.textContent = data.valid
-      ? 'Il codice fiscale inserito ha superato tutti i controlli di validità.'
-      : 'Il codice fiscale inserito non ha superato tutti i controlli.';
+  const formatOk = check(
+    'Formato alfanumerico',
+    /^[A-Z]{6}[0-9]{2}[A-Z][0-9]{2}[A-Z][0-9]{3}[A-Z]$/.test(cf),
+    'Lettere e numeri nelle posizioni corrette',
+    'Lettere o numeri non nelle posizioni corrette (verifica il formato)'
+  );
+  if (!formatOk) return { passed: false, checks, extracted: null, firstFail };
 
-    cfOutput.textContent = data.codiceFiscale || input.value.trim().toUpperCase();
-    codeDisplay.style.display = 'block';
+  const monthChar = cf[8];
+  const monthOk = check(
+    'Codice mese valido',
+    VALID_MONTHS.has(monthChar),
+    `"${monthChar}" = ${MONTH_NAMES[monthChar] || '?'} – valido`,
+    `"${monthChar}" non è un codice mese valido (validi: A B C D E H L M P R S T)`
+  );
 
-    var checks = data.checks || [];
-    checkItems.innerHTML = '';
-    checks.forEach(function (check) {
-      var li = document.createElement('li');
-      li.className = 'check-item ' + (check.pass ? 'check-pass' : 'check-fail');
-      li.innerHTML =
-        '<span class="check-icon">' + (check.pass ? '✓' : '✗') + '</span>' +
-        '<span class="check-label">' + escapeHtml(check.label) + '</span>' +
-        '<span class="check-detail">' + escapeHtml(check.detail) + '</span>';
-      checkItems.appendChild(li);
-    });
+  const dayRaw = parseInt(cf.substring(9, 11), 10);
+  const isF = dayRaw > 40;
+  const day = isF ? dayRaw - 40 : dayRaw;
+  const dayOk = check(
+    'Giorno di nascita / Sesso',
+    (dayRaw >= 1 && dayRaw <= 31) || (dayRaw >= 41 && dayRaw <= 71),
+    isF ? `${cf.substring(9,11)} → giorno ${day} (Femmina)` : `${cf.substring(9,11)} → giorno ${day} (Maschio)`,
+    `Valore "${cf.substring(9,11)}" non valido (attesi 01–31 per M, 41–71 per F)`
+  );
 
-    if (data.valid && data.extract) {
-      quickExtract.style.display = 'block';
-      qeGrid.innerHTML = '';
-      var fields = [
-        { label: 'Sesso', value: data.extract.genderLabel },
-        { label: 'Data di Nascita', value: data.extract.dateStr },
-        { label: 'Comune', value: data.extract.municipalityName || data.extract.municipalityCode },
-        { label: 'Cognome (segmento)', value: data.extract.surnameSegment },
-        { label: 'Nome (segmento)', value: data.extract.nameSegment },
-        { label: 'Carattere Controllo', value: data.extract.checkChar }
-      ];
-      fields.forEach(function (f) {
-        if (f.value) {
-          var div = document.createElement('div');
-          div.className = 'qe-item';
-          div.innerHTML = '<span class="qe-label">' + escapeHtml(f.label) + '</span><span class="qe-value">' + escapeHtml(f.value) + '</span>';
-          qeGrid.appendChild(div);
-        }
-      });
-    } else {
-      quickExtract.style.display = 'none';
+  let sum = 0;
+  for (let i = 0; i < 15; i++) {
+    const ch = cf[i];
+    sum += (i % 2 === 0) ? ODD_VALUES[ch] : EVEN_VALUES[ch];
+  }
+  const expectedControl = CONTROL_CHARS[sum % 26];
+  const checksumOk = check(
+    'Carattere di controllo (16°)',
+    cf[15] === expectedControl,
+    `"${cf[15]}" – corretto`,
+    `"${cf[15]}" errato – atteso "${expectedControl}". Probabile errore di trascrizione.`
+  );
+
+  const passed = lengthOk && formatOk && monthOk && dayOk && checksumOk;
+
+  let extracted = null;
+  if (passed) {
+    const yearSuffix = parseInt(cf.substring(6, 8), 10);
+    const currentSuffix = new Date().getFullYear() % 100;
+    const year = yearSuffix <= currentSuffix ? 2000 + yearSuffix : 1900 + yearSuffix;
+    const MONTH_ORDER = ['A','B','C','D','E','H','L','M','P','R','S','T'];
+    const monthNum = MONTH_ORDER.indexOf(monthChar) + 1;
+    extracted = {
+      birthDate: `${String(day).padStart(2,'0')}/${String(monthNum).padStart(2,'0')}/${year}`,
+      gender: isF ? 'Femmina' : 'Maschio',
+      municipalityCode: cf.substring(11, 15),
+    };
+  }
+
+  return { passed, checks, extracted, firstFail };
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const input      = document.getElementById('cf-verifica-input');
+  const btn        = document.getElementById('verifica-btn');
+  const resetBtn   = document.getElementById('verifica-reset-btn');
+  const resultDiv  = document.getElementById('verifica-result');
+  const badge      = document.getElementById('verdict-badge');
+  const icon       = document.getElementById('verdict-icon');
+  const text       = document.getElementById('verdict-text');
+  const sub        = document.getElementById('verdict-sub');
+  const checkItems = document.getElementById('check-items');
+  const quickExt   = document.getElementById('quick-extract');
+
+  function verify() {
+    const val = input.value.trim();
+    if (!val) {
+      input.setAttribute('aria-invalid', 'true');
+      input.focus();
+      return;
     }
+
+    const result = validateCF(val);
+
+    badge.className = `verdict-badge ${result.passed ? 'verdict-valid' : 'verdict-invalid'}`;
+    icon.textContent = result.passed ? '✓' : '✗';
+    text.textContent = result.passed ? 'CODICE FISCALE VALIDO' : 'CODICE FISCALE NON VALIDO';
+    sub.textContent  = result.passed
+      ? 'Il codice fiscale è formalmente corretto e rispetta tutti i controlli.'
+      : `Errore rilevato: ${result.firstFail ? result.firstFail.detail : 'Struttura non valida.'}`;
+
+    checkItems.innerHTML = result.checks.map(c => `
+      <li class="check-item ${c.passed ? 'check-pass' : 'check-fail'}">
+        <span class="check-icon" aria-hidden="true">${c.passed ? '✓' : '✗'}</span>
+        <span class="check-label">${c.label}</span>
+        <span class="check-detail">${c.detail}</span>
+      </li>
+    `).join('');
+
+    if (result.passed && result.extracted) {
+      document.getElementById('qe-nascita').textContent = result.extracted.birthDate;
+      document.getElementById('qe-sesso').textContent   = result.extracted.gender;
+      document.getElementById('qe-comune').textContent  = result.extracted.municipalityCode;
+      quickExt.hidden = false;
+    } else {
+      quickExt.hidden = true;
+    }
+
+    resultDiv.hidden = false;
+    resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
 
-  function escapeHtml(str) {
-    if (!str) return '';
-    return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-  }
+  btn.addEventListener('click', verify);
+  input.addEventListener('keydown', e => { if (e.key === 'Enter') verify(); });
+  input.addEventListener('input', () => {
+    input.value = input.value.toUpperCase();
+    input.removeAttribute('aria-invalid');
+  });
 
-  var copyBtn = document.getElementById('verifica-copy-btn');
-  if (copyBtn) {
-    copyBtn.addEventListener('click', function () {
-      var code = document.getElementById('verifica-cf-output');
-      if (!code) return;
-      var text = code.textContent.trim();
-      if (!text) return;
-
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(text).then(onCopied).catch(fallbackCopy);
-      } else {
-        fallbackCopy();
-      }
-
-      function fallbackCopy() {
-        var ta = document.createElement('textarea');
-        ta.value = text;
-        ta.style.position = 'fixed';
-        ta.style.opacity = '0';
-        document.body.appendChild(ta);
-        ta.select();
-        try { document.execCommand('copy'); onCopied(); } catch (e) {}
-        document.body.removeChild(ta);
-      }
-
-      function onCopied() {
-        var label = document.getElementById('verifica-copy-text');
-        copyBtn.classList.add('cf-copy--done');
-        if (label) label.textContent = 'Copiato!';
-        setTimeout(function () {
-          copyBtn.classList.remove('cf-copy--done');
-          if (label) label.textContent = 'Copia';
-        }, 2000);
-      }
-    });
-  }
-})();
+  resetBtn.addEventListener('click', () => {
+    input.value = '';
+    resultDiv.hidden = true;
+    quickExt.hidden = true;
+    input.focus();
+  });
+});
 </script>
