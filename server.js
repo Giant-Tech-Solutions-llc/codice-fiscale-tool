@@ -189,6 +189,8 @@ const routeBreadcrumbs = {
   'recupero-codice-fiscale': [{ name: 'Home', url: '/' }, { name: 'Guida', url: '/codice-fiscale' }, { name: 'Recupero CF' }],
   'utilizzi-legali-codice-fiscale': [{ name: 'Home', url: '/' }, { name: 'Guida', url: '/codice-fiscale' }, { name: 'Utilizzi Legali' }],
   'esempi-codice-fiscale': [{ name: 'Home', url: '/' }, { name: 'Guida', url: '/codice-fiscale' }, { name: 'Esempi' }],
+  'guide/codice-fiscale-inverso': [{ name: 'Home', url: '/' }, { name: 'Guide', url: '/codice-fiscale' }, { name: 'Codice Fiscale Inverso' }],
+  'guide/verifica-codice-fiscale': [{ name: 'Home', url: '/' }, { name: 'Guide', url: '/codice-fiscale' }, { name: 'Verifica Codice Fiscale' }],
   'chi-siamo': [{ name: 'Home', url: '/' }, { name: 'Chi Siamo' }],
   'contatti': [{ name: 'Home', url: '/' }, { name: 'Contatti' }],
   'privacy-policy': [{ name: 'Home', url: '/' }, { name: 'Privacy Policy' }],
@@ -217,6 +219,39 @@ function getStructuredData(siteUrl, routeKey) {
   if (routeKey === 'codice-fiscale') {
     schemas.push(jsonLd(buildFaqSchema(pillarFaqs)));
   }
+  if (routeKey === 'guide/codice-fiscale-inverso') {
+    schemas.push(jsonLd({
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: 'Guida Completa al Codice Fiscale Inverso',
+      description: 'Come decodificare un codice fiscale italiano: data di nascita, sesso, comune di nascita e analisi carattere per carattere.',
+      author: { '@type': 'Organization', name: SITE_NAME },
+      publisher: { '@type': 'Organization', name: SITE_NAME, url: siteUrl + '/' },
+      url: siteUrl + '/guide/codice-fiscale-inverso'
+    }));
+    schemas.push(jsonLd(buildFaqSchema([
+      { q: 'Come si risale alla data di nascita dal codice fiscale?', a: 'I caratteri 7–8 danno le ultime due cifre dell\'anno, il carattere 9 dà il mese tramite codice lettera, e i caratteri 10–11 danno il giorno (per le femmine bisogna sottrarre 40).' },
+      { q: 'Posso risalire al nome e cognome dal CF inverso?', a: 'No, non è possibile risalire con certezza al nome e cognome completi, poiché vengono codificate solo alcune consonanti/vocali che non identificano univocamente le parole originali.' },
+      { q: 'Il CF inverso funziona anche per stranieri?', a: 'Sì. Se il codice catastale inizia con "Z", indica uno stato estero. Il nostro strumento riconosce e mostra il codice catastale, che puoi confrontare con l\'elenco ufficiale degli stati esteri.' }
+    ])));
+  }
+  if (routeKey === 'guide/verifica-codice-fiscale') {
+    schemas.push(jsonLd({
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: 'Come Verificare un Codice Fiscale – Guida Completa alla Validazione CF',
+      description: 'Come verificare se un codice fiscale italiano è formalmente valido: struttura, carattere di controllo, errori comuni e validatore online gratuito.',
+      author: { '@type': 'Organization', name: SITE_NAME },
+      publisher: { '@type': 'Organization', name: SITE_NAME, url: siteUrl + '/' },
+      url: siteUrl + '/guide/verifica-codice-fiscale'
+    }));
+    schemas.push(jsonLd(buildFaqSchema([
+      { q: 'Come faccio a sapere se il mio codice fiscale è corretto?', a: 'Puoi usare il nostro strumento gratuito di verifica: inserisci il CF e riceverai immediatamente una risposta sulla sua validità formale. Per la verifica anagrafica ufficiale, rivolgiti all\'Agenzia delle Entrate.' },
+      { q: 'Un CF valido formalmente è sicuramente il mio CF ufficiale?', a: 'Non necessariamente. La validazione formale conferma che la struttura è corretta, ma non può verificare l\'associazione con la tua identità nei registri ufficiali.' },
+      { q: 'Perché il mio CF viene indicato come non valido?', a: 'Le cause più comuni sono: errore di trascrizione nell\'ultimo carattere (il carattere di controllo), lunghezza sbagliata, confusione tra O/0 o I/1, o un codice mese non valido.' },
+      { q: 'La verifica del CF è sicura per la privacy?', a: 'Sì, tutta l\'elaborazione avviene nel browser. Nessun dato viene trasmesso ai nostri server. Non salviamo né registriamo alcun codice fiscale inserito.' }
+    ])));
+  }
   return schemas.join('\n');
 }
 
@@ -241,6 +276,8 @@ const routes = {
   'politica-editoriale': { page: 'editorial-policy', title: 'Politica Editoriale | ' + SITE_NAME, description: 'La nostra politica editoriale. Come creiamo e verifichiamo i contenuti.' },
   'gdpr': { page: 'gdpr', title: 'Informativa GDPR | ' + SITE_NAME, description: 'Informativa sul trattamento dei dati personali ai sensi del GDPR.' },
   'mappa-del-sito': { page: 'sitemap-html', title: 'Mappa del Sito | ' + SITE_NAME, description: 'Mappa del sito completa di ' + SITE_NAME + '. Trova tutte le pagine.' },
+  'guide/codice-fiscale-inverso': { page: 'guides/guide-inverso', title: 'Guida Completa al Codice Fiscale Inverso – Come Decodificare il CF | ' + SITE_NAME, description: 'Guida completa al calcolo del codice fiscale inverso: come funziona la decodifica, cosa si può ricavare dal CF, tabella mesi, esempio pratico e strumento online gratuito.' },
+  'guide/verifica-codice-fiscale': { page: 'guides/guide-verifica', title: 'Come Verificare un Codice Fiscale – Guida Completa alla Validazione CF | ' + SITE_NAME, description: 'Guida completa su come verificare un codice fiscale italiano: struttura, algoritmo del carattere di controllo, errori comuni e strumento di verifica online gratuito.' },
 };
 
 app.use('/tools', (req, res, next) => {
@@ -375,6 +412,8 @@ app.get('/sitemap.xml', (req, res) => {
     { path: 'recupero-codice-fiscale', priority: '0.7' },
     { path: 'utilizzi-legali-codice-fiscale', priority: '0.7' },
     { path: 'esempi-codice-fiscale', priority: '0.7' },
+    { path: 'guide/codice-fiscale-inverso', priority: '0.8' },
+    { path: 'guide/verifica-codice-fiscale', priority: '0.8' },
     { path: 'chi-siamo', priority: '0.5' },
     { path: 'contatti', priority: '0.5' },
     { path: 'privacy-policy', priority: '0.3' },

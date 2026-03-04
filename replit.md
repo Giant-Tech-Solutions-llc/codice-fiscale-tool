@@ -39,6 +39,9 @@ Italian Tax ID Code (Codice Fiscale) generator website built with Node.js/Expres
 │   ├── dmca.ejs           # DMCA Policy
 │   ├── editorial-policy.ejs # Editorial Policy
 │   ├── gdpr.ejs           # GDPR Disclosure
+│   ├── guides/            # SEO guide pages (two-column layout with sidebar)
+│   │   ├── guide-inverso.ejs    # Guide: Codice Fiscale Inverso (/guide/codice-fiscale-inverso)
+│   │   └── guide-verifica.ejs   # Guide: Verifica Codice Fiscale (/guide/verifica-codice-fiscale)
 │   └── articles/          # SEO content articles
 │       ├── what-is-codice-fiscale.ejs
 │       ├── how-is-codice-fiscale-calculated.ejs
@@ -114,6 +117,13 @@ Italian Tax ID Code (Codice Fiscale) generator website built with Node.js/Expres
 - **Reverse Lookup**: COMUNI_REVERSE map built from comuni.json for cadastral code → municipality name
 
 ## Recent Changes
+- **Guide pages added** (Mar 2026):
+  - Two new SEO guide pages: `/guide/codice-fiscale-inverso` and `/guide/verifica-codice-fiscale`
+  - Two-column layout (article + sticky sidebar) with TOC, data tables, FAQ accordions, CTA sections
+  - New CSS classes in style.css: `.guide-page`, `.guide-container`, `.guide-article`, `.guide-header`, `.guide-intro`, `.guide-cta-inline`, `.guide-toc`, `.guide-table`, `.guide-related`, `.guide-sidebar`, `.sidebar-card`, `.sidebar-cta`, `.btn--block`, `.mono`
+  - JSON-LD structured data: Article + BreadcrumbList + FAQPage schemas per guide
+  - Views in `views/guides/` directory (layout-compatible partials)
+  - Routes added to `server.js` routes object, sitemap.xml, HTML sitemap, and Guide dropdown nav
 - **Tool pages rebuilt with SEO content** (Mar 2026):
   - Both tool pages rebuilt with hero sections, breadcrumbs, SEO article content, FAQ accordions, CTA sections
   - External CSS files: `/css/inverso.css`, `/css/verifica.css` (tool-specific styles)

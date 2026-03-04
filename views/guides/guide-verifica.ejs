@@ -1,0 +1,179 @@
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <div class="container">
+    <ol>
+      <li><a href="/">Home</a></li>
+      <li><a href="/codice-fiscale">Guide</a></li>
+      <li aria-current="page">Verifica Codice Fiscale</li>
+    </ol>
+  </div>
+</nav>
+
+<section class="guide-page">
+  <div class="container guide-container">
+
+    <article class="guide-article" itemscope itemtype="https://schema.org/Article">
+
+      <header class="guide-header">
+        <h1 itemprop="headline">Come Verificare un Codice Fiscale</h1>
+        <p class="guide-intro" itemprop="description">
+          Verificare se un <strong>codice fiscale è valido</strong> è un'operazione importante per evitare errori in documenti ufficiali, dichiarazioni fiscali e contratti. Questa guida spiega come funziona la <strong>validazione del CF</strong> e come utilizzare il nostro strumento di verifica gratuito.
+        </p>
+        <div class="guide-cta-inline">
+          <a href="/verifica-codice-fiscale" class="btn btn--primary">Verifica un CF ora →</a>
+        </div>
+      </header>
+
+      <nav class="guide-toc" aria-label="Indice della guida">
+        <h2>Indice</h2>
+        <ol>
+          <li><a href="#perche-verificare">Perché verificare un codice fiscale</a></li>
+          <li><a href="#cosa-controlla">Cosa controlla la validazione</a></li>
+          <li><a href="#carattere-controllo">Il carattere di controllo: come funziona</a></li>
+          <li><a href="#errori-comuni">Errori comuni nel CF</a></li>
+          <li><a href="#validazione-formale">Validazione formale vs anagrafica</a></li>
+          <li><a href="#come-usare">Come usare il nostro validatore</a></li>
+          <li><a href="#faq">Domande frequenti</a></li>
+        </ol>
+      </nav>
+
+      <section id="perche-verificare">
+        <h2>Perché è importante verificare un codice fiscale</h2>
+        <p>
+          Un <strong>codice fiscale errato</strong> può causare problemi seri: dichiarazioni dei redditi rifiutate, difficoltà nell'apertura di conti bancari, errori in contratti di lavoro, e mancata iscrizione al Servizio Sanitario Nazionale. Un semplice errore di trascrizione nel 16° carattere (il carattere di controllo) è sufficiente a rendere il CF non valido.
+        </p>
+        <p>
+          La <strong>verifica codice fiscale online</strong> permette di rilevare immediatamente questi errori prima che causino problemi, senza dover contattare l'Agenzia delle Entrate.
+        </p>
+      </section>
+
+      <section id="cosa-controlla">
+        <h2>Cosa controlla la validazione del codice fiscale</h2>
+        <p>Un sistema di <strong>controllo codice fiscale</strong> completo verifica i seguenti aspetti in sequenza:</p>
+        <ol>
+          <li><strong>Lunghezza:</strong> il CF deve essere esattamente di 16 caratteri. Né di più, né di meno.</li>
+          <li><strong>Formato alfanumerico:</strong> i caratteri devono essere nelle posizioni corrette (lettere dove attese, numeri dove attesi).</li>
+          <li><strong>Codice mese valido:</strong> il 9° carattere deve essere una delle 12 lettere valide per i mesi (A B C D E H L M P R S T).</li>
+          <li><strong>Giorno e sesso coerenti:</strong> i caratteri 10–11 devono essere 01–31 (maschio) o 41–71 (femmina).</li>
+          <li><strong>Carattere di controllo corretto:</strong> il 16° carattere deve corrispondere al valore calcolato dall'algoritmo ufficiale.</li>
+        </ol>
+      </section>
+
+      <section id="carattere-controllo">
+        <h2>Il carattere di controllo: come funziona</h2>
+        <p>
+          Il 16° carattere del codice fiscale è il <strong>carattere di controllo</strong>, ed è quello più importante per la validazione. Viene calcolato nel seguente modo:
+        </p>
+        <ol>
+          <li>Si assegna un valore numerico a ciascuno dei primi 15 caratteri, con regole diverse per le posizioni dispari (1ª, 3ª, 5ª...) e pari (2ª, 4ª, 6ª...).</li>
+          <li>Si sommano tutti i 15 valori.</li>
+          <li>Si calcola il resto della divisione per 26.</li>
+          <li>Il risultato (0–25) viene convertito nella corrispondente lettera dell'alfabeto (A=0, B=1, ... Z=25).</li>
+        </ol>
+        <p>
+          Se il 16° carattere del CF inserito non corrisponde a questa lettera calcolata, il codice fiscale <strong>non è formalmente valido</strong>. Questo è l'errore più frequente in caso di errore di battitura.
+        </p>
+      </section>
+
+      <section id="errori-comuni">
+        <h2>Errori comuni nel codice fiscale</h2>
+        <ul>
+          <li><strong>Scambio di caratteri simili:</strong> confusione tra la lettera O e il numero 0, o tra I e 1.</li>
+          <li><strong>Carattere di controllo errato:</strong> errore nell'ultimo carattere, spesso copiato male.</li>
+          <li><strong>Lunghezza sbagliata:</strong> CF di 15 o 17 caratteri per mancanza o aggiunta di un carattere.</li>
+          <li><strong>Codice mese non valido:</strong> uso di una lettera non prevista dalla tabella ufficiale (es. F, G, I, J, K, N, O, ecc.).</li>
+          <li><strong>Giorno fuori range:</strong> valori come 00, 32, oppure 40 o 72 che non rientrano nei range ammessi.</li>
+        </ul>
+        <p>Il nostro <a href="/verifica-codice-fiscale">validatore codice fiscale</a> identifica esattamente quale controllo non viene superato, facilitando la correzione.</p>
+      </section>
+
+      <section id="validazione-formale">
+        <h2>Validazione formale vs validazione anagrafica</h2>
+        <p>
+          È importante distinguere tra due tipi di verifica:
+        </p>
+        <p>
+          La <strong>validazione formale</strong> (quella offerta dal nostro strumento) verifica che il CF rispetti la struttura algoritmica definita dall'Agenzia delle Entrate. Un CF "formalmente valido" è correttamente strutturato e il carattere di controllo è coerente.
+        </p>
+        <p>
+          La <strong>validazione anagrafica</strong> consiste nel verificare che il CF corrisponda effettivamente a una persona reale nei registri dell'Agenzia delle Entrate. Questa verifica può essere fatta solo tramite i canali ufficiali dell'Agenzia delle Entrate (sportello fisico, SPID, o servizi online dedicati).
+        </p>
+      </section>
+
+      <section id="come-usare">
+        <h2>Come usare il nostro validatore codice fiscale</h2>
+        <ol>
+          <li>Vai alla pagina <a href="/verifica-codice-fiscale">Verifica Codice Fiscale</a>.</li>
+          <li>Inserisci il CF da verificare nel campo di testo (16 caratteri).</li>
+          <li>Premi il pulsante "Verifica Codice Fiscale".</li>
+          <li>Il sistema risponde immediatamente con <strong>VALIDO</strong> o <strong>NON VALIDO</strong>, indicando il dettaglio di ogni controllo.</li>
+          <li>Se valido, vengono mostrati anche i dati estratti (data di nascita, sesso, codice comune).</li>
+        </ol>
+        <div class="guide-cta-inline">
+          <a href="/verifica-codice-fiscale" class="btn btn--primary">Inizia la verifica →</a>
+        </div>
+      </section>
+
+      <section id="faq">
+        <h2>Domande Frequenti sulla Verifica CF</h2>
+        <div class="faq-list">
+
+          <details class="faq-item">
+            <summary class="faq-question">Come faccio a sapere se il mio codice fiscale è corretto?</summary>
+            <div class="faq-answer">
+              <p>Puoi usare il nostro strumento gratuito di verifica: inserisci il CF e riceverai immediatamente una risposta sulla sua validità formale. Per la verifica anagrafica ufficiale, rivolgiti all'Agenzia delle Entrate.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">Un CF valido formalmente è sicuramente il mio CF ufficiale?</summary>
+            <div class="faq-answer">
+              <p>Non necessariamente. La validazione formale conferma che la struttura è corretta, ma non può verificare l'associazione con la tua identità nei registri ufficiali. Potrebbero esistere CF formalmente validi che non corrispondono ad alcuna persona reale.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">Perché il mio CF viene indicato come non valido?</summary>
+            <div class="faq-answer">
+              <p>Le cause più comuni sono: errore di trascrizione nell'ultimo carattere (il carattere di controllo), lunghezza sbagliata, confusione tra O/0 o I/1, o un codice mese non valido. Il nostro strumento indica esattamente quale controllo non è superato.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">La verifica del CF è sicura per la privacy?</summary>
+            <div class="faq-answer">
+              <p>Sì, tutta l'elaborazione avviene nel browser. Nessun dato viene trasmesso ai nostri server. Non salviamo né registriamo alcun codice fiscale inserito.</p>
+            </div>
+          </details>
+
+        </div>
+      </section>
+
+      <aside class="guide-related" aria-labelledby="related-title">
+        <h2 id="related-title">Guide correlate</h2>
+        <ul>
+          <li><a href="/come-si-calcola-il-codice-fiscale">Come si calcola il Codice Fiscale</a></li>
+          <li><a href="/cos-e-il-codice-fiscale">Cos'è il Codice Fiscale</a></li>
+          <li><a href="/guide/codice-fiscale-inverso">Guida al CF Inverso</a></li>
+          <li><a href="/recupero-codice-fiscale">Recupero CF Smarrito</a></li>
+        </ul>
+      </aside>
+
+    </article>
+
+    <aside class="guide-sidebar">
+      <div class="sidebar-card">
+        <h3>Strumenti</h3>
+        <ul>
+          <li><a href="/calcola">Calcolo Codice Fiscale</a></li>
+          <li><a href="/codice-fiscale-inverso">CF Inverso (Decodifica)</a></li>
+          <li><a href="/verifica-codice-fiscale"><strong>Verifica CF</strong></a></li>
+        </ul>
+      </div>
+      <div class="sidebar-card sidebar-cta">
+        <p>Controlla subito il tuo CF</p>
+        <a href="/verifica-codice-fiscale" class="btn btn--primary btn--block">Verifica CF →</a>
+      </div>
+    </aside>
+
+  </div>
+</section>
