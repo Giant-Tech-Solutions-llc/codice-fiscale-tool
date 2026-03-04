@@ -4,6 +4,7 @@ const compression = require('compression');
 const helmet = require('helmet');
 const expressLayouts = require('express-ejs-layouts');
 const { calcola, cercaComune } = require('./src/codiceFiscale');
+const { decode: decodeCF, validate: validateCF } = require('./src/codiceFiscale.service');
 const toolRoutes = require('./routes/tool.routes');
 
 const app = express();
@@ -238,7 +239,9 @@ const routes = {
   'dmca': { page: 'dmca', title: 'DMCA Policy | ' + SITE_NAME, description: 'DMCA policy e procedura di segnalazione per violazioni di copyright.' },
   'politica-editoriale': { page: 'editorial-policy', title: 'Politica Editoriale | ' + SITE_NAME, description: 'La nostra politica editoriale. Come creiamo e verifichiamo i contenuti.' },
   'gdpr': { page: 'gdpr', title: 'Informativa GDPR | ' + SITE_NAME, description: 'Informativa sul trattamento dei dati personali ai sensi del GDPR.' },
-  'mappa-del-sito': { page: 'sitemap-html', title: 'Mappa del Sito | ' + SITE_NAME, description: 'Mappa del sito completa di ' + SITE_NAME + '. Trova tutte le pagine.' }
+  'mappa-del-sito': { page: 'sitemap-html', title: 'Mappa del Sito | ' + SITE_NAME, description: 'Mappa del sito completa di ' + SITE_NAME + '. Trova tutte le pagine.' },
+  'codice-fiscale-inverso': { page: 'codice-fiscale-inverso', title: 'Codice Fiscale Inverso - Decodifica Online | ' + SITE_NAME, description: 'Decodifica il Codice Fiscale italiano: scopri data di nascita, sesso, comune e il significato di ogni carattere. Strumento gratuito e immediato.' },
+  'verifica-codice-fiscale': { page: 'verifica-codice-fiscale', title: 'Verifica Codice Fiscale - Controlla Validità | ' + SITE_NAME, description: 'Verifica se un Codice Fiscale italiano è valido. Controlla formato, data di nascita e carattere di controllo. Strumento gratuito online.' }
 };
 
 app.use('/tools', (req, res, next) => {
@@ -286,12 +289,83 @@ app.get('/api/comuni', (req, res) => {
   res.json(cercaComune(query));
 });
 
+app.post('/api/inverso', (req, res) => {
+  const { codice_fiscale } = req.body;
+  if (!codice_fiscale || !codice_fiscale.trim()) {
+    return res.json({ success: false, errors: ['Il Codice Fiscale è obbligatorio.'] });
+  }
+  try {
+    const result = decodeCF(codice_fiscale.trim());
+    res.json({ success: result.valid, ...result });
+  } catch (e) {
+    res.json({ success: false, errors: [e.message] });
+  }
+});
+
+app.post('/api/verifica', (req, res) => {
+  const { codice_fiscale } = req.body;
+  if (!codice_fiscale || !codice_fiscale.trim()) {
+    return res.json({ success: false, errors: ['Il Codice Fiscale è obbligatorio.'] });
+  }
+  try {
+    const code = codice_fiscale.trim().toUpperCase();
+    const CF_RE = /^[A-Z]{6}\d{2}[ABCDEHLMPRST]\d{2}[A-Z]\d{3}[A-Z]$/;
+    const formatOk = code.length === 16 && CF_RE.test(code);
+
+    let dateOk = false;
+    let checksumOk = false;
+
+    if (formatOk) {
+      const MONTH_REV = { A:1,B:2,C:3,D:4,E:5,H:6,L:7,M:8,P:9,R:10,S:11,T:12 };
+      const monthChar = code[8];
+      const monthValid = !!MONTH_REV[monthChar];
+      const dayVal = parseInt(code.substring(9, 11), 10);
+      const actualDay = dayVal > 40 ? dayVal - 40 : dayVal;
+      dateOk = monthValid && actualDay >= 1 && actualDay <= 31;
+
+      const validation = validateCF(code);
+      checksumOk = validation.errors.every(e => !e.includes('controllo'));
+    }
+
+    const checks = [
+      { label: 'Formato', detail: formatOk ? 'Il formato è corretto (16 caratteri alfanumerici)' : 'Il formato non è valido', pass: formatOk },
+      { label: 'Data di nascita', detail: !formatOk ? 'Non verificabile (formato non valido)' : (dateOk ? 'La data codificata è plausibile' : 'La data codificata non è valida'), pass: formatOk && dateOk },
+      { label: 'Carattere di controllo', detail: !formatOk ? 'Non verificabile (formato non valido)' : (checksumOk ? 'Il checksum è corretto' : 'Il checksum non corrisponde'), pass: formatOk && checksumOk }
+    ];
+
+    const valid = formatOk && dateOk && checksumOk;
+    const decoded = decodeCF(code);
+    const d = decoded.data;
+
+    res.json({
+      success: true,
+      valid,
+      errors: valid ? [] : checks.filter(c => !c.pass).map(c => c.detail),
+      codiceFiscale: code,
+      checks,
+      extract: d ? {
+        genderLabel: d.genderLabel,
+        dateStr: d.dateStr,
+        municipalityName: d.municipalityName,
+        municipalityCode: d.municipalityCode,
+        surnameSegment: d.surnameSegment,
+        nameSegment: d.nameSegment,
+        checkChar: d.checkChar
+      } : null
+    });
+  } catch (e) {
+    res.json({ success: false, errors: [e.message] });
+  }
+});
+
 app.get('/sitemap.xml', (req, res) => {
   const siteUrl = getSiteUrl(req);
   const todayISO = new Date().toISOString().split('T')[0];
   const urls = [
     { path: '', priority: '1.0' },
     { path: 'calcola', priority: '0.9' },
+    { path: 'codice-fiscale-inverso', priority: '0.9' },
+    { path: 'verifica-codice-fiscale', priority: '0.9' },
     { path: 'codice-fiscale', priority: '0.9' },
     { path: 'cos-e-il-codice-fiscale', priority: '0.8' },
     { path: 'come-si-calcola-il-codice-fiscale', priority: '0.8' },

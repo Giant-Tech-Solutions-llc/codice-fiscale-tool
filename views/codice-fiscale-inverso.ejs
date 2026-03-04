@@ -1,0 +1,636 @@
+<section class="cf-page">
+  <div class="cf-container cf-container--wide">
+    <div class="cf-card">
+      <div class="cf-card__header cf-card__header--inverso">
+        <h1 class="cf-card__title">Codice Fiscale Inverso</h1>
+        <p class="cf-card__subtitle">Inserisci un Codice Fiscale per decodificarne i dati anagrafici</p>
+      </div>
+
+      <div class="cf-card__body">
+        <div class="cf-alert cf-alert--error" role="alert" id="inverso-error" style="display:none">
+          <svg class="cf-alert__icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/></svg>
+          <ul class="cf-alert__list" id="inverso-error-list"></ul>
+        </div>
+
+        <form id="inverso-form" novalidate>
+          <div class="cf-field">
+            <label class="cf-label" for="codice_fiscale">Codice Fiscale</label>
+            <input class="cf-input cf-input--mono" type="text" id="codice_fiscale" name="codice_fiscale" placeholder="Es. RSSMRA85C15H501R" required maxlength="16" autocomplete="off" style="text-transform:uppercase;letter-spacing:.1em;font-family:'Courier New',monospace">
+          </div>
+          <button type="submit" class="cf-btn" id="inverso-btn">Decodifica Codice Fiscale</button>
+        </form>
+
+        <div class="result-section" role="status" aria-live="polite" id="inverso-result" style="display:none">
+          <div class="cf-result">
+            <span class="cf-result__label">Codice Fiscale Analizzato</span>
+            <output class="cf-result__code" id="cf-output"></output>
+            <button type="button" class="cf-copy" id="cf-copy-btn" aria-label="Copia Codice Fiscale negli appunti">
+              <svg class="cf-copy__icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M8 2a1 1 0 000 2h2a1 1 0 100-2H8z"/><path d="M3 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v6h-4.586l1.293-1.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L10.414 13H15v3a2 2 0 01-2 2H5a2 2 0 01-2-2V5z"/></svg>
+              <span id="cf-copy-text">Copia</span>
+            </button>
+          </div>
+
+          <div class="cf-breakdown">
+            <h3>Scomposizione Visiva</h3>
+            <div class="cf-chars" id="cf-chars"></div>
+            <div class="cf-legend" id="cf-legend"></div>
+          </div>
+
+          <div class="data-cards" id="data-cards"></div>
+
+          <div class="detail-table-wrapper">
+            <h3>Analisi Dettagliata dei Segmenti</h3>
+            <table class="detail-table">
+              <thead>
+                <tr>
+                  <th>Segmento</th>
+                  <th>Caratteri</th>
+                  <th>Descrizione</th>
+                </tr>
+              </thead>
+              <tbody id="detail-tbody"></tbody>
+            </table>
+          </div>
+
+          <div class="cf-alert cf-alert--error" role="alert" id="inverso-warning" style="display:none;margin-top:1.5rem">
+            <svg class="cf-alert__icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/></svg>
+            <div>
+              <strong>Attenzione:</strong> Il codice fiscale presenta degli errori di validazione.
+              <ul class="cf-alert__list" id="inverso-warning-list" style="margin-top:.5rem"></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.cf-page {
+  padding: 32px 0 48px;
+  min-height: calc(100vh - 200px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.cf-container {
+  width: 100%;
+  max-width: 480px;
+  padding: 0 16px;
+}
+
+.cf-container--wide {
+  max-width: 680px;
+}
+
+.cf-card {
+  background: var(--white);
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, .08), 0 1px 3px rgba(0, 0, 0, .04);
+  overflow: hidden;
+}
+
+.cf-card__header {
+  background: linear-gradient(135deg, #006B35, #008C45);
+  padding: 32px 24px;
+  text-align: center;
+  color: var(--white);
+}
+
+.cf-card__header--inverso {
+  background: linear-gradient(135deg, #4338CA, #6366F1);
+}
+
+.cf-card__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -.02em;
+  margin-bottom: 8px;
+}
+
+.cf-card__subtitle {
+  font-size: .875rem;
+  opacity: .85;
+  line-height: 1.5;
+}
+
+.cf-card__body {
+  padding: 24px;
+}
+
+.cf-alert {
+  display: flex;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+
+.cf-alert--error {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #991b1b;
+}
+
+.cf-alert__icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: #dc2626;
+}
+
+.cf-alert__list {
+  list-style: none;
+  font-size: .875rem;
+  line-height: 1.6;
+}
+
+.cf-field {
+  margin-bottom: 24px;
+  border: none;
+  padding: 0;
+}
+
+.cf-label {
+  display: block;
+  font-size: .8125rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 8px;
+  letter-spacing: .01em;
+}
+
+.cf-input {
+  display: block;
+  width: 100%;
+  height: 48px;
+  padding: 0 16px;
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: var(--font);
+  color: var(--text);
+  background: var(--white);
+  transition: border-color .2s, box-shadow .2s;
+  -webkit-appearance: none;
+}
+
+.cf-input::placeholder {
+  color: #9ca3af;
+}
+
+.cf-input:focus {
+  outline: none;
+  border-color: #6366F1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, .15);
+}
+
+.cf-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 48px;
+  background: #6366F1;
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: var(--font);
+  cursor: pointer;
+  transition: background .2s, transform .1s;
+  margin-top: 8px;
+}
+
+.cf-btn:hover {
+  background: #4338CA;
+}
+
+.cf-btn:active {
+  transform: scale(.98);
+}
+
+.cf-btn:focus-visible {
+  outline: 2px solid #6366F1;
+  outline-offset: 2px;
+}
+
+.cf-btn:disabled {
+  opacity: .7;
+  cursor: not-allowed;
+}
+
+.cf-result {
+  margin-top: 24px;
+  padding: 24px;
+  background: #EEF2FF;
+  border: 2px solid #6366F1;
+  border-radius: 12px;
+  text-align: center;
+  animation: cfFadeIn .4s ease;
+}
+
+.cf-result__label {
+  display: block;
+  font-size: .8125rem;
+  font-weight: 600;
+  color: #6366F1;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  margin-bottom: 8px;
+}
+
+.cf-result__code {
+  display: block;
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: .15em;
+  color: var(--text);
+  font-family: 'Courier New', monospace;
+  word-break: break-all;
+  padding: 8px 0;
+}
+
+.cf-copy {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 16px;
+  padding: 8px 20px;
+  background: #6366F1;
+  color: var(--white);
+  border: none;
+  border-radius: 6px;
+  font-size: .875rem;
+  font-weight: 600;
+  font-family: var(--font);
+  cursor: pointer;
+  transition: background .2s;
+}
+
+.cf-copy:hover {
+  background: #4338CA;
+}
+
+.cf-copy--done {
+  background: var(--text);
+}
+
+.cf-copy__icon {
+  width: 16px;
+  height: 16px;
+}
+
+@keyframes cfFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.cf-breakdown {
+  margin: 2rem 0 1.5rem;
+  text-align: center;
+}
+
+.cf-breakdown h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-light, #666);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.cf-chars {
+  display: inline-flex;
+  gap: 3px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.cf-char {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4rem;
+  height: 2.8rem;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border-radius: 6px;
+  color: #fff;
+  cursor: default;
+  transition: transform 0.15s ease;
+}
+
+.cf-char:hover { transform: translateY(-2px); }
+
+.legend-cognome   { background: #4F46E5; }
+.legend-nome      { background: #0EA5E9; }
+.legend-anno      { background: #10B981; }
+.legend-mese      { background: #F59E0B; color: #1a1a1a; }
+.legend-giorno    { background: #EF4444; }
+.legend-comune    { background: #8B5CF6; }
+.legend-controllo { background: #6B7280; }
+
+.cf-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-top: 0.75rem;
+}
+
+.legend-item {
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.legend-item.legend-mese { color: #1a1a1a; }
+
+.data-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.data-card {
+  background: var(--bg, #f8f9fa);
+  border: 1px solid var(--border, #e5e7eb);
+  border-radius: 12px;
+  padding: 1.25rem 1rem;
+  text-align: center;
+  transition: box-shadow 0.2s ease;
+}
+
+.data-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.data-card__icon {
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.data-card__label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-light, #888);
+  margin-bottom: 0.4rem;
+}
+
+.data-card__value {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #4F46E5;
+}
+
+.detail-table-wrapper {
+  margin-top: 2rem;
+  overflow-x: auto;
+}
+
+.detail-table-wrapper h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: var(--text, #1a1a1a);
+}
+
+.detail-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.detail-table th {
+  background: #4F46E5;
+  color: #fff;
+  padding: 0.6rem 1rem;
+  text-align: left;
+  font-weight: 600;
+}
+
+.detail-table td {
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid var(--border, #e5e7eb);
+  vertical-align: top;
+}
+
+.detail-table tr:nth-child(even) td {
+  background: var(--bg, #f8f9fa);
+}
+
+.detail-table .mono {
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #4F46E5;
+}
+
+.result-section {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border, #e5e7eb);
+}
+
+@media (max-width: 600px) {
+  .cf-char {
+    width: 1.9rem;
+    height: 2.2rem;
+    font-size: 1rem;
+  }
+
+  .data-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .detail-table {
+    font-size: 0.8rem;
+  }
+
+  .detail-table th,
+  .detail-table td {
+    padding: 0.5rem 0.6rem;
+  }
+}
+
+@media (min-width: 640px) {
+  .cf-page {
+    padding: 48px 0 64px;
+  }
+  .cf-card__header {
+    padding: 40px 32px;
+  }
+  .cf-card__title {
+    font-size: 1.75rem;
+  }
+  .cf-card__body {
+    padding: 32px;
+  }
+  .cf-result__code {
+    font-size: 2rem;
+  }
+}
+</style>
+
+<script>
+(function () {
+  var form = document.getElementById('inverso-form');
+  var input = document.getElementById('codice_fiscale');
+  var btn = document.getElementById('inverso-btn');
+  var errorBox = document.getElementById('inverso-error');
+  var errorList = document.getElementById('inverso-error-list');
+  var resultSection = document.getElementById('inverso-result');
+
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var cf = input.value.trim().toUpperCase();
+      if (!cf) return;
+
+      btn.disabled = true;
+      btn.textContent = 'Decodifica in corso...';
+      errorBox.style.display = 'none';
+
+      fetch('/api/inverso', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ codice_fiscale: cf })
+      })
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        btn.disabled = false;
+        btn.textContent = 'Decodifica Codice Fiscale';
+
+        if (!data.data) {
+          errorBox.style.display = 'flex';
+          errorList.innerHTML = (data.errors || ['Errore sconosciuto']).map(function (e) {
+            return '<li>' + esc(e) + '</li>';
+          }).join('');
+          resultSection.style.display = 'none';
+          return;
+        }
+
+        renderResult(data);
+      })
+      .catch(function () {
+        btn.disabled = false;
+        btn.textContent = 'Decodifica Codice Fiscale';
+        errorBox.style.display = 'flex';
+        errorList.innerHTML = '<li>Errore durante la decodifica. Riprova.</li>';
+      });
+    });
+  }
+
+  function renderResult(data) {
+    var d = data.data;
+    resultSection.style.display = 'block';
+    resultSection.style.animation = 'none';
+    resultSection.offsetHeight;
+    resultSection.style.animation = 'cfFadeIn .4s ease';
+
+    document.getElementById('cf-output').textContent = d.codiceFiscale;
+
+    var charsEl = document.getElementById('cf-chars');
+    var legendEl = document.getElementById('cf-legend');
+    charsEl.innerHTML = '';
+    legendEl.innerHTML = '';
+
+    d.segments.forEach(function (seg) {
+      for (var i = 0; i < seg.chars.length; i++) {
+        var span = document.createElement('span');
+        span.className = 'cf-char ' + seg.cssClass;
+        span.title = seg.label;
+        span.textContent = seg.chars[i];
+        charsEl.appendChild(span);
+      }
+      var legend = document.createElement('span');
+      legend.className = 'legend-item ' + seg.cssClass;
+      legend.textContent = seg.label;
+      legendEl.appendChild(legend);
+    });
+
+    var cardsEl = document.getElementById('data-cards');
+    var cards = [
+      { icon: '\uD83D\uDC64', label: 'Sesso', value: d.genderLabel },
+      { icon: '\uD83D\uDCC5', label: 'Data di Nascita', value: d.dateStr || 'N/D' },
+      { icon: '\uD83D\uDCCD', label: 'Comune di Nascita', value: d.municipalityName || d.municipalityCode },
+      { icon: '\uD83C\uDFF7\uFE0F', label: 'Codice Catastale', value: d.municipalityCode },
+      { icon: '\uD83D\uDCDD', label: 'Cognome (segmento)', value: d.surnameSegment },
+      { icon: '\u270F\uFE0F', label: 'Nome (segmento)', value: d.nameSegment }
+    ];
+    cardsEl.innerHTML = cards.map(function (c) {
+      return '<div class="data-card"><span class="data-card__icon">' + c.icon + '</span><div class="data-card__label">' + esc(c.label) + '</div><div class="data-card__value">' + esc(c.value) + '</div></div>';
+    }).join('');
+
+    var tbody = document.getElementById('detail-tbody');
+    tbody.innerHTML = d.segments.map(function (seg) {
+      return '<tr><td>' + esc(seg.label) + '</td><td class="mono">' + esc(seg.chars) + '</td><td>' + esc(seg.description) + '</td></tr>';
+    }).join('');
+
+    var warningBox = document.getElementById('inverso-warning');
+    var warningList = document.getElementById('inverso-warning-list');
+    if (!data.valid && data.errors && data.errors.length > 0) {
+      warningBox.style.display = 'flex';
+      warningList.innerHTML = data.errors.map(function (e) {
+        return '<li>' + esc(e) + '</li>';
+      }).join('');
+    } else {
+      warningBox.style.display = 'none';
+    }
+  }
+
+  function esc(str) {
+    if (!str) return '';
+    return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  var copyBtn = document.getElementById('cf-copy-btn');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', function () {
+      var code = document.getElementById('cf-output');
+      if (!code) return;
+      var text = code.textContent.trim();
+      if (!text) return;
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(onCopied).catch(fallbackCopy);
+      } else {
+        fallbackCopy();
+      }
+
+      function fallbackCopy() {
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); onCopied(); } catch (e) {}
+        document.body.removeChild(ta);
+      }
+
+      function onCopied() {
+        var label = document.getElementById('cf-copy-text');
+        copyBtn.classList.add('cf-copy--done');
+        if (label) label.textContent = 'Copiato!';
+        setTimeout(function () {
+          copyBtn.classList.remove('cf-copy--done');
+          if (label) label.textContent = 'Copia';
+        }, 2000);
+      }
+    });
+  }
+})();
+</script>

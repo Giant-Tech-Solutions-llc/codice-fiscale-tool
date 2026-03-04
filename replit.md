@@ -1,7 +1,7 @@
 # Codice Fiscale Online
 
 ## Overview
-Italian Tax ID Code (Codice Fiscale) generator website built with Node.js/Express and EJS templating. Features a working calculator tool with official algorithm, SEO-optimized content pages (pillar + cluster strategy), all AdSense compliance pages, and modern mobile-first design with Italian flag color theme (green/white/red).
+Italian Tax ID Code (Codice Fiscale) generator website built with Node.js/Express and EJS templating. Features three main tools (generator, reverse decoder, validator), SEO-optimized content pages (pillar + cluster strategy), all AdSense compliance pages, and modern mobile-first design with Italian flag color theme (green/white/red).
 
 ## Project Architecture
 ```
@@ -13,16 +13,18 @@ Italian Tax ID Code (Codice Fiscale) generator website built with Node.js/Expres
 │   └── tool.controller.js # Tool controller: validate, sanitise, call service, render
 ├── src/
 │   ├── codiceFiscale.js         # CF calculation engine (used by server routes)
-│   ├── codiceFiscale.service.js # CF service module (generate + validate, JSDoc, mock comuni)
+│   ├── codiceFiscale.service.js # CF service module (generate, validate, decode, JSDoc)
 │   └── comuni.json              # Italian municipalities database (JSON)
 ├── views/
 │   ├── layouts/
 │   │   └── main.ejs       # Main layout (HTML shell, SEO meta, OG tags, structured data slot)
 │   ├── partials/
-│   │   ├── header.ejs     # Semantic header with nav
+│   │   ├── header.ejs     # Semantic header with nav (Guide, Strumenti dropdowns)
 │   │   └── footer.ejs     # Semantic footer
-│   ├── home.ejs           # Homepage: hero, CTA, calculator, trust signals, cluster links, FAQ
+│   ├── home.ejs           # Homepage: hero, CTA, calculator, tools section, trust signals, FAQ
 │   ├── codice-fiscale.ejs # Dedicated tool page (card layout, gender toggle, copy btn)
+│   ├── codice-fiscale-inverso.ejs # CF reverse decoder tool (purple theme, visual breakdown)
+│   ├── verifica-codice-fiscale.ejs # CF validator tool (green theme, verdict badge, checks)
 │   ├── codice-fiscale-pillar.ejs # SEO pillar page (1500+ words, TOC, 12 sections, FAQ schema)
 │   ├── tool.ejs           # Legacy calculator tool page (/calcola route)
 │   ├── 404.ejs            # 404 error page
@@ -54,6 +56,7 @@ Italian Tax ID Code (Codice Fiscale) generator website built with Node.js/Expres
 
 ## Design System
 - **Primary**: #1E7F4F (Italian green)
+- **Inverso Tool**: #6366F1 / #4338CA (indigo/purple gradient)
 - **Accent**: #E63946 (rare use)
 - **Background**: #F8FAFC
 - **Text**: #111827 primary, #4B5563 secondary
@@ -64,6 +67,8 @@ Italian Tax ID Code (Codice Fiscale) generator website built with Node.js/Expres
 
 ## Key Features
 - Codice Fiscale calculation with official algorithm
+- Codice Fiscale inverse decoding (visual color-coded breakdown, data cards, detail table)
+- Codice Fiscale validation (verdict badge, format/date/checksum checks, quick extract)
 - Municipality autocomplete search (1,291 comuni)
 - Copy-to-clipboard with toast confirmation
 - JSON-LD structured data (FAQ, HowTo, Article, WebApplication)
@@ -77,9 +82,16 @@ Italian Tax ID Code (Codice Fiscale) generator website built with Node.js/Expres
 
 ## API Endpoints
 - POST /api/calcola - Calculate Codice Fiscale (JSON API, used by client-side JS)
+- POST /api/inverso - Decode/reverse a Codice Fiscale (returns segments, decoded data)
+- POST /api/verifica - Validate a Codice Fiscale (returns checks, verdict, extracted data)
 - GET /api/comuni?q=query - Search municipalities
 - GET /sitemap.xml - XML sitemap
 - GET /robots.txt - Robots file
+
+## Tool Pages
+- /calcola — Main calculator tool (legacy route)
+- /codice-fiscale-inverso — Reverse decoder tool (purple/indigo theme, AJAX)
+- /verifica-codice-fiscale — Validator tool (green theme, AJAX)
 
 ## Tool Routes (MVC)
 - GET  /tools/codice-fiscale-generator — Renders calculator form (controller → service → EJS)
@@ -93,8 +105,16 @@ Italian Tax ID Code (Codice Fiscale) generator website built with Node.js/Expres
 - **Routing**: Clean URLs via Express routes
 - **No database required**: Municipality data stored in JSON
 - **Deployment**: Autoscale with `node server.js`
+- **Service Layer**: codiceFiscale.service.js exports generate(), validate(), decode()
+- **Reverse Lookup**: COMUNI_REVERSE map built from comuni.json for cadastral code → municipality name
 
 ## Recent Changes
+- **New tools added** (Mar 2026):
+  - Codice Fiscale Inverso (/codice-fiscale-inverso): reverse decoder with visual color-coded character breakdown, data cards, detail table, AJAX-powered
+  - Verifica Codice Fiscale (/verifica-codice-fiscale): validator with valid/invalid verdict badge, format/date/checksum checks, quick extract panel, AJAX-powered
+  - Added decode() function to codiceFiscale.service.js with reverse municipality lookup
+  - New API endpoints: POST /api/inverso, POST /api/verifica
+  - Updated navigation with "Strumenti" dropdown, footer links, homepage tools section, HTML sitemap
 - **Homepage UI/UX redesign** (Feb 2026): Complete visual overhaul following premium SaaS design spec
   - New design system: #1E7F4F primary, system fonts, 8pt spacing, soft shadows
   - Two-column hero with floating tool card, trust bullets, soft gradient background
