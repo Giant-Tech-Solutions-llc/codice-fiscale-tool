@@ -56,7 +56,6 @@ Italian Tax ID Code (Codice Fiscale) generator website built with Node.js/Expres
 
 ## Design System
 - **Primary**: #1E7F4F (Italian green)
-- **Inverso Tool**: #6366F1 / #4338CA (indigo/purple gradient)
 - **Accent**: #E63946 (rare use)
 - **Background**: #F8FAFC
 - **Text**: #111827 primary, #4B5563 secondary
