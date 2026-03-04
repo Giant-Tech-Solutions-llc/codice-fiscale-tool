@@ -1,735 +1,215 @@
-<section class="cf-page">
-  <div class="cf-container cf-container--wide">
-    <div class="cf-card">
-      <div class="cf-card__header cf-card__header--inverso">
-        <h1 class="cf-card__title">Codice Fiscale Inverso</h1>
-        <p class="cf-card__subtitle">Inserisci un Codice Fiscale per decodificarne i dati anagrafici</p>
+<!-- BREADCRUMB -->
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <div class="container">
+    <ol>
+      <li><a href="/">Home</a></li>
+      <li aria-current="page">Codice Fiscale Inverso</li>
+    </ol>
+  </div>
+</nav>
+
+<!-- HERO SECTION -->
+<section class="tool-hero" aria-labelledby="hero-title">
+  <div class="container">
+    <h1 id="hero-title">Codice Fiscale Inverso</h1>
+    <p class="tool-hero__subtitle">
+      Decodifica qualsiasi codice fiscale italiano in pochi secondi. Scopri data di nascita, sesso e comune di nascita con visualizzazione carattere per carattere.
+    </p>
+    <ul class="tool-hero__badges" aria-label="Caratteristiche">
+      <li>✓ Estrazione dati completa</li>
+      <li>✓ Nessun dato salvato</li>
+      <li>✓ Gratuito e immediato</li>
+    </ul>
+  </div>
+</section>
+
+<!-- TOOL SECTION -->
+<section class="tool-section" aria-labelledby="tool-title">
+  <div class="container">
+    <div class="tool-card">
+      <h2 id="tool-title">Decodifica il tuo Codice Fiscale</h2>
+      <p class="tool-card__desc">Inserisci un codice fiscale di 16 caratteri per estrarre tutti i dati anagrafici codificati</p>
+
+      <div class="tool-input-group">
+        <label for="cf-input" class="visually-hidden">Inserisci Codice Fiscale</label>
+        <input
+          id="cf-input"
+          type="text"
+          class="cf-input"
+          placeholder="Es. RSSMRA85M01H501Z"
+          maxlength="16"
+          autocomplete="off"
+          autocorrect="off"
+          autocapitalize="characters"
+          spellcheck="false"
+          aria-describedby="cf-input-hint"
+        />
+        <span id="cf-input-hint" class="input-hint">16 caratteri alfanumerici</span>
       </div>
 
-      <div class="cf-card__body">
-        <p class="error-msg" id="error-msg" hidden style="background:#fef2f2;border:1px solid #fecaca;color:#991b1b;padding:12px 16px;border-radius:8px;font-size:.875rem;margin-bottom:24px"></p>
+      <button id="decode-btn" class="btn btn--primary btn--large" aria-controls="result-section">
+        Decodifica Codice Fiscale
+      </button>
 
-        <div class="cf-field">
-          <label class="cf-label" for="cf-input">Codice Fiscale</label>
-          <input class="cf-input cf-input--mono" type="text" id="cf-input" name="codice_fiscale" placeholder="Es. RSSMRA85C15H501R" required maxlength="16" autocomplete="off" style="text-transform:uppercase;letter-spacing:.1em;font-family:'Courier New',monospace">
-        </div>
-        <div style="display:flex;gap:8px">
-          <button type="button" class="cf-btn" id="decode-btn" style="flex:1">Decodifica Codice Fiscale</button>
-          <button type="button" class="cf-btn" id="reset-btn" style="flex:0 0 auto;width:48px;background:var(--text-light);font-size:1.2rem" aria-label="Reset" title="Reset">↺</button>
-        </div>
+      <!-- ERROR -->
+      <div id="error-msg" class="error-msg" role="alert" aria-live="polite" hidden></div>
 
-        <div class="result-section" role="status" aria-live="polite" id="result-section" hidden>
-          <div class="cf-result">
-            <span class="cf-result__label">Codice Fiscale Analizzato</span>
-            <output class="cf-result__code" id="cf-output"></output>
-            <button type="button" class="cf-copy" id="cf-copy-btn" aria-label="Copia Codice Fiscale negli appunti">
-              <svg class="cf-copy__icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M8 2a1 1 0 000 2h2a1 1 0 100-2H8z"/><path d="M3 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v6h-4.586l1.293-1.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L10.414 13H15v3a2 2 0 01-2 2H5a2 2 0 01-2-2V5z"/></svg>
-              <span id="cf-copy-text">Copia</span>
-            </button>
-          </div>
+      <!-- RESULT -->
+      <div id="result-section" class="result-section" hidden aria-live="polite">
 
-          <div class="cf-breakdown">
-            <h3>Scomposizione Visiva</h3>
-            <div class="cf-chars" id="cf-chars"></div>
-            <div class="cf-legend" id="cf-legend">
-              <span class="legend-item legend-cognome">Cognome</span>
-              <span class="legend-item legend-nome">Nome</span>
-              <span class="legend-item legend-anno">Anno</span>
-              <span class="legend-item legend-mese">Mese</span>
-              <span class="legend-item legend-giorno">Giorno/Sesso</span>
-              <span class="legend-item legend-comune">Comune</span>
-              <span class="legend-item legend-controllo">Controllo</span>
-            </div>
-          </div>
-
-          <div class="data-cards">
-            <div class="data-card">
-              <span class="data-card__icon">👤</span>
-              <div class="data-card__label">Sesso</div>
-              <div class="data-card__value" id="result-sesso"></div>
-            </div>
-            <div class="data-card">
-              <span class="data-card__icon">📅</span>
-              <div class="data-card__label">Data di Nascita</div>
-              <div class="data-card__value" id="result-nascita"></div>
-            </div>
-            <div class="data-card">
-              <span class="data-card__icon">📍</span>
-              <div class="data-card__label">Codice Catastale</div>
-              <div class="data-card__value" id="result-comune"></div>
-            </div>
-            <div class="data-card">
-              <span class="data-card__icon">🎂</span>
-              <div class="data-card__label">Età</div>
-              <div class="data-card__value" id="result-eta"></div>
-            </div>
-          </div>
-
-          <div class="detail-table-wrapper">
-            <h3>Analisi Dettagliata dei Segmenti</h3>
-            <table class="detail-table">
-              <thead>
-                <tr>
-                  <th>Segmento</th>
-                  <th>Caratteri</th>
-                  <th>Valore</th>
-                  <th>Descrizione</th>
-                </tr>
-              </thead>
-              <tbody id="detail-tbody"></tbody>
-            </table>
+        <!-- VISUAL BREAKDOWN -->
+        <div class="cf-breakdown" aria-label="Scomposizione visiva del codice fiscale">
+          <h3>Scomposizione del Codice Fiscale</h3>
+          <div class="cf-chars" id="cf-chars" role="img" aria-label="Caratteri del codice fiscale evidenziati"></div>
+          <div class="cf-legend">
+            <span class="legend-item legend-cognome">Cognome (1-3)</span>
+            <span class="legend-item legend-nome">Nome (4-6)</span>
+            <span class="legend-item legend-anno">Anno (7-8)</span>
+            <span class="legend-item legend-mese">Mese (9)</span>
+            <span class="legend-item legend-giorno">Giorno/Sesso (10-11)</span>
+            <span class="legend-item legend-comune">Comune (12-15)</span>
+            <span class="legend-item legend-controllo">Controllo (16)</span>
           </div>
         </div>
+
+        <!-- EXTRACTED DATA CARDS -->
+        <div class="data-cards" aria-label="Dati estratti">
+          <div class="data-card" id="card-nascita">
+            <div class="data-card__icon" aria-hidden="true">📅</div>
+            <div class="data-card__label">Data di Nascita</div>
+            <div class="data-card__value" id="result-nascita">—</div>
+          </div>
+          <div class="data-card" id="card-sesso">
+            <div class="data-card__icon" aria-hidden="true">👤</div>
+            <div class="data-card__label">Sesso</div>
+            <div class="data-card__value" id="result-sesso">—</div>
+          </div>
+          <div class="data-card" id="card-comune">
+            <div class="data-card__icon" aria-hidden="true">📍</div>
+            <div class="data-card__label">Comune / Stato di Nascita</div>
+            <div class="data-card__value" id="result-comune">—</div>
+          </div>
+          <div class="data-card" id="card-eta">
+            <div class="data-card__icon" aria-hidden="true">🎂</div>
+            <div class="data-card__label">Età</div>
+            <div class="data-card__value" id="result-eta">—</div>
+          </div>
+        </div>
+
+        <!-- DETAIL TABLE -->
+        <div class="detail-table-wrapper">
+          <h3>Dettaglio Segmenti</h3>
+          <table class="detail-table" aria-label="Dettaglio segmenti codice fiscale">
+            <thead>
+              <tr>
+                <th scope="col">Segmento</th>
+                <th scope="col">Caratteri</th>
+                <th scope="col">Valore</th>
+                <th scope="col">Significato</th>
+              </tr>
+            </thead>
+            <tbody id="detail-tbody"></tbody>
+          </table>
+        </div>
+
+        <button id="reset-btn" class="btn btn--secondary">Analizza un altro CF</button>
       </div>
     </div>
   </div>
 </section>
 
-<style>
-.cf-page {
-  padding: 32px 0 48px;
-  min-height: calc(100vh - 200px);
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-}
-
-.cf-container {
-  width: 100%;
-  max-width: 480px;
-  padding: 0 16px;
-}
-
-.cf-container--wide {
-  max-width: 680px;
-}
-
-.cf-card {
-  background: var(--white);
-  border-radius: 16px;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, .08), 0 1px 3px rgba(0, 0, 0, .04);
-  overflow: hidden;
-}
-
-.cf-card__header {
-  background: linear-gradient(135deg, #006B35, #008C45);
-  padding: 32px 24px;
-  text-align: center;
-  color: var(--white);
-}
-
-.cf-card__header--inverso {
-  background: linear-gradient(135deg, #006B35, #008C45);
-}
-
-.cf-card__title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  letter-spacing: -.02em;
-  margin-bottom: 8px;
-}
-
-.cf-card__subtitle {
-  font-size: .875rem;
-  opacity: .85;
-  line-height: 1.5;
-}
-
-.cf-card__body {
-  padding: 24px;
-}
-
-.cf-field {
-  margin-bottom: 24px;
-  border: none;
-  padding: 0;
-}
-
-.cf-label {
-  display: block;
-  font-size: .8125rem;
-  font-weight: 600;
-  color: var(--text);
-  margin-bottom: 8px;
-  letter-spacing: .01em;
-}
-
-.cf-input {
-  display: block;
-  width: 100%;
-  height: 48px;
-  padding: 0 16px;
-  border: 2px solid var(--border);
-  border-radius: 8px;
-  font-size: 1rem;
-  font-family: var(--font);
-  color: var(--text);
-  background: var(--white);
-  transition: border-color .2s, box-shadow .2s;
-  -webkit-appearance: none;
-}
-
-.cf-input::placeholder {
-  color: #9ca3af;
-}
-
-.cf-input:focus {
-  outline: none;
-  border-color: var(--primary);
-  box-shadow: 0 0 0 3px var(--primary-light);
-}
-
-.cf-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 48px;
-  background: var(--primary);
-  color: var(--white);
-  border: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 600;
-  font-family: var(--font);
-  cursor: pointer;
-  transition: background .2s, transform .1s;
-  margin-top: 8px;
-}
-
-.cf-btn:hover {
-  background: var(--primary-dark);
-}
-
-.cf-btn:active {
-  transform: scale(.98);
-}
-
-.cf-btn:focus-visible {
-  outline: 2px solid var(--primary);
-  outline-offset: 2px;
-}
-
-.cf-btn:disabled {
-  opacity: .7;
-  cursor: not-allowed;
-}
-
-.cf-result {
-  margin-top: 24px;
-  padding: 24px;
-  background: var(--primary-light);
-  border: 2px solid var(--primary);
-  border-radius: 12px;
-  text-align: center;
-  animation: cfFadeIn .4s ease;
-}
-
-.cf-result__label {
-  display: block;
-  font-size: .8125rem;
-  font-weight: 600;
-  color: var(--primary);
-  text-transform: uppercase;
-  letter-spacing: .05em;
-  margin-bottom: 8px;
-}
-
-.cf-result__code {
-  display: block;
-  font-size: 1.75rem;
-  font-weight: 700;
-  letter-spacing: .15em;
-  color: var(--text);
-  font-family: 'Courier New', monospace;
-  word-break: break-all;
-  padding: 8px 0;
-}
-
-.cf-copy {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  margin-top: 16px;
-  padding: 8px 20px;
-  background: var(--primary);
-  color: var(--white);
-  border: none;
-  border-radius: 6px;
-  font-size: .875rem;
-  font-weight: 600;
-  font-family: var(--font);
-  cursor: pointer;
-  transition: background .2s;
-}
-
-.cf-copy:hover {
-  background: var(--primary-dark);
-}
-
-.cf-copy--done {
-  background: var(--text);
-}
-
-.cf-copy__icon {
-  width: 16px;
-  height: 16px;
-}
-
-@keyframes cfFadeIn {
-  from { opacity: 0; transform: translateY(8px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-.cf-breakdown {
-  margin: 2rem 0 1.5rem;
-  text-align: center;
-}
-
-.cf-breakdown h3 {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--text-light, #666);
-  margin-bottom: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.cf-chars {
-  display: inline-flex;
-  gap: 3px;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-bottom: 1rem;
-}
-
-.cf-char {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.4rem;
-  height: 2.8rem;
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 1.2rem;
-  font-weight: 700;
-  border-radius: 6px;
-  color: #fff;
-  cursor: default;
-  transition: transform 0.15s ease;
-}
-
-.cf-char:hover { transform: translateY(-2px); }
-
-.legend-cognome   { background: #1E7F4F; }
-.legend-nome      { background: #0EA5E9; }
-.legend-anno      { background: #10B981; }
-.legend-mese      { background: #F59E0B; color: #1a1a1a; }
-.legend-giorno    { background: #EF4444; }
-.legend-comune    { background: #2E8B57; }
-.legend-controllo { background: #6B7280; }
-
-.cf-legend {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  justify-content: center;
-  margin-top: 0.75rem;
-}
-
-.legend-item {
-  padding: 0.25rem 0.75rem;
-  border-radius: 20px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: #fff;
-}
-
-.legend-item.legend-mese { color: #1a1a1a; }
-
-.data-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 1rem;
-  margin: 1.5rem 0;
-}
-
-.data-card {
-  background: var(--bg, #f8f9fa);
-  border: 1px solid var(--border, #e5e7eb);
-  border-radius: 12px;
-  padding: 1.25rem 1rem;
-  text-align: center;
-  transition: box-shadow 0.2s ease;
-}
-
-.data-card:hover {
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-}
-
-.data-card__icon {
-  font-size: 1.75rem;
-  margin-bottom: 0.5rem;
-  display: block;
-}
-
-.data-card__label {
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--text-light, #888);
-  margin-bottom: 0.4rem;
-}
-
-.data-card__value {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--primary);
-}
-
-.detail-table-wrapper {
-  margin-top: 2rem;
-  overflow-x: auto;
-}
-
-.detail-table-wrapper h3 {
-  font-size: 1rem;
-  font-weight: 600;
-  margin-bottom: 0.75rem;
-  color: var(--text, #1a1a1a);
-}
-
-.detail-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.9rem;
-}
-
-.detail-table th {
-  background: var(--primary);
-  color: #fff;
-  padding: 0.6rem 1rem;
-  text-align: left;
-  font-weight: 600;
-}
-
-.detail-table td {
-  padding: 0.6rem 1rem;
-  border-bottom: 1px solid var(--border, #e5e7eb);
-  vertical-align: top;
-}
-
-.detail-table tr:nth-child(even) td {
-  background: var(--bg, #f8f9fa);
-}
-
-.detail-table .mono {
-  font-family: 'Courier New', Courier, monospace;
-  font-weight: 700;
-  font-size: 1rem;
-  color: var(--primary);
-}
-
-.result-section {
-  margin-top: 2rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--border, #e5e7eb);
-}
-
-@media (max-width: 600px) {
-  .cf-char {
-    width: 1.9rem;
-    height: 2.2rem;
-    font-size: 1rem;
-  }
-
-  .data-cards {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .detail-table {
-    font-size: 0.8rem;
-  }
-
-  .detail-table th,
-  .detail-table td {
-    padding: 0.5rem 0.6rem;
-  }
-}
-
-@media (min-width: 640px) {
-  .cf-page {
-    padding: 48px 0 64px;
-  }
-  .cf-card__header {
-    padding: 40px 32px;
-  }
-  .cf-card__title {
-    font-size: 1.75rem;
-  }
-  .cf-card__body {
-    padding: 32px;
-  }
-  .cf-result__code {
-    font-size: 2rem;
-  }
-}
-</style>
-
-<script>
-'use strict';
-
-const MONTH_MAP = {
-  A: { num: 1,  name: 'Gennaio' },
-  B: { num: 2,  name: 'Febbraio' },
-  C: { num: 3,  name: 'Marzo' },
-  D: { num: 4,  name: 'Aprile' },
-  E: { num: 5,  name: 'Maggio' },
-  H: { num: 6,  name: 'Giugno' },
-  L: { num: 7,  name: 'Luglio' },
-  M: { num: 8,  name: 'Agosto' },
-  P: { num: 9,  name: 'Settembre' },
-  R: { num: 10, name: 'Ottobre' },
-  S: { num: 11, name: 'Novembre' },
-  T: { num: 12, name: 'Dicembre' },
-};
-
-const ODD_VALUES = {
-  '0':1,'1':0,'2':5,'3':7,'4':9,'5':13,'6':15,'7':17,'8':19,'9':21,
-  A:1,B:0,C:5,D:7,E:9,F:13,G:15,H:17,I:19,J:21,K:2,L:4,M:18,N:20,
-  O:11,P:3,Q:6,R:8,S:12,T:14,U:16,V:10,W:22,X:25,Y:24,Z:23
-};
-const EVEN_VALUES = {
-  '0':0,'1':1,'2':2,'3':3,'4':4,'5':5,'6':6,'7':7,'8':8,'9':9,
-  A:0,B:1,C:2,D:3,E:4,F:5,G:6,H:7,I:8,J:9,K:10,L:11,M:12,N:13,
-  O:14,P:15,Q:16,R:17,S:18,T:19,U:20,V:21,W:22,X:23,Y:24,Z:25
-};
-const CONTROL_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-
-function validateChecksum(cf) {
-  let sum = 0;
-  for (let i = 0; i < 15; i++) {
-    const ch = cf[i].toUpperCase();
-    sum += (i % 2 === 0) ? ODD_VALUES[ch] : EVEN_VALUES[ch];
-  }
-  return CONTROL_CHARS[sum % 26] === cf[15].toUpperCase();
-}
-
-const OMOCODIA_MAP = { L:'0', M:'1', N:'2', P:'3', Q:'4', R:'5', S:'6', T:'7', U:'8', V:'9' };
-function normalizeOmocodia(cf) {
-  const chars = cf.split('');
-  const omoPositions = [6, 7, 9, 10, 12, 13, 14];
-  for (const pos of omoPositions) {
-    if (OMOCODIA_MAP[chars[pos]]) chars[pos] = OMOCODIA_MAP[chars[pos]];
-  }
-  return chars.join('');
-}
-
-function decodeCF(raw) {
-  const cf = raw.trim().toUpperCase();
-
-  if (cf.length !== 16) throw new Error(`Il codice fiscale deve essere di 16 caratteri (inseriti: ${cf.length}).`);
-  if (!/^[A-Z]{6}[0-9LMNPQRSTUV]{2}[ABCDEHLMPRST][0-9LMNPQRSTUV]{2}[A-Z][0-9LMNPQRSTUV]{3}[A-Z]$/i.test(cf)) {
-    throw new Error('Il formato del codice fiscale non è corretto. Verifica lettere e numeri nelle posizioni giuste.');
-  }
-
-  const normalized = normalizeOmocodia(cf);
-
-  const monthChar = normalized[8].toUpperCase();
-  const monthData = MONTH_MAP[monthChar];
-  if (!monthData) throw new Error(`Codice mese non valido: "${monthChar}".`);
-
-  let dayRaw = parseInt(normalized.substring(9, 11), 10);
-  let gender, day;
-  if (Number.isNaN(dayRaw)) throw new Error('Giorno di nascita non valido.');
-  if (dayRaw > 40) {
-    gender = 'Femmina';
-    day = dayRaw - 40;
-  } else {
-    gender = 'Maschio';
-    day = dayRaw;
-  }
-  if (day < 1 || day > 31) throw new Error(`Giorno di nascita non valido: ${day}.`);
-
-  const yearSuffix = parseInt(normalized.substring(6, 8), 10);
-  if (Number.isNaN(yearSuffix)) throw new Error('Anno di nascita non valido.');
-  const currentYear = new Date().getFullYear();
-  const currentSuffix = currentYear % 100;
-  const year = yearSuffix <= currentSuffix ? 2000 + yearSuffix : 1900 + yearSuffix;
-
-  const checksumValid = validateChecksum(cf);
-  const municipalityCode = normalized.substring(11, 15).toUpperCase();
-
-  const birthDate = new Date(year, monthData.num - 1, day);
-  const today = new Date();
-  let age = today.getFullYear() - birthDate.getFullYear();
-  const monthDiff = today.getMonth() - birthDate.getMonth();
-  if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) age--;
-
-  return {
-    cf,
-    surname: cf.substring(0, 3),
-    name:    cf.substring(3, 6),
-    year,
-    yearSuffix: cf.substring(6, 8),
-    monthChar,
-    monthName: monthData.name,
-    monthNum: monthData.num,
-    day,
-    dayRaw: cf.substring(9, 11),
-    gender,
-    municipalityCode,
-    checkChar: cf[15],
-    checksumValid,
-    birthDateFormatted: `${String(day).padStart(2,'0')}/${String(monthData.num).padStart(2,'0')}/${year}`,
-    age,
-  };
-}
-
-const SEGMENTS = [
-  { start: 0, end: 3,  cls: 'legend-cognome',   label: 'Cognome' },
-  { start: 3, end: 6,  cls: 'legend-nome',       label: 'Nome' },
-  { start: 6, end: 8,  cls: 'legend-anno',       label: 'Anno' },
-  { start: 8, end: 9,  cls: 'legend-mese',       label: 'Mese' },
-  { start: 9, end: 11, cls: 'legend-giorno',     label: 'Giorno/Sesso' },
-  { start: 11, end: 15, cls: 'legend-comune',    label: 'Comune' },
-  { start: 15, end: 16, cls: 'legend-controllo', label: 'Controllo' },
-];
-
-function renderBreakdown(cf) {
-  const container = document.getElementById('cf-chars');
-  container.innerHTML = '';
-  for (let i = 0; i < cf.length; i++) {
-    const seg = SEGMENTS.find(s => i >= s.start && i < s.end);
-    const span = document.createElement('span');
-    span.className = `cf-char ${seg ? seg.cls : ''}`;
-    span.textContent = cf[i];
-    span.setAttribute('title', seg ? seg.label : '');
-    container.appendChild(span);
-  }
-}
-
-function renderTable(result) {
-  const rows = [
-    { seg: 'Cognome',     chars: result.cf.substring(0,3),  value: result.cf.substring(0,3),  meaning: 'Consonanti/vocali estratte dal cognome' },
-    { seg: 'Nome',        chars: result.cf.substring(3,6),  value: result.cf.substring(3,6),  meaning: 'Consonanti/vocali estratte dal nome' },
-    { seg: 'Anno',        chars: result.yearSuffix,          value: result.year,                meaning: `Anno di nascita (${result.year})` },
-    { seg: 'Mese',        chars: result.monthChar,           value: result.monthName,           meaning: `Codice mese = ${result.monthName}` },
-    { seg: 'Giorno/Sesso',chars: result.dayRaw,              value: `${String(result.day).padStart(2,'0')} (${result.gender})`, meaning: result.gender === 'Femmina' ? 'Giorno + 40 per femmine' : 'Giorno di nascita' },
-    { seg: 'Comune',      chars: result.municipalityCode,    value: result.municipalityCode,    meaning: 'Codice catastale comune/stato di nascita' },
-    { seg: 'Controllo',   chars: result.checkChar,           value: result.checksumValid ? '✓ Corretto' : '✗ Errato', meaning: 'Carattere di controllo algoritmo' },
-  ];
-
-  const tbody = document.getElementById('detail-tbody');
-  tbody.innerHTML = rows.map(r => `
-    <tr>
-      <td><strong>${r.seg}</strong></td>
-      <td class="mono">${r.chars}</td>
-      <td>${r.value}</td>
-      <td>${r.meaning}</td>
-    </tr>
-  `).join('');
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  const input       = document.getElementById('cf-input');
-  const decodeBtn   = document.getElementById('decode-btn');
-  const resetBtn    = document.getElementById('reset-btn');
-  const resultSec   = document.getElementById('result-section');
-  const errorMsg    = document.getElementById('error-msg');
-
-  function showError(msg) {
-    errorMsg.textContent = msg;
-    errorMsg.hidden = false;
-    resultSec.hidden = true;
-    input.setAttribute('aria-invalid', 'true');
-  }
-
-  function clearError() {
-    errorMsg.hidden = true;
-    input.removeAttribute('aria-invalid');
-  }
-
-  function decode() {
-    clearError();
-    const val = input.value.trim();
-    if (!val) {
-      showError('Inserisci un codice fiscale prima di procedere.');
-      return;
-    }
-
-    let result;
-    try {
-      result = decodeCF(val);
-    } catch (e) {
-      showError(e.message);
-      return;
-    }
-
-    renderBreakdown(result.cf);
-    renderTable(result);
-
-    document.getElementById('cf-output').textContent = result.cf;
-    document.getElementById('result-nascita').textContent = result.birthDateFormatted;
-    document.getElementById('result-sesso').textContent   = result.gender;
-    document.getElementById('result-comune').textContent  = result.municipalityCode;
-    document.getElementById('result-eta').textContent     = `${result.age} anni`;
-
-    if (!result.checksumValid) {
-      showError('⚠️ Attenzione: il carattere di controllo non è corretto. Il CF potrebbe contenere errori.');
-    }
-
-    resultSec.hidden = false;
-    resultSec.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-  }
-
-  decodeBtn.addEventListener('click', decode);
-  input.addEventListener('keydown', e => { if (e.key === 'Enter') decode(); });
-  input.addEventListener('input', () => {
-    input.value = input.value.toUpperCase();
-    clearError();
-  });
-
-  resetBtn.addEventListener('click', () => {
-    input.value = '';
-    resultSec.hidden = true;
-    clearError();
-    input.focus();
-  });
-
-  const copyBtn = document.getElementById('cf-copy-btn');
-  if (copyBtn) {
-    copyBtn.addEventListener('click', () => {
-      const text = (document.getElementById('cf-output').textContent || '').trim();
-      if (!text) return;
-
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(text).then(onCopied).catch(fallbackCopy);
-      } else {
-        fallbackCopy();
-      }
-
-      function fallbackCopy() {
-        const ta = document.createElement('textarea');
-        ta.value = text;
-        ta.style.position = 'fixed';
-        ta.style.opacity = '0';
-        document.body.appendChild(ta);
-        ta.select();
-        try { document.execCommand('copy'); onCopied(); } catch (e) {}
-        document.body.removeChild(ta);
-      }
-
-      function onCopied() {
-        const label = document.getElementById('cf-copy-text');
-        copyBtn.classList.add('cf-copy--done');
-        if (label) label.textContent = 'Copiato!';
-        setTimeout(() => {
-          copyBtn.classList.remove('cf-copy--done');
-          if (label) label.textContent = 'Copia';
-        }, 2000);
-      }
-    });
-  }
-});
-</script>
+<!-- SEO CONTENT SECTION -->
+<section class="content-section" aria-labelledby="content-title">
+  <div class="container">
+    <article class="seo-article">
+      <h2 id="content-title">Cos'è il Calcolo Codice Fiscale Inverso?</h2>
+      <p>
+        Il <strong>codice fiscale inverso</strong> è il processo attraverso cui si estraggono i dati anagrafici codificati all'interno di un codice fiscale italiano. Mentre il calcolo diretto genera il CF a partire da nome, cognome, data e luogo di nascita, il <strong>calcolo inverso</strong> percorre il tragitto opposto: a partire dai 16 caratteri alfanumerici del CF, risale alla <strong>data di nascita dal codice fiscale</strong>, al sesso e al comune o stato estero di nascita.
+      </p>
+      <p>
+        Questo strumento è utile in molti contesti: verifica di un documento, comprensione della struttura del proprio codice fiscale, o semplicemente per curiosità. Il nostro <strong>decodificatore CF online</strong> applica lo stesso algoritmo ufficiale dell'Agenzia delle Entrate usato in fase di generazione, garantendo risultati precisi e affidabili.
+      </p>
+
+      <h3>Come funziona la decodifica del Codice Fiscale</h3>
+      <p>
+        Il codice fiscale italiano è composto da 16 caratteri suddivisi in segmenti specifici. Ecco come vengono interpretati durante il calcolo <strong>CF inverso</strong>:
+      </p>
+      <ul>
+        <li><strong>Caratteri 1–3 (Cognome):</strong> Le prime tre consonanti del cognome, o vocali se le consonanti sono insufficienti.</li>
+        <li><strong>Caratteri 4–6 (Nome):</strong> Se il nome ha 4+ consonanti, si prendono la 1ª, 3ª e 4ª; altrimenti le prime tre consonanti disponibili.</li>
+        <li><strong>Caratteri 7–8 (Anno di nascita):</strong> Le ultime due cifre dell'anno.</li>
+        <li><strong>Carattere 9 (Mese di nascita):</strong> Una lettera codice che rappresenta il mese (A=Gennaio, B=Febbraio, ecc.).</li>
+        <li><strong>Caratteri 10–11 (Giorno e Sesso):</strong> Il giorno di nascita per i maschi (01–31); per le femmine viene sommato 40 (41–71).</li>
+        <li><strong>Caratteri 12–15 (Comune):</strong> Il codice catastale del comune o dello stato estero di nascita.</li>
+        <li><strong>Carattere 16 (Controllo):</strong> Un carattere calcolato algoritmicamente per verificare l'integrità del CF.</li>
+      </ul>
+
+      <h3>Cosa si può ottenere dal codice fiscale inverso?</h3>
+      <p>
+        Attraverso il <strong>calcolo codice fiscale inverso online</strong> è possibile ottenere: la <strong>data di nascita completa</strong> (giorno, mese e anno), il <strong>sesso</strong> del titolare (Maschio o Femmina) e il <strong>comune o stato estero di nascita</strong>. Non è invece possibile risalire con certezza al nome e cognome completi, poiché dalla codifica vengono conservate solo alcune lettere.
+      </p>
+
+      <h3>Strumenti correlati</h3>
+      <p>
+        Vuoi generare un codice fiscale da zero? Usa il nostro <a href="/calcola">Calcolo Codice Fiscale</a> principale. Per verificare se un CF è formalmente corretto, utilizza la nostra <a href="/verifica-codice-fiscale">Verifica Codice Fiscale</a>. Per approfondire come funziona l'algoritmo, leggi la nostra guida su <a href="/come-si-calcola-il-codice-fiscale">come si calcola il codice fiscale</a>.
+      </p>
+    </article>
+
+    <!-- FAQ SECTION -->
+    <section class="faq-section" aria-labelledby="faq-title">
+      <h2 id="faq-title">Domande Frequenti sul Codice Fiscale Inverso</h2>
+      <div class="faq-list">
+
+        <details class="faq-item">
+          <summary class="faq-question">Cosa si può ricavare dal codice fiscale inverso?</summary>
+          <div class="faq-answer">
+            <p>Dal codice fiscale inverso si possono estrarre: <strong>data di nascita</strong> (giorno, mese, anno), <strong>sesso</strong> (Maschio o Femmina) e <strong>comune o stato estero di nascita</strong>. Non è possibile risalire al nome e cognome completi.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">Come si calcola il codice fiscale inverso?</summary>
+          <div class="faq-answer">
+            <p>Si analizzano i 16 caratteri del CF uno a uno: i caratteri 7-8 forniscono l'anno, il carattere 9 il mese, i caratteri 10-11 il giorno e il sesso (se >40 è femmina), i caratteri 12-15 il codice catastale del comune di nascita.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">Il codice fiscale inverso è affidabile?</summary>
+          <div class="faq-answer">
+            <p>Sì, la decodifica è precisa per data di nascita, sesso e comune, poiché questi dati sono codificati in modo univoco nell'algoritmo ufficiale dell'Agenzia delle Entrate.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">Come ricavo la data di nascita dal codice fiscale?</summary>
+          <div class="faq-answer">
+            <p>I caratteri 7 e 8 indicano le ultime due cifre dell'anno di nascita. Il carattere 9 indica il mese tramite un codice lettera (A=Gen, B=Feb, C=Mar, D=Apr, E=Mag, H=Giu, L=Lug, M=Ago, P=Set, R=Ott, S=Nov, T=Dic). I caratteri 10-11 indicano il giorno (sottrarre 40 per le femmine).</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">I miei dati vengono salvati durante la decodifica?</summary>
+          <div class="faq-answer">
+            <p>No. Tutta l'elaborazione avviene in tempo reale nel browser. Nessun codice fiscale o dato personale viene mai salvato o trasmesso ai nostri server.</p>
+          </div>
+        </details>
+
+      </div>
+    </section>
+  </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="cta-section" aria-labelledby="cta-title">
+  <div class="container">
+    <h2 id="cta-title">Hai bisogno di generare un Codice Fiscale?</h2>
+    <p>Usa il nostro calcolatore principale per generare un CF a partire dai dati anagrafici.</p>
+    <div class="cta-actions">
+      <a href="/calcola" class="btn btn--primary btn--large">Calcola Codice Fiscale →</a>
+      <a href="/verifica-codice-fiscale" class="btn btn--outline btn--large">Verifica un CF</a>
+    </div>
+  </div>
+</section>
+
+<script src="/js/inverso.js" defer></script>

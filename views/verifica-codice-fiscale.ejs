@@ -1,577 +1,190 @@
-<section class="cf-page">
-  <div class="cf-container" style="max-width:600px">
-    <div class="cf-card">
-      <div class="cf-card__header">
-        <h1 class="cf-card__title">Verifica Codice Fiscale</h1>
-        <p class="cf-card__subtitle">Inserisci un Codice Fiscale per verificarne la validità e visualizzare i dettagli</p>
+<!-- BREADCRUMB -->
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <div class="container">
+    <ol>
+      <li><a href="/">Home</a></li>
+      <li aria-current="page">Verifica Codice Fiscale</li>
+    </ol>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="tool-hero" aria-labelledby="hero-title">
+  <div class="container">
+    <h1 id="hero-title">Verifica Codice Fiscale</h1>
+    <p class="tool-hero__subtitle">
+      Controlla istantaneamente se un codice fiscale italiano è formalmente valido. Risposta chiara: <strong>VALIDO</strong> o <strong>NON VALIDO</strong>, con indicazione dell'errore specifico.
+    </p>
+    <ul class="tool-hero__badges" aria-label="Caratteristiche">
+      <li>✓ Validazione algoritmo ufficiale</li>
+      <li>✓ Indicazione errore precisa</li>
+      <li>✓ Gratuito e istantaneo</li>
+    </ul>
+  </div>
+</section>
+
+<!-- TOOL -->
+<section class="tool-section" aria-labelledby="tool-title">
+  <div class="container">
+    <div class="tool-card">
+      <h2 id="tool-title">Controlla la Validità del CF</h2>
+      <p class="tool-card__desc">Inserisci il codice fiscale da verificare: riceverai una risposta immediata sulla sua validità formale</p>
+
+      <div class="tool-input-group">
+        <label for="cf-verifica-input" class="visually-hidden">Inserisci Codice Fiscale da verificare</label>
+        <input
+          id="cf-verifica-input"
+          type="text"
+          class="cf-input"
+          placeholder="Es. RSSMRA85M01H501Z"
+          maxlength="16"
+          autocomplete="off"
+          autocorrect="off"
+          autocapitalize="characters"
+          spellcheck="false"
+          aria-describedby="cf-verifica-hint"
+        />
+        <span id="cf-verifica-hint" class="input-hint">16 caratteri alfanumerici</span>
       </div>
 
-      <div class="cf-card__body">
-        <div class="cf-field">
-          <label class="cf-label" for="cf-verifica-input">Codice Fiscale</label>
-          <input class="cf-input" type="text" id="cf-verifica-input" name="codice_fiscale" placeholder="Es. RSSMRA85C15H501R" required autocomplete="off" maxlength="16" style="text-transform:uppercase;font-family:'Courier New',monospace;letter-spacing:.1em;font-size:1.1rem">
+      <button id="verifica-btn" class="btn btn--primary btn--large">
+        Verifica Codice Fiscale
+      </button>
+
+      <!-- RESULT DISPLAY -->
+      <div id="verifica-result" class="verifica-result" hidden aria-live="polite" role="status">
+
+        <!-- VERDICT BADGE -->
+        <div id="verdict-badge" class="verdict-badge" aria-label="Risultato della verifica">
+          <div id="verdict-icon" class="verdict-icon" aria-hidden="true"></div>
+          <div id="verdict-text" class="verdict-text"></div>
+          <div id="verdict-sub" class="verdict-sub"></div>
         </div>
-        <div style="display:flex;gap:8px">
-          <button type="button" class="cf-btn" id="verifica-btn" style="flex:1">Verifica Codice Fiscale</button>
-          <button type="button" class="cf-btn" id="verifica-reset-btn" style="flex:0 0 auto;width:48px;background:var(--text-light);font-size:1.2rem" aria-label="Reset" title="Reset">↺</button>
+
+        <!-- CHECKLIST -->
+        <div class="check-list" aria-label="Lista controlli superati">
+          <h3>Dettaglio Controlli</h3>
+          <ul id="check-items" class="check-items"></ul>
         </div>
 
-        <div id="verifica-result" class="verifica-result" hidden>
-
-          <div id="verdict-badge" class="verdict-badge">
-            <div class="verdict-icon" id="verdict-icon"></div>
-            <div class="verdict-text" id="verdict-text"></div>
-            <div class="verdict-sub" id="verdict-sub"></div>
-          </div>
-
-          <div class="check-list" id="check-list">
-            <h3>Dettaglio Verifiche</h3>
-            <ul class="check-items" id="check-items"></ul>
-          </div>
-
-          <div class="quick-extract" id="quick-extract" hidden>
-            <h3>Dati Estratti</h3>
-            <div class="quick-extract__grid">
-              <div class="qe-item">
-                <span class="qe-label">Data di Nascita</span>
-                <span class="qe-value" id="qe-nascita"></span>
-              </div>
-              <div class="qe-item">
-                <span class="qe-label">Sesso</span>
-                <span class="qe-value" id="qe-sesso"></span>
-              </div>
-              <div class="qe-item">
-                <span class="qe-label">Codice Comune</span>
-                <span class="qe-value" id="qe-comune"></span>
-              </div>
+        <!-- QUICK EXTRACT (shown only if valid) -->
+        <div id="quick-extract" class="quick-extract" hidden aria-label="Dati estratti rapidi">
+          <h3>Dati Estratti</h3>
+          <div class="quick-extract__grid">
+            <div class="qe-item">
+              <span class="qe-label">Data di nascita</span>
+              <span id="qe-nascita" class="qe-value">—</span>
+            </div>
+            <div class="qe-item">
+              <span class="qe-label">Sesso</span>
+              <span id="qe-sesso" class="qe-value">—</span>
+            </div>
+            <div class="qe-item">
+              <span class="qe-label">Codice comune</span>
+              <span id="qe-comune" class="qe-value">—</span>
             </div>
           </div>
-
+          <a href="/codice-fiscale-inverso" class="btn btn--outline btn--sm">
+            Decodifica completa →
+          </a>
         </div>
+
+        <button id="verifica-reset-btn" class="btn btn--secondary">Verifica un altro CF</button>
       </div>
     </div>
   </div>
 </section>
 
-<style>
-.cf-page {
-  padding: 32px 0 48px;
-  min-height: calc(100vh - 200px);
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-}
-
-.cf-container {
-  width: 100%;
-  max-width: 600px;
-  padding: 0 16px;
-}
-
-.cf-card {
-  background: var(--white);
-  border-radius: 16px;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, .08), 0 1px 3px rgba(0, 0, 0, .04);
-  overflow: hidden;
-}
-
-.cf-card__header {
-  background: linear-gradient(135deg, #006B35, #008C45);
-  padding: 32px 24px;
-  text-align: center;
-  color: var(--white);
-}
-
-.cf-card__title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  letter-spacing: -.02em;
-  margin-bottom: 8px;
-}
-
-.cf-card__subtitle {
-  font-size: .875rem;
-  opacity: .85;
-  line-height: 1.5;
-}
-
-.cf-card__body {
-  padding: 24px;
-}
-
-.cf-field {
-  margin-bottom: 24px;
-  border: none;
-  padding: 0;
-}
-
-.cf-label {
-  display: block;
-  font-size: .8125rem;
-  font-weight: 600;
-  color: var(--text);
-  margin-bottom: 8px;
-  letter-spacing: .01em;
-}
-
-.cf-input {
-  display: block;
-  width: 100%;
-  height: 48px;
-  padding: 0 16px;
-  border: 2px solid var(--border);
-  border-radius: 8px;
-  font-size: 1rem;
-  font-family: var(--font);
-  color: var(--text);
-  background: var(--white);
-  transition: border-color .2s, box-shadow .2s;
-  -webkit-appearance: none;
-}
-
-.cf-input::placeholder {
-  color: #9ca3af;
-}
-
-.cf-input:focus {
-  outline: none;
-  border-color: var(--primary);
-  box-shadow: 0 0 0 3px var(--primary-light);
-}
-
-.cf-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 48px;
-  background: var(--primary);
-  color: var(--white);
-  border: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 600;
-  font-family: var(--font);
-  cursor: pointer;
-  transition: background .2s, transform .1s;
-  margin-top: 8px;
-}
-
-.cf-btn:hover {
-  background: var(--primary-dark);
-}
-
-.cf-btn:active {
-  transform: scale(.98);
-}
-
-.cf-btn:focus-visible {
-  outline: 2px solid var(--primary);
-  outline-offset: 2px;
-}
-
-.cf-copy {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 8px 20px;
-  background: var(--primary);
-  color: var(--white);
-  border: none;
-  border-radius: 6px;
-  font-size: .875rem;
-  font-weight: 600;
-  font-family: var(--font);
-  cursor: pointer;
-  transition: background .2s;
-}
-
-.cf-copy:hover {
-  background: var(--primary-dark);
-}
-
-.cf-copy--done {
-  background: var(--text);
-}
-
-.cf-copy__icon {
-  width: 16px;
-  height: 16px;
-}
-
-@keyframes cfFadeIn {
-  from { opacity: 0; transform: translateY(8px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-.verifica-result {
-  margin-top: 2rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--border, #e5e7eb);
-  animation: cfFadeIn .4s ease;
-}
-
-.verdict-badge {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 2rem 1.5rem;
-  border-radius: 16px;
-  text-align: center;
-  margin-bottom: 2rem;
-  transition: box-shadow 0.2s ease;
-}
-
-.verdict-valid {
-  background: linear-gradient(135deg, #d1fae5, #a7f3d0);
-  border: 2px solid #10B981;
-}
-
-.verdict-invalid {
-  background: linear-gradient(135deg, #fee2e2, #fecaca);
-  border: 2px solid #EF4444;
-}
-
-.verdict-icon {
-  width: 3.5rem;
-  height: 3.5rem;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.8rem;
-  font-weight: 900;
-  line-height: 1;
-}
-
-.verdict-valid .verdict-icon {
-  background: #10B981;
-  color: #fff;
-}
-
-.verdict-invalid .verdict-icon {
-  background: #EF4444;
-  color: #fff;
-}
-
-.verdict-text {
-  font-size: 1.4rem;
-  font-weight: 800;
-  letter-spacing: 0.04em;
-}
-
-.verdict-valid .verdict-text   { color: #065F46; }
-.verdict-invalid .verdict-text { color: #991B1B; }
-
-.verdict-sub {
-  font-size: 0.9rem;
-  max-width: 480px;
-  line-height: 1.5;
-}
-
-.verdict-valid .verdict-sub   { color: #065F46; }
-.verdict-invalid .verdict-sub { color: #7F1D1D; }
-
-.check-list {
-  margin-bottom: 1.5rem;
-}
-
-.check-list h3 {
-  font-size: 1rem;
-  font-weight: 600;
-  margin-bottom: 0.75rem;
-  color: var(--text, #1a1a1a);
-}
-
-.check-items {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.check-item {
-  display: grid;
-  grid-template-columns: 1.6rem 1fr;
-  grid-template-rows: auto auto;
-  column-gap: 0.75rem;
-  padding: 0.75rem 1rem;
-  border-radius: 8px;
-  border: 1px solid transparent;
-}
-
-.check-pass {
-  background: #f0fdf4;
-  border-color: #bbf7d0;
-}
-
-.check-fail {
-  background: #fff1f2;
-  border-color: #fecdd3;
-}
-
-.check-icon {
-  grid-row: 1 / 3;
-  font-size: 1rem;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.check-pass .check-icon { color: #10B981; }
-.check-fail .check-icon { color: #EF4444; }
-
-.check-label {
-  font-weight: 600;
-  font-size: 0.875rem;
-  color: var(--text, #1a1a1a);
-}
-
-.check-detail {
-  font-size: 0.8rem;
-  color: var(--text-light, #666);
-  margin-top: 0.15rem;
-}
-
-.quick-extract {
-  background: var(--primary-light, #f8f9fa);
-  border: 1px solid var(--border, #e5e7eb);
-  border-radius: 12px;
-  padding: 1.25rem 1.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.quick-extract h3 {
-  font-size: 0.9rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--text-light, #888);
-  margin-bottom: 1rem;
-}
-
-.quick-extract__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 0.75rem;
-}
-
-.qe-item {
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-}
-
-.qe-label {
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--text-light, #888);
-}
-
-.qe-value {
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--primary, #1E7F4F);
-}
-
-@media (max-width: 600px) {
-  .verdict-text { font-size: 1.1rem; }
-  .verdict-badge { padding: 1.5rem 1rem; }
-
-  .check-item {
-    grid-template-columns: 1.4rem 1fr;
-    padding: 0.6rem 0.75rem;
-  }
-
-  .quick-extract__grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 640px) {
-  .cf-page {
-    padding: 48px 0 64px;
-  }
-  .cf-card__header {
-    padding: 40px 32px;
-  }
-  .cf-card__title {
-    font-size: 1.75rem;
-  }
-  .cf-card__body {
-    padding: 32px;
-  }
-}
-</style>
-
-<script>
-'use strict';
-
-const VALID_MONTHS = new Set(['A','B','C','D','E','H','L','M','P','R','S','T']);
-
-const MONTH_NAMES = {
-  A:'Gennaio', B:'Febbraio', C:'Marzo', D:'Aprile', E:'Maggio', H:'Giugno',
-  L:'Luglio', M:'Agosto', P:'Settembre', R:'Ottobre', S:'Novembre', T:'Dicembre'
-};
-
-const ODD_VALUES = {
-  '0':1,'1':0,'2':5,'3':7,'4':9,'5':13,'6':15,'7':17,'8':19,'9':21,
-  A:1,B:0,C:5,D:7,E:9,F:13,G:15,H:17,I:19,J:21,K:2,L:4,M:18,N:20,
-  O:11,P:3,Q:6,R:8,S:12,T:14,U:16,V:10,W:22,X:25,Y:24,Z:23
-};
-const EVEN_VALUES = {
-  '0':0,'1':1,'2':2,'3':3,'4':4,'5':5,'6':6,'7':7,'8':8,'9':9,
-  A:0,B:1,C:2,D:3,E:4,F:5,G:6,H:7,I:8,J:9,K:10,L:11,M:12,N:13,
-  O:14,P:15,Q:16,R:17,S:18,T:19,U:20,V:21,W:22,X:23,Y:24,Z:25
-};
-const CONTROL_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-
-function validateCF(raw) {
-  const cf = raw.trim().toUpperCase();
-  const checks = [];
-  let firstFail = null;
-
-  function check(label, condition, detail, failDetail) {
-    const passed = condition;
-    checks.push({ label, passed, detail: passed ? detail : failDetail });
-    if (!passed && !firstFail) firstFail = { label, detail: failDetail };
-    return passed;
-  }
-
-  const lengthOk = check(
-    'Lunghezza (16 caratteri)',
-    cf.length === 16,
-    `${cf.length} caratteri rilevati – corretto`,
-    `${cf.length} caratteri rilevati – devono essere esattamente 16`
-  );
-  if (!lengthOk) return { passed: false, checks, extracted: null, firstFail };
-
-  const formatOk = check(
-    'Formato alfanumerico',
-    /^[A-Z]{6}[0-9]{2}[A-Z][0-9]{2}[A-Z][0-9]{3}[A-Z]$/.test(cf),
-    'Lettere e numeri nelle posizioni corrette',
-    'Lettere o numeri non nelle posizioni corrette (verifica il formato)'
-  );
-  if (!formatOk) return { passed: false, checks, extracted: null, firstFail };
-
-  const monthChar = cf[8];
-  const monthOk = check(
-    'Codice mese valido',
-    VALID_MONTHS.has(monthChar),
-    `"${monthChar}" = ${MONTH_NAMES[monthChar] || '?'} – valido`,
-    `"${monthChar}" non è un codice mese valido (validi: A B C D E H L M P R S T)`
-  );
-
-  const dayRaw = parseInt(cf.substring(9, 11), 10);
-  const isF = dayRaw > 40;
-  const day = isF ? dayRaw - 40 : dayRaw;
-  const dayOk = check(
-    'Giorno di nascita / Sesso',
-    (dayRaw >= 1 && dayRaw <= 31) || (dayRaw >= 41 && dayRaw <= 71),
-    isF ? `${cf.substring(9,11)} → giorno ${day} (Femmina)` : `${cf.substring(9,11)} → giorno ${day} (Maschio)`,
-    `Valore "${cf.substring(9,11)}" non valido (attesi 01–31 per M, 41–71 per F)`
-  );
-
-  let sum = 0;
-  for (let i = 0; i < 15; i++) {
-    const ch = cf[i];
-    sum += (i % 2 === 0) ? ODD_VALUES[ch] : EVEN_VALUES[ch];
-  }
-  const expectedControl = CONTROL_CHARS[sum % 26];
-  const checksumOk = check(
-    'Carattere di controllo (16°)',
-    cf[15] === expectedControl,
-    `"${cf[15]}" – corretto`,
-    `"${cf[15]}" errato – atteso "${expectedControl}". Probabile errore di trascrizione.`
-  );
-
-  const passed = lengthOk && formatOk && monthOk && dayOk && checksumOk;
-
-  let extracted = null;
-  if (passed) {
-    const yearSuffix = parseInt(cf.substring(6, 8), 10);
-    const currentSuffix = new Date().getFullYear() % 100;
-    const year = yearSuffix <= currentSuffix ? 2000 + yearSuffix : 1900 + yearSuffix;
-    const MONTH_ORDER = ['A','B','C','D','E','H','L','M','P','R','S','T'];
-    const monthNum = MONTH_ORDER.indexOf(monthChar) + 1;
-    extracted = {
-      birthDate: `${String(day).padStart(2,'0')}/${String(monthNum).padStart(2,'0')}/${year}`,
-      gender: isF ? 'Femmina' : 'Maschio',
-      municipalityCode: cf.substring(11, 15),
-    };
-  }
-
-  return { passed, checks, extracted, firstFail };
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  const input      = document.getElementById('cf-verifica-input');
-  const btn        = document.getElementById('verifica-btn');
-  const resetBtn   = document.getElementById('verifica-reset-btn');
-  const resultDiv  = document.getElementById('verifica-result');
-  const badge      = document.getElementById('verdict-badge');
-  const icon       = document.getElementById('verdict-icon');
-  const text       = document.getElementById('verdict-text');
-  const sub        = document.getElementById('verdict-sub');
-  const checkItems = document.getElementById('check-items');
-  const quickExt   = document.getElementById('quick-extract');
-
-  function verify() {
-    const val = input.value.trim();
-    if (!val) {
-      input.setAttribute('aria-invalid', 'true');
-      input.focus();
-      return;
-    }
-
-    const result = validateCF(val);
-
-    badge.className = `verdict-badge ${result.passed ? 'verdict-valid' : 'verdict-invalid'}`;
-    icon.textContent = result.passed ? '✓' : '✗';
-    text.textContent = result.passed ? 'CODICE FISCALE VALIDO' : 'CODICE FISCALE NON VALIDO';
-    sub.textContent  = result.passed
-      ? 'Il codice fiscale è formalmente corretto e rispetta tutti i controlli.'
-      : `Errore rilevato: ${result.firstFail ? result.firstFail.detail : 'Struttura non valida.'}`;
-
-    checkItems.innerHTML = result.checks.map(c => `
-      <li class="check-item ${c.passed ? 'check-pass' : 'check-fail'}">
-        <span class="check-icon" aria-hidden="true">${c.passed ? '✓' : '✗'}</span>
-        <span class="check-label">${c.label}</span>
-        <span class="check-detail">${c.detail}</span>
-      </li>
-    `).join('');
-
-    if (result.passed && result.extracted) {
-      document.getElementById('qe-nascita').textContent = result.extracted.birthDate;
-      document.getElementById('qe-sesso').textContent   = result.extracted.gender;
-      document.getElementById('qe-comune').textContent  = result.extracted.municipalityCode;
-      quickExt.hidden = false;
-    } else {
-      quickExt.hidden = true;
-    }
-
-    resultDiv.hidden = false;
-    resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-  }
-
-  btn.addEventListener('click', verify);
-  input.addEventListener('keydown', e => { if (e.key === 'Enter') verify(); });
-  input.addEventListener('input', () => {
-    input.value = input.value.toUpperCase();
-    input.removeAttribute('aria-invalid');
-  });
-
-  resetBtn.addEventListener('click', () => {
-    input.value = '';
-    resultDiv.hidden = true;
-    quickExt.hidden = true;
-    input.focus();
-  });
-});
-</script>
+<!-- SEO CONTENT -->
+<section class="content-section" aria-labelledby="content-title">
+  <div class="container">
+    <article class="seo-article">
+      <h2 id="content-title">Come funziona la Verifica del Codice Fiscale</h2>
+      <p>
+        La <strong>verifica del codice fiscale</strong> è un processo di validazione formale che controlla se un CF italiano rispetta la struttura algoritmica definita dall'Agenzia delle Entrate. Il nostro <strong>validatore codice fiscale online</strong> esegue automaticamente tutti i controlli necessari in meno di un secondo.
+      </p>
+      <p>
+        È importante distinguere tra <strong>validazione formale</strong> e <strong>validazione anagrafica</strong>: il nostro strumento verifica che il codice sia strutturalmente corretto e che il carattere di controllo sia coerente, ma non può accertare se il CF è stato effettivamente assegnato a una persona reale dall'Agenzia delle Entrate.
+      </p>
+
+      <h3>Cosa controlla il nostro validatore</h3>
+      <p>
+        Il sistema di <strong>controllo codice fiscale</strong> esegue le seguenti verifiche in sequenza:
+      </p>
+      <ul>
+        <li><strong>Lunghezza:</strong> il CF deve essere esattamente di 16 caratteri.</li>
+        <li><strong>Formato:</strong> i primi 6 caratteri devono essere lettere, i caratteri 7-8 numeri, il carattere 9 una lettera, i caratteri 10-11 numeri, i caratteri 12-15 una lettera seguita da 3 numeri, il 16° carattere una lettera.</li>
+        <li><strong>Codice mese:</strong> il carattere 9 deve essere una delle lettere valide per i mesi (A, B, C, D, E, H, L, M, P, R, S, T).</li>
+        <li><strong>Giorno e sesso:</strong> i caratteri 10-11 devono essere compresi tra 01-31 (maschio) o 41-71 (femmina).</li>
+        <li><strong>Carattere di controllo:</strong> il 16° carattere viene ricalcolato applicando l'algoritmo ufficiale e confrontato con quello inserito.</li>
+      </ul>
+
+      <h3>Perché verificare un codice fiscale?</h3>
+      <p>
+        <strong>Controllare un codice fiscale</strong> è utile per rilevare errori di digitazione prima di inviare documenti importanti, verificare la correttezza di un CF ricevuto da terzi, o semplicemente assicurarsi che un codice generato sia formalmente corretto. Un CF non valido può causare problemi in dichiarazioni fiscali, contratti, aperture di conti bancari e procedure amministrative.
+      </p>
+
+      <h3>Strumenti correlati</h3>
+      <p>
+        Se hai bisogno di <strong>generare un codice fiscale</strong> da zero, usa il nostro <a href="/calcola">Calcolo Codice Fiscale</a> principale. Se invece vuoi estrarre i dati anagrafici da un CF, utilizza il nostro strumento <a href="/codice-fiscale-inverso">Codice Fiscale Inverso</a>. Per sapere tutto sulla struttura del CF, leggi la guida <a href="/come-si-calcola-il-codice-fiscale">come si calcola il codice fiscale</a>.
+      </p>
+    </article>
+
+    <!-- FAQ -->
+    <section class="faq-section" aria-labelledby="faq-title">
+      <h2 id="faq-title">Domande Frequenti sulla Verifica del Codice Fiscale</h2>
+      <div class="faq-list">
+
+        <details class="faq-item">
+          <summary class="faq-question">Come si verifica se un codice fiscale è corretto?</summary>
+          <div class="faq-answer">
+            <p>Un CF è formalmente valido se: ha 16 caratteri, rispetta il pattern alfanumerico standard, il codice mese è una lettera valida, il giorno/sesso è nei range corretti, e il carattere di controllo finale corrisponde al valore calcolato dall'algoritmo ufficiale.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">Cosa significa "codice fiscale formalmente valido"?</summary>
+          <div class="faq-answer">
+            <p>Significa che il CF rispetta tutte le regole strutturali dell'algoritmo ufficiale. Non garantisce però che sia il CF effettivamente assegnato a una persona reale dall'Agenzia delle Entrate.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">Come funziona il carattere di controllo del CF?</summary>
+          <div class="faq-answer">
+            <p>Il 16° carattere del CF viene calcolato sommando i valori numerici assegnati agli altri 15 caratteri (con regole diverse per posizioni pari e dispari) e prendendo il resto della divisione per 26, convertito in lettera. Se non corrisponde, il CF non è valido.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">Posso verificare più codici fiscali in sequenza?</summary>
+          <div class="faq-answer">
+            <p>Sì, dopo ogni verifica puoi premere "Verifica un altro CF" per inserire un nuovo codice e ripetere il processo quante volte vuoi, gratuitamente.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">I codici fiscali inseriti vengono registrati?</summary>
+          <div class="faq-answer">
+            <p>No. La verifica avviene interamente nel browser e nessun codice fiscale viene trasmesso o salvato sui nostri server. La tua privacy è completamente tutelata.</p>
+          </div>
+        </details>
+
+      </div>
+    </section>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" aria-labelledby="cta-title">
+  <div class="container">
+    <h2 id="cta-title">Vuoi generare o decodificare un Codice Fiscale?</h2>
+    <p>Usa i nostri strumenti gratuiti per generare, decodificare o verificare un codice fiscale.</p>
+    <div class="cta-actions">
+      <a href="/calcola" class="btn btn--primary btn--large">Calcola CF →</a>
+      <a href="/codice-fiscale-inverso" class="btn btn--outline btn--large">Decodifica CF →</a>
+    </div>
+  </div>
+</section>
+
+<script src="/js/verifica.js" defer></script>

@@ -24,8 +24,8 @@ Italian Tax ID Code (Codice Fiscale) generator website built with Node.js/Expres
 │   │   └── footer.ejs     # Semantic footer
 │   ├── home.ejs           # Homepage: hero, CTA, calculator, tools section, trust signals, FAQ
 │   ├── codice-fiscale.ejs # Dedicated tool page (card layout, gender toggle, copy btn)
-│   ├── codice-fiscale-inverso.ejs # CF reverse decoder tool (purple theme, visual breakdown)
-│   ├── verifica-codice-fiscale.ejs # CF validator tool (green theme, verdict badge, checks)
+│   ├── codice-fiscale-inverso.ejs # CF reverse decoder (hero, tool card, SEO article, FAQ, CTA)
+│   ├── verifica-codice-fiscale.ejs # CF validator (hero, tool card, SEO article, FAQ, CTA)
 │   ├── codice-fiscale-pillar.ejs # SEO pillar page (1500+ words, TOC, 12 sections, FAQ schema)
 │   ├── tool.ejs           # Legacy calculator tool page (/calcola route)
 │   ├── 404.ejs            # 404 error page
@@ -49,7 +49,12 @@ Italian Tax ID Code (Codice Fiscale) generator website built with Node.js/Expres
 │       └── examples-breakdown.ejs
 ├── public/
 │   ├── css/style.css      # Main stylesheet
-│   └── js/app.js          # Client-side JavaScript
+│   ├── css/style.min.css  # Copy of style.css (must stay in sync)
+│   ├── css/inverso.css    # Inverso tool-specific styles (breakdown, data cards, detail table)
+│   ├── css/verifica.css   # Verifica tool-specific styles (verdict badge, check list, quick extract)
+│   ├── js/app.js          # Client-side JavaScript (homepage calculator, nav, toast)
+│   ├── js/inverso.js      # Inverso tool JS (client-side CF decode with omocodia support)
+│   └── js/verifica.js     # Verifica tool JS (client-side CF validation with checklist)
 ├── pages/                 # Legacy PHP pages (kept for reference)
 ├── includes/              # Legacy PHP includes
 ├── assets/                # Legacy PHP assets
@@ -109,10 +114,17 @@ Italian Tax ID Code (Codice Fiscale) generator website built with Node.js/Expres
 - **Reverse Lookup**: COMUNI_REVERSE map built from comuni.json for cadastral code → municipality name
 
 ## Recent Changes
-- **Tools migrated to client-side** (Mar 2026):
-  - Codice Fiscale Inverso (/codice-fiscale-inverso): reverse decoder with visual color-coded character breakdown, data cards, detail table — fully client-side JS with omocodia support, no data sent to server
-  - Verifica Codice Fiscale (/verifica-codice-fiscale): validator with valid/invalid verdict badge, format/date/checksum checks, quick extract panel — fully client-side JS, no data sent to server
-  - Both tools include reset buttons and auto-uppercase input
+- **Tool pages rebuilt with SEO content** (Mar 2026):
+  - Both tool pages rebuilt with hero sections, breadcrumbs, SEO article content, FAQ accordions, CTA sections
+  - External CSS files: `/css/inverso.css`, `/css/verifica.css` (tool-specific styles)
+  - External JS files: `/js/inverso.js`, `/js/verifica.js` (client-side logic)
+  - JSON-LD structured data per page: WebPage, HowTo, FAQPage schemas
+  - New shared CSS classes: `.tool-hero`, `.btn--primary/secondary/outline`, `.content-section`, `.seo-article`, `.visually-hidden`, `.cta-actions`
+  - Breadcrumb updated to `<ol>/<li>` structure with CSS `::after` separators
+  - routes/tools.js passes `extraHead` (keywords meta + tool CSS) and `structuredData` (JSON-LD) to layout
+  - Codice Fiscale Inverso: visual color-coded breakdown, data cards, detail table, omocodia support
+  - Verifica Codice Fiscale: verdict badge (valid/invalid), checklist, quick extract panel
+  - All processing client-side, no data sent to server
   - Server-side decode()/validate() and API endpoints kept for backwards compatibility
   - Updated navigation with "Strumenti" dropdown, footer links, homepage tools section, HTML sitemap
 - **Homepage UI/UX redesign** (Feb 2026): Complete visual overhaul following premium SaaS design spec
