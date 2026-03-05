@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- PRIMARY SEO META -->
+  <title>Verifica Codice Fiscale Online Gratis – Controlla CF Valido | Calcolo Codice Fiscale</title>
+  <meta name="description" content="Verifica codice fiscale online gratis: controlla istantaneamente se un CF italiano è formalmente valido o contiene errori. Validazione basata su algoritmo ufficiale Agenzia delle Entrate." />
+  <meta name="keywords" content="verifica codice fiscale, controlla codice fiscale, validazione codice fiscale, codice fiscale valido, verifica cf online, controllare codice fiscale, codice fiscale corretto" />
+  <link rel="canonical" href="https://www.calcolocodicefiscale.it.com/verifica-codice-fiscale" />
+
+  <!-- OPEN GRAPH -->
+  <meta property="og:title" content="Verifica Codice Fiscale Online Gratis – Controlla CF Valido" />
+  <meta property="og:description" content="Controlla se un codice fiscale italiano è formalmente corretto con il nostro validatore gratuito basato su algoritmo ufficiale." />
+  <meta property="og:url" content="https://www.calcolocodicefiscale.it.com/verifica-codice-fiscale" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="it_IT" />
+
+  <!-- STRUCTURED DATA -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://www.calcolocodicefiscale.it.com/verifica-codice-fiscale#webpage",
+        "url": "https://www.calcolocodicefiscale.it.com/verifica-codice-fiscale",
+        "name": "Verifica Codice Fiscale Online Gratis",
+        "description": "Valida un codice fiscale italiano e scopri se è formalmente corretto.",
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {"@type":"ListItem","position":1,"name":"Home","item":"https://www.calcolocodicefiscale.it.com/"},
+            {"@type":"ListItem","position":2,"name":"Verifica Codice Fiscale","item":"https://www.calcolocodicefiscale.it.com/verifica-codice-fiscale"}
+          ]
+        }
+      },
+      {
+        "@type": "HowTo",
+        "name": "Come verificare la validità di un Codice Fiscale",
+        "step": [
+          {"@type":"HowToStep","name":"Inserisci il CF","text":"Digita il codice fiscale da verificare nel campo di testo."},
+          {"@type":"HowToStep","name":"Clicca Verifica","text":"Premi il pulsante per avviare la validazione automatica."},
+          {"@type":"HowToStep","name":"Leggi il risultato","text":"Il sistema risponde con VALIDO o NON VALIDO, indicando l'eventuale errore specifico trovato."}
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type":"Question",
+            "name":"Come si verifica se un codice fiscale è corretto?",
+            "acceptedAnswer":{"@type":"Answer","text":"Un codice fiscale è formalmente valido se: ha esattamente 16 caratteri, rispetta il formato alfanumerico standard, e il carattere di controllo finale (16° carattere) corrisponde al valore calcolato dall'algoritmo ufficiale."}
+          },
+          {
+            "@type":"Question",
+            "name":"Cosa controlla il validatore di codice fiscale?",
+            "acceptedAnswer":{"@type":"Answer","text":"Il nostro validatore verifica: lunghezza (deve essere 16 caratteri), formato (pattern lettere/numeri corretto), validità del codice mese, validità del giorno/sesso, e soprattutto il carattere di controllo finale calcolato con l'algoritmo ufficiale."}
+          },
+          {
+            "@type":"Question",
+            "name":"Un codice fiscale valido formalmente è sempre quello ufficiale?",
+            "acceptedAnswer":{"@type":"Answer","text":"Non necessariamente. La validazione formale confirma che il CF rispetta la struttura algoritmica, ma non può confrontarlo con i registri ufficiali dell'Agenzia delle Entrate, che è l'unica a poter confermare l'associazione a una persona reale."}
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/verifica.css" />
+</head>
+<body>
+
+  <%- include('partials/header') %>
+
+  <!-- BREADCRUMB -->
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <div class="container">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li aria-current="page">Verifica Codice Fiscale</li>
+      </ol>
+    </div>
+  </nav>
+
+  <main>
+    <!-- HERO -->
+    <section class="tool-hero" aria-labelledby="hero-title">
+      <div class="container">
+        <h1 id="hero-title">Verifica Codice Fiscale</h1>
+        <p class="tool-hero__subtitle">
+          Controlla istantaneamente se un codice fiscale italiano è formalmente valido. Risposta chiara: <strong>VALIDO</strong> o <strong>NON VALIDO</strong>, con indicazione dell'errore specifico.
+        </p>
+        <ul class="tool-hero__badges" aria-label="Caratteristiche">
+          <li>✓ Validazione algoritmo ufficiale</li>
+          <li>✓ Indicazione errore precisa</li>
+          <li>✓ Gratuito e istantaneo</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- TOOL -->
+    <section class="tool-section" aria-labelledby="tool-title">
+      <div class="container">
+        <div class="tool-card">
+          <h2 id="tool-title">Controlla la Validità del CF</h2>
+          <p class="tool-card__desc">Inserisci il codice fiscale da verificare: riceverai una risposta immediata sulla sua validità formale</p>
+
+          <div class="tool-input-group">
+            <label for="cf-verifica-input" class="visually-hidden">Inserisci Codice Fiscale da verificare</label>
+            <input
+              id="cf-verifica-input"
+              type="text"
+              class="cf-input"
+              placeholder="Es. RSSMRA85M01H501Z"
+              maxlength="16"
+              autocomplete="off"
+              autocorrect="off"
+              autocapitalize="characters"
+              spellcheck="false"
+              aria-describedby="cf-verifica-hint"
+            />
+            <span id="cf-verifica-hint" class="input-hint">16 caratteri alfanumerici</span>
+          </div>
+
+          <button id="verifica-btn" class="btn btn--primary btn--large">
+            Verifica Codice Fiscale
+          </button>
+
+          <!-- RESULT DISPLAY -->
+          <div id="verifica-result" class="verifica-result" hidden aria-live="polite" role="status">
+
+            <!-- VERDICT BADGE -->
+            <div id="verdict-badge" class="verdict-badge" aria-label="Risultato della verifica">
+              <div id="verdict-icon" class="verdict-icon" aria-hidden="true"></div>
+              <div id="verdict-text" class="verdict-text"></div>
+              <div id="verdict-sub" class="verdict-sub"></div>
+            </div>
+
+            <!-- CHECKLIST -->
+            <div class="check-list" aria-label="Lista controlli superati">
+              <h3>Dettaglio Controlli</h3>
+              <ul id="check-items" class="check-items"></ul>
+            </div>
+
+            <!-- QUICK EXTRACT (shown only if valid) -->
+            <div id="quick-extract" class="quick-extract" hidden aria-label="Dati estratti rapidi">
+              <h3>Dati Estratti</h3>
+              <div class="quick-extract__grid">
+                <div class="qe-item">
+                  <span class="qe-label">Data di nascita</span>
+                  <span id="qe-nascita" class="qe-value">—</span>
+                </div>
+                <div class="qe-item">
+                  <span class="qe-label">Sesso</span>
+                  <span id="qe-sesso" class="qe-value">—</span>
+                </div>
+                <div class="qe-item">
+                  <span class="qe-label">Codice comune</span>
+                  <span id="qe-comune" class="qe-value">—</span>
+                </div>
+              </div>
+              <a href="/codice-fiscale-inverso" class="btn btn--outline btn--sm">
+                Decodifica completa →
+              </a>
+            </div>
+
+            <button id="verifica-reset-btn" class="btn btn--secondary">Verifica un altro CF</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEO CONTENT -->
+    <section class="content-section" aria-labelledby="content-title">
+      <div class="container">
+        <article class="seo-article">
+          <h2 id="content-title">Come funziona la Verifica del Codice Fiscale</h2>
+          <p>
+            La <strong>verifica del codice fiscale</strong> è un processo di validazione formale che controlla se un CF italiano rispetta la struttura algoritmica definita dall'Agenzia delle Entrate. Il nostro <strong>validatore codice fiscale online</strong> esegue automaticamente tutti i controlli necessari in meno di un secondo.
+          </p>
+          <p>
+            È importante distinguere tra <strong>validazione formale</strong> e <strong>validazione anagrafica</strong>: il nostro strumento verifica che il codice sia strutturalmente corretto e che il carattere di controllo sia coerente, ma non può accertare se il CF è stato effettivamente assegnato a una persona reale dall'Agenzia delle Entrate.
+          </p>
+
+          <h3>Cosa controlla il nostro validatore</h3>
+          <p>
+            Il sistema di <strong>controllo codice fiscale</strong> esegue le seguenti verifiche in sequenza:
+          </p>
+          <ul>
+            <li><strong>Lunghezza:</strong> il CF deve essere esattamente di 16 caratteri.</li>
+            <li><strong>Formato:</strong> i primi 6 caratteri devono essere lettere, i caratteri 7-8 numeri, il carattere 9 una lettera, i caratteri 10-11 numeri, i caratteri 12-15 una lettera seguita da 3 numeri, il 16° carattere una lettera.</li>
+            <li><strong>Codice mese:</strong> il carattere 9 deve essere una delle lettere valide per i mesi (A, B, C, D, E, H, L, M, P, R, S, T).</li>
+            <li><strong>Giorno e sesso:</strong> i caratteri 10-11 devono essere compresi tra 01-31 (maschio) o 41-71 (femmina).</li>
+            <li><strong>Carattere di controllo:</strong> il 16° carattere viene ricalcolato applicando l'algoritmo ufficiale e confrontato con quello inserito.</li>
+          </ul>
+
+          <h3>Perché verificare un codice fiscale?</h3>
+          <p>
+            <strong>Controllare un codice fiscale</strong> è utile per rilevare errori di digitazione prima di inviare documenti importanti, verificare la correttezza di un CF ricevuto da terzi, o semplicemente assicurarsi che un codice generato sia formalmente corretto. Un CF non valido può causare problemi in dichiarazioni fiscali, contratti, aperture di conti bancari e procedure amministrative.
+          </p>
+
+          <h3>Strumenti correlati</h3>
+          <p>
+            Se hai bisogno di <strong>generare un codice fiscale</strong> da zero, usa il nostro <a href="/calcola">Calcolo Codice Fiscale</a> principale. Se invece vuoi estrarre i dati anagrafici da un CF, utilizza il nostro strumento <a href="/codice-fiscale-inverso">Codice Fiscale Inverso</a>. Per sapere tutto sulla struttura del CF, leggi la guida <a href="/come-si-calcola-il-codice-fiscale">come si calcola il codice fiscale</a>.
+          </p>
+        </article>
+
+        <!-- FAQ -->
+        <section class="faq-section" aria-labelledby="faq-title">
+          <h2 id="faq-title">Domande Frequenti sulla Verifica del Codice Fiscale</h2>
+          <div class="faq-list">
+
+            <details class="faq-item">
+              <summary class="faq-question">Come si verifica se un codice fiscale è corretto?</summary>
+              <div class="faq-answer">
+                <p>Un CF è formalmente valido se: ha 16 caratteri, rispetta il pattern alfanumerico standard, il codice mese è una lettera valida, il giorno/sesso è nei range corretti, e il carattere di controllo finale corrisponde al valore calcolato dall'algoritmo ufficiale.</p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-question">Cosa significa "codice fiscale formalmente valido"?</summary>
+              <div class="faq-answer">
+                <p>Significa che il CF rispetta tutte le regole strutturali dell'algoritmo ufficiale. Non garantisce però che sia il CF effettivamente assegnato a una persona reale dall'Agenzia delle Entrate.</p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-question">Come funziona il carattere di controllo del CF?</summary>
+              <div class="faq-answer">
+                <p>Il 16° carattere del CF viene calcolato sommando i valori numerici assegnati agli altri 15 caratteri (con regole diverse per posizioni pari e dispari) e prendendo il resto della divisione per 26, convertito in lettera. Se non corrisponde, il CF non è valido.</p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-question">Posso verificare più codici fiscali in sequenza?</summary>
+              <div class="faq-answer">
+                <p>Sì, dopo ogni verifica puoi premere "Verifica un altro CF" per inserire un nuovo codice e ripetere il processo quante volte vuoi, gratuitamente.</p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-question">I codici fiscali inseriti vengono registrati?</summary>
+              <div class="faq-answer">
+                <p>No. La verifica avviene interamente nel browser e nessun codice fiscale viene trasmesso o salvato sui nostri server. La tua privacy è completamente tutelata.</p>
+              </div>
+            </details>
+
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section" aria-labelledby="cta-title">
+      <div class="container">
+        <h2 id="cta-title">Vuoi generare o decodificare un Codice Fiscale?</h2>
+        <div class="cta-actions">
+          <a href="/calcola" class="btn btn--primary btn--large">Calcola CF →</a>
+          <a href="/codice-fiscale-inverso" class="btn btn--outline btn--large">Decodifica CF →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <%- include('partials/footer') %>
+
+  <script src="/js/verifica.js"></script>
+</body>
+</html>

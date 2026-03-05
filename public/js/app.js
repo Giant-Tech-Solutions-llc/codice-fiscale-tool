@@ -80,13 +80,15 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
 
+        var isServerForm = form.getAttribute('method') && form.getAttribute('action');
+
         form.addEventListener('submit', function(e) {
-            e.preventDefault();
             var errors = [];
             var cognome = document.getElementById('cognome').value.trim();
             var nome = document.getElementById('nome').value.trim();
-            var sessoEl = document.querySelector('input[name="sesso"]:checked');
-            var sesso = sessoEl ? sessoEl.value : '';
+            var sessoRadio = document.querySelector('input[name="sesso"]:checked');
+            var sessoSelect = document.querySelector('select[name="sesso"]');
+            var sesso = sessoRadio ? sessoRadio.value : (sessoSelect ? sessoSelect.value : '');
             var dataNascita = document.getElementById('data_nascita').value;
             var comune = document.getElementById('comune').value.trim();
 
@@ -105,12 +107,23 @@ document.addEventListener('DOMContentLoaded', function() {
                     errDiv.className = 'error-msg';
                     errDiv.textContent = 'Seleziona il sesso';
                     toggle.parentNode.appendChild(errDiv);
+                } else if (sessoSelect) {
+                    showError('sesso', 'Seleziona il sesso');
                 }
             }
             if (!dataNascita) showError('data_nascita', 'La data di nascita è obbligatoria');
             if (!comune) showError('comune', 'Il comune di nascita è obbligatorio');
 
-            if (document.querySelectorAll('.error-msg').length > 0) return;
+            if (document.querySelectorAll('.error-msg').length > 0) {
+                e.preventDefault();
+                return;
+            }
+
+            if (isServerForm) {
+                return;
+            }
+
+            e.preventDefault();
 
             var btn = form.querySelector('.btn-primary');
             btn.classList.add('loading');

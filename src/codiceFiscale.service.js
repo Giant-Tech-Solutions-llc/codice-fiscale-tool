@@ -496,9 +496,97 @@ function validate(cf) {
 // Module exports
 // ---------------------------------------------------------------------------
 
+const comuni = require('./comuni.json');
+
+const COMUNI_REVERSE = {};
+for (const [nome, codice] of Object.entries(comuni)) {
+  COMUNI_REVERSE[codice.toUpperCase()] = nome;
+}
+
+const MONTH_NAMES_IT = {
+  1: 'Gennaio', 2: 'Febbraio', 3: 'Marzo', 4: 'Aprile',
+  5: 'Maggio', 6: 'Giugno', 7: 'Luglio', 8: 'Agosto',
+  9: 'Settembre', 10: 'Ottobre', 11: 'Novembre', 12: 'Dicembre'
+};
+
+function decode(cf) {
+  if (typeof cf !== 'string') {
+    return { valid: false, errors: ['Il Codice Fiscale deve essere una stringa.'], data: null };
+  }
+
+  const code = cf.trim().toUpperCase();
+  const validation = validate(code);
+
+  if (code.length !== 16 || !CF_PATTERN.test(code)) {
+    return { valid: false, errors: validation.errors, data: null };
+  }
+
+  const surnameSegment = code.substring(0, 3);
+  const nameSegment = code.substring(3, 6);
+  const yearSegment = code.substring(6, 8);
+  const monthChar = code[8];
+  const daySegment = code.substring(9, 11);
+  const municipalityCode = code.substring(11, 15);
+  const checkChar = code[15];
+
+  const monthNum = MONTH_REVERSE[monthChar] || null;
+  const dayValue = parseInt(daySegment, 10);
+  const isFemale = dayValue > 40;
+  const actualDay = isFemale ? dayValue - 40 : dayValue;
+  const gender = isFemale ? 'F' : 'M';
+  const genderLabel = isFemale ? 'Femmina' : 'Maschio';
+
+  const yearNum = parseInt(yearSegment, 10);
+  const currentYear = new Date().getFullYear() % 100;
+  const century = yearNum <= currentYear ? 2000 : 1900;
+  const fullYear = century + yearNum;
+
+  const municipalityName = COMUNI_REVERSE[municipalityCode.toUpperCase()] || null;
+
+  const dateStr = monthNum
+    ? String(actualDay).padStart(2, '0') + '/' + String(monthNum).padStart(2, '0') + '/' + fullYear
+    : null;
+
+  const segments = [
+    { chars: surnameSegment, label: 'Cognome', cssClass: 'legend-cognome', description: 'Tre caratteri derivati dalle consonanti e vocali del cognome' },
+    { chars: nameSegment, label: 'Nome', cssClass: 'legend-nome', description: 'Tre caratteri derivati dalle consonanti e vocali del nome' },
+    { chars: yearSegment, label: 'Anno', cssClass: 'legend-anno', description: 'Ultime due cifre dell\'anno di nascita' },
+    { chars: monthChar, label: 'Mese', cssClass: 'legend-mese', description: monthNum ? MONTH_NAMES_IT[monthNum] + ' (mese ' + monthNum + ')' : 'Lettera del mese di nascita' },
+    { chars: daySegment, label: 'Giorno/Sesso', cssClass: 'legend-giorno', description: gender === 'F' ? 'Giorno ' + actualDay + ' + 40 (femmina)' : 'Giorno ' + actualDay + ' (maschio)' },
+    { chars: municipalityCode, label: 'Comune', cssClass: 'legend-comune', description: municipalityName ? municipalityName + ' (' + municipalityCode + ')' : 'Codice catastale: ' + municipalityCode },
+    { chars: checkChar, label: 'Controllo', cssClass: 'legend-controllo', description: 'Carattere di controllo (CIN)' }
+  ];
+
+  return {
+    valid: validation.valid,
+    errors: validation.errors,
+    data: {
+      codiceFiscale: code,
+      surnameSegment,
+      nameSegment,
+      yearSegment,
+      monthChar,
+      monthNum,
+      monthName: monthNum ? MONTH_NAMES_IT[monthNum] : null,
+      daySegment,
+      dayValue,
+      actualDay,
+      gender,
+      genderLabel,
+      fullYear,
+      dateStr,
+      municipalityCode,
+      municipalityName,
+      checkChar,
+      segments
+    }
+  };
+}
+
 module.exports = {
   generate,
   validate,
+  decode,
   extractSurname,
   extractName,
   encodeDate,

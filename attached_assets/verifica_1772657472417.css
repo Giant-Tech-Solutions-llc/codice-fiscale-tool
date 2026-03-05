@@ -1,0 +1,203 @@
+/* =========================================================
+   verifica.css – Verifica Codice Fiscale Tool Styles
+   Extends the existing style.css without modifying it.
+   ========================================================= */
+
+/* ── Verdict Badge ───────────────────────────────────────── */
+.verifica-result {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--color-border, #e5e7eb);
+}
+
+.verdict-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 2rem 1.5rem;
+  border-radius: 16px;
+  text-align: center;
+  margin-bottom: 2rem;
+  transition: box-shadow 0.2s ease;
+}
+
+.verdict-valid {
+  background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+  border: 2px solid #10B981;
+}
+
+.verdict-invalid {
+  background: linear-gradient(135deg, #fee2e2, #fecaca);
+  border: 2px solid #EF4444;
+}
+
+.verdict-icon {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.verdict-valid .verdict-icon {
+  background: #10B981;
+  color: #fff;
+}
+
+.verdict-invalid .verdict-icon {
+  background: #EF4444;
+  color: #fff;
+}
+
+.verdict-text {
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.verdict-valid .verdict-text   { color: #065F46; }
+.verdict-invalid .verdict-text { color: #991B1B; }
+
+.verdict-sub {
+  font-size: 0.9rem;
+  max-width: 480px;
+  line-height: 1.5;
+}
+
+.verdict-valid .verdict-sub   { color: #065F46; }
+.verdict-invalid .verdict-sub { color: #7F1D1D; }
+
+/* ── Check List ──────────────────────────────────────────── */
+.check-list {
+  margin-bottom: 1.5rem;
+}
+
+.check-list h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: var(--color-text, #1a1a1a);
+}
+
+.check-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.check-item {
+  display: grid;
+  grid-template-columns: 1.6rem 1fr;
+  grid-template-rows: auto auto;
+  column-gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid transparent;
+}
+
+.check-pass {
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+}
+
+.check-fail {
+  background: #fff1f2;
+  border-color: #fecdd3;
+}
+
+.check-icon {
+  grid-row: 1 / 3;
+  font-size: 1rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.check-pass .check-icon { color: #10B981; }
+.check-fail .check-icon { color: #EF4444; }
+
+.check-label {
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--color-text, #1a1a1a);
+}
+
+.check-detail {
+  font-size: 0.8rem;
+  color: var(--color-text-muted, #666);
+  margin-top: 0.15rem;
+}
+
+/* ── Quick Extract ───────────────────────────────────────── */
+.quick-extract {
+  background: var(--color-bg-subtle, #f8f9fa);
+  border: 1px solid var(--color-border, #e5e7eb);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.quick-extract h3 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted, #888);
+  margin-bottom: 1rem;
+}
+
+.quick-extract__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.qe-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.qe-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted, #888);
+}
+
+.qe-value {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-primary, #4F46E5);
+}
+
+.btn--sm {
+  font-size: 0.85rem;
+  padding: 0.4rem 1rem;
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .verdict-text { font-size: 1.1rem; }
+  .verdict-badge { padding: 1.5rem 1rem; }
+
+  .check-item {
+    grid-template-columns: 1.4rem 1fr;
+    padding: 0.6rem 0.75rem;
+  }
+
+  .quick-extract__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

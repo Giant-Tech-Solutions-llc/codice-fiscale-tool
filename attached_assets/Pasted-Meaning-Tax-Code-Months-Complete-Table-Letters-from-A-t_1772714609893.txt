@@ -1,0 +1,297 @@
+Meaning
+Tax Code Months: Complete Table Letters from A to T (2026)
+
+Elemento
+Contenuto
+Meta Title
+Mesi Codice Fiscale: Tabella Completa Lettere da A a T (2026)
+Meta Description
+Tabella completa dei mesi nel codice fiscale italiano: A=Gennaio, B=Febbraio, H=Giugno, M=Agosto, P=Settembre, R=Ottobre. ✓ Tutte le 12 lettere spiegate
+URL
+/mesi-codice-fiscale/
+
+
+Mesi Codice Fiscale: Tabella Completa delle Lettere da A a T
+Nel codice fiscale italiano, il mese di nascita è indicato da una singola lettera in posizione 9. Le 12 lettere utilizzate sono: A (Gennaio), B (Febbraio), C (Marzo), D (Aprile), E (Maggio), H (Giugno), L (Luglio), M (Agosto), P (Settembre), R (Ottobre), S (Novembre) e T (Dicembre).
+Se stai cercando di capire quale lettera corrisponde al tuo mese di nascita, o vuoi decodificare un codice fiscale esistente, sei nel posto giusto. In questa guida trovi la tabella completa dei mesi, le spiegazioni per ogni lettera e le risposte a tutte le domande più frequenti.
+📌 Fatto importante: Le lettere dei mesi nel codice fiscale sono stabilite dal Decreto Ministeriale n° 345 del 23 dicembre 1976, emanato dal Ministero delle Finanze. Questa codifica è rimasta invariata dalla sua introduzione.
+Tabella Mesi Codice Fiscale: Tutte le Lettere
+Ecco la tabella completa delle lettere per ogni mese dell'anno nel codice fiscale italiano:
+Lettera
+Mese
+Lettera
+Mese
+A
+Gennaio
+L
+Luglio
+B
+Febbraio
+M
+Agosto
+C
+Marzo
+P
+Settembre
+D
+Aprile
+R
+Ottobre
+E
+Maggio
+S
+Novembre
+H
+Giugno
+T
+Dicembre
+
+💡 Suggerimento: Salva questa pagina nei preferiti per consultare rapidamente la tabella ogni volta che ne hai bisogno.
+Nota importante: Le lettere F, G, I, N, O e Q non vengono mai utilizzate per indicare i mesi nel codice fiscale. Questo serve a evitare confusioni con numeri (I somiglia a 1, O somiglia a 0) e con le iniziali di mesi diversi.
+Tabella Inversa: Da Mese a Lettera
+Se stai calcolando un codice fiscale e hai bisogno di trovare la lettera partendo dal mese, usa questa tabella inversa:
+Mese
+Lettera
+Mese
+Lettera
+Gennaio
+A
+Luglio
+L
+Febbraio
+B
+Agosto
+M
+Marzo
+C
+Settembre
+P
+Aprile
+D
+Ottobre
+R
+Maggio
+E
+Novembre
+S
+Giugno
+H
+Dicembre
+T
+
+💡 Suggerimento: Se stai calcolando il codice fiscale, usa questa tabella (mese → lettera). Se stai decodificando un codice esistente, usa la tabella precedente (lettera → mese).
+Dove Si Trova il Mese nel Codice Fiscale?
+Il mese di nascita si trova sempre nella posizione 9 (nono carattere) del codice fiscale. È sempre rappresentato da una singola lettera, mai da un numero.
+Ecco la struttura completa del codice fiscale:
+Posizione
+1-3
+4-6
+7-8
+9
+10-11
+12-15
+16
+Informazione
+Cognome
+Nome
+Anno
+Mese
+Giorno+Sesso
+Comune
+Controllo
+
+Esempio pratico:
+Prendiamo il codice fiscale: RSSMRA90E15H501X
+Il 9° carattere è E
+Consultando la tabella: E = Maggio
+Quindi questa persona è nata a Maggio
+📌 Fatto importante: Il mese di nascita occupa sempre la 9ª posizione del codice fiscale. Non può mai trovarsi in altre posizioni. Questo è stabilito dal D.M. 345/1976 che regola la struttura del codice fiscale rilasciato dall'Agenzia delle Entrate.
+Mese H Codice Fiscale: Che Mese È?
+La lettera H nel codice fiscale indica il mese di Giugno.
+Questa è la lettera più cercata perché non è per niente intuitiva. Molti si aspettano di trovare la lettera G per Giugno, ma G non viene utilizzata.
+Perché H e non G?
+La lettera G non viene usata per evitare confusione tra Gennaio e Giugno, che iniziano entrambi con la stessa lettera. Per risolvere questa ambiguità:
+Gennaio = A (prima lettera dell'alfabeto = primo mese)
+Giugno = H (la sequenza salta F e G)
+Esempio:
+Codice fiscale con H in posizione 9 = persona nata a Giugno
+BNCMRA90H15F205X = nato il 15 Giugno 1990 a Milano
+📌 Fatto importante: La lettera H per Giugno è la più cercata tra tutte le lettere dei mesi. Ricorda: H = Giugno, non G.
+Mese M Codice Fiscale: Che Mese È?
+La lettera M nel codice fiscale indica il mese di Agosto, non Marzo come molti pensano.
+Questa è un'altra confusione molto comune. Vediamo di chiarire:
+M = Agosto (ottavo mese)
+C = Marzo (terzo mese)
+Perché M non indica Marzo?
+La sequenza delle lettere segue quasi l'ordine alfabetico per i primi cinque mesi (A, B, C, D, E), poi salta alcune lettere. Quando si arriva ad Agosto (ottavo mese), la lettera disponibile nella sequenza è M.
+Esempio:
+RSSGPP85M25L219Y = persona nata il 25 Agosto 1985 a Torino
+⚠️ Attenzione: Non confondere M con Marzo. Nel codice fiscale: Marzo = C, mentre M = Agosto.
+
+Mese R Codice Fiscale: Che Mese È?
+La lettera R nel codice fiscale indica il mese di Ottobre.
+R è la decima lettera nella sequenza utilizzata per i mesi e corrisponde al decimo mese dell'anno.
+Esempio:
+VRDLCU78R10A944Z = persona nata il 10 Ottobre 1978 a Bologna
+💡 Suggerimento: Per ricordare facilmente: R = OttobRe. La lettera R è presente nella parola Ottobre.
+
+Mese P Codice Fiscale: Che Mese È?
+La lettera P nel codice fiscale indica il mese di Settembre.
+Molti confondono P con altri mesi, ma nel sistema del codice fiscale italiano:
+P = Settembre (nono mese)
+S = Novembre (undicesimo mese)
+Esempio:
+BNCLRA92P05H501K = persona nata il 5 Settembre 1992 a Roma
+📌 Fatto importante: Settembre è rappresentato dalla lettera P, non dalla S. La lettera S indica invece Novembre.
+
+Mese S Codice Fiscale: Che Mese È?
+La lettera S nel codice fiscale indica il mese di Novembre, non Settembre.
+Questa è un'altra confusione frequente:
+S = Novembre (undicesimo mese)
+P = Settembre (nono mese)
+Esempio:
+MROLCU80S18F205W = persona nata il 18 Novembre 1980 a Milano
+⚠️ Attenzione: Non confondere S con Settembre. Settembre = P, mentre S = Novembre.
+
+Mese L Codice Fiscale: Che Mese È?
+La lettera L nel codice fiscale indica il mese di Luglio.
+Questa è una delle poche lettere facili da ricordare perché coincide con l'iniziale del mese:
+L = Luglio
+Esempio:
+FRNCSC95L22G273M = persona nata il 22 Luglio 1995 a Palermo
+💡 Suggerimento: L è facile da ricordare: L = Luglio. È una delle corrispondenze più intuitive del sistema.
+
+Mese T Codice Fiscale: Che Mese È?
+La lettera T nel codice fiscale indica il mese di Dicembre.
+T è l'ultima lettera utilizzata nella sequenza dei mesi, e corrisponde all'ultimo mese dell'anno.
+Esempio:
+GLLMRA88T25H501P = persona nata il 25 Dicembre 1988 a Roma
+📌 Fatto importante: La lettera T chiude la sequenza dei mesi nel codice fiscale. Dopo T non vengono utilizzate altre lettere per i mesi.
+
+Mese E Codice Fiscale: Che Mese È?
+La lettera E nel codice fiscale indica il mese di Maggio.
+E è la quinta lettera dell'alfabeto e corrisponde al quinto mese dell'anno. Segue la logica dei primi cinque mesi: A, B, C, D, E.
+Esempio:
+RSSMRA90E15F205X = persona nata il 15 Maggio 1990 a Milano
+
+Mesi A, B, C, D nel Codice Fiscale: Gennaio-Aprile
+I primi quattro mesi dell'anno seguono l'ordine alfabetico, quindi sono i più facili da ricordare:
+Lettera
+Mese
+Perché Facile?
+A
+Gennaio
+Prima lettera = Primo mese
+B
+Febbraio
+Seconda lettera = Secondo mese
+C
+Marzo
+Terza lettera = Terzo mese
+D
+Aprile
+Quarta lettera = Quarto mese
+
+Questi quattro mesi sono raramente cercati perché la corrispondenza è intuitiva.
+💡 Suggerimento: I primi quattro mesi sono facili: A=1°, B=2°, C=3°, D=4°. La confusione inizia da Giugno (H) in poi.
+
+Perché Queste Lettere? Le Lettere Non Utilizzate
+Ti starai chiedendo perché non tutte le lettere dell'alfabeto vengono usate. Ecco la spiegazione:
+Lettere NON utilizzate per i mesi:
+F - Saltata per evitare confusione con Febbraio
+G - Saltata per evitare confusione tra Gennaio e Giugno
+I - Saltata perché somiglia al numero 1
+N - Saltata
+O - Saltata perché somiglia al numero 0
+Q - Saltata
+Come funziona la sequenza:
+A-E seguono l'ordine alfabetico (Gennaio-Maggio)
+F e G vengono saltate
+H indica Giugno
+I viene saltata (somiglia a 1)
+L-M indicano Luglio-Agosto
+N-O vengono saltate
+P-T indicano Settembre-Dicembre
+📌 Fatto importante: Le lettere F, G, I, N, O, Q sono escluse dalla codifica dei mesi per evitare confusioni con numeri (I=1, O=0) o con le iniziali di più mesi che iniziano con la stessa lettera.
+
+Come Trovare il Mese nel Codice Fiscale
+Se devi CALCOLARE il codice fiscale:
+Identifica il tuo mese di nascita
+Trova la lettera corrispondente nella tabella
+Inseriscila in posizione 9 del codice
+Se devi LEGGERE un codice fiscale esistente:
+Conta 9 caratteri dall'inizio del codice
+Identifica la lettera in quella posizione
+Consulta la tabella per trovare il mese corrispondente
+Esempio di lettura:
+Codice Fiscale
+9° Carattere
+Mese di Nascita
+RSSMRA85E15H501X
+E
+Maggio
+BNCGPP90H22F205Y
+H
+Giugno
+VRDLCU78R10A944Z
+R
+Ottobre
+MROLCU80S18F205W
+S
+Novembre
+
+
+Domande Frequenti sui Mesi del Codice Fiscale
+Che mese è M nel codice fiscale?
+La lettera M nel codice fiscale indica Agosto, non Marzo come molti pensano erroneamente. Marzo è invece rappresentato dalla lettera C. Questa è una delle confusioni più comuni nella lettura del codice fiscale italiano.
+Che mese è H nel codice fiscale?
+La lettera H indica il mese di Giugno. Non viene usata la lettera G per evitare confusione con Gennaio. H è la lettera più cercata perché non è intuitiva e molti si aspettano G per Giugno.
+Che mese è R nel codice fiscale?
+La lettera R indica Ottobre. È la decima lettera nella sequenza dei mesi utilizzata nel codice fiscale italiano. Un trucco per ricordarla: OttobRe contiene la lettera R.
+Che mese è P nel codice fiscale?
+La lettera P indica Settembre. Attenzione a non confondere: P = Settembre, mentre S = Novembre. Molti fanno l'errore di associare S a Settembre.
+Che mese è S nel codice fiscale?
+La lettera S indica Novembre, non Settembre. Settembre è rappresentato dalla lettera P. Questa è un'altra confusione molto frequente tra gli italiani.
+Perché non si usa G per Giugno nel codice fiscale?
+La lettera G non viene utilizzata per evitare confusione tra Gennaio e Giugno, che iniziano entrambi con la stessa lettera. Per questo motivo si usa A per Gennaio e H per Giugno.
+Dove si trova il mese nel codice fiscale?
+Il mese di nascita si trova sempre nella posizione 9 (nono carattere) del codice fiscale. È sempre rappresentato da una singola lettera alfabetica, mai da un numero.
+Quali lettere non si usano per i mesi nel codice fiscale?
+Le lettere F, G, I, N, O e Q non vengono mai utilizzate per indicare i mesi. Questo per evitare confusioni con numeri (I somiglia a 1, O somiglia a 0) e con iniziali di mesi diversi.
+
+Riepilogo: Tutte le Lettere dei Mesi
+Ecco la tabella finale da tenere sempre a portata di mano:
+Lettera
+Mese
+Lettera
+Mese
+A
+Gennaio
+L
+Luglio
+B
+Febbraio
+M
+Agosto
+C
+Marzo
+P
+Settembre
+D
+Aprile
+R
+Ottobre
+E
+Maggio
+S
+Novembre
+H
+Giugno
+T
+Dicembre
+
+Le confusioni più comuni da evitare:
+❌ G = Giugno → ✅ H = Giugno
+❌ M = Marzo → ✅ M = Agosto (Marzo = C)
+❌ S = Settembre → ✅ S = Novembre (Settembre = P)
+Ora conosci tutte le lettere dei mesi nel codice fiscale italiano. Usa il nostro calcolatore gratuito per generare o verificare qualsiasi codice fiscale automaticamente.

@@ -1,0 +1,524 @@
+Meaning
+
+Tax Code Composition: 16 Character Structure Explained
+
+Elemento
+Contenuto
+Meta Title
+
+
+Composizione Codice Fiscale: Struttura dei 16 Caratteri Spiegata
+Meta Description
+Scopri la composizione del codice fiscale italiano: struttura dei 16 caratteri, significato di lettere e numeri, tabelle mesi e esempi pratici. ✓ Guida completa
+URL
+/composizione-codice-fiscale/
+
+Composizione Codice Fiscale: Struttura Completa dei 16 Caratteri
+Il codice fiscale italiano è composto da 16 caratteri alfanumerici: 9 lettere e 7 numeri. Ogni gruppo di caratteri rappresenta informazioni anagrafiche specifiche: cognome, nome, data di nascita, luogo di nascita e un carattere di controllo finale.
+In questa guida completa scoprirai esattamente come è composto il codice fiscale, cosa significa ogni posizione e come decodificare qualsiasi codice fiscale. Che tu voglia capire il tuo codice o imparare le regole ufficiali, questo articolo copre tutto quello che devi sapere.
+📌 Fatto importante: Le regole di composizione del codice fiscale sono stabilite dal Decreto Ministeriale n° 345 del 23 dicembre 1976, emanato dal Ministero delle Finanze. Queste regole sono rimaste sostanzialmente invariate dalla loro introduzione.
+
+Quanti Caratteri Ha il Codice Fiscale?
+Il codice fiscale per le persone fisiche ha sempre esattamente 16 caratteri alfanumerici. Questo è diverso dal codice fiscale delle aziende e degli enti giuridici.
+Ecco la distinzione fondamentale:
+Tipo di Soggetto
+Lunghezza
+Composizione
+Persona fisica (individui)
+16 caratteri
+9 lettere + 7 numeri
+Persona giuridica (aziende/enti)
+11 cifre
+Solo numeri
+
+Il codice a 16 caratteri si applica a tutti i cittadini italiani e ai residenti stranieri. Il codice a 11 cifre è utilizzato per società, associazioni e altri enti giuridici.
+💡 Suggerimento: Non confondere il codice fiscale personale (16 caratteri) con il codice fiscale aziendale (11 cifre) o con la Partita IVA (anch'essa 11 cifre ma con struttura diversa). Servono a scopi differenti.
+Esiste anche un codice fiscale provvisorio per le persone fisiche. Questo codice temporaneo ha 11 cifre e viene rilasciato quando non è possibile generare immediatamente il codice standard a 16 caratteri.
+
+Struttura Codice Fiscale: Lo Schema delle 16 Posizioni
+Ogni codice fiscale segue esattamente la stessa struttura. Ecco cosa rappresenta ogni posizione:
+Posizione
+Caratteri
+Tipo
+Significato
+1-3
+3
+Lettere
+Cognome
+4-6
+3
+Lettere
+Nome
+7-8
+2
+Numeri
+Anno di nascita
+9
+1
+Lettera
+Mese di nascita
+10-11
+2
+Numeri
+Giorno di nascita + sesso
+12-15
+4
+Alfanumerico
+Codice Belfiore (comune/stato)
+16
+1
+Lettera
+Carattere di controllo (CIN)
+
+I primi 15 caratteri derivano direttamente dai tuoi dati anagrafici. Il 16° carattere viene calcolato mediante un algoritmo specifico per verificare la validità del codice.
+📌 Fatto importante: Solo l'Agenzia delle Entrate è autorizzata a rilasciare codici fiscali ufficiali. Nessun altro ente o organizzazione può emettere codici fiscali validi. Il codice appare sulla tua Tessera Sanitaria.
+
+Lettere del Codice Fiscale: Cosa Significano
+Nove dei 16 caratteri sono lettere. Vediamo cosa rappresenta ogni gruppo di lettere e come vengono ricavate.
+Le 3 Lettere del Cognome (Posizioni 1-3)
+I primi tre caratteri derivano dal cognome. Ecco le regole:
+Regola principale:
+Si prendono le consonanti del cognome nell'ordine da sinistra a destra
+Se le consonanti non sono sufficienti, si aggiungono le vocali (in ordine)
+Se il cognome ha meno di 3 lettere totali, si completa con X
+Esempi:
+Cognome
+Consonanti
+Vocali
+Risultato
+ROSSI
+R, S, S
+O, I
+RSS
+BIANCHI
+B, N, C, H
+I, A, I
+BNC
+ESPOSITO
+S, P, S, T
+E, O, I, O
+SPS
+MORI
+M, R
+O, I
+MRO
+RE
+R
+E
+REX
+BO
+B
+O
+BOX
+AIO
+—
+A, I, O
+AIX
+
+💡 Suggerimento: Per i cognomi composti (come De Rossi, Di Marco o Lo Russo), tutte le parti vengono trattate come un'unica parola senza spazi. DE ROSSI diventa DEROSSI, che dà come risultato DRS.
+
+Le 3 Lettere del Nome (Posizioni 4-6)
+I successivi tre caratteri derivano dal nome. C'è una regola speciale importante che molti non conoscono.
+La regola delle 4 consonanti:
+Se il nome ha 4 o più consonanti: si prendono la 1ª, la 3ª e la 4ª consonante
+Se il nome ha 3 o meno consonanti: si seguono le stesse regole del cognome
+Esempi:
+Nome
+Consonanti
+Regola Applicata
+Risultato
+FRANCESCO
+F, R, N, C, S, C (6)
+1ª, 3ª, 4ª
+FNC
+GIUSEPPE
+G, S, P, P (4)
+1ª, 3ª, 4ª
+GPP
+GIOVANNI
+G, V, N, N (4)
+1ª, 3ª, 4ª
+GNN
+MARIAGIOVANNA
+M, R, G, V, N, N (6)
+1ª, 3ª, 4ª
+MGV
+MARCO
+M, R, C (3)
+Tutte e tre
+MRC
+MARIKA
+M, R, K (3)
+Tutte e tre
+MRK
+MARIO
+M, R (2)
+M, R + vocale A
+MRA
+ANNA
+N, N (2)
+N, N + vocale A
+NNA
+LIA
+L (1)
+L + vocali I, A
+LIA
+ADA
+D (1)
+A, D + X
+ADX
+
+📌 Fatto importante: La regola delle 4 consonanti per il nome è stata introdotta specificamente per ridurre i casi di omocodia (codici duplicati) tra persone con nomi comuni come Giuseppe, Francesco o Giovanni. Questa regola si applica solo al nome, mai al cognome.
+
+La Lettera del Mese (Posizione 9)
+Ogni mese dell'anno corrisponde a una lettera specifica. Questa è una delle tabelle più importanti da conoscere:
+Mese
+Lettera
+Mese
+Lettera
+Gennaio
+A
+Luglio
+L
+Febbraio
+B
+Agosto
+M
+Marzo
+C
+Settembre
+P
+Aprile
+D
+Ottobre
+R
+Maggio
+E
+Novembre
+S
+Giugno
+H
+Dicembre
+T
+
+💡 Suggerimento: Nota che le lettere non seguono l'ordine alfabetico completo. Le lettere F, G, I, J, K, N, O, Q, U, V, W, X, Y e Z non vengono utilizzate per i mesi. Questo aiuta a evitare confusione con altri caratteri del codice.
+
+Il Codice Belfiore: Le Lettere del Comune (Posizioni 12-15)
+Le posizioni 12-15 contengono il Codice Belfiore, che identifica il luogo di nascita. È un codice di 4 caratteri: 1 lettera seguita da 3 numeri.
+Ogni comune italiano ha il proprio Codice Belfiore univoco. L'Agenzia delle Entrate mantiene e aggiorna questo elenco, che viene utilizzato anche nel catasto (codice catastale).
+Esempi di comuni italiani:
+Comune
+Codice Belfiore
+Roma
+H501
+Milano
+F205
+Napoli
+F839
+Torino
+L219
+Palermo
+G273
+Bologna
+A944
+
+Per le persone nate all'estero: Se sei nato fuori dall'Italia, il tuo codice inizia con la lettera Z seguita da 3 cifre che identificano lo stato.
+Stato
+Codice
+Germania
+Z112
+Francia
+Z110
+Albania
+Z100
+Romania
+Z129
+Marocco
+Z330
+Regno Unito
+Z114
+
+💡 Suggerimento: I comuni che sono stati accorpati o rinominati mantengono il vecchio Codice Belfiore per le persone nate prima della modifica. Verifica sempre il codice corretto per il tuo anno di nascita.
+
+Il Carattere di Controllo: L'Ultima Lettera (Posizione 16)
+Il 16° e ultimo carattere si chiama carattere di controllo o CIN (Control Internal Number). Serve come meccanismo di validazione.
+Come funziona:
+Viene calcolato mediante un algoritmo specifico applicato ai primi 15 caratteri
+Verifica che il codice sia stato generato correttamente
+Aiuta a rilevare errori di digitazione o falsificazioni
+È sempre una lettera da A a Z
+L'algoritmo separa i caratteri in posizioni dispari e pari, converte ciascuno usando tabelle speciali, somma i valori, divide per 26 e converte il resto in una lettera.
+💡 Suggerimento: Il calcolo del carattere di controllo è complesso da fare manualmente. Per questo consigliamo di usare un calcolatore online per evitare errori quando devi verificare un codice.
+
+Numeri del Codice Fiscale: Il Loro Significato
+Sette dei 16 caratteri sono numeri. Ecco cosa rappresentano.
+Anno di Nascita (Posizioni 7-8)
+Queste due cifre sono semplicemente le ultime due cifre dell'anno di nascita:
+Nato nel 1985 → 85
+Nato nel 2001 → 01
+Nato nel 1954 → 54
+Nato nel 2015 → 15
+Nota: Questo significa che una persona nata nel 1920 e una nata nel 2020 avrebbero entrambe "20" in queste posizioni. Il Codice Belfiore e altri fattori aiutano a distinguerle.
+
+Giorno di Nascita e Sesso (Posizioni 10-11)
+Queste due cifre mostrano il giorno di nascita, ma con una regola importante che identifica il sesso:
+Sesso
+Regola
+Range Valido
+Maschio
+Giorno così com'è
+01–31
+Femmina
+Giorno + 40
+41–71
+
+Esempi:
+Data di Nascita
+Sesso
+Calcolo
+Risultato
+5
+Maschio
+05
+05
+5
+Femmina
+05 + 40
+45
+15
+Maschio
+15
+15
+15
+Femmina
+15 + 40
+55
+31
+Maschio
+31
+31
+31
+Femmina
+31 + 40
+71
+
+📌 Fatto importante: Le donne aggiungono sempre 40 al giorno di nascita. Questo significa che i numeri da 01 a 31 indicano sempre un uomo, mentre da 41 a 71 indicano sempre una donna. È l'unico modo per identificare il sesso dal codice fiscale.
+
+Composizione Codice Fiscale Donna: La Differenza
+Molte persone cercano specificamente come si differenzia il codice delle donne. La risposta è semplice: cambia solo una cosa.
+L'intera struttura è identica per uomini e donne, tranne che per le posizioni 10-11 (giorno di nascita):
+Gli uomini usano il numero del giorno direttamente (01-31)
+Le donne aggiungono 40 al numero del giorno (41-71)
+Esempio di confronto:
+Dato
+Marco Bianchi
+Maria Bianchi
+Cognome
+BNC
+BNC
+Nome
+MRC
+MRA
+Anno (1990)
+90
+90
+Mese (maggio)
+E
+E
+Giorno (15)
+15
+55
+Comune (Roma)
+H501
+H501
+Carattere di controllo
+[calcolato]
+[diverso]
+
+💡 Suggerimento: Puoi sempre determinare il sesso da un codice fiscale: se le posizioni 10-11 mostrano un numero tra 41 e 71, la persona è femmina. I numeri tra 01 e 31 indicano maschio.
+
+Omocodia: Quando le Lettere Sostituiscono i Numeri
+L'omocodia si verifica quando due persone hanno i primi 15 caratteri identici—stesso nome, cognome, data e luogo di nascita. In rari casi, questo crea codici duplicati.
+Come l'Agenzia delle Entrate risolve l'omocodia:
+Solo le autorità ufficiali possono effettuare queste modifiche
+I numeri vengono sostituiti con lettere equivalenti
+Le sostituzioni partono dal numero più a destra e procedono verso sinistra
+Il carattere di controllo viene ricalcolato dopo ogni modifica
+Tabella di conversione numero-lettera:
+Numero
+Lettera
+Numero
+Lettera
+0
+L
+5
+R
+1
+M
+6
+S
+2
+N
+7
+T
+3
+P
+8
+U
+4
+Q
+9
+V
+
+Esempio di risoluzione dell'omocodia:
+Codice originale: RSSGNN61A01F205N
+Prima sostituzione (posizione 15): RSSGNN61A01F20RN
+Seconda sostituzione (posizione 14): RSSGNN61A01F2LRT
+📌 Fatto importante: Poiché il carattere di controllo (posizione 16) viene ricalcolato dopo le modifiche per omocodia, i calcolatori online non possono rilevare o generare codici modificati per omocodia. Solo il database dell'Agenzia delle Entrate conosce i codici modificati corretti.
+
+Codice Fiscale a 11 Cifre: Persone Giuridiche
+Se hai visto un codice fiscale a 11 cifre, appartiene a una persona giuridica (ente legale) come una società, un'associazione o un'organizzazione.
+Struttura del codice a 11 cifre:
+Posizione
+Significato
+1-7
+Numero di matricola provinciale
+8-10
+Codice dell'ufficio provinciale
+11
+Cifra di controllo
+
+Esempi di codici provincia:
+058 = Roma
+015 = Milano
+037 = Bologna
+001 = Torino
+Prefissi speciali:
+Codici che iniziano con 8: associazioni riconosciute
+Codici che iniziano con 9: associazioni non riconosciute
+⚠️ Importante: Anche il codice fiscale provvisorio per le persone fisiche ha 11 cifre. Questa struttura temporanea viene utilizzata quando il codice standard a 16 caratteri non può essere emesso immediatamente.
+
+Abbreviazione Codice Fiscale: Terminologia Ufficiale
+Troverai spesso il codice fiscale abbreviato nei documenti. Ecco i termini ufficiali:
+Termine
+Significato
+CF
+Abbreviazione standard di Codice Fiscale
+C.F.
+Forma puntata dell'abbreviazione
+Cod. Fisc.
+Abbreviazione estesa
+CIN
+Control Internal Number (il carattere di controllo)
+
+Troverai queste abbreviazioni su:
+Moduli e documenti ufficiali
+Tessera Sanitaria
+Dichiarazioni dei redditi
+Contratti e fatture
+Comunicazioni con la Pubblica Amministrazione
+
+Esempio Pratico: Decodificare un Codice Fiscale
+Decodifichiamo un codice di esempio per vedere la composizione in azione.
+Codice di esempio: RSSMRA80T25H501W
+Posizione
+Caratteri
+Informazione Decodificata
+1-3
+RSS
+Consonanti del cognome R, S, S (probabilmente Rossi, Russo, ecc.)
+4-6
+MRA
+Consonanti del nome M, R + vocale A (probabilmente Mario, Mara, ecc.)
+7-8
+80
+Anno di nascita: 1980 (o 1880, 2080)
+9
+T
+Mese di nascita: Dicembre
+10-11
+25
+Giorno 25, maschio (sotto 40)
+12-15
+H501
+Comune: Roma
+16
+W
+Carattere di controllo (valida il codice)
+
+Informazioni che possiamo determinare:
+Nato a Roma
+Il 25 dicembre 1980 (molto probabilmente)
+Maschio
+Cognome contiene R, S, S (Rossi, Russo, Ressa, ecc.)
+Nome contiene M, R (Mario, Marco, Mara, ecc.)
+💡 Suggerimento: Non puoi determinare il nome e cognome esatti da un codice fiscale—solo le consonanti utilizzate. Più nomi possono produrre le stesse lettere (per esempio, ROSSI e RUSSO danno entrambi RSS).
+
+Esempio di Calcolo Completo
+Vediamo come viene composto un codice fiscale passo dopo passo per una persona immaginaria.
+Dati anagrafici:
+Nome: Mario
+Cognome: Rossi
+Data di nascita: 25 dicembre 1980
+Sesso: Maschio
+Luogo di nascita: Roma
+Composizione passo dopo passo:
+Passo
+Dato
+Regola Applicata
+Risultato
+1
+Cognome: ROSSI
+Consonanti R, S, S
+RSS
+2
+Nome: MARIO
+Consonanti M, R + vocale A
+MRA
+3
+Anno: 1980
+Ultime 2 cifre
+80
+4
+Mese: Dicembre
+Lettera dalla tabella
+T
+5
+Giorno + Sesso: 25, Maschio
+Giorno così com'è
+25
+6
+Comune: Roma
+Codice Belfiore
+H501
+7
+Carattere di controllo
+Calcolo dell'algoritmo
+W
+
+Codice fiscale finale: RSSMRA80T25H501W
+
+Domande Frequenti sulla Composizione del Codice Fiscale
+Come è composto il codice fiscale?
+Il codice fiscale delle persone fisiche è composto da 16 caratteri alfanumerici suddivisi in: 3 lettere per il cognome, 3 lettere per il nome, 2 numeri per l'anno, 1 lettera per il mese, 2 numeri per giorno e sesso, 4 caratteri per il comune di nascita (Codice Belfiore) e 1 lettera di controllo. Questa struttura è definita dal D.M. n° 345 del 23/12/1976.
+A cosa corrispondono le ultime 3 cifre del codice fiscale?
+I caratteri nelle posizioni 13-15 fanno parte del Codice Belfiore, che identifica il comune o lo stato estero di nascita. Non sono in realtà "le ultime 3 cifre"—fanno parte di un codice di 4 caratteri (posizioni 12-15). La posizione 16 è il carattere di controllo, che è sempre una lettera.
+Cos'è un codice fiscale a 11 cifre?
+Un codice fiscale a 11 cifre è assegnato alle persone giuridiche (società, organizzazioni e associazioni). È composto solo da numeri: le prime 7 cifre sono il numero di matricola, le cifre 8-10 identificano la provincia e l'11ª è la cifra di controllo. Anche le persone fisiche possono ricevere un codice provvisorio a 11 cifre.
+Quante lettere e quanti numeri ha il codice fiscale?
+Il codice fiscale standard delle persone fisiche contiene 9 lettere e 7 numeri per un totale di 16 caratteri. Le lettere occupano le posizioni 1-6, 9, 12 e 16. I numeri occupano le posizioni 7-8, 10-11 e 13-15. Nei casi di omocodia, alcuni numeri possono essere sostituiti con lettere.
+Il codice fiscale è uguale per uomini e donne?
+La struttura è identica, ma le donne aggiungono 40 al giorno di nascita. Un uomo nato il 15 ha "15" nelle posizioni 10-11, mentre una donna nata lo stesso giorno ha "55". Questa è l'unica differenza nella composizione tra codici maschili e femminili.
+Cosa significa CF?
+CF è l'abbreviazione ufficiale di "Codice Fiscale". La trovi comunemente su moduli, documenti ufficiali, Tessera Sanitaria e in tutte le comunicazioni con la Pubblica Amministrazione. Altre forme includono C.F. e Cod. Fisc.
+
+Riepilogo: Le Regole Fondamentali della Composizione
+Ecco i punti essenziali sulla composizione del codice fiscale:
+✅ Il codice fiscale ha 16 caratteri (9 lettere + 7 numeri)
+✅ Le prime 6 lettere derivano da cognome e nome
+✅ Per i nomi con 4+ consonanti: si prendono la 1ª, 3ª e 4ª
+✅ Le donne aggiungono 40 al giorno di nascita (trasformando 15 in 55)
+✅ Il Codice Belfiore identifica il comune (o Z + numero per stati esteri)
+✅ Solo l'Agenzia delle Entrate rilascia codici ufficiali legalmente validi
+✅ Le regole di composizione sono definite dal D.M. n° 345 del 23/12/1976
+Ora che conosci la composizione completa del codice fiscale, usa il nostro calcolatore gratuito per generare o verificare il tuo codice istantaneamente.

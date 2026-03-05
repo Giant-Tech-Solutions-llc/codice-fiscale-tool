@@ -1,109 +1,171 @@
-<section class="tool-section">
-    <div class="container">
-        <nav class="breadcrumb" aria-label="Breadcrumb">
-            <a href="/">Home</a> <span>&rsaquo;</span> Calcola Codice Fiscale
-        </nav>
-        <div class="tool-card">
-            <div class="tool-header">
-                <h1>Calcola il tuo Codice Fiscale</h1>
-                <p>Inserisci i tuoi dati anagrafici per generare il Codice Fiscale</p>
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <div class="container">
+    <ol>
+      <li><a href="/">Home</a></li>
+      <li aria-current="page">Calcola Codice Fiscale</li>
+    </ol>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <h1>Calcola Codice Fiscale</h1>
+        <p class="hero-description">Genera qualsiasi codice fiscale italiano in pochi secondi. Inserisci i tuoi dati anagrafici e ottieni il codice immediatamente.</p>
+        <ul class="hero-trust-list">
+          <li><span class="check">&#10003;</span> Generazione codice completa</li>
+          <li><span class="check">&#10003;</span> Nessun dato salvato</li>
+          <li><span class="check">&#10003;</span> Gratuito e immediato</li>
+        </ul>
+        <a href="#calcola-tool" class="hero-cta-btn">Calcola Codice Fiscale <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+      </div>
+      <div class="hero-tool-preview">
+        <div class="hero-tool-card" id="calcola-tool">
+          <div class="tool-header">
+            <h2>Genera il tuo Codice Fiscale</h2>
+            <p>Compila i campi e ottieni il risultato</p>
+          </div>
+          <div class="tool-body">
+            <form id="cf-form" novalidate>
+              <div class="form-group">
+                <label for="cognome">Cognome</label>
+                <input type="text" id="cognome" name="cognome" placeholder="Es. Rossi" required autocomplete="family-name">
+              </div>
+              <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" name="nome" placeholder="Es. Mario" required autocomplete="given-name">
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Sesso</label>
+                  <div class="gender-toggle">
+                    <input type="radio" id="sesso-m" name="sesso" value="M" required>
+                    <label for="sesso-m">M</label>
+                    <input type="radio" id="sesso-f" name="sesso" value="F">
+                    <label for="sesso-f">F</label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="data_nascita">Data di Nascita</label>
+                  <input type="date" id="data_nascita" name="data_nascita" required>
+                </div>
+              </div>
+              <div class="form-group comune-wrapper">
+                <label for="comune">Comune di Nascita</label>
+                <input type="text" id="comune" name="comune" placeholder="Inizia a digitare il comune..." required autocomplete="off">
+                <div id="comune-list" class="autocomplete-list" style="display:none"></div>
+                <div class="form-hint">Digita almeno 2 lettere per la ricerca</div>
+              </div>
+              <button type="submit" class="btn btn-primary"><span class="btn-text">Calcola Codice Fiscale</span><span class="spinner"></span></button>
+            </form>
+
+            <div id="result-box" class="result-box">
+              <div class="result-label">Il tuo Codice Fiscale:</div>
+              <div id="result-code" class="result-code"></div>
+              <div class="result-actions">
+                <button onclick="copyCF()" class="copy-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg> Copia</button>
+              </div>
             </div>
-            <div class="tool-body">
-                <% if (typeof errors !== 'undefined' && errors.length > 0) { %>
-                <div class="error-box" role="alert">
-                    <ul>
-                        <% errors.forEach(function(err) { %>
-                        <li><%= err %></li>
-                        <% }); %>
-                    </ul>
-                </div>
-                <% } %>
-
-                <% var fd = (typeof formData !== 'undefined' && formData) ? formData : { cognome: '', nome: '', sesso: '', data_nascita: '', comune: '' }; %>
-                <form id="cf-form" method="POST" action="/tools/codice-fiscale-generator" novalidate>
-                    <div class="form-group">
-                        <label for="cognome">Cognome *</label>
-                        <input type="text" id="cognome" name="cognome" placeholder="Es. Rossi" required autocomplete="family-name" value="<%= fd.cognome %>">
-                    </div>
-                    <div class="form-group">
-                        <label for="nome">Nome *</label>
-                        <input type="text" id="nome" name="nome" placeholder="Es. Mario" required autocomplete="given-name" value="<%= fd.nome %>">
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="sesso">Sesso *</label>
-                            <select id="sesso" name="sesso" required>
-                                <option value="">Seleziona...</option>
-                                <option value="M" <%= fd.sesso === 'M' ? 'selected' : '' %>>Maschio (M)</option>
-                                <option value="F" <%= fd.sesso === 'F' ? 'selected' : '' %>>Femmina (F)</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="data_nascita">Data di Nascita *</label>
-                            <input type="date" id="data_nascita" name="data_nascita" required value="<%= fd.data_nascita %>">
-                        </div>
-                    </div>
-                    <div class="form-group comune-wrapper">
-                        <label for="comune">Comune di Nascita *</label>
-                        <input type="text" id="comune" name="comune" placeholder="Inizia a digitare il nome del comune..." required autocomplete="off" value="<%= fd.comune %>">
-                        <div id="comune-list" class="autocomplete-list" style="display:none"></div>
-                        <div class="form-hint">Digita almeno 2 lettere per la ricerca automatica</div>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Calcola Codice Fiscale</button>
-                </form>
-
-                <% var cfResult = (typeof result !== 'undefined') ? result : null; %>
-                <div id="result-box" class="result-box" <% if (!cfResult) { %>style="display:none"<% } %>>
-                    <div class="result-label">Il tuo Codice Fiscale è:</div>
-                    <div id="result-code" class="result-code"><%= cfResult || '' %></div>
-                    <div class="result-actions">
-                        <button onclick="copyCF()" class="copy-btn">Copia</button>
-                    </div>
-                </div>
-
-                <div class="trust-bar">
-                    <div class="trust-item">
-                        <svg class="trust-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-                        Calcolo preciso
-                    </div>
-                    <div class="trust-item">
-                        <svg class="trust-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/></svg>
-                        Dati non salvati
-                    </div>
-                    <div class="trust-item">
-                        <svg class="trust-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"/></svg>
-                        100% gratuito
-                    </div>
-                </div>
-
-                <div class="disclaimer-box">
-                    <strong>Disclaimer:</strong> Questo strumento calcola il Codice Fiscale secondo l'algoritmo ufficiale. Il risultato potrebbe non corrispondere al codice ufficiale rilasciato dall'Agenzia delle Entrate in caso di omocodia. Per il codice fiscale ufficiale, rivolgiti all'Agenzia delle Entrate.
-                </div>
-            </div>
+          </div>
         </div>
+        <div class="disclaimer-outside">
+          <strong>Nota:</strong> Il calcolo segue l'algoritmo ufficiale. In caso di omocodia il codice potrebbe differire da quello rilasciato dall'Agenzia delle Entrate.
+        </div>
+      </div>
     </div>
+  </div>
 </section>
 
-<section class="section">
-    <div class="container">
-        <div class="internal-links">
-            <h3>Approfondisci</h3>
-            <ul>
-                <li><a href="/cos-e-il-codice-fiscale">Cos'è il Codice Fiscale?</a></li>
-                <li><a href="/come-si-calcola-il-codice-fiscale">Come si Calcola</a></li>
-                <li><a href="/esempi-codice-fiscale">Esempi di CF</a></li>
-                <li><a href="/codice-fiscale-vs-partita-iva">CF vs Partita IVA</a></li>
-                <li><a href="/recupero-codice-fiscale">Recupero CF</a></li>
-            </ul>
-        </div>
-    </div>
+<section class="content-section" aria-labelledby="content-title">
+  <div class="container">
+    <article class="seo-article">
+      <h2 id="content-title">Cos'è il Calcolo del Codice Fiscale?</h2>
+      <p>
+        Il <strong>calcolo del codice fiscale</strong> è il processo utilizzato per generare l'identificativo alfanumerico univoco assegnato a ogni cittadino italiano. Mentre il calcolo inverso estrae i dati anagrafici da un codice esistente, il calcolo diretto segue il percorso opposto: partendo dai dati personali — cognome, nome, data di nascita, sesso e luogo di nascita — costruisce il codice fiscale carattere per carattere.
+      </p>
+      <p>
+        Questo strumento è utile in molti contesti: generare un codice per un nuovo dipendente, pre-compilare documenti, verificare un codice prima di inviare pratiche ufficiali, o semplicemente capire come funziona l'algoritmo. Il nostro <strong>calcolatore di codice fiscale online</strong> applica lo stesso algoritmo ufficiale dell'Agenzia delle Entrate usato in fase di rilascio, garantendo risultati precisi e affidabili.
+      </p>
+
+      <h3>Come funziona il calcolo del Codice Fiscale?</h3>
+      <p>
+        Il codice fiscale italiano è composto da 16 caratteri suddivisi in segmenti specifici. Ecco come vengono generati durante il <strong>calcolo del codice fiscale</strong>:
+      </p>
+      <ul>
+        <li><strong>Caratteri 1–3 (Cognome):</strong> Le prime tre consonanti del cognome, o vocali se le consonanti sono insufficienti.</li>
+        <li><strong>Caratteri 4–6 (Nome):</strong> Se il nome ha 4+ consonanti, si prendono la 1ª, 3ª e 4ª; altrimenti le prime tre consonanti disponibili.</li>
+        <li><strong>Caratteri 7–8 (Anno di nascita):</strong> Le ultime due cifre dell'anno.</li>
+        <li><strong>Carattere 9 (Mese di nascita):</strong> Una lettera codice che rappresenta il mese (A=Gennaio, B=Febbraio, ecc.).</li>
+        <li><strong>Caratteri 10–11 (Giorno e Sesso):</strong> Il giorno di nascita per i maschi (01–31); per le femmine viene sommato 40 (41–71).</li>
+        <li><strong>Caratteri 12–15 (Comune):</strong> Il codice catastale del comune o dello stato estero di nascita.</li>
+        <li><strong>Carattere 16 (Controllo):</strong> Un carattere calcolato algoritmicamente per verificare l'integrità del CF.</li>
+      </ul>
+
+      <h3>Cosa si ottiene dal calcolo del codice fiscale?</h3>
+      <p>
+        Attraverso il <strong>calcolo codice fiscale online</strong> è possibile ottenere il codice alfanumerico completo di 16 caratteri partendo dai cinque dati anagrafici. Il risultato mostra l'esatta codifica del cognome, codifica del nome, data di nascita completa, sesso e comune di nascita. Non è possibile generare il codice fiscale senza tutti e cinque i dati richiesti.
+      </p>
+
+      <h3>Strumenti correlati</h3>
+      <p>
+        Vuoi decodificare un codice fiscale che già possiedi? Usa il nostro <a href="/codice-fiscale-inverso">CF Inverso</a>. Per controllare se un codice fiscale è formalmente corretto, utilizza la nostra <a href="/verifica-codice-fiscale">Verifica Codice Fiscale</a>. Per approfondire come funziona l'algoritmo, leggi la nostra guida su <a href="/guida/come-si-calcola">come si calcola il codice fiscale</a>.
+      </p>
+    </article>
+
+    <section class="faq-section" aria-labelledby="faq-title">
+      <h2 id="faq-title">Domande Frequenti sul Calcolo del Codice Fiscale</h2>
+      <div class="faq-list">
+
+        <details class="faq-item">
+          <summary class="faq-question">Quali dati servono per calcolare un codice fiscale?</summary>
+          <div class="faq-answer">
+            <p>Servono esattamente cinque informazioni: <strong>cognome</strong>, <strong>nome</strong>, <strong>sesso</strong>, <strong>data di nascita</strong> (giorno, mese, anno) e <strong>luogo di nascita</strong> (comune italiano o stato estero). Senza tutti e cinque i dati non è possibile generare un codice fiscale valido e completo. Cognome e nome da soli non sono sufficienti.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">Come si calcola il codice fiscale?</summary>
+          <div class="faq-answer">
+            <p>Il codice fiscale si calcola in sei passaggi: (1) estrarre le prime tre consonanti del cognome; (2) estrarre tre consonanti dal nome con una regola speciale per nomi con 4 o più consonanti; (3) prendere le ultime due cifre dell'anno di nascita; (4) convertire il mese di nascita nella lettera corrispondente (da A a T); (5) codificare il giorno di nascita come numero, sommando 40 per le femmine; (6) usare il codice catastale Belfiore per il comune o stato estero di nascita. Un carattere di controllo viene calcolato alla fine per garantire l'integrità del codice.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">Il codice fiscale calcolato è affidabile?</summary>
+          <div class="faq-answer">
+            <p>Il codice fiscale calcolato è affidabile nella stragrande maggioranza dei casi, poiché lo strumento applica lo stesso algoritmo ufficiale. L'unica eccezione è l'omocodia: quando due persone condividono tutti e cinque i dati anagrafici, l'Agenzia delle Entrate assegna un codice modificato — sostituendo alcune cifre con lettere — noto solo al loro database. In questi rari casi il codice calcolato potrebbe differire da quello ufficiale.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">Come influisce il sesso sul codice fiscale?</summary>
+          <div class="faq-answer">
+            <p>Il sesso influenza i caratteri 10–11 del codice fiscale. Per i maschi, le due cifre mostrano direttamente il giorno di nascita (01–31). Per le femmine, al giorno viene sommato 40 (41–71). Ad esempio, un uomo nato il 15 ha "15" nelle posizioni 10–11, mentre una donna nata lo stesso giorno ha "55". Questa è l'unica differenza strutturale tra un codice fiscale maschile e uno femminile.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">I miei dati vengono salvati durante il calcolo?</summary>
+          <div class="faq-answer">
+            <p>No. Il calcolo viene eseguito localmente nel tuo browser. Nessun dato personale viene inviato ai nostri server, memorizzato in alcun database, o elaborato in alcun modo oltre alla generazione del codice sullo schermo.</p>
+          </div>
+        </details>
+
+      </div>
+    </section>
+  </div>
 </section>
 
-<style>
-.autocomplete-list{position:absolute;width:100%;background:var(--white);border:2px solid var(--primary);border-top:none;border-radius:0 0 var(--radius-sm) var(--radius-sm);max-height:200px;overflow-y:auto;z-index:50;box-shadow:var(--shadow-md)}
-.comune-wrapper{position:relative}
-.ac-item{padding:.625rem 1rem;cursor:pointer;font-size:.9375rem;transition:background .15s}
-.ac-item:hover{background:var(--primary-light)}
-.ac-item small{color:var(--text-light)}
-.ac-item.no-result{color:var(--text-light);cursor:default}
-</style>
+<section class="cta-section" aria-labelledby="cta-title">
+  <div class="container">
+    <h2 id="cta-title">Hai bisogno di decodificare un codice fiscale?</h2>
+    <p>Usa il nostro calcolatore inverso per estrarre data di nascita, sesso e luogo di nascita da qualsiasi codice fiscale italiano esistente.</p>
+    <div class="cta-actions">
+      <a href="/codice-fiscale-inverso" class="btn btn--primary btn--large">CF Inverso →</a>
+      <a href="/verifica-codice-fiscale" class="btn btn--outline btn--large">Verifica un CF</a>
+    </div>
+  </div>
+</section>
+
+<div id="toast" class="toast"></div>

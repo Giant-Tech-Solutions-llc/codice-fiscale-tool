@@ -1,0 +1,187 @@
+/* =========================================================
+   inverso.css – Codice Fiscale Inverso Tool Styles
+   Extends the existing style.css without modifying it.
+   ========================================================= */
+
+/* ── Visual CF Breakdown ─────────────────────────────────── */
+.cf-breakdown {
+  margin: 2rem 0 1.5rem;
+  text-align: center;
+}
+
+.cf-breakdown h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-light, #666);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.cf-chars {
+  display: inline-flex;
+  gap: 3px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.cf-char {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4rem;
+  height: 2.8rem;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border-radius: 6px;
+  color: #fff;
+  cursor: default;
+  transition: transform 0.15s ease;
+}
+
+.cf-char:hover { transform: translateY(-2px); }
+
+/* Segment colours */
+.legend-cognome   { background: #1E7F4F; }
+.legend-nome      { background: #0EA5E9; }
+.legend-anno      { background: #10B981; }
+.legend-mese      { background: #F59E0B; color: #1a1a1a; }
+.legend-giorno    { background: #EF4444; }
+.legend-comune    { background: #2E8B57; }
+.legend-controllo { background: #6B7280; }
+
+/* Legend */
+.cf-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-top: 0.75rem;
+}
+
+.legend-item {
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.legend-item.legend-mese { color: #1a1a1a; }
+
+/* ── Data Cards ──────────────────────────────────────────── */
+.data-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.data-card {
+  background: var(--bg, #f8f9fa);
+  border: 1px solid var(--border, #e5e7eb);
+  border-radius: 12px;
+  padding: 1.25rem 1rem;
+  text-align: center;
+  transition: box-shadow 0.2s ease;
+}
+
+.data-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.data-card__icon {
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.data-card__label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-light, #888);
+  margin-bottom: 0.4rem;
+}
+
+.data-card__value {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary, #1E7F4F);
+}
+
+/* ── Detail Table ────────────────────────────────────────── */
+.detail-table-wrapper {
+  margin-top: 2rem;
+  overflow-x: auto;
+}
+
+.detail-table-wrapper h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: var(--text, #1a1a1a);
+}
+
+.detail-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.detail-table th {
+  background: var(--primary, #1E7F4F);
+  color: #fff;
+  padding: 0.6rem 1rem;
+  text-align: left;
+  font-weight: 600;
+}
+
+.detail-table td {
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid var(--border, #e5e7eb);
+  vertical-align: top;
+}
+
+.detail-table tr:nth-child(even) td {
+  background: var(--bg, #f8f9fa);
+}
+
+.detail-table .mono {
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--primary, #1E7F4F);
+}
+
+/* ── Result section ──────────────────────────────────────── */
+.result-section {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border, #e5e7eb);
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .cf-char {
+    width: 1.9rem;
+    height: 2.2rem;
+    font-size: 1rem;
+  }
+
+  .data-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .detail-table {
+    font-size: 0.8rem;
+  }
+
+  .detail-table th,
+  .detail-table td {
+    padding: 0.5rem 0.6rem;
+  }
+}
