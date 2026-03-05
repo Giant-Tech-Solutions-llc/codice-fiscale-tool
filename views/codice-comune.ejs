@@ -1,0 +1,186 @@
+<!-- BREADCRUMB -->
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <div class="container">
+    <ol>
+      <li><a href="/">Home</a></li>
+      <li aria-current="page">Codice Comune (Catastale)</li>
+    </ol>
+  </div>
+</nav>
+
+<!-- HERO SECTION -->
+<section class="tool-hero" aria-labelledby="hero-title">
+  <div class="container">
+    <h1 id="hero-title">Ricerca Codice Comune (Catastale)</h1>
+    <p class="tool-hero__subtitle">
+      Cerca il codice catastale di qualsiasi comune italiano in un istante. Digita il nome del comune e trova subito il codice utilizzato nel codice fiscale.
+    </p>
+    <ul class="tool-hero__badges" aria-label="Caratteristiche">
+      <li>✓ Database aggiornato</li>
+      <li>✓ Ricerca istantanea</li>
+      <li>✓ Gratuito e senza registrazione</li>
+    </ul>
+  </div>
+</section>
+
+<!-- TOOL SECTION -->
+<section class="tool-section" aria-labelledby="tool-title">
+  <div class="container">
+    <div class="tool-card">
+      <h2 id="tool-title">Cerca il Codice Catastale</h2>
+      <p class="tool-card__desc">Inserisci il nome di un comune italiano per trovare il codice catastale corrispondente</p>
+
+      <div class="tool-input-group">
+        <label for="comune-search-input" class="visually-hidden">Nome del comune</label>
+        <input
+          id="comune-search-input"
+          type="text"
+          class="cf-input"
+          placeholder="Es. Roma, Milano, Napoli..."
+          autocomplete="off"
+          autocorrect="off"
+          spellcheck="false"
+          aria-describedby="comune-input-hint"
+        />
+        <span id="comune-input-hint" class="input-hint">Inserisci almeno 2 caratteri per avviare la ricerca</span>
+      </div>
+
+      <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+        <button id="comune-search-btn" class="btn btn--primary btn--large" aria-controls="comune-result">
+          Cerca Codice Catastale
+        </button>
+        <button id="comune-reset-btn" class="btn btn--secondary btn--large">
+          Reset
+        </button>
+      </div>
+
+      <!-- ERROR -->
+      <div id="comune-error-msg" class="error-msg" role="alert" aria-live="polite" hidden></div>
+
+      <!-- RESULT -->
+      <div id="comune-result" class="result-section" hidden aria-live="polite">
+        <h3>Risultati della Ricerca</h3>
+        <div class="detail-table-wrapper">
+          <table class="detail-table" aria-label="Risultati ricerca codice catastale">
+            <thead>
+              <tr>
+                <th scope="col">Comune</th>
+                <th scope="col">Codice Catastale</th>
+              </tr>
+            </thead>
+            <tbody id="comune-result-list"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEO CONTENT SECTION -->
+<section class="content-section" aria-labelledby="content-title">
+  <div class="container">
+    <article class="seo-article">
+      <h2 id="content-title">Cos'è il Codice Catastale del Comune?</h2>
+      <p>
+        Il <strong>codice catastale</strong> (detto anche codice comunale o codice Belfiore) è un identificativo alfanumerico di 4 caratteri assegnato a ogni comune italiano e a ogni stato estero. È composto da una lettera iniziale seguita da tre cifre (ad esempio <strong>H501</strong> per Roma, <strong>F205</strong> per Milano).
+      </p>
+      <p>
+        Questo codice viene utilizzato all'interno del <strong>codice fiscale italiano</strong> per indicare il luogo di nascita del titolare. Occupa le posizioni 12–15 del CF ed è fondamentale per la corretta generazione e decodifica del codice fiscale.
+      </p>
+
+      <h3>A cosa serve il codice catastale?</h3>
+      <p>
+        Il codice catastale ha molteplici utilizzi nel sistema amministrativo italiano:
+      </p>
+      <ul>
+        <li><strong>Codice fiscale:</strong> identifica il comune di nascita nelle posizioni 12–15 del CF.</li>
+        <li><strong>Catasto:</strong> è utilizzato per la codifica degli immobili nel sistema catastale nazionale.</li>
+        <li><strong>Anagrafe:</strong> serve per la gestione dei registri anagrafici comunali.</li>
+        <li><strong>Modulistica:</strong> è richiesto in numerosi moduli della Pubblica Amministrazione.</li>
+      </ul>
+
+      <h3>Come è strutturato il codice catastale?</h3>
+      <p>
+        Il codice catastale segue una struttura precisa:
+      </p>
+      <ul>
+        <li><strong>Prima lettera:</strong> identifica un raggruppamento geografico (es. le lettere A-M sono per i comuni italiani).</li>
+        <li><strong>Tre cifre:</strong> identificano lo specifico comune all'interno del raggruppamento.</li>
+        <li><strong>Codici Z:</strong> i codici che iniziano con "Z" identificano stati esteri (es. Z404 = Francia, Z114 = Germania).</li>
+      </ul>
+
+      <h3>Differenza tra codice catastale e codice ISTAT</h3>
+      <p>
+        È importante non confondere il codice catastale con il codice ISTAT. Il <strong>codice ISTAT</strong> è un codice numerico a 6 cifre utilizzato dall'Istituto Nazionale di Statistica, mentre il <strong>codice catastale</strong> (o Belfiore) è alfanumerico a 4 caratteri ed è quello effettivamente utilizzato nel codice fiscale. Ogni comune ha entrambi i codici, ma nel CF compare solo quello catastale.
+      </p>
+
+      <h3>Come trovare il codice catastale del proprio comune</h3>
+      <p>
+        Per trovare il codice catastale di un comune, puoi utilizzare il nostro strumento di ricerca qui sopra: basta inserire il nome del comune e il codice verrà mostrato istantaneamente. In alternativa, puoi consultare il sito dell'<strong>Agenzia delle Entrate</strong> o gli elenchi ufficiali pubblicati dal Ministero delle Finanze.
+      </p>
+
+      <h3>Strumenti correlati</h3>
+      <p>
+        Vuoi generare un codice fiscale completo? Usa il nostro <a href="/calcola">Calcolo Codice Fiscale</a>. Per decodificare un CF e scoprire il comune di nascita, utilizza il <a href="/codice-fiscale-inverso">Codice Fiscale Inverso</a>. Per verificare la validità di un CF, prova la <a href="/verifica-codice-fiscale">Verifica Codice Fiscale</a>.
+      </p>
+    </article>
+
+    <!-- FAQ SECTION -->
+    <section class="faq-section" aria-labelledby="faq-title">
+      <h2 id="faq-title">Domande Frequenti sul Codice Catastale</h2>
+      <div class="faq-list">
+
+        <details class="faq-item">
+          <summary class="faq-question">Cos'è il codice catastale di un comune?</summary>
+          <div class="faq-answer">
+            <p>Il codice catastale (o codice Belfiore) è un codice alfanumerico di 4 caratteri (una lettera + tre cifre) assegnato a ogni comune italiano e stato estero. È utilizzato nel codice fiscale per indicare il luogo di nascita.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">Dove si trova il codice catastale nel codice fiscale?</summary>
+          <div class="faq-answer">
+            <p>Il codice catastale occupa le posizioni 12–15 del codice fiscale. Ad esempio, nel CF <strong>RSSMRA85M01H501Z</strong>, il codice catastale è <strong>H501</strong>, che corrisponde al comune di Roma.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">Qual è la differenza tra codice catastale e codice ISTAT?</summary>
+          <div class="faq-answer">
+            <p>Il codice catastale è alfanumerico (4 caratteri: lettera + 3 cifre) ed è usato nel codice fiscale. Il codice ISTAT è numerico (6 cifre) ed è usato per fini statistici. Sono due sistemi di codifica diversi per lo stesso comune.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">Come trovo il codice catastale di un comune soppresso?</summary>
+          <div class="faq-answer">
+            <p>I comuni soppressi o accorpati mantengono il loro codice catastale originale negli archivi storici. Il nostro database include anche i comuni soppressi, quindi puoi cercarli normalmente nel campo di ricerca.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">I codici catastali degli stati esteri iniziano con quale lettera?</summary>
+          <div class="faq-answer">
+            <p>I codici catastali degli stati esteri iniziano con la lettera <strong>Z</strong>, seguita da tre cifre. Ad esempio: Z404 = Francia, Z114 = Germania, Z112 = Spagna.</p>
+          </div>
+        </details>
+
+      </div>
+    </section>
+  </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="cta-section" aria-labelledby="cta-title">
+  <div class="container">
+    <h2 id="cta-title">Hai bisogno di generare un Codice Fiscale?</h2>
+    <p>Usa il nostro calcolatore principale per generare un CF completo a partire dai dati anagrafici.</p>
+    <div class="cta-actions">
+      <a href="/calcola" class="btn btn--primary btn--large">Calcola Codice Fiscale →</a>
+      <a href="/codice-fiscale-inverso" class="btn btn--outline btn--large">Decodifica un CF</a>
+    </div>
+  </div>
+</section>
+
+<style>.codice-badge{display:inline-block;background:#f0fdf4;color:#1E7F4F;font-family:'Courier New',monospace;font-weight:700;font-size:1.05rem;padding:0.3rem 0.75rem;border-radius:6px;border:1px solid #a7f3d0;letter-spacing:0.08em;}</style>
+<script src="/js/codice-comune.js" defer></script>

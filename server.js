@@ -189,8 +189,19 @@ const routeBreadcrumbs = {
   'recupero-codice-fiscale': [{ name: 'Home', url: '/' }, { name: 'Guida', url: '/codice-fiscale' }, { name: 'Recupero CF' }],
   'utilizzi-legali-codice-fiscale': [{ name: 'Home', url: '/' }, { name: 'Guida', url: '/codice-fiscale' }, { name: 'Utilizzi Legali' }],
   'esempi-codice-fiscale': [{ name: 'Home', url: '/' }, { name: 'Guida', url: '/codice-fiscale' }, { name: 'Esempi' }],
-  'guide/codice-fiscale-inverso': [{ name: 'Home', url: '/' }, { name: 'Guide', url: '/codice-fiscale' }, { name: 'Codice Fiscale Inverso' }],
-  'guide/verifica-codice-fiscale': [{ name: 'Home', url: '/' }, { name: 'Guide', url: '/codice-fiscale' }, { name: 'Verifica Codice Fiscale' }],
+  'guida/codice-fiscale-inverso': [{ name: 'Home', url: '/' }, { name: 'Guide', url: '/codice-fiscale' }, { name: 'Codice Fiscale Inverso' }],
+  'guida/verifica-codice-fiscale': [{ name: 'Home', url: '/' }, { name: 'Guide', url: '/codice-fiscale' }, { name: 'Verifica Codice Fiscale' }],
+  'codice-comune': [{ name: 'Home', url: '/' }, { name: 'Codice Comune' }],
+  'carattere-controllo': [{ name: 'Home', url: '/' }, { name: 'Carattere di Controllo' }],
+  'stampa': [{ name: 'Home', url: '/' }, { name: 'Stampa Codice Fiscale' }],
+  'guida/come-si-calcola': [{ name: 'Home', url: '/' }, { name: 'Guide', url: '/codice-fiscale' }, { name: 'Come si Calcola' }],
+  'guida/struttura': [{ name: 'Home', url: '/' }, { name: 'Guide', url: '/codice-fiscale' }, { name: 'Struttura del CF' }],
+  'guida/come-leggere': [{ name: 'Home', url: '/' }, { name: 'Guide', url: '/codice-fiscale' }, { name: 'Come Leggere il CF' }],
+  'guida/lettere-mesi': [{ name: 'Home', url: '/' }, { name: 'Guide', url: '/codice-fiscale' }, { name: 'Lettere dei Mesi' }],
+  'guida/donna-uomo': [{ name: 'Home', url: '/' }, { name: 'Guide', url: '/codice-fiscale' }, { name: 'CF Donna e Uomo' }],
+  'guida/cose-il-codice-fiscale': [{ name: 'Home', url: '/' }, { name: 'Guide', url: '/codice-fiscale' }, { name: "Cos'è il Codice Fiscale" }],
+  'guida/come-trovare': [{ name: 'Home', url: '/' }, { name: 'Guide', url: '/codice-fiscale' }, { name: 'Come Trovare il CF' }],
+  'guida/neonato': [{ name: 'Home', url: '/' }, { name: 'Guide', url: '/codice-fiscale' }, { name: 'CF per Neonati' }],
   'chi-siamo': [{ name: 'Home', url: '/' }, { name: 'Chi Siamo' }],
   'contatti': [{ name: 'Home', url: '/' }, { name: 'Contatti' }],
   'privacy-policy': [{ name: 'Home', url: '/' }, { name: 'Privacy Policy' }],
@@ -219,7 +230,7 @@ function getStructuredData(siteUrl, routeKey) {
   if (routeKey === 'codice-fiscale') {
     schemas.push(jsonLd(buildFaqSchema(pillarFaqs)));
   }
-  if (routeKey === 'guide/codice-fiscale-inverso') {
+  if (routeKey === 'guida/codice-fiscale-inverso') {
     schemas.push(jsonLd({
       '@context': 'https://schema.org',
       '@type': 'Article',
@@ -227,7 +238,7 @@ function getStructuredData(siteUrl, routeKey) {
       description: 'Come decodificare un codice fiscale italiano: data di nascita, sesso, comune di nascita e analisi carattere per carattere.',
       author: { '@type': 'Organization', name: SITE_NAME },
       publisher: { '@type': 'Organization', name: SITE_NAME, url: siteUrl + '/' },
-      url: siteUrl + '/guide/codice-fiscale-inverso'
+      url: siteUrl + '/guida/codice-fiscale-inverso'
     }));
     schemas.push(jsonLd(buildFaqSchema([
       { q: 'Come si risale alla data di nascita dal codice fiscale?', a: 'I caratteri 7–8 danno le ultime due cifre dell\'anno, il carattere 9 dà il mese tramite codice lettera, e i caratteri 10–11 danno il giorno (per le femmine bisogna sottrarre 40).' },
@@ -235,7 +246,7 @@ function getStructuredData(siteUrl, routeKey) {
       { q: 'Il CF inverso funziona anche per stranieri?', a: 'Sì. Se il codice catastale inizia con "Z", indica uno stato estero. Il nostro strumento riconosce e mostra il codice catastale, che puoi confrontare con l\'elenco ufficiale degli stati esteri.' }
     ])));
   }
-  if (routeKey === 'guide/verifica-codice-fiscale') {
+  if (routeKey === 'guida/verifica-codice-fiscale') {
     schemas.push(jsonLd({
       '@context': 'https://schema.org',
       '@type': 'Article',
@@ -243,13 +254,136 @@ function getStructuredData(siteUrl, routeKey) {
       description: 'Come verificare se un codice fiscale italiano è formalmente valido: struttura, carattere di controllo, errori comuni e validatore online gratuito.',
       author: { '@type': 'Organization', name: SITE_NAME },
       publisher: { '@type': 'Organization', name: SITE_NAME, url: siteUrl + '/' },
-      url: siteUrl + '/guide/verifica-codice-fiscale'
+      url: siteUrl + '/guida/verifica-codice-fiscale'
     }));
     schemas.push(jsonLd(buildFaqSchema([
       { q: 'Come faccio a sapere se il mio codice fiscale è corretto?', a: 'Puoi usare il nostro strumento gratuito di verifica: inserisci il CF e riceverai immediatamente una risposta sulla sua validità formale. Per la verifica anagrafica ufficiale, rivolgiti all\'Agenzia delle Entrate.' },
       { q: 'Un CF valido formalmente è sicuramente il mio CF ufficiale?', a: 'Non necessariamente. La validazione formale conferma che la struttura è corretta, ma non può verificare l\'associazione con la tua identità nei registri ufficiali.' },
       { q: 'Perché il mio CF viene indicato come non valido?', a: 'Le cause più comuni sono: errore di trascrizione nell\'ultimo carattere (il carattere di controllo), lunghezza sbagliata, confusione tra O/0 o I/1, o un codice mese non valido.' },
       { q: 'La verifica del CF è sicura per la privacy?', a: 'Sì, tutta l\'elaborazione avviene nel browser. Nessun dato viene trasmesso ai nostri server. Non salviamo né registriamo alcun codice fiscale inserito.' }
+    ])));
+  }
+  if (routeKey === 'guida/come-si-calcola') {
+    schemas.push(jsonLd({
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: 'Come si Calcola il Codice Fiscale: Algoritmo Completo',
+      description: "Spiegazione dettagliata dell'algoritmo di calcolo del codice fiscale italiano: estrazione consonanti, codifica data, codice catastale e carattere di controllo.",
+      author: { '@type': 'Organization', name: SITE_NAME },
+      publisher: { '@type': 'Organization', name: SITE_NAME, url: siteUrl + '/' },
+      url: siteUrl + '/guida/come-si-calcola'
+    }));
+    schemas.push(jsonLd(buildFaqSchema([
+      { q: 'Come funziona il calcolo del codice fiscale?', a: "Il CF viene calcolato con un algoritmo che estrae consonanti e vocali da cognome e nome, codifica anno/mese/giorno di nascita, aggiunge il codice catastale del comune e calcola un carattere di controllo finale." },
+      { q: "Cosa succede se il cognome ha meno di 3 consonanti?", a: "Se le consonanti non bastano, si aggiungono le vocali nell'ordine in cui compaiono. Se anche le vocali non bastano, si completa con la lettera X." },
+      { q: "Cos'è l'omocodia nel codice fiscale?", a: "L'omocodia si verifica quando due persone generano lo stesso CF. In tal caso, l'Agenzia delle Entrate sostituisce uno o più caratteri numerici con lettere secondo una tabella ufficiale." }
+    ])));
+  }
+  if (routeKey === 'guida/struttura') {
+    schemas.push(jsonLd({
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: 'Struttura del Codice Fiscale: I 16 Caratteri Spiegati',
+      description: 'Analisi dettagliata della struttura del codice fiscale italiano: significato di ogni carattere, posizione per posizione.',
+      author: { '@type': 'Organization', name: SITE_NAME },
+      publisher: { '@type': 'Organization', name: SITE_NAME, url: siteUrl + '/' },
+      url: siteUrl + '/guida/struttura'
+    }));
+    schemas.push(jsonLd(buildFaqSchema([
+      { q: 'Quanti caratteri ha il codice fiscale?', a: 'Il codice fiscale è composto da 16 caratteri alfanumerici: 6 lettere per cognome e nome, 2 cifre per anno, 1 lettera per mese, 2 cifre per giorno/sesso, 4 caratteri per comune, 1 lettera di controllo.' },
+      { q: "Cosa indica l'ultimo carattere del CF?", a: "L'ultimo carattere è il carattere di controllo, calcolato con un algoritmo specifico sui primi 15 caratteri. Serve a verificare che il codice non contenga errori di trascrizione." }
+    ])));
+  }
+  if (routeKey === 'guida/come-leggere') {
+    schemas.push(jsonLd({
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: 'Come Leggere il Codice Fiscale: Guida Pratica',
+      description: 'Guida pratica passo-passo per leggere e interpretare un codice fiscale italiano con esempi concreti.',
+      author: { '@type': 'Organization', name: SITE_NAME },
+      publisher: { '@type': 'Organization', name: SITE_NAME, url: siteUrl + '/' },
+      url: siteUrl + '/guida/come-leggere'
+    }));
+    schemas.push(jsonLd(buildFaqSchema([
+      { q: 'Come si legge il codice fiscale?', a: 'Si leggono i primi 3 caratteri per il cognome, i successivi 3 per il nome, poi anno, mese e giorno di nascita, il codice catastale del comune e infine il carattere di controllo.' },
+      { q: 'Si può risalire al nome dal codice fiscale?', a: "No, dal CF si possono ricavare solo alcune consonanti/vocali del nome e cognome, non le parole complete. Il CF non è univocamente invertibile per nome e cognome." }
+    ])));
+  }
+  if (routeKey === 'guida/lettere-mesi') {
+    schemas.push(jsonLd({
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: 'Lettere dei Mesi nel Codice Fiscale: Tabella Completa',
+      description: 'Tabella completa delle lettere che rappresentano i mesi nel codice fiscale italiano: da A (Gennaio) a T (Dicembre).',
+      author: { '@type': 'Organization', name: SITE_NAME },
+      publisher: { '@type': 'Organization', name: SITE_NAME, url: siteUrl + '/' },
+      url: siteUrl + '/guida/lettere-mesi'
+    }));
+    schemas.push(jsonLd(buildFaqSchema([
+      { q: 'Quali lettere corrispondono ai mesi nel codice fiscale?', a: 'Gennaio=A, Febbraio=B, Marzo=C, Aprile=D, Maggio=E, Giugno=H, Luglio=L, Agosto=M, Settembre=P, Ottobre=R, Novembre=S, Dicembre=T.' },
+      { q: 'Perché non si usano lettere consecutive?', a: "Le lettere F, G, I, J, K, N, O, Q vengono saltate per evitare confusioni con numeri e altri caratteri usati nel codice fiscale." }
+    ])));
+  }
+  if (routeKey === 'guida/donna-uomo') {
+    schemas.push(jsonLd({
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: 'Codice Fiscale Donna e Uomo: Le Differenze',
+      description: 'Come distinguere il codice fiscale di un uomo da quello di una donna: la regola del giorno +40 e esempi pratici.',
+      author: { '@type': 'Organization', name: SITE_NAME },
+      publisher: { '@type': 'Organization', name: SITE_NAME, url: siteUrl + '/' },
+      url: siteUrl + '/guida/donna-uomo'
+    }));
+    schemas.push(jsonLd(buildFaqSchema([
+      { q: 'Come si distingue il CF di un uomo da quello di una donna?', a: 'Nel CF femminile, al giorno di nascita viene aggiunto 40. Quindi se il giorno è maggiore di 40, il CF appartiene a una donna.' },
+      { q: 'Perché si aggiunge 40 al giorno per le donne?', a: "Il numero 40 è stato scelto perché nessun mese ha più di 31 giorni, quindi valori da 41 a 71 identificano univocamente il sesso femminile senza ambiguità." }
+    ])));
+  }
+  if (routeKey === 'guida/cose-il-codice-fiscale') {
+    schemas.push(jsonLd({
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: "Cos'è il Codice Fiscale Italiano: Guida Completa",
+      description: "Cos'è il codice fiscale, storia, base legale (DPR 605/1973), chi lo deve avere e differenza con la Partita IVA.",
+      author: { '@type': 'Organization', name: SITE_NAME },
+      publisher: { '@type': 'Organization', name: SITE_NAME, url: siteUrl + '/' },
+      url: siteUrl + '/guida/cose-il-codice-fiscale'
+    }));
+    schemas.push(jsonLd(buildFaqSchema([
+      { q: "Cos'è il codice fiscale?", a: "Il codice fiscale è un codice alfanumerico di 16 caratteri che identifica in modo univoco le persone fisiche nei rapporti con gli enti e le amministrazioni pubbliche italiane." },
+      { q: 'Chi deve avere il codice fiscale?', a: 'Tutti i cittadini italiani e gli stranieri che hanno rapporti fiscali, lavorativi o burocratici in Italia devono avere un codice fiscale.' },
+      { q: "Qual è la differenza tra codice fiscale e Partita IVA?", a: "Il codice fiscale identifica le persone fisiche, la Partita IVA identifica chi svolge attività economica. Il CF ha 16 caratteri alfanumerici, la Partita IVA ha 11 cifre." }
+    ])));
+  }
+  if (routeKey === 'guida/come-trovare') {
+    schemas.push(jsonLd({
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: 'Come Trovare il Codice Fiscale: Tutti i Metodi',
+      description: 'Come trovare e ottenere il proprio codice fiscale: tessera sanitaria, Agenzia delle Entrate, SPID, app IO e calcolo online.',
+      author: { '@type': 'Organization', name: SITE_NAME },
+      publisher: { '@type': 'Organization', name: SITE_NAME, url: siteUrl + '/' },
+      url: siteUrl + '/guida/come-trovare'
+    }));
+    schemas.push(jsonLd(buildFaqSchema([
+      { q: 'Dove trovo il mio codice fiscale?', a: "Il CF è stampato sulla tessera sanitaria (fronte e retro con codice a barre). Puoi anche trovarlo su documenti fiscali, CUD, dichiarazioni dei redditi o richiederlo all'Agenzia delle Entrate." },
+      { q: 'Posso trovare il CF online?', a: "Puoi calcolare il CF con il nostro strumento gratuito, oppure accedere al portale dell'Agenzia delle Entrate con SPID/CIE per ottenere il tuo CF ufficiale." }
+    ])));
+  }
+  if (routeKey === 'guida/neonato') {
+    schemas.push(jsonLd({
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: 'Codice Fiscale per Neonati: Quando e Come Ottenerlo',
+      description: 'Come e quando viene assegnato il codice fiscale ai neonati: procedura ospedaliera, comune, tessera sanitaria e tempistiche.',
+      author: { '@type': 'Organization', name: SITE_NAME },
+      publisher: { '@type': 'Organization', name: SITE_NAME, url: siteUrl + '/' },
+      url: siteUrl + '/guida/neonato'
+    }));
+    schemas.push(jsonLd(buildFaqSchema([
+      { q: 'Quando viene assegnato il CF al neonato?', a: "Il codice fiscale viene assegnato automaticamente al momento della dichiarazione di nascita, solitamente in ospedale entro 3 giorni dalla nascita." },
+      { q: 'Devo richiedere il CF per il mio neonato?', a: "No, il CF viene attribuito automaticamente dall'Agenzia delle Entrate dopo la registrazione della nascita. L'ospedale o il comune trasmettono i dati." },
+      { q: 'Quando arriva la tessera sanitaria del neonato?', a: "La tessera sanitaria viene spedita a casa entro 2-3 settimane dalla nascita. Nel frattempo, il CF è comunque valido e utilizzabile." }
     ])));
   }
   return schemas.join('\n');
@@ -276,8 +410,19 @@ const routes = {
   'politica-editoriale': { page: 'editorial-policy', title: 'Politica Editoriale | ' + SITE_NAME, description: 'La nostra politica editoriale. Come creiamo e verifichiamo i contenuti.' },
   'gdpr': { page: 'gdpr', title: 'Informativa GDPR | ' + SITE_NAME, description: 'Informativa sul trattamento dei dati personali ai sensi del GDPR.' },
   'mappa-del-sito': { page: 'sitemap-html', title: 'Mappa del Sito | ' + SITE_NAME, description: 'Mappa del sito completa di ' + SITE_NAME + '. Trova tutte le pagine.' },
-  'guide/codice-fiscale-inverso': { page: 'guides/guide-inverso', title: 'Guida Completa al Codice Fiscale Inverso – Come Decodificare il CF | ' + SITE_NAME, description: 'Guida completa al calcolo del codice fiscale inverso: come funziona la decodifica, cosa si può ricavare dal CF, tabella mesi, esempio pratico e strumento online gratuito.' },
-  'guide/verifica-codice-fiscale': { page: 'guides/guide-verifica', title: 'Come Verificare un Codice Fiscale – Guida Completa alla Validazione CF | ' + SITE_NAME, description: 'Guida completa su come verificare un codice fiscale italiano: struttura, algoritmo del carattere di controllo, errori comuni e strumento di verifica online gratuito.' },
+  'guida/codice-fiscale-inverso': { page: 'guides/guide-inverso', title: 'Guida Completa al Codice Fiscale Inverso – Come Decodificare il CF | ' + SITE_NAME, description: 'Guida completa al calcolo del codice fiscale inverso: come funziona la decodifica, cosa si può ricavare dal CF, tabella mesi, esempio pratico e strumento online gratuito.' },
+  'guida/verifica-codice-fiscale': { page: 'guides/guide-verifica', title: 'Come Verificare un Codice Fiscale – Guida Completa alla Validazione CF | ' + SITE_NAME, description: 'Guida completa su come verificare un codice fiscale italiano: struttura, algoritmo del carattere di controllo, errori comuni e strumento di verifica online gratuito.' },
+  'codice-comune': { page: 'codice-comune', title: 'Codice Comune (Codice Catastale): Cerca il Codice del Tuo Comune | ' + SITE_NAME, description: 'Cerca il codice catastale del tuo comune italiano. Database completo di tutti i comuni con ricerca istantanea per nome.' },
+  'carattere-controllo': { page: 'carattere-controllo', title: 'Calcola il Carattere di Controllo del Codice Fiscale | ' + SITE_NAME, description: 'Calcola il 16° carattere di controllo del codice fiscale italiano. Inserisci i primi 15 caratteri e ottieni il carattere di controllo.' },
+  'stampa': { page: 'stampa', title: 'Stampa Codice Fiscale – Formato Tessera Sanitaria | ' + SITE_NAME, description: 'Genera e stampa il tuo codice fiscale in formato tessera sanitaria. Inserisci il CF e ottieni una versione stampabile.' },
+  'guida/come-si-calcola': { page: 'guides/guida-come-si-calcola', title: 'Come si Calcola il Codice Fiscale: Algoritmo Completo | ' + SITE_NAME, description: "Spiegazione dettagliata dell'algoritmo di calcolo del codice fiscale italiano: estrazione consonanti, codifica data, codice catastale e carattere di controllo." },
+  'guida/struttura': { page: 'guides/guida-struttura', title: 'Struttura del Codice Fiscale: I 16 Caratteri Spiegati | ' + SITE_NAME, description: 'Analisi dettagliata della struttura del codice fiscale italiano: significato di ogni carattere, posizione per posizione.' },
+  'guida/come-leggere': { page: 'guides/guida-come-leggere', title: 'Come Leggere il Codice Fiscale: Guida Pratica | ' + SITE_NAME, description: 'Guida pratica passo-passo per leggere e interpretare un codice fiscale italiano con esempi concreti.' },
+  'guida/lettere-mesi': { page: 'guides/guida-lettere-mesi', title: 'Lettere dei Mesi nel Codice Fiscale: Tabella Completa | ' + SITE_NAME, description: 'Tabella completa delle lettere che rappresentano i mesi nel codice fiscale italiano: da A (Gennaio) a T (Dicembre).' },
+  'guida/donna-uomo': { page: 'guides/guida-donna-uomo', title: 'Codice Fiscale Donna e Uomo: Le Differenze | ' + SITE_NAME, description: 'Come distinguere il codice fiscale di un uomo da quello di una donna: la regola del giorno +40 e esempi pratici.' },
+  'guida/cose-il-codice-fiscale': { page: 'guides/guida-cose-il-codice-fiscale', title: "Cos'è il Codice Fiscale Italiano: Guida Completa | " + SITE_NAME, description: "Cos'è il codice fiscale, storia, base legale (DPR 605/1973), chi lo deve avere e differenza con la Partita IVA." },
+  'guida/come-trovare': { page: 'guides/guida-come-trovare', title: 'Come Trovare il Codice Fiscale: Tutti i Metodi | ' + SITE_NAME, description: 'Come trovare e ottenere il proprio codice fiscale: tessera sanitaria, Agenzia delle Entrate, SPID, app IO e calcolo online.' },
+  'guida/neonato': { page: 'guides/guida-neonato', title: 'Codice Fiscale per Neonati: Quando e Come Ottenerlo | ' + SITE_NAME, description: 'Come e quando viene assegnato il codice fiscale ai neonati: procedura ospedaliera, comune, tessera sanitaria e tempistiche.' },
 };
 
 app.use('/tools', (req, res, next) => {
@@ -297,6 +442,9 @@ app.use('/tools', (req, res, next) => {
   Object.assign(res.locals, locals);
   next();
 }, toolRoutes);
+
+app.get('/guide/codice-fiscale-inverso', (req, res) => res.redirect(301, '/guida/codice-fiscale-inverso'));
+app.get('/guide/verifica-codice-fiscale', (req, res) => res.redirect(301, '/guida/verifica-codice-fiscale'));
 
 app.use('/', createToolsRouter(getLocals, getStructuredData));
 
@@ -412,8 +560,19 @@ app.get('/sitemap.xml', (req, res) => {
     { path: 'recupero-codice-fiscale', priority: '0.7' },
     { path: 'utilizzi-legali-codice-fiscale', priority: '0.7' },
     { path: 'esempi-codice-fiscale', priority: '0.7' },
-    { path: 'guide/codice-fiscale-inverso', priority: '0.8' },
-    { path: 'guide/verifica-codice-fiscale', priority: '0.8' },
+    { path: 'guida/codice-fiscale-inverso', priority: '0.8' },
+    { path: 'guida/verifica-codice-fiscale', priority: '0.8' },
+    { path: 'codice-comune', priority: '0.9' },
+    { path: 'carattere-controllo', priority: '0.9' },
+    { path: 'stampa', priority: '0.9' },
+    { path: 'guida/come-si-calcola', priority: '0.8' },
+    { path: 'guida/struttura', priority: '0.8' },
+    { path: 'guida/come-leggere', priority: '0.8' },
+    { path: 'guida/lettere-mesi', priority: '0.8' },
+    { path: 'guida/donna-uomo', priority: '0.8' },
+    { path: 'guida/cose-il-codice-fiscale', priority: '0.8' },
+    { path: 'guida/come-trovare', priority: '0.8' },
+    { path: 'guida/neonato', priority: '0.8' },
     { path: 'chi-siamo', priority: '0.5' },
     { path: 'contatti', priority: '0.5' },
     { path: 'privacy-policy', priority: '0.3' },

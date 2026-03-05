@@ -1,0 +1,279 @@
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <div class="container">
+    <ol>
+      <li><a href="/">Home</a></li>
+      <li><a href="/codice-fiscale">Guide</a></li>
+      <li aria-current="page">Come si Calcola il Codice Fiscale</li>
+    </ol>
+  </div>
+</nav>
+
+<section class="guide-page">
+  <div class="container guide-container">
+
+    <article class="guide-article" itemscope itemtype="https://schema.org/Article">
+
+      <header class="guide-header">
+        <h1 itemprop="headline">Come si Calcola il Codice Fiscale: Guida Completa all'Algoritmo</h1>
+        <p class="guide-intro" itemprop="description">
+          Scopri nel dettaglio come viene <strong>calcolato il codice fiscale italiano</strong>: dall'estrazione delle consonanti dal cognome e nome, alla codifica di data e luogo di nascita, fino al calcolo del carattere di controllo. Una guida passo per passo con esempi pratici.
+        </p>
+        <div class="guide-cta-inline">
+          <a href="/calcola" class="btn btn--primary">Calcola il tuo CF ora →</a>
+        </div>
+      </header>
+
+      <nav class="guide-toc" aria-label="Indice della guida">
+        <h2>Indice</h2>
+        <ol>
+          <li><a href="#introduzione">Introduzione all'algoritmo</a></li>
+          <li><a href="#cognome">Codifica del cognome</a></li>
+          <li><a href="#nome">Codifica del nome</a></li>
+          <li><a href="#data-nascita">Codifica della data di nascita</a></li>
+          <li><a href="#comune">Codice catastale del comune</a></li>
+          <li><a href="#carattere-controllo">Calcolo del carattere di controllo</a></li>
+          <li><a href="#esempio-completo">Esempio completo passo per passo</a></li>
+          <li><a href="#omocodia">Gestione dell'omocodia</a></li>
+          <li><a href="#faq">Domande frequenti</a></li>
+        </ol>
+      </nav>
+
+      <section id="introduzione">
+        <h2>Introduzione all'algoritmo del codice fiscale</h2>
+        <p>
+          Il <strong>codice fiscale italiano</strong> è un codice alfanumerico di 16 caratteri che identifica in modo univoco ogni cittadino e residente ai fini fiscali. L'algoritmo per il suo calcolo è stato definito dal Decreto del Presidente della Repubblica n. 605 del 29 settembre 1973 e successivi aggiornamenti dall'Agenzia delle Entrate.
+        </p>
+        <p>
+          Il codice viene generato a partire da cinque dati anagrafici fondamentali: <strong>cognome</strong>, <strong>nome</strong>, <strong>data di nascita</strong>, <strong>sesso</strong> e <strong>comune (o stato estero) di nascita</strong>. Ogni dato viene codificato in un segmento specifico del codice fiscale secondo regole precise e deterministiche.
+        </p>
+        <p>
+          L'intero processo si basa su operazioni di estrazione di consonanti e vocali, conversioni numeriche e una funzione di checksum che garantisce l'integrità del codice. Comprendere questo algoritmo è fondamentale per chi lavora in ambito fiscale, amministrativo o informatico.
+        </p>
+      </section>
+
+      <section id="cognome">
+        <h2>Codifica del cognome (posizioni 1–3)</h2>
+        <p>
+          I primi tre caratteri del codice fiscale derivano dal <strong>cognome</strong> della persona. L'algoritmo prevede i seguenti passaggi:
+        </p>
+        <ol>
+          <li>Si eliminano tutti gli spazi e i caratteri speciali dal cognome.</li>
+          <li>Si estraggono le <strong>consonanti</strong> nell'ordine in cui appaiono.</li>
+          <li>Se le consonanti sono tre o più, si prendono le prime tre.</li>
+          <li>Se le consonanti sono meno di tre, si aggiungono le <strong>vocali</strong> nell'ordine in cui appaiono, fino a raggiungere tre caratteri.</li>
+          <li>Se il cognome ha meno di tre lettere in totale, si completano i caratteri mancanti con la lettera <strong>X</strong>.</li>
+        </ol>
+        <p>
+          Ad esempio, per il cognome <strong>"Rossi"</strong>: le consonanti sono R, S, S → il codice cognome è <strong class="mono">RSS</strong>. Per il cognome <strong>"Hu"</strong>: consonante H, vocale U, completamento con X → <strong class="mono">HUX</strong>.
+        </p>
+        <p>
+          Per i cognomi composti (es. "De Rossi"), gli spazi vengono eliminati e il cognome viene trattato come un'unica stringa: "DEROSSI" → consonanti D, R, S → <strong class="mono">DRS</strong>.
+        </p>
+      </section>
+
+      <section id="nome">
+        <h2>Codifica del nome (posizioni 4–6)</h2>
+        <p>
+          I caratteri dalla posizione 4 alla 6 derivano dal <strong>nome</strong> della persona. La regola è simile a quella del cognome, con una differenza importante:
+        </p>
+        <ol>
+          <li>Si estraggono tutte le consonanti dal nome.</li>
+          <li>Se le consonanti sono <strong>quattro o più</strong>, si prendono la <strong>prima, la terza e la quarta</strong> consonante (saltando la seconda).</li>
+          <li>Se le consonanti sono esattamente tre, si prendono nell'ordine.</li>
+          <li>Se le consonanti sono meno di tre, si integrano con le vocali, come per il cognome.</li>
+          <li>Se il nome ha meno di tre lettere, si completa con X.</li>
+        </ol>
+        <p>
+          Questa regola speciale per i nomi con quattro o più consonanti serve a <strong>ridurre i casi di omocodia</strong>, cioè la generazione di codici fiscali identici per persone diverse.
+        </p>
+        <p>
+          Esempio: per il nome <strong>"Mario"</strong>, le consonanti sono M, R → meno di tre, aggiungiamo la vocale A → <strong class="mono">MRA</strong>. Per il nome <strong>"Giovanni"</strong>, le consonanti sono G, V, N, N → quattro consonanti, si prendono la 1ª, 3ª e 4ª → <strong class="mono">GNN</strong>.
+        </p>
+      </section>
+
+      <section id="data-nascita">
+        <h2>Codifica della data di nascita e del sesso (posizioni 7–11)</h2>
+        <p>
+          Le posizioni 7–11 codificano l'<strong>anno di nascita</strong>, il <strong>mese</strong> e il <strong>giorno di nascita</strong> combinato con il <strong>sesso</strong>.
+        </p>
+        <h3>Anno (posizioni 7–8)</h3>
+        <p>
+          Si prendono le <strong>ultime due cifre</strong> dell'anno di nascita. Ad esempio, per l'anno 1985 → <strong class="mono">85</strong>; per il 2003 → <strong class="mono">03</strong>. Questa rappresentazione è ambigua (non distingue il secolo), ma viene disambiguata dai registri ufficiali.
+        </p>
+        <h3>Mese (posizione 9)</h3>
+        <p>
+          Il mese viene codificato con una <strong>lettera</strong> secondo la seguente tabella:
+        </p>
+        <table class="guide-table guide-table--compact" aria-label="Codici mese del codice fiscale">
+          <thead>
+            <tr><th>Lettera</th><th>Mese</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="mono">A</td><td>Gennaio</td></tr>
+            <tr><td class="mono">B</td><td>Febbraio</td></tr>
+            <tr><td class="mono">C</td><td>Marzo</td></tr>
+            <tr><td class="mono">D</td><td>Aprile</td></tr>
+            <tr><td class="mono">E</td><td>Maggio</td></tr>
+            <tr><td class="mono">H</td><td>Giugno</td></tr>
+            <tr><td class="mono">L</td><td>Luglio</td></tr>
+            <tr><td class="mono">M</td><td>Agosto</td></tr>
+            <tr><td class="mono">P</td><td>Settembre</td></tr>
+            <tr><td class="mono">R</td><td>Ottobre</td></tr>
+            <tr><td class="mono">S</td><td>Novembre</td></tr>
+            <tr><td class="mono">T</td><td>Dicembre</td></tr>
+          </tbody>
+        </table>
+        <h3>Giorno e sesso (posizioni 10–11)</h3>
+        <p>
+          Per i <strong>maschi</strong>, si inserisce il giorno di nascita così com'è (da 01 a 31). Per le <strong>femmine</strong>, si aggiunge <strong>40</strong> al giorno di nascita (da 41 a 71). Questo semplice meccanismo permette di codificare il sesso all'interno dello stesso campo.
+        </p>
+        <p>
+          Esempio: un maschio nato il 15 → <strong class="mono">15</strong>; una femmina nata il 15 → <strong class="mono">55</strong>.
+        </p>
+      </section>
+
+      <section id="comune">
+        <h2>Codice catastale del comune di nascita (posizioni 12–15)</h2>
+        <p>
+          Le posizioni 12–15 contengono il <strong>codice catastale</strong> (o codice Belfiore) del comune di nascita. Si tratta di un codice alfanumerico di 4 caratteri assegnato dall'Agenzia del Territorio a ogni comune italiano.
+        </p>
+        <p>
+          Il formato è una <strong>lettera seguita da tre cifre</strong> (es. H501 = Roma, F205 = Milano, L736 = Torino). I codici che iniziano con la lettera <strong>Z</strong> identificano stati esteri (es. Z404 = Francia, Z112 = Germania).
+        </p>
+        <p>
+          L'elenco dei codici catastali è ufficialmente mantenuto dall'Agenzia delle Entrate e viene aggiornato periodicamente in caso di accorpamento o creazione di nuovi comuni. Per trovare il codice catastale del tuo comune, puoi utilizzare il nostro strumento <a href="/codice-comune">Cerca Codice Comune</a>.
+        </p>
+      </section>
+
+      <section id="carattere-controllo">
+        <h2>Calcolo del carattere di controllo (posizione 16)</h2>
+        <p>
+          L'ultimo carattere del codice fiscale è il <strong>carattere di controllo</strong>, calcolato sui primi 15 caratteri con un algoritmo specifico che permette di rilevare errori di trascrizione.
+        </p>
+        <ol>
+          <li>Si assegna un valore numerico a ciascuno dei primi 15 caratteri, con <strong>tabelle diverse</strong> per le posizioni dispari (1ª, 3ª, 5ª, ...) e pari (2ª, 4ª, 6ª, ...).</li>
+          <li>Si sommano tutti i 15 valori ottenuti.</li>
+          <li>Si calcola il <strong>resto della divisione per 26</strong> (modulo 26).</li>
+          <li>Il risultato (un numero da 0 a 25) viene convertito nella lettera corrispondente dell'alfabeto: A=0, B=1, C=2, ..., Z=25.</li>
+        </ol>
+        <p>
+          Le tabelle di conversione per le posizioni pari assegnano valori lineari (A/0=0, B/1=1, C/2=2, ...), mentre le posizioni dispari utilizzano una tabella non lineare più complessa per massimizzare la capacità di rilevamento errori.
+        </p>
+        <p>
+          Se il carattere di controllo calcolato non corrisponde al 16° carattere del codice fiscale, il codice è <strong>formalmente non valido</strong>. Puoi verificarlo con il nostro <a href="/verifica-codice-fiscale">strumento di verifica</a>.
+        </p>
+      </section>
+
+      <section id="esempio-completo">
+        <h2>Esempio completo: calcolo del CF di Mario Rossi</h2>
+        <p>Calcoliamo il codice fiscale per <strong>Mario Rossi</strong>, maschio, nato il <strong>1° agosto 1985</strong> a <strong>Roma</strong>:</p>
+        <ol>
+          <li><strong>Cognome "Rossi"</strong>: consonanti R, S, S, I → prime tre consonanti → <strong class="mono">RSS</strong></li>
+          <li><strong>Nome "Mario"</strong>: consonanti M, R → meno di tre, aggiungiamo vocale A → <strong class="mono">MRA</strong></li>
+          <li><strong>Anno 1985</strong>: ultime due cifre → <strong class="mono">85</strong></li>
+          <li><strong>Mese agosto</strong>: dalla tabella → <strong class="mono">M</strong></li>
+          <li><strong>Giorno 1, maschio</strong>: giorno invariato → <strong class="mono">01</strong></li>
+          <li><strong>Comune Roma</strong>: codice catastale → <strong class="mono">H501</strong></li>
+          <li><strong>Carattere di controllo</strong>: calcolato sui primi 15 caratteri → <strong class="mono">Z</strong></li>
+        </ol>
+        <p><strong>Risultato finale:</strong> <span class="mono">RSSMRA85M01H501Z</span></p>
+        <div class="guide-cta-inline">
+          <a href="/calcola" class="btn btn--primary">Calcola il tuo Codice Fiscale →</a>
+        </div>
+      </section>
+
+      <section id="omocodia">
+        <h2>Gestione dell'omocodia</h2>
+        <p>
+          L'<strong>omocodia</strong> si verifica quando due o più persone condividono gli stessi dati anagrafici (cognome, nome, data e luogo di nascita, sesso) e genererebbero quindi lo stesso codice fiscale. In Italia questo fenomeno riguarda circa lo 0,5% della popolazione.
+        </p>
+        <p>
+          Per risolvere l'omocodia, l'Agenzia delle Entrate sostituisce progressivamente le <strong>cifre numeriche</strong> del codice (partendo dalla più a destra) con <strong>lettere</strong> secondo una tabella di conversione:
+        </p>
+        <table class="guide-table guide-table--compact" aria-label="Tabella sostituzione omocodia">
+          <thead>
+            <tr><th>Cifra</th><th>Lettera</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="mono">0</td><td class="mono">L</td></tr>
+            <tr><td class="mono">1</td><td class="mono">M</td></tr>
+            <tr><td class="mono">2</td><td class="mono">N</td></tr>
+            <tr><td class="mono">3</td><td class="mono">P</td></tr>
+            <tr><td class="mono">4</td><td class="mono">Q</td></tr>
+            <tr><td class="mono">5</td><td class="mono">R</td></tr>
+            <tr><td class="mono">6</td><td class="mono">S</td></tr>
+            <tr><td class="mono">7</td><td class="mono">T</td></tr>
+            <tr><td class="mono">8</td><td class="mono">U</td></tr>
+            <tr><td class="mono">9</td><td class="mono">V</td></tr>
+          </tbody>
+        </table>
+        <p>
+          L'ordine di sostituzione parte dall'ultima cifra numerica (posizione 15) e procede verso sinistra. Ad ogni sostituzione il carattere di controllo viene ricalcolato. Questa procedura è gestita esclusivamente dall'Agenzia delle Entrate.
+        </p>
+      </section>
+
+      <section id="faq">
+        <h2>Domande Frequenti</h2>
+        <div class="faq-list">
+
+          <details class="faq-item">
+            <summary class="faq-question">Posso calcolare il codice fiscale da solo senza strumenti online?</summary>
+            <div class="faq-answer">
+              <p>Sì, è teoricamente possibile calcolarlo a mano seguendo l'algoritmo descritto in questa guida. Tuttavia, il calcolo del carattere di controllo richiede tabelle di conversione complesse, quindi è consigliabile utilizzare uno strumento automatico per evitare errori.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">Il codice fiscale calcolato online è ufficiale?</summary>
+            <div class="faq-answer">
+              <p>No, il codice fiscale ufficiale è quello rilasciato dall'Agenzia delle Entrate. Il calcolo online produce un CF corretto nella stragrande maggioranza dei casi, ma in situazioni di omocodia il CF ufficiale potrebbe differire da quello calcolato algoritmicamente.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">Perché il nome usa una regola diversa dal cognome?</summary>
+            <div class="faq-answer">
+              <p>La regola speciale per i nomi con quattro o più consonanti (si prendono la 1ª, 3ª e 4ª) è stata introdotta per ridurre i casi di omocodia, poiché in Italia molti nomi comuni condividono le prime tre consonanti (es. "Francesco" e "Francesca").</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">Come funziona il calcolo per gli stranieri?</summary>
+            <div class="faq-answer">
+              <p>Per i cittadini nati all'estero, il codice catastale (posizioni 12–15) inizia con la lettera Z seguita da tre cifre che identificano lo stato estero di nascita. Il resto dell'algoritmo rimane identico.</p>
+            </div>
+          </details>
+
+        </div>
+      </section>
+
+      <aside class="guide-related" aria-labelledby="related-title">
+        <h2 id="related-title">Guide correlate</h2>
+        <ul>
+          <li><a href="/guida/struttura">Struttura del Codice Fiscale</a></li>
+          <li><a href="/guida/lettere-mesi">Lettere dei Mesi nel CF</a></li>
+          <li><a href="/guida/cose-il-codice-fiscale">Cos'è il Codice Fiscale</a></li>
+          <li><a href="/guida/codice-fiscale-inverso">Guida al CF Inverso</a></li>
+        </ul>
+      </aside>
+
+    </article>
+
+    <aside class="guide-sidebar">
+      <div class="sidebar-card">
+        <h3>Strumenti</h3>
+        <ul>
+          <li><a href="/calcola"><strong>Calcolo Codice Fiscale</strong></a></li>
+          <li><a href="/codice-fiscale-inverso">CF Inverso (Decodifica)</a></li>
+          <li><a href="/verifica-codice-fiscale">Verifica CF</a></li>
+          <li><a href="/carattere-controllo">Carattere di Controllo</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-card sidebar-cta">
+        <p>Calcola subito il tuo codice fiscale</p>
+        <a href="/calcola" class="btn btn--primary btn--block">Calcola CF →</a>
+      </div>
+    </aside>
+
+  </div>
+</section>

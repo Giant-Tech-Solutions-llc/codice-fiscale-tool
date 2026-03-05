@@ -1,7 +1,7 @@
 # Codice Fiscale Online
 
 ## Overview
-Italian Tax ID Code (Codice Fiscale) generator website built with Node.js/Express and EJS templating. Features three main tools (generator, reverse decoder, validator), SEO-optimized content pages (pillar + cluster strategy), all AdSense compliance pages, and modern mobile-first design with Italian flag color theme (green/white/red).
+Italian Tax ID Code (Codice Fiscale) generator website built with Node.js/Express and EJS templating. Features six tools (generator, reverse decoder, validator, municipality code lookup, control character calculator, print card), SEO-optimized content pages (pillar + cluster strategy), 10 guide pages under `/guida/` prefix, all AdSense compliance pages, and modern mobile-first design with Italian flag color theme (green/white/red).
 
 ## Project Architecture
 ```
@@ -26,6 +26,9 @@ Italian Tax ID Code (Codice Fiscale) generator website built with Node.js/Expres
 │   ├── codice-fiscale.ejs # Dedicated tool page (card layout, gender toggle, copy btn)
 │   ├── codice-fiscale-inverso.ejs # CF reverse decoder (hero, tool card, SEO article, FAQ, CTA)
 │   ├── verifica-codice-fiscale.ejs # CF validator (hero, tool card, SEO article, FAQ, CTA)
+│   ├── codice-comune.ejs  # Municipality cadastral code lookup tool
+│   ├── carattere-controllo.ejs # Control character calculator (15 chars → 16th)
+│   ├── stampa.ejs         # Print-friendly CF card generator
 │   ├── codice-fiscale-pillar.ejs # SEO pillar page (1500+ words, TOC, 12 sections, FAQ schema)
 │   ├── tool.ejs           # Legacy calculator tool page (/calcola route)
 │   ├── 404.ejs            # 404 error page
@@ -40,8 +43,16 @@ Italian Tax ID Code (Codice Fiscale) generator website built with Node.js/Expres
 │   ├── editorial-policy.ejs # Editorial Policy
 │   ├── gdpr.ejs           # GDPR Disclosure
 │   ├── guides/            # SEO guide pages (two-column layout with sidebar)
-│   │   ├── guide-inverso.ejs    # Guide: Codice Fiscale Inverso (/guide/codice-fiscale-inverso)
-│   │   └── guide-verifica.ejs   # Guide: Verifica Codice Fiscale (/guide/verifica-codice-fiscale)
+│   │   ├── guide-inverso.ejs           # /guida/codice-fiscale-inverso
+│   │   ├── guide-verifica.ejs          # /guida/verifica-codice-fiscale
+│   │   ├── guida-come-si-calcola.ejs   # /guida/come-si-calcola
+│   │   ├── guida-struttura.ejs         # /guida/struttura
+│   │   ├── guida-come-leggere.ejs      # /guida/come-leggere
+│   │   ├── guida-lettere-mesi.ejs      # /guida/lettere-mesi
+│   │   ├── guida-donna-uomo.ejs        # /guida/donna-uomo
+│   │   ├── guida-cose-il-codice-fiscale.ejs # /guida/cose-il-codice-fiscale
+│   │   ├── guida-come-trovare.ejs      # /guida/come-trovare
+│   │   └── guida-neonato.ejs           # /guida/neonato
 │   └── articles/          # SEO content articles
 │       ├── what-is-codice-fiscale.ejs
 │       ├── how-is-codice-fiscale-calculated.ejs
@@ -53,11 +64,15 @@ Italian Tax ID Code (Codice Fiscale) generator website built with Node.js/Expres
 ├── public/
 │   ├── css/style.css      # Main stylesheet
 │   ├── css/style.min.css  # Copy of style.css (must stay in sync)
+│   ├── css/landing.css    # Landing/tool page styles (green design system)
 │   ├── css/inverso.css    # Inverso tool-specific styles (breakdown, data cards, detail table)
 │   ├── css/verifica.css   # Verifica tool-specific styles (verdict badge, check list, quick extract)
 │   ├── js/app.js          # Client-side JavaScript (homepage calculator, nav, toast)
 │   ├── js/inverso.js      # Inverso tool JS (client-side CF decode with omocodia support)
-│   └── js/verifica.js     # Verifica tool JS (client-side CF validation with checklist)
+│   ├── js/verifica.js     # Verifica tool JS (client-side CF validation with checklist)
+│   ├── js/codice-comune.js      # Municipality code lookup JS (debounced search, results table)
+│   ├── js/carattere-controllo.js # Control character calculator JS (official algorithm)
+│   └── js/stampa.js       # Print CF card JS (format, extract data, window.print)
 ├── pages/                 # Legacy PHP pages (kept for reference)
 ├── includes/              # Legacy PHP includes
 ├── assets/                # Legacy PHP assets
@@ -77,6 +92,9 @@ Italian Tax ID Code (Codice Fiscale) generator website built with Node.js/Expres
 - Codice Fiscale calculation with official algorithm
 - Codice Fiscale inverse decoding (visual color-coded breakdown, data cards, detail table)
 - Codice Fiscale validation (verdict badge, format/date/checksum checks, quick extract)
+- Municipality cadastral code lookup (search by name, instant results)
+- Control character calculator (paste 15 chars, get 16th character)
+- Print-friendly CF card generator (enter CF, print tessera-style card)
 - Municipality autocomplete search (1,291 comuni)
 - Copy-to-clipboard with toast confirmation
 - JSON-LD structured data (FAQ, HowTo, Article, WebApplication)
@@ -100,6 +118,21 @@ Italian Tax ID Code (Codice Fiscale) generator website built with Node.js/Expres
 - /calcola — Main calculator tool (legacy route)
 - /codice-fiscale-inverso — Reverse decoder tool (fully client-side JS, no server API calls)
 - /verifica-codice-fiscale — Validator tool (fully client-side JS, no server API calls)
+- /codice-comune — Municipality cadastral code lookup (client-side, uses /api/comuni)
+- /carattere-controllo — Control character calculator (fully client-side)
+- /stampa — Print-friendly CF card (fully client-side)
+
+## Guide Pages (all under /guida/ prefix)
+- /guida/codice-fiscale-inverso — Guide to reverse CF decoding
+- /guida/verifica-codice-fiscale — Guide to CF validation
+- /guida/come-si-calcola — How the CF algorithm works
+- /guida/struttura — Structure breakdown of the 16 characters
+- /guida/come-leggere — How to read and interpret a CF
+- /guida/lettere-mesi — Month letter codes reference table
+- /guida/donna-uomo — Male vs female CF differences
+- /guida/cose-il-codice-fiscale — What is a Codice Fiscale
+- /guida/come-trovare — How to find/obtain your CF
+- /guida/neonato — CF for newborns
 
 ## Tool Routes (MVC)
 - GET  /tools/codice-fiscale-generator — Renders calculator form (controller → service → EJS)
@@ -117,8 +150,16 @@ Italian Tax ID Code (Codice Fiscale) generator website built with Node.js/Expres
 - **Reverse Lookup**: COMUNI_REVERSE map built from comuni.json for cadastral code → municipality name
 
 ## Recent Changes
+- **Major site expansion** (Mar 2026):
+  - 3 new tool pages: `/codice-comune`, `/carattere-controllo`, `/stampa`
+  - 8 new guide pages under `/guida/` prefix (come-si-calcola, struttura, come-leggere, lettere-mesi, donna-uomo, cose-il-codice-fiscale, come-trovare, neonato)
+  - Migrated existing guide pages from `/guide/` to `/guida/` prefix
+  - Added `public/css/landing.css` (green design system, converted from purple/indigo)
+  - Added 3 new JS files: `codice-comune.js`, `carattere-controllo.js`, `stampa.js`
+  - Article + FAQPage structured data for all new guide pages
+  - All new pages in sitemap.xml, HTML sitemap, header/footer navigation
 - **Guide pages added** (Mar 2026):
-  - Two new SEO guide pages: `/guide/codice-fiscale-inverso` and `/guide/verifica-codice-fiscale`
+  - Two SEO guide pages: `/guida/codice-fiscale-inverso` and `/guida/verifica-codice-fiscale`
   - Two-column layout (article + sticky sidebar) with TOC, data tables, FAQ accordions, CTA sections
   - New CSS classes in style.css: `.guide-page`, `.guide-container`, `.guide-article`, `.guide-header`, `.guide-intro`, `.guide-cta-inline`, `.guide-toc`, `.guide-table`, `.guide-related`, `.guide-sidebar`, `.sidebar-card`, `.sidebar-cta`, `.btn--block`, `.mono`
   - JSON-LD structured data: Article + BreadcrumbList + FAQPage schemas per guide
