@@ -208,7 +208,16 @@ const routeBreadcrumbs = {
   'dmca': [{ name: 'Home', url: '/' }, { name: 'DMCA' }],
   'politica-editoriale': [{ name: 'Home', url: '/' }, { name: 'Politica Editoriale' }],
   'gdpr': [{ name: 'Home', url: '/' }, { name: 'GDPR' }],
-  'mappa-del-sito': [{ name: 'Home', url: '/' }, { name: 'Mappa del Sito' }]
+  'mappa-del-sito': [{ name: 'Home', url: '/' }, { name: 'Mappa del Sito' }],
+  'blog': [{ name: 'Home', url: '/' }, { name: 'Blog' }],
+  'blog/come-si-calcola-il-codice-fiscale': [{ name: 'Home', url: '/' }, { name: 'Blog', url: '/blog' }, { name: 'Come Si Calcola il CF' }],
+  'blog/composizione-codice-fiscale': [{ name: 'Home', url: '/' }, { name: 'Blog', url: '/blog' }, { name: 'Composizione del CF' }],
+  'blog/come-leggere-il-codice-fiscale': [{ name: 'Home', url: '/' }, { name: 'Blog', url: '/blog' }, { name: 'Come Leggere il CF' }],
+  'blog/mesi-codice-fiscale': [{ name: 'Home', url: '/' }, { name: 'Blog', url: '/blog' }, { name: 'Mesi nel CF' }],
+  'blog/codice-fiscale-donna': [{ name: 'Home', url: '/' }, { name: 'Blog', url: '/blog' }, { name: 'CF Donna' }],
+  'blog/cose-il-codice-fiscale': [{ name: 'Home', url: '/' }, { name: 'Blog', url: '/blog' }, { name: "Cos'è il CF" }],
+  'blog/come-trovare-il-codice-fiscale': [{ name: 'Home', url: '/' }, { name: 'Blog', url: '/blog' }, { name: 'Come Trovare il CF' }],
+  'blog/codice-fiscale-neonato': [{ name: 'Home', url: '/' }, { name: 'Blog', url: '/blog' }, { name: 'CF Neonato' }]
 };
 
 function getStructuredData(siteUrl, routeKey) {
@@ -392,6 +401,89 @@ function getStructuredData(siteUrl, routeKey) {
       { q: 'Quando arriva la tessera sanitaria del neonato?', a: "La tessera sanitaria viene spedita a casa entro 2-3 settimane dalla nascita. Nel frattempo, il CF è comunque valido e utilizzabile." }
     ])));
   }
+  const blogArticles = {
+    'blog/come-si-calcola-il-codice-fiscale': {
+      headline: 'Come Si Calcola il Codice Fiscale: Guida Completa e Pratica',
+      description: 'Guida completa al calcolo del codice fiscale italiano: regole per cognome, nome, data di nascita, comune e carattere di controllo con esempi reali.',
+      faqs: [
+        { q: 'Quali dati servono per calcolare il codice fiscale?', a: 'Servono 5 dati: cognome, nome, sesso, data di nascita e luogo di nascita (comune italiano o stato estero).' },
+        { q: 'Come si estraggono le lettere dal cognome?', a: 'Si prendono le prime 3 consonanti del cognome. Se le consonanti sono meno di 3, si aggiungono le vocali. Se le lettere totali sono meno di 3, si completa con X.' },
+        { q: 'Il codice fiscale calcolato online è valido?', a: "Nella maggior parte dei casi sì, ma in casi di omocodia l'Agenzia delle Entrate assegna un codice diverso che i calcolatori online non possono conoscere." }
+      ]
+    },
+    'blog/composizione-codice-fiscale': {
+      headline: 'Composizione del Codice Fiscale: Struttura dei 16 Caratteri Spiegata',
+      description: 'Struttura completa dei 16 caratteri del codice fiscale italiano: cosa rappresenta ogni posizione, tabelle di riferimento e regole di composizione.',
+      faqs: [
+        { q: 'Come è composto il codice fiscale?', a: 'Il codice fiscale è composto da 16 caratteri: 3 lettere per il cognome, 3 per il nome, 2 numeri per anno, 1 lettera per mese, 2 numeri per giorno/sesso, 4 caratteri per comune e 1 lettera di controllo.' },
+        { q: 'Quante lettere e numeri ha il codice fiscale?', a: 'Il codice fiscale standard contiene 9 lettere e 7 numeri per un totale di 16 caratteri.' },
+        { q: "Cos'è un codice fiscale a 11 cifre?", a: 'Un codice fiscale a 11 cifre è assegnato alle persone giuridiche (società, organizzazioni). È composto solo da numeri.' }
+      ]
+    },
+    'blog/come-leggere-il-codice-fiscale': {
+      headline: 'Come Leggere il Codice Fiscale: Guida Completa alla Decodifica',
+      description: 'Come leggere e decodificare un codice fiscale italiano: estrarre cognome, nome, data di nascita, sesso e comune dai 16 caratteri.',
+      faqs: [
+        { q: 'Come decodificare il codice fiscale?', a: 'Analizza i 7 blocchi: le prime 3 lettere per il cognome, le successive 3 per il nome, 2 numeri per anno, 1 lettera per mese, 2 numeri per giorno/sesso, 4 caratteri per luogo e 1 lettera di controllo.' },
+        { q: 'Come si legge il mese nel codice fiscale?', a: 'Il mese è indicato dalla lettera in posizione 9: A=Gennaio, B=Febbraio, C=Marzo, D=Aprile, E=Maggio, H=Giugno, L=Luglio, M=Agosto, P=Settembre, R=Ottobre, S=Novembre, T=Dicembre.' },
+        { q: 'Si può risalire al nome dal codice fiscale?', a: 'No, dal CF si possono ricavare solo alcune consonanti/vocali, non il nome completo. Più nomi possono produrre le stesse lettere.' }
+      ]
+    },
+    'blog/mesi-codice-fiscale': {
+      headline: 'Mesi nel Codice Fiscale: Tabella Completa delle Lettere da A a T',
+      description: 'Tabella completa delle lettere che rappresentano i mesi nel codice fiscale italiano: da A (Gennaio) a T (Dicembre), con spiegazione dettagliata.',
+      faqs: [
+        { q: 'Quali lettere corrispondono ai mesi nel codice fiscale?', a: 'A=Gennaio, B=Febbraio, C=Marzo, D=Aprile, E=Maggio, H=Giugno, L=Luglio, M=Agosto, P=Settembre, R=Ottobre, S=Novembre, T=Dicembre.' },
+        { q: 'Perché le lettere dei mesi non sono consecutive?', a: 'Le lettere F, G, I, N, O, Q vengono saltate per evitare confusione con numeri e altri caratteri usati nel codice fiscale.' }
+      ]
+    },
+    'blog/codice-fiscale-donna': {
+      headline: 'Codice Fiscale Donna: Come Si Calcola e Differenza con Uomo',
+      description: 'Come funziona il codice fiscale femminile: la regola del +40 al giorno di nascita, differenze con il codice maschile ed esempi pratici.',
+      faqs: [
+        { q: 'Come si distingue il CF di un uomo da quello di una donna?', a: 'Nel CF femminile, al giorno di nascita viene aggiunto 40. Valori da 01 a 31 indicano un uomo, da 41 a 71 indicano una donna.' },
+        { q: 'Perché si aggiunge 40 al giorno per le donne?', a: 'Il numero 40 è stato scelto perché nessun mese ha più di 31 giorni, quindi valori da 41 a 71 identificano univocamente il sesso femminile.' }
+      ]
+    },
+    'blog/cose-il-codice-fiscale': {
+      headline: "Cos'è il Codice Fiscale: Guida Completa al CF Italiano",
+      description: "Guida completa al codice fiscale italiano: cos'è, a cosa serve, chi lo rilascia, dove trovarlo e come funziona per stranieri.",
+      faqs: [
+        { q: "Cos'è il codice fiscale?", a: "Il codice fiscale è un codice univoco di 16 caratteri alfanumerici assegnato a ogni persona fisica in Italia per identificarla nei rapporti con lo Stato." },
+        { q: 'Chi rilascia il codice fiscale?', a: "L'unico ente autorizzato è l'Agenzia delle Entrate. Per i neonati viene assegnato automaticamente tramite il Comune di nascita." },
+        { q: 'Il codice fiscale scade?', a: 'No, il codice fiscale non scade mai. Quello che può scadere è la Tessera Sanitaria, ma il CF stampato su di essa resta sempre valido.' }
+      ]
+    },
+    'blog/come-trovare-il-codice-fiscale': {
+      headline: 'Come Trovare il Codice Fiscale di una Persona: Guida Completa',
+      description: 'I 5 dati obbligatori per calcolare un codice fiscale, i metodi per trovarlo online e offline, e le regole di privacy da rispettare.',
+      faqs: [
+        { q: 'Come trovare un CF solo con nome e cognome?', a: 'Non è possibile. Servono obbligatoriamente 5 dati completi: nome, cognome, sesso, data di nascita e luogo di nascita.' },
+        { q: 'Dove trovo il mio codice fiscale?', a: 'Sulla Tessera Sanitaria, nell\'app IO, sul sito dell\'Agenzia delle Entrate con SPID, su buste paga o dichiarazioni dei redditi.' }
+      ]
+    },
+    'blog/codice-fiscale-neonato': {
+      headline: 'Codice Fiscale Neonato: Come Richiederlo Online e Offline',
+      description: 'Come richiedere il codice fiscale per un neonato: procedura online e offline, documenti necessari, tempi di rilascio e Tessera Sanitaria.',
+      faqs: [
+        { q: 'Come si richiede il codice fiscale per un neonato?', a: "Il CF viene attribuito automaticamente dal Comune alla registrazione della nascita. Se urgente, si può richiedere online tramite l'Agenzia delle Entrate con SPID/CIE/CNS." },
+        { q: 'Quanto tempo ci vuole per ricevere il CF del neonato?', a: 'Richiedendo online, il certificato è disponibile in 2-5 giorni lavorativi. Di persona, il rilascio è immediato.' }
+      ]
+    }
+  };
+  if (blogArticles[routeKey]) {
+    const ba = blogArticles[routeKey];
+    schemas.push(jsonLd({
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: ba.headline,
+      description: ba.description,
+      author: { '@type': 'Organization', name: SITE_NAME },
+      publisher: { '@type': 'Organization', name: SITE_NAME, url: siteUrl + '/' },
+      url: siteUrl + '/' + routeKey
+    }));
+    schemas.push(jsonLd(buildFaqSchema(ba.faqs)));
+  }
   return schemas.join('\n');
 }
 
@@ -426,6 +518,15 @@ const routes = {
   'guida/cose-il-codice-fiscale': { page: 'guides/guida-cose-il-codice-fiscale', title: "Cos'è il Codice Fiscale Italiano: Guida Completa | " + SITE_NAME, description: "Cos'è il codice fiscale, storia, base legale (DPR 605/1973), chi lo deve avere e differenza con la Partita IVA." },
   'guida/come-trovare': { page: 'guides/guida-come-trovare', title: 'Come Trovare il Codice Fiscale: Tutti i Metodi | ' + SITE_NAME, description: 'Come trovare e ottenere il proprio codice fiscale: tessera sanitaria, Agenzia delle Entrate, SPID, app IO e calcolo online.' },
   'guida/neonato': { page: 'guides/guida-neonato', title: 'Codice Fiscale per Neonati: Quando e Come Ottenerlo | ' + SITE_NAME, description: 'Come e quando viene assegnato il codice fiscale ai neonati: procedura ospedaliera, comune, tessera sanitaria e tempistiche.' },
+  'blog': { page: 'blog', title: 'Blog — Approfondimenti sul Codice Fiscale | ' + SITE_NAME, description: 'Approfondimenti, guide pratiche e articoli completi sul codice fiscale italiano: calcolo, struttura, decodifica, differenze e procedure.' },
+  'blog/come-si-calcola-il-codice-fiscale': { page: 'blog/come-si-calcola', title: 'Come Si Calcola il Codice Fiscale: Guida Completa | ' + SITE_NAME, description: 'Guida completa al calcolo del codice fiscale italiano: regole per cognome, nome, data di nascita, comune e carattere di controllo con esempi reali.' },
+  'blog/composizione-codice-fiscale': { page: 'blog/composizione', title: 'Composizione Codice Fiscale: Struttura dei 16 Caratteri | ' + SITE_NAME, description: 'Struttura completa dei 16 caratteri del codice fiscale: cosa rappresenta ogni posizione, tabelle di riferimento e regole di composizione.' },
+  'blog/come-leggere-il-codice-fiscale': { page: 'blog/come-leggere', title: 'Come Leggere il Codice Fiscale: Guida alla Decodifica | ' + SITE_NAME, description: 'Come leggere e decodificare un codice fiscale italiano: estrarre cognome, nome, data di nascita, sesso e comune dai 16 caratteri.' },
+  'blog/mesi-codice-fiscale': { page: 'blog/mesi', title: 'Mesi Codice Fiscale: Tabella Completa Lettere da A a T | ' + SITE_NAME, description: 'Tabella completa delle lettere che rappresentano i mesi nel codice fiscale italiano: da A (Gennaio) a T (Dicembre).' },
+  'blog/codice-fiscale-donna': { page: 'blog/donna', title: 'Codice Fiscale Donna: Come Si Calcola e Differenza con Uomo | ' + SITE_NAME, description: 'Come funziona il codice fiscale femminile: la regola del +40 al giorno di nascita, differenze con il codice maschile ed esempi pratici.' },
+  'blog/cose-il-codice-fiscale': { page: 'blog/cose-il-codice-fiscale', title: "Cos'è il Codice Fiscale: Guida Completa al CF Italiano | " + SITE_NAME, description: "Guida completa al codice fiscale italiano: cos'è, a cosa serve, chi lo rilascia, dove trovarlo e come funziona per stranieri." },
+  'blog/come-trovare-il-codice-fiscale': { page: 'blog/come-trovare', title: 'Come Trovare il Codice Fiscale di una Persona | ' + SITE_NAME, description: 'I 5 dati obbligatori per calcolare un codice fiscale, i metodi per trovarlo online e offline, e le regole di privacy da rispettare.' },
+  'blog/codice-fiscale-neonato': { page: 'blog/neonato', title: 'Codice Fiscale Neonato: Come Richiederlo Online e Offline | ' + SITE_NAME, description: 'Come richiedere il codice fiscale per un neonato: procedura online e offline, documenti necessari, tempi di rilascio e Tessera Sanitaria.' },
 };
 
 app.use('/tools', (req, res, next) => {
@@ -573,6 +674,15 @@ app.get('/sitemap.xml', (req, res) => {
     { path: 'guida/cose-il-codice-fiscale', priority: '0.8' },
     { path: 'guida/come-trovare', priority: '0.8' },
     { path: 'guida/neonato', priority: '0.8' },
+    { path: 'blog', priority: '0.7' },
+    { path: 'blog/come-si-calcola-il-codice-fiscale', priority: '0.7' },
+    { path: 'blog/composizione-codice-fiscale', priority: '0.7' },
+    { path: 'blog/come-leggere-il-codice-fiscale', priority: '0.7' },
+    { path: 'blog/mesi-codice-fiscale', priority: '0.7' },
+    { path: 'blog/codice-fiscale-donna', priority: '0.7' },
+    { path: 'blog/cose-il-codice-fiscale', priority: '0.7' },
+    { path: 'blog/come-trovare-il-codice-fiscale', priority: '0.7' },
+    { path: 'blog/codice-fiscale-neonato', priority: '0.7' },
     { path: 'chi-siamo', priority: '0.5' },
     { path: 'contatti', priority: '0.5' },
     { path: 'privacy-policy', priority: '0.3' },
