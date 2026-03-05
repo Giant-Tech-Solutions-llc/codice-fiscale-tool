@@ -1,69 +1,83 @@
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <div class="container">
+    <ol>
+      <li><a href="/">Home</a></li>
+      <li aria-current="page">Calcola Codice Fiscale</li>
+    </ol>
+  </div>
+</nav>
+
 <section class="hero">
   <div class="container">
-    <div class="hero-grid">
-      <div class="hero-content">
-        <h1>Generatore Codice Fiscale Italiano Online</h1>
-        <p class="hero-description">Calcola il tuo Codice Fiscale in pochi secondi con il nostro strumento gratuito basato sull'algoritmo ufficiale.</p>
-        <ul class="hero-trust-list">
-          <li><span class="check">&#10003;</span> Basato su algoritmo ufficiale</li>
-          <li><span class="check">&#10003;</span> Nessun dato salvato</li>
-          <li><span class="check">&#10003;</span> Gratuito e immediato</li>
-        </ul>
-        <a href="#calcola" class="hero-cta-btn">Calcola Codice Fiscale <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+    <div class="tool-card">
+      <div class="tool-header">
+        <h1>Calcola il tuo Codice Fiscale</h1>
+        <p>Inserisci i tuoi dati anagrafici per generare il codice fiscale.</p>
       </div>
-      <div class="hero-tool-preview">
-        <div class="hero-tool-card" id="calcola">
-          <div class="tool-header">
-            <h2>Genera il tuo Codice Fiscale</h2>
-            <p>Compila i campi e ottieni il risultato</p>
+      <div class="tool-body">
+        <form id="cf-form" novalidate>
+          <div class="form-group">
+            <label for="cognome">Cognome <span class="required">*</span></label>
+            <input type="text" id="cognome" name="cognome" placeholder="Es. Rossi" required autocomplete="family-name">
           </div>
-          <div class="tool-body">
-            <form id="cf-form" novalidate>
-              <div class="form-group">
-                <label for="cognome">Cognome</label>
-                <input type="text" id="cognome" name="cognome" placeholder="Es. Rossi" required autocomplete="family-name">
-              </div>
-              <div class="form-group">
-                <label for="nome">Nome</label>
-                <input type="text" id="nome" name="nome" placeholder="Es. Mario" required autocomplete="given-name">
-              </div>
-              <div class="form-row">
-                <div class="form-group">
-                  <label>Sesso</label>
-                  <div class="gender-toggle">
-                    <input type="radio" id="sesso-m" name="sesso" value="M" required>
-                    <label for="sesso-m">M</label>
-                    <input type="radio" id="sesso-f" name="sesso" value="F">
-                    <label for="sesso-f">F</label>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="data_nascita">Data di Nascita</label>
-                  <input type="date" id="data_nascita" name="data_nascita" required>
-                </div>
-              </div>
-              <div class="form-group comune-wrapper">
-                <label for="comune">Comune di Nascita</label>
-                <input type="text" id="comune" name="comune" placeholder="Inizia a digitare il comune..." required autocomplete="off">
-                <div id="comune-list" class="autocomplete-list" style="display:none"></div>
-                <div class="form-hint">Digita almeno 2 lettere per la ricerca</div>
-              </div>
-              <button type="submit" class="btn btn-primary"><span class="btn-text">Calcola Codice Fiscale</span><span class="spinner"></span></button>
-            </form>
-
-            <div id="result-box" class="result-box">
-              <div class="result-label">Il tuo Codice Fiscale:</div>
-              <div id="result-code" class="result-code"></div>
-              <div class="result-actions">
-                <button onclick="copyCF()" class="copy-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg> Copia</button>
-              </div>
+          <div class="form-group">
+            <label for="nome">Nome <span class="required">*</span></label>
+            <input type="text" id="nome" name="nome" placeholder="Es. Mario" required autocomplete="given-name">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="sesso">Sesso <span class="required">*</span></label>
+              <select id="sesso" name="sesso" required>
+                <option value="" disabled selected>Seleziona...</option>
+                <option value="M">M</option>
+                <option value="F">F</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="data_nascita">Data di Nascita <span class="required">*</span></label>
+              <input type="date" id="data_nascita" name="data_nascita" required>
             </div>
           </div>
+          <div class="form-group comune-wrapper">
+            <label for="comune">Comune di Nascita <span class="required">*</span></label>
+            <input type="text" id="comune" name="comune" placeholder="Inizia a digitare il comune..." required autocomplete="off">
+            <div id="comune-list" class="autocomplete-list" style="display:none"></div>
+            <div class="form-hint">Digita almeno 2 lettere per la ricerca</div>
+          </div>
+          <button type="submit" class="btn btn-primary"><span class="btn-text">Calcola Codice Fiscale</span><span class="spinner"></span></button>
+        </form>
+
+        <div id="result-box" class="result-box">
+          <div class="result-label">Il tuo Codice Fiscale:</div>
+          <div id="result-code" class="result-code"></div>
+          <div class="result-actions">
+            <button onclick="copyCF()" class="copy-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg> Copia</button>
+          </div>
         </div>
-        <div class="disclaimer-outside">
-          <strong>Nota:</strong> Il calcolo segue l'algoritmo ufficiale. In caso di omocodia il codice potrebbe differire da quello rilasciato dall'Agenzia delle Entrate.
+
+        <div class="tool-trust-row">
+          <span class="tool-trust-item"><span class="tool-trust-icon trust-check">&#10003;</span> Calcolo preciso</span>
+          <span class="tool-trust-item"><span class="tool-trust-icon trust-lock">&#128274;</span> Dati non salvati</span>
+          <span class="tool-trust-item"><span class="tool-trust-icon trust-bolt">&#9889;</span> 100% gratuito</span>
+        </div>
+
+        <div class="disclaimer-box">
+          <strong>Disclaimer:</strong> Questo strumento calcola il codice fiscale utilizzando l'algoritmo ufficiale. Il risultato potrebbe non coincidere con quello rilasciato dall'Agenzia delle Entrate in caso di omocodia. Per il codice fiscale ufficiale, rivolgiti all'Agenzia delle Entrate.
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="learn-more-section">
+  <div class="container">
+    <h2 class="learn-more-title">Scopri di più</h2>
+    <div class="learn-more-pills">
+      <a href="/guida/cose-il-codice-fiscale" class="learn-more-pill">Cos'è il Codice Fiscale?</a>
+      <a href="/guida/come-si-calcola" class="learn-more-pill">Come si Calcola</a>
+      <a href="/esempi-codice-fiscale" class="learn-more-pill">Esempi CF</a>
+      <a href="/codice-fiscale-vs-partita-iva" class="learn-more-pill">CF vs Partita IVA</a>
+      <a href="/recupero-codice-fiscale" class="learn-more-pill">Recupero CF</a>
     </div>
   </div>
 </section>
@@ -147,57 +161,6 @@
       <p>Il Codice Fiscale è un codice alfanumerico di 16 caratteri assegnato dall'Agenzia delle Entrate a ogni persona fisica in Italia. Identifica in modo univoco ogni cittadino e residente ai fini fiscali e amministrativi.</p>
       <p>È indispensabile per firmare contratti, aprire un conto in banca, iscriversi al Servizio Sanitario Nazionale, presentare la dichiarazione dei redditi e per qualsiasi interazione con la Pubblica Amministrazione.</p>
       <p><a href="/cos-e-il-codice-fiscale">Scopri tutto sul Codice Fiscale &rarr;</a></p>
-    </div>
-  </div>
-</section>
-
-<section class="guides-section" id="guide">
-  <div class="container">
-    <h2 class="section-title">Guide e Approfondimenti</h2>
-    <p class="section-subtitle">Tutto quello che devi sapere sul Codice Fiscale, spiegato in modo semplice</p>
-    <div class="article-cards">
-      <article class="article-card" onclick="window.location='/cos-e-il-codice-fiscale'">
-        <span class="article-card-tag">Guida Base</span>
-        <h3><a href="/cos-e-il-codice-fiscale">Cos'è il Codice Fiscale?</a></h3>
-        <p>Definizione, struttura e importanza del Codice Fiscale italiano per cittadini e residenti.</p>
-        <span class="read-more">Leggi di più</span>
-      </article>
-      <article class="article-card" onclick="window.location='/come-si-calcola-il-codice-fiscale'">
-        <span class="article-card-tag">Calcolo</span>
-        <h3><a href="/come-si-calcola-il-codice-fiscale">Come si Calcola il Codice Fiscale</a></h3>
-        <p>L'algoritmo ufficiale spiegato passo per passo con esempi pratici e dettagliati.</p>
-        <span class="read-more">Leggi di più</span>
-      </article>
-      <article class="article-card" onclick="window.location='/codice-fiscale-vs-partita-iva'">
-        <span class="article-card-tag">Confronto</span>
-        <h3><a href="/codice-fiscale-vs-partita-iva">Codice Fiscale vs Partita IVA</a></h3>
-        <p>Le differenze fondamentali tra i due codici identificativi e quando serve ciascuno.</p>
-        <span class="read-more">Leggi di più</span>
-      </article>
-      <article class="article-card" onclick="window.location='/codice-fiscale-estero'">
-        <span class="article-card-tag">Stranieri</span>
-        <h3><a href="/codice-fiscale-estero">Codice Fiscale per Stranieri</a></h3>
-        <p>Come ottenere il Codice Fiscale se sei cittadino straniero o residente all'estero.</p>
-        <span class="read-more">Leggi di più</span>
-      </article>
-      <article class="article-card" onclick="window.location='/recupero-codice-fiscale'">
-        <span class="article-card-tag">Recupero</span>
-        <h3><a href="/recupero-codice-fiscale">Recupero Codice Fiscale Smarrito</a></h3>
-        <p>Procedure online e offline per recuperare un Codice Fiscale perso o dimenticato.</p>
-        <span class="read-more">Leggi di più</span>
-      </article>
-      <article class="article-card" onclick="window.location='/utilizzi-legali-codice-fiscale'">
-        <span class="article-card-tag">Legale</span>
-        <h3><a href="/utilizzi-legali-codice-fiscale">Utilizzi Legali del Codice Fiscale</a></h3>
-        <p>Tutti i contesti in cui il Codice Fiscale è obbligatorio per legge in Italia.</p>
-        <span class="read-more">Leggi di più</span>
-      </article>
-      <article class="article-card" onclick="window.location='/esempi-codice-fiscale'">
-        <span class="article-card-tag">Esempi</span>
-        <h3><a href="/esempi-codice-fiscale">Esempi di Codice Fiscale</a></h3>
-        <p>Esempi reali con spiegazione carattere per carattere del Codice Fiscale.</p>
-        <span class="read-more">Leggi di più</span>
-      </article>
     </div>
   </div>
 </section>

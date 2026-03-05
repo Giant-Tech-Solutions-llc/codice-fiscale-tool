@@ -1,7 +1,7 @@
 # Codice Fiscale Online
 
 ## Overview
-Italian Tax ID Code (Codice Fiscale) generator website built with Node.js/Express and EJS templating. Features three tools (generator, reverse decoder, validator) with consistent two-column hero layout, SEO-optimized content pages (pillar + cluster strategy), 10 guide pages under `/guida/` prefix, all AdSense compliance pages, and modern mobile-first design with Italian flag color theme (green/white/red).
+Italian Tax ID Code (Codice Fiscale) generator website built with Node.js/Express and EJS templating. Features three tools (generator, reverse decoder, validator). Homepage uses centered single-column card layout; Inverso/Verifica use two-column hero layout. SEO-optimized content pages (pillar + cluster strategy), 10 guide pages under `/guida/` prefix, all AdSense compliance pages, and modern mobile-first design with Italian flag color theme (green/white/red).
 
 ## Project Architecture
 ```
@@ -22,7 +22,7 @@ Italian Tax ID Code (Codice Fiscale) generator website built with Node.js/Expres
 │   ├── partials/
 │   │   ├── header.ejs     # Semantic header with nav (Guide, Strumenti dropdowns)
 │   │   └── footer.ejs     # Semantic footer
-│   ├── home.ejs           # Homepage: hero, CTA, calculator, tools section, trust signals, FAQ
+│   ├── home.ejs           # Homepage: centered card layout, breadcrumb, calculator, learn-more pills, trust, FAQ
 │   ├── codice-fiscale.ejs # Dedicated tool page (card layout, gender toggle, copy btn)
 │   ├── codice-fiscale-inverso.ejs # CF reverse decoder (two-column hero, tool card, SEO article, FAQ, CTA)
 │   ├── verifica-codice-fiscale.ejs # CF validator (two-column hero, tool card, SEO article, FAQ, CTA)
@@ -106,11 +106,11 @@ Italian Tax ID Code (Codice Fiscale) generator website built with Node.js/Expres
 - GET /sitemap.xml - XML sitemap
 - GET /robots.txt - Robots file
 
-## Tool Pages (all use consistent two-column hero-grid layout)
-- / (homepage) — Main calculator tool (two-column hero with form card)
-- /calcola — Main calculator tool (legacy route)
-- /codice-fiscale-inverso — Reverse decoder tool (fully client-side JS, two-column hero layout)
-- /verifica-codice-fiscale — Validator tool (fully client-side JS, two-column hero layout)
+## Tool Pages
+- / (homepage) — Main calculator tool (centered single-column card layout with breadcrumb, trust row, disclaimer, learn-more pills)
+- /calcola — Main calculator tool (legacy route, same view as homepage)
+- /codice-fiscale-inverso — Reverse decoder tool (two-column hero layout, fully client-side JS)
+- /verifica-codice-fiscale — Validator tool (two-column hero layout, fully client-side JS)
 
 ## Guide Pages (all under /guida/ prefix)
 - /guida/codice-fiscale-inverso — Guide to reverse CF decoding
@@ -140,11 +140,18 @@ Italian Tax ID Code (Codice Fiscale) generator website built with Node.js/Expres
 - **Reverse Lookup**: COMUNI_REVERSE map built from comuni.json for cadastral code → municipality name
 
 ## Recent Changes
+- **Homepage redesign + button hover fixes** (Mar 2026):
+  - Homepage rebuilt from two-column hero to centered single-column card layout
+  - Breadcrumb, centered `.tool-card` (green header, form, trust row, amber disclaimer inside card)
+  - Gender selector changed from radio pill toggle to `<select>` dropdown
+  - Added "Scopri di più" section with pill links to articles (`.learn-more-section`, `.learn-more-pill`)
+  - New CSS: `.tool-trust-row`, `.tool-trust-item`, `.learn-more-section`, `.learn-more-pill`, `.btn-secondary-alt`, `.required`
+  - Fixed all button hover animations: consistent `transform: translateY(-1px)` lift + shadow on hover
+  - Fixed reset buttons on Inverso/Verifica: replaced broken `var(--gray-500)` inline style with `.btn-secondary-alt` class
+  - Updated `app.js` to handle `<select>` for gender instead of radio buttons
 - **Tool page UI/UX redesign** (Mar 2026):
-  - Redesigned Inverso and Verifica tool pages to match homepage two-column hero-grid layout
-  - All 3 tools now share consistent UI: hero text (left) + tool card with green header (right)
+  - Redesigned Inverso and Verifica tool pages to two-column hero-grid layout
   - Removed 3 extra tools: `/codice-comune`, `/carattere-controllo`, `/stampa`
-  - Uses existing CSS classes: `.hero`, `.hero-grid`, `.hero-content`, `.hero-tool-preview`, `.hero-tool-card`, `.tool-header`, `.tool-body`
 - **Major guide expansion** (Mar 2026):
   - 8 new guide pages under `/guida/` prefix (come-si-calcola, struttura, come-leggere, lettere-mesi, donna-uomo, cose-il-codice-fiscale, come-trovare, neonato)
   - Migrated existing guide pages from `/guide/` to `/guida/` prefix with 301 redirects

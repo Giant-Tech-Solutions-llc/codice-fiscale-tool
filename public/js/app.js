@@ -85,28 +85,16 @@ document.addEventListener('DOMContentLoaded', function() {
             var errors = [];
             var cognome = document.getElementById('cognome').value.trim();
             var nome = document.getElementById('nome').value.trim();
-            var sessoEl = document.querySelector('input[name="sesso"]:checked');
+            var sessoEl = document.getElementById('sesso');
             var sesso = sessoEl ? sessoEl.value : '';
             var dataNascita = document.getElementById('data_nascita').value;
             var comune = document.getElementById('comune').value.trim();
 
             document.querySelectorAll('.error-msg').forEach(function(el) { el.remove(); });
             document.querySelectorAll('.error').forEach(function(el) { el.classList.remove('error'); });
-            var genderToggle = form.querySelector('.gender-toggle');
-            if (genderToggle) genderToggle.style.borderColor = '';
-
             if (!cognome) showError('cognome', 'Il cognome è obbligatorio');
             if (!nome) showError('nome', 'Il nome è obbligatorio');
-            if (!sesso) {
-                var toggle = form.querySelector('.gender-toggle');
-                if (toggle) {
-                    toggle.style.borderColor = '#E63946';
-                    var errDiv = document.createElement('div');
-                    errDiv.className = 'error-msg';
-                    errDiv.textContent = 'Seleziona il sesso';
-                    toggle.parentNode.appendChild(errDiv);
-                }
-            }
+            if (!sesso) showError('sesso', 'Seleziona il sesso');
             if (!dataNascita) showError('data_nascita', 'La data di nascita è obbligatoria');
             if (!comune) showError('comune', 'Il comune di nascita è obbligatorio');
 
@@ -150,14 +138,14 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
 
-        form.querySelectorAll('input[name="sesso"]').forEach(function(radio) {
-            radio.addEventListener('change', function() {
-                var toggle = form.querySelector('.gender-toggle');
-                if (toggle) toggle.style.borderColor = '';
-                var errMsg = toggle.parentNode.querySelector('.error-msg');
+        var sessoSelect = document.getElementById('sesso');
+        if (sessoSelect) {
+            sessoSelect.addEventListener('change', function() {
+                sessoSelect.classList.remove('error');
+                var errMsg = sessoSelect.parentNode.querySelector('.error-msg');
                 if (errMsg) errMsg.remove();
             });
-        });
+        }
     }
 
     document.querySelectorAll('.faq-question').forEach(function(q) {
