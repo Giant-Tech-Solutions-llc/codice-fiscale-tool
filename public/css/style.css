@@ -1036,7 +1036,7 @@ img{max-width:100%;height:auto;display:block}
 .sidebar-cta p{color:#111827;font-weight:500;margin-bottom:1rem}
 .sidebar-cta a.btn{color:var(--white);text-decoration:none}
 .sidebar-cta a.btn:hover{color:var(--white)}
-.btn--block{display:block;width:100%;text-align:center}
+.btn--block{display:flex;width:100%;text-align:center}
 .mono{font-family:'SF Mono',SFMono-Regular,Consolas,'Liberation Mono',Menlo,monospace}
 .callout,.guide-callout{padding:1rem 1.25rem;border-radius:8px;margin:1.25rem 0;border-left:4px solid;font-size:.9375rem;line-height:1.7}
 .callout p,.guide-callout p{margin:0;color:inherit}
