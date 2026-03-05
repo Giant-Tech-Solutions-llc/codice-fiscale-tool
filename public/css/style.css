@@ -235,6 +235,13 @@ img{max-width:100%;height:auto;display:block}
   color:var(--text);
   margin-bottom:1rem;
 }
+.hero-subtitle{
+  font-size:1.25rem;
+  color:var(--text-secondary);
+  font-weight:500;
+  margin-bottom:.75rem;
+  max-width:480px;
+}
 .hero-description{
   font-size:1.0625rem;
   color:var(--text-secondary);
