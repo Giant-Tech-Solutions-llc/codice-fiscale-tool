@@ -8,88 +8,85 @@
   </div>
 </nav>
 
-<!-- HERO -->
-<section class="tool-hero" aria-labelledby="hero-title">
+<!-- HERO WITH TWO-COLUMN LAYOUT -->
+<section class="hero">
   <div class="container">
-    <h1 id="hero-title">Verifica Codice Fiscale</h1>
-    <p class="tool-hero__subtitle">
-      Controlla istantaneamente se un codice fiscale italiano è formalmente valido. Risposta chiara: <strong>VALIDO</strong> o <strong>NON VALIDO</strong>, con indicazione dell'errore specifico.
-    </p>
-    <ul class="tool-hero__badges" aria-label="Caratteristiche">
-      <li>✓ Validazione algoritmo ufficiale</li>
-      <li>✓ Indicazione errore precisa</li>
-      <li>✓ Gratuito e istantaneo</li>
-    </ul>
-  </div>
-</section>
-
-<!-- TOOL -->
-<section class="tool-section" aria-labelledby="tool-title">
-  <div class="container">
-    <div class="tool-card">
-      <h2 id="tool-title">Controlla la Validità del CF</h2>
-      <p class="tool-card__desc">Inserisci il codice fiscale da verificare: riceverai una risposta immediata sulla sua validità formale</p>
-
-      <div class="tool-input-group">
-        <label for="cf-verifica-input" class="visually-hidden">Inserisci Codice Fiscale da verificare</label>
-        <input
-          id="cf-verifica-input"
-          type="text"
-          class="cf-input"
-          placeholder="Es. RSSMRA85M01H501Z"
-          maxlength="16"
-          autocomplete="off"
-          autocorrect="off"
-          autocapitalize="characters"
-          spellcheck="false"
-          aria-describedby="cf-verifica-hint"
-        />
-        <span id="cf-verifica-hint" class="input-hint">16 caratteri alfanumerici</span>
+    <div class="hero-grid">
+      <div class="hero-content">
+        <h1>Verifica Codice Fiscale</h1>
+        <p class="hero-description">Controlla istantaneamente se un codice fiscale italiano è formalmente valido. Risposta chiara: <strong>VALIDO</strong> o <strong>NON VALIDO</strong>, con indicazione dell'errore specifico.</p>
+        <ul class="hero-trust-list">
+          <li><span class="check">&#10003;</span> Validazione algoritmo ufficiale</li>
+          <li><span class="check">&#10003;</span> Indicazione errore precisa</li>
+          <li><span class="check">&#10003;</span> Gratuito e istantaneo</li>
+        </ul>
+        <a href="#verifica-tool" class="hero-cta-btn">Verifica Codice Fiscale <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
       </div>
-
-      <button id="verifica-btn" class="btn btn--primary btn--large">
-        Verifica Codice Fiscale
-      </button>
-
-      <!-- RESULT DISPLAY -->
-      <div id="verifica-result" class="verifica-result" hidden aria-live="polite" role="status">
-
-        <!-- VERDICT BADGE -->
-        <div id="verdict-badge" class="verdict-badge" aria-label="Risultato della verifica">
-          <div id="verdict-icon" class="verdict-icon" aria-hidden="true"></div>
-          <div id="verdict-text" class="verdict-text"></div>
-          <div id="verdict-sub" class="verdict-sub"></div>
-        </div>
-
-        <!-- CHECKLIST -->
-        <div class="check-list" aria-label="Lista controlli superati">
-          <h3>Dettaglio Controlli</h3>
-          <ul id="check-items" class="check-items"></ul>
-        </div>
-
-        <!-- QUICK EXTRACT (shown only if valid) -->
-        <div id="quick-extract" class="quick-extract" hidden aria-label="Dati estratti rapidi">
-          <h3>Dati Estratti</h3>
-          <div class="quick-extract__grid">
-            <div class="qe-item">
-              <span class="qe-label">Data di nascita</span>
-              <span id="qe-nascita" class="qe-value">—</span>
+      <div class="hero-tool-preview">
+        <div class="hero-tool-card" id="verifica-tool">
+          <div class="tool-header">
+            <h2>Controlla la Validità del CF</h2>
+            <p>Inserisci il CF per una verifica istantanea</p>
+          </div>
+          <div class="tool-body">
+            <div class="form-group">
+              <label for="cf-verifica-input">Codice Fiscale</label>
+              <input
+                id="cf-verifica-input"
+                type="text"
+                placeholder="Es. RSSMRA85M01H501Z"
+                maxlength="16"
+                autocomplete="off"
+                autocorrect="off"
+                autocapitalize="characters"
+                spellcheck="false"
+                aria-describedby="cf-verifica-hint"
+              />
+              <div class="form-hint" id="cf-verifica-hint">16 caratteri alfanumerici</div>
             </div>
-            <div class="qe-item">
-              <span class="qe-label">Sesso</span>
-              <span id="qe-sesso" class="qe-value">—</span>
-            </div>
-            <div class="qe-item">
-              <span class="qe-label">Codice comune</span>
-              <span id="qe-comune" class="qe-value">—</span>
+
+            <button id="verifica-btn" class="btn btn-primary"><span class="btn-text">Verifica Codice Fiscale</span><span class="spinner"></span></button>
+
+            <div id="verifica-result" class="verifica-result" hidden aria-live="polite" role="status">
+              <div id="verdict-badge" class="verdict-badge" aria-label="Risultato della verifica">
+                <div id="verdict-icon" class="verdict-icon" aria-hidden="true"></div>
+                <div id="verdict-text" class="verdict-text"></div>
+                <div id="verdict-sub" class="verdict-sub"></div>
+              </div>
+
+              <div class="check-list" aria-label="Lista controlli superati">
+                <h3>Dettaglio Controlli</h3>
+                <ul id="check-items" class="check-items"></ul>
+              </div>
+
+              <div id="quick-extract" class="quick-extract" hidden aria-label="Dati estratti rapidi">
+                <h3>Dati Estratti</h3>
+                <div class="quick-extract__grid">
+                  <div class="qe-item">
+                    <span class="qe-label">Data di nascita</span>
+                    <span id="qe-nascita" class="qe-value">—</span>
+                  </div>
+                  <div class="qe-item">
+                    <span class="qe-label">Sesso</span>
+                    <span id="qe-sesso" class="qe-value">—</span>
+                  </div>
+                  <div class="qe-item">
+                    <span class="qe-label">Codice comune</span>
+                    <span id="qe-comune" class="qe-value">—</span>
+                  </div>
+                </div>
+                <a href="/codice-fiscale-inverso" class="btn btn--outline btn--sm">
+                  Decodifica completa →
+                </a>
+              </div>
+
+              <button id="verifica-reset-btn" class="btn btn-primary" style="background: var(--gray-500); margin-top: 1rem;">Verifica un altro CF</button>
             </div>
           </div>
-          <a href="/codice-fiscale-inverso" class="btn btn--outline btn--sm">
-            Decodifica completa →
-          </a>
         </div>
-
-        <button id="verifica-reset-btn" class="btn btn--secondary">Verifica un altro CF</button>
+        <div class="disclaimer-outside">
+          <strong>Nota:</strong> La verifica controlla la correttezza formale del CF, non l'associazione con un'identità reale nei registri dell'Agenzia delle Entrate.
+        </div>
       </div>
     </div>
   </div>

@@ -8,111 +8,107 @@
   </div>
 </nav>
 
-<!-- HERO SECTION -->
-<section class="tool-hero" aria-labelledby="hero-title">
+<!-- HERO WITH TWO-COLUMN LAYOUT -->
+<section class="hero">
   <div class="container">
-    <h1 id="hero-title">Codice Fiscale Inverso</h1>
-    <p class="tool-hero__subtitle">
-      Decodifica qualsiasi codice fiscale italiano in pochi secondi. Scopri data di nascita, sesso e comune di nascita con visualizzazione carattere per carattere.
-    </p>
-    <ul class="tool-hero__badges" aria-label="Caratteristiche">
-      <li>✓ Estrazione dati completa</li>
-      <li>✓ Nessun dato salvato</li>
-      <li>✓ Gratuito e immediato</li>
-    </ul>
-  </div>
-</section>
-
-<!-- TOOL SECTION -->
-<section class="tool-section" aria-labelledby="tool-title">
-  <div class="container">
-    <div class="tool-card">
-      <h2 id="tool-title">Decodifica il tuo Codice Fiscale</h2>
-      <p class="tool-card__desc">Inserisci un codice fiscale di 16 caratteri per estrarre tutti i dati anagrafici codificati</p>
-
-      <div class="tool-input-group">
-        <label for="cf-input" class="visually-hidden">Inserisci Codice Fiscale</label>
-        <input
-          id="cf-input"
-          type="text"
-          class="cf-input"
-          placeholder="Es. RSSMRA85M01H501Z"
-          maxlength="16"
-          autocomplete="off"
-          autocorrect="off"
-          autocapitalize="characters"
-          spellcheck="false"
-          aria-describedby="cf-input-hint"
-        />
-        <span id="cf-input-hint" class="input-hint">16 caratteri alfanumerici</span>
+    <div class="hero-grid">
+      <div class="hero-content">
+        <h1>Codice Fiscale Inverso</h1>
+        <p class="hero-description">Decodifica qualsiasi codice fiscale italiano in pochi secondi. Scopri data di nascita, sesso e comune di nascita con visualizzazione carattere per carattere.</p>
+        <ul class="hero-trust-list">
+          <li><span class="check">&#10003;</span> Estrazione dati completa</li>
+          <li><span class="check">&#10003;</span> Nessun dato salvato</li>
+          <li><span class="check">&#10003;</span> Gratuito e immediato</li>
+        </ul>
+        <a href="#inverso-tool" class="hero-cta-btn">Decodifica Codice Fiscale <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
       </div>
+      <div class="hero-tool-preview">
+        <div class="hero-tool-card" id="inverso-tool">
+          <div class="tool-header">
+            <h2>Decodifica il tuo Codice Fiscale</h2>
+            <p>Inserisci il CF e scopri i dati codificati</p>
+          </div>
+          <div class="tool-body">
+            <div class="form-group">
+              <label for="cf-input">Codice Fiscale</label>
+              <input
+                id="cf-input"
+                type="text"
+                placeholder="Es. RSSMRA85M01H501Z"
+                maxlength="16"
+                autocomplete="off"
+                autocorrect="off"
+                autocapitalize="characters"
+                spellcheck="false"
+                aria-describedby="cf-input-hint"
+              />
+              <div class="form-hint" id="cf-input-hint">16 caratteri alfanumerici</div>
+            </div>
 
-      <button id="decode-btn" class="btn btn--primary btn--large" aria-controls="result-section">
-        Decodifica Codice Fiscale
-      </button>
+            <button id="decode-btn" class="btn btn-primary"><span class="btn-text">Decodifica Codice Fiscale</span><span class="spinner"></span></button>
 
-      <!-- ERROR -->
-      <div id="error-msg" class="error-msg" role="alert" aria-live="polite" hidden></div>
+            <div id="error-msg" class="error-msg" role="alert" aria-live="polite" hidden></div>
 
-      <!-- RESULT -->
-      <div id="result-section" class="result-section" hidden aria-live="polite">
+            <div id="result-section" class="result-section" hidden aria-live="polite">
+              <div class="cf-breakdown" aria-label="Scomposizione visiva del codice fiscale">
+                <h3>Scomposizione del Codice Fiscale</h3>
+                <div class="cf-chars" id="cf-chars" role="img" aria-label="Caratteri del codice fiscale evidenziati"></div>
+                <div class="cf-legend">
+                  <span class="legend-item legend-cognome">Cognome (1-3)</span>
+                  <span class="legend-item legend-nome">Nome (4-6)</span>
+                  <span class="legend-item legend-anno">Anno (7-8)</span>
+                  <span class="legend-item legend-mese">Mese (9)</span>
+                  <span class="legend-item legend-giorno">Giorno/Sesso (10-11)</span>
+                  <span class="legend-item legend-comune">Comune (12-15)</span>
+                  <span class="legend-item legend-controllo">Controllo (16)</span>
+                </div>
+              </div>
 
-        <!-- VISUAL BREAKDOWN -->
-        <div class="cf-breakdown" aria-label="Scomposizione visiva del codice fiscale">
-          <h3>Scomposizione del Codice Fiscale</h3>
-          <div class="cf-chars" id="cf-chars" role="img" aria-label="Caratteri del codice fiscale evidenziati"></div>
-          <div class="cf-legend">
-            <span class="legend-item legend-cognome">Cognome (1-3)</span>
-            <span class="legend-item legend-nome">Nome (4-6)</span>
-            <span class="legend-item legend-anno">Anno (7-8)</span>
-            <span class="legend-item legend-mese">Mese (9)</span>
-            <span class="legend-item legend-giorno">Giorno/Sesso (10-11)</span>
-            <span class="legend-item legend-comune">Comune (12-15)</span>
-            <span class="legend-item legend-controllo">Controllo (16)</span>
+              <div class="data-cards" aria-label="Dati estratti">
+                <div class="data-card" id="card-nascita">
+                  <div class="data-card__icon" aria-hidden="true">📅</div>
+                  <div class="data-card__label">Data di Nascita</div>
+                  <div class="data-card__value" id="result-nascita">—</div>
+                </div>
+                <div class="data-card" id="card-sesso">
+                  <div class="data-card__icon" aria-hidden="true">👤</div>
+                  <div class="data-card__label">Sesso</div>
+                  <div class="data-card__value" id="result-sesso">—</div>
+                </div>
+                <div class="data-card" id="card-comune">
+                  <div class="data-card__icon" aria-hidden="true">📍</div>
+                  <div class="data-card__label">Comune / Stato di Nascita</div>
+                  <div class="data-card__value" id="result-comune">—</div>
+                </div>
+                <div class="data-card" id="card-eta">
+                  <div class="data-card__icon" aria-hidden="true">🎂</div>
+                  <div class="data-card__label">Età</div>
+                  <div class="data-card__value" id="result-eta">—</div>
+                </div>
+              </div>
+
+              <div class="detail-table-wrapper">
+                <h3>Dettaglio Segmenti</h3>
+                <table class="detail-table" aria-label="Dettaglio segmenti codice fiscale">
+                  <thead>
+                    <tr>
+                      <th scope="col">Segmento</th>
+                      <th scope="col">Caratteri</th>
+                      <th scope="col">Valore</th>
+                      <th scope="col">Significato</th>
+                    </tr>
+                  </thead>
+                  <tbody id="detail-tbody"></tbody>
+                </table>
+              </div>
+
+              <button id="reset-btn" class="btn btn-primary" style="background: var(--gray-500); margin-top: 1rem;">Analizza un altro CF</button>
+            </div>
           </div>
         </div>
-
-        <!-- EXTRACTED DATA CARDS -->
-        <div class="data-cards" aria-label="Dati estratti">
-          <div class="data-card" id="card-nascita">
-            <div class="data-card__icon" aria-hidden="true">📅</div>
-            <div class="data-card__label">Data di Nascita</div>
-            <div class="data-card__value" id="result-nascita">—</div>
-          </div>
-          <div class="data-card" id="card-sesso">
-            <div class="data-card__icon" aria-hidden="true">👤</div>
-            <div class="data-card__label">Sesso</div>
-            <div class="data-card__value" id="result-sesso">—</div>
-          </div>
-          <div class="data-card" id="card-comune">
-            <div class="data-card__icon" aria-hidden="true">📍</div>
-            <div class="data-card__label">Comune / Stato di Nascita</div>
-            <div class="data-card__value" id="result-comune">—</div>
-          </div>
-          <div class="data-card" id="card-eta">
-            <div class="data-card__icon" aria-hidden="true">🎂</div>
-            <div class="data-card__label">Età</div>
-            <div class="data-card__value" id="result-eta">—</div>
-          </div>
+        <div class="disclaimer-outside">
+          <strong>Nota:</strong> Non è possibile risalire al nome e cognome completi dal codice fiscale, poiché vengono codificate solo alcune consonanti/vocali.
         </div>
-
-        <!-- DETAIL TABLE -->
-        <div class="detail-table-wrapper">
-          <h3>Dettaglio Segmenti</h3>
-          <table class="detail-table" aria-label="Dettaglio segmenti codice fiscale">
-            <thead>
-              <tr>
-                <th scope="col">Segmento</th>
-                <th scope="col">Caratteri</th>
-                <th scope="col">Valore</th>
-                <th scope="col">Significato</th>
-              </tr>
-            </thead>
-            <tbody id="detail-tbody"></tbody>
-          </table>
-        </div>
-
-        <button id="reset-btn" class="btn btn--secondary">Analizza un altro CF</button>
       </div>
     </div>
   </div>

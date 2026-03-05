@@ -1,7 +1,7 @@
 # Codice Fiscale Online
 
 ## Overview
-Italian Tax ID Code (Codice Fiscale) generator website built with Node.js/Express and EJS templating. Features six tools (generator, reverse decoder, validator, municipality code lookup, control character calculator, print card), SEO-optimized content pages (pillar + cluster strategy), 10 guide pages under `/guida/` prefix, all AdSense compliance pages, and modern mobile-first design with Italian flag color theme (green/white/red).
+Italian Tax ID Code (Codice Fiscale) generator website built with Node.js/Express and EJS templating. Features three tools (generator, reverse decoder, validator) with consistent two-column hero layout, SEO-optimized content pages (pillar + cluster strategy), 10 guide pages under `/guida/` prefix, all AdSense compliance pages, and modern mobile-first design with Italian flag color theme (green/white/red).
 
 ## Project Architecture
 ```
@@ -24,11 +24,8 @@ Italian Tax ID Code (Codice Fiscale) generator website built with Node.js/Expres
 │   │   └── footer.ejs     # Semantic footer
 │   ├── home.ejs           # Homepage: hero, CTA, calculator, tools section, trust signals, FAQ
 │   ├── codice-fiscale.ejs # Dedicated tool page (card layout, gender toggle, copy btn)
-│   ├── codice-fiscale-inverso.ejs # CF reverse decoder (hero, tool card, SEO article, FAQ, CTA)
-│   ├── verifica-codice-fiscale.ejs # CF validator (hero, tool card, SEO article, FAQ, CTA)
-│   ├── codice-comune.ejs  # Municipality cadastral code lookup tool
-│   ├── carattere-controllo.ejs # Control character calculator (15 chars → 16th)
-│   ├── stampa.ejs         # Print-friendly CF card generator
+│   ├── codice-fiscale-inverso.ejs # CF reverse decoder (two-column hero, tool card, SEO article, FAQ, CTA)
+│   ├── verifica-codice-fiscale.ejs # CF validator (two-column hero, tool card, SEO article, FAQ, CTA)
 │   ├── codice-fiscale-pillar.ejs # SEO pillar page (1500+ words, TOC, 12 sections, FAQ schema)
 │   ├── tool.ejs           # Legacy calculator tool page (/calcola route)
 │   ├── 404.ejs            # 404 error page
@@ -69,10 +66,7 @@ Italian Tax ID Code (Codice Fiscale) generator website built with Node.js/Expres
 │   ├── css/verifica.css   # Verifica tool-specific styles (verdict badge, check list, quick extract)
 │   ├── js/app.js          # Client-side JavaScript (homepage calculator, nav, toast)
 │   ├── js/inverso.js      # Inverso tool JS (client-side CF decode with omocodia support)
-│   ├── js/verifica.js     # Verifica tool JS (client-side CF validation with checklist)
-│   ├── js/codice-comune.js      # Municipality code lookup JS (debounced search, results table)
-│   ├── js/carattere-controllo.js # Control character calculator JS (official algorithm)
-│   └── js/stampa.js       # Print CF card JS (format, extract data, window.print)
+│   └── js/verifica.js     # Verifica tool JS (client-side CF validation with checklist)
 ├── pages/                 # Legacy PHP pages (kept for reference)
 ├── includes/              # Legacy PHP includes
 ├── assets/                # Legacy PHP assets
@@ -92,9 +86,7 @@ Italian Tax ID Code (Codice Fiscale) generator website built with Node.js/Expres
 - Codice Fiscale calculation with official algorithm
 - Codice Fiscale inverse decoding (visual color-coded breakdown, data cards, detail table)
 - Codice Fiscale validation (verdict badge, format/date/checksum checks, quick extract)
-- Municipality cadastral code lookup (search by name, instant results)
-- Control character calculator (paste 15 chars, get 16th character)
-- Print-friendly CF card generator (enter CF, print tessera-style card)
+- All 3 tools share same two-column hero-grid layout (hero text left, tool card right)
 - Municipality autocomplete search (1,291 comuni)
 - Copy-to-clipboard with toast confirmation
 - JSON-LD structured data (FAQ, HowTo, Article, WebApplication)
@@ -114,13 +106,11 @@ Italian Tax ID Code (Codice Fiscale) generator website built with Node.js/Expres
 - GET /sitemap.xml - XML sitemap
 - GET /robots.txt - Robots file
 
-## Tool Pages
+## Tool Pages (all use consistent two-column hero-grid layout)
+- / (homepage) — Main calculator tool (two-column hero with form card)
 - /calcola — Main calculator tool (legacy route)
-- /codice-fiscale-inverso — Reverse decoder tool (fully client-side JS, no server API calls)
-- /verifica-codice-fiscale — Validator tool (fully client-side JS, no server API calls)
-- /codice-comune — Municipality cadastral code lookup (client-side, uses /api/comuni)
-- /carattere-controllo — Control character calculator (fully client-side)
-- /stampa — Print-friendly CF card (fully client-side)
+- /codice-fiscale-inverso — Reverse decoder tool (fully client-side JS, two-column hero layout)
+- /verifica-codice-fiscale — Validator tool (fully client-side JS, two-column hero layout)
 
 ## Guide Pages (all under /guida/ prefix)
 - /guida/codice-fiscale-inverso — Guide to reverse CF decoding
@@ -150,12 +140,15 @@ Italian Tax ID Code (Codice Fiscale) generator website built with Node.js/Expres
 - **Reverse Lookup**: COMUNI_REVERSE map built from comuni.json for cadastral code → municipality name
 
 ## Recent Changes
-- **Major site expansion** (Mar 2026):
-  - 3 new tool pages: `/codice-comune`, `/carattere-controllo`, `/stampa`
+- **Tool page UI/UX redesign** (Mar 2026):
+  - Redesigned Inverso and Verifica tool pages to match homepage two-column hero-grid layout
+  - All 3 tools now share consistent UI: hero text (left) + tool card with green header (right)
+  - Removed 3 extra tools: `/codice-comune`, `/carattere-controllo`, `/stampa`
+  - Uses existing CSS classes: `.hero`, `.hero-grid`, `.hero-content`, `.hero-tool-preview`, `.hero-tool-card`, `.tool-header`, `.tool-body`
+- **Major guide expansion** (Mar 2026):
   - 8 new guide pages under `/guida/` prefix (come-si-calcola, struttura, come-leggere, lettere-mesi, donna-uomo, cose-il-codice-fiscale, come-trovare, neonato)
-  - Migrated existing guide pages from `/guide/` to `/guida/` prefix
-  - Added `public/css/landing.css` (green design system, converted from purple/indigo)
-  - Added 3 new JS files: `codice-comune.js`, `carattere-controllo.js`, `stampa.js`
+  - Migrated existing guide pages from `/guide/` to `/guida/` prefix with 301 redirects
+  - Added `public/css/landing.css` (green design system)
   - Article + FAQPage structured data for all new guide pages
   - All new pages in sitemap.xml, HTML sitemap, header/footer navigation
 - **Guide pages added** (Mar 2026):
