@@ -1,0 +1,60 @@
+Looking at the Decode page, I need to mirror its content sections exactly for the Calculate page. Let me write the content only.Check the decode page structure from the screenshot more carefullyCheck the decode page structure from the screenshot more carefullyThe Decode page has these exact content sections:
+
+Page title + subtitle (hero left)
+3 bullet points
+"What is the Reverse Fiscal Code Calculation?" — 2 paragraphs
+"How does tax code decoding work?" — 1 intro line + 7 bullet points
+"What can you get from the reverse tax code?" — 1 paragraph (mixed IT/EN)
+"Related tools" — 2 lines of text with links
+"Frequently Asked Questions" — 5 questions
+Bottom CTA — headline + subtitle + 2 buttons
+
+Here is the equivalent content for the Calculate page:
+
+Page title: Calculate Tax Code
+Subtitle: Generate any Italian tax code in seconds. Enter your personal details and get your code instantly.
+3 bullets:
+
+Complete code generation
+No data saved
+Free and immediate
+
+
+What is the Tax Code Calculation?
+The tax code calculation is the process used to generate the unique alphanumeric identifier assigned to every Italian citizen. While the reverse calculation extracts personal data from an existing code, the direct calculation follows the opposite path: starting from personal details — surname, name, date of birth, gender, and place of birth — it constructs the tax code character by character.
+This tool is useful in many contexts: generating a code for a new employee, pre-filling documents, verifying a code before submitting official paperwork, or simply understanding how the algorithm works. Our online tax code calculator applies the same official Revenue Agency algorithm used during the issuance phase, guaranteeing accurate and reliable results.
+
+How does the tax code calculation work?
+The Italian tax code is made up of 16 characters divided into specific segments. Here's how they're generated during the tax code calculation:
+
+Characters 1–3 (Last Name): The first three consonants of the surname, or vowels if there are insufficient consonants.
+Characters 4–6 (Name): If the name has 4+ consonants, the 1st, 3rd, and 4th are taken; otherwise, the first three available consonants.
+Characters 7–8 (Year of Birth): The last two digits of the year.
+Character 9 (Birth Month): A code letter representing the month (A=January, B=February, etc.).
+Characters 10–11 (Day and Gender): The day of birth for males (01–31); for females it is added to 40 (41–71).
+Characters 12–15 (Municipality): The cadastral code of the municipality or foreign state of birth.
+Character 16 (Check): An algorithmically calculated character to verify the integrity of the CF.
+
+
+What can you get from the tax code calculation?
+Through the calcolo codice fiscale online it is possible to obtain the complete 16-character alphanumeric code starting from the five personal data points. The result shows the exact surname encoding, name encoding, full date of birth, gender, and municipality of birth. It is not possible to generate the tax code without all five required inputs.
+
+Related tools
+Want to decode a tax code you already have? Use our CF Inverse tool. To check if a tax code is formally correct, use our Tax Code Checker. To learn more about how the algorithm works, read our guide on how to calculate a tax code.
+
+Frequently Asked Questions about the Tax Code Calculation
+What data do I need to calculate a tax code?
+You need exactly five pieces of information: surname, name, gender, date of birth (day, month, year), and place of birth (Italian municipality or foreign state). Without all five data points it is impossible to generate a valid and complete tax code. Surname and name alone are not sufficient.
+How is the tax code calculated?
+The tax code is calculated in six steps: (1) extract the first three consonants of the surname; (2) extract three consonants from the name using a special rule for names with 4 or more consonants; (3) take the last two digits of the birth year; (4) convert the birth month into its corresponding letter (A through T); (5) encode the birth day as a number, adding 40 for females; (6) use the Belfiore cadastral code for the municipality or foreign state of birth. A check character is then calculated algorithmically from all previous 15 characters.
+Is the calculated tax code reliable?
+The calculated tax code is reliable in the vast majority of cases, as the tool applies the same official algorithm. The only exception is homocody: when two people share all five personal data points, the Revenue Agency assigns a modified code — replacing some digits with letters — that only their database knows. In these rare cases the calculated code may differ from the official one.
+How does gender affect the tax code?
+Gender affects characters 10–11 of the tax code. For males, those two digits show the day of birth directly (01–31). For females, 40 is added to the day (41–71). For example, a man born on the 15th has "15" in positions 10–11, while a woman born on the same day has "55". This is the only structural difference between a male and a female tax code.
+Is my data saved during the calculation?
+No. The calculation is performed locally in your browser. No personal data is sent to our servers, stored in any database, or processed in any way beyond generating the code on screen.
+
+Bottom CTA:
+Do you need to decode a tax code?
+Use our reverse calculator to extract date of birth, gender, and place of birth from any existing Italian tax code.
+[CF Inverse →] [Check a CF]

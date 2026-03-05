@@ -108,7 +108,7 @@ Italian Tax ID Code (Codice Fiscale) generator website built with Node.js/Expres
 
 ## Tool Pages
 - / (homepage) — Main calculator tool (two-column hero layout with radio pill gender toggle, trust list, guide cards, FAQ)
-- /calcola — Dedicated calculator tool page (centered single-column card layout with breadcrumb, trust row, disclaimer, learn-more pills)
+- /calcola — Dedicated calculator tool page (two-column hero layout, SEO article, FAQ accordion, CTA section, client-side JS)
 - /codice-fiscale-inverso — Reverse decoder tool (two-column hero layout, fully client-side JS)
 - /verifica-codice-fiscale — Validator tool (two-column hero layout, fully client-side JS)
 
@@ -140,13 +140,14 @@ Italian Tax ID Code (Codice Fiscale) generator website built with Node.js/Expres
 - **Reverse Lookup**: COMUNI_REVERSE map built from comuni.json for cadastral code → municipality name
 
 ## Recent Changes
-- **Calcola page redesign + button hover fixes** (Mar 2026):
-  - Homepage (`/`) kept as two-column hero layout with radio pill gender toggle (unchanged)
-  - `/calcola` page (`views/tool.ejs`) redesigned to centered single-column card layout
-  - Breadcrumb (`<ol>/<li>`), centered `.tool-card` (green header, form, trust row, disclaimer inside card)
-  - `/calcola` uses `<select>` dropdown for gender; homepage keeps radio pill toggle
-  - Added "Scopri di più" section with pill links below the card (`.learn-more-section`, `.learn-more-pill`)
-  - New CSS: `.tool-trust-row`, `.tool-trust-item`, `.learn-more-section`, `.learn-more-pill`, `.btn-secondary-alt`, `.required`
+- **Calcola page rebuilt with SEO content** (Mar 2026):
+  - `/calcola` page (`views/tool.ejs`) rebuilt with two-column hero layout matching Inverso/Verifica pages
+  - Hero section: h1 + description + 3 trust bullets + CTA button (left), tool card with form (right)
+  - SEO article section: "Cos'è il Calcolo del CF?", "Come funziona", "Cosa si ottiene", "Strumenti correlati"
+  - FAQ accordion: 5 questions with `<details>/<summary>` elements + FAQPage structured data
+  - Bottom CTA section with links to CF Inverso and Verifica
+  - Internal linking to `/codice-fiscale-inverso`, `/verifica-codice-fiscale`, `/guida/come-si-calcola`
+  - Client-side form submission via `/api/calcola` (same as homepage), radio pill gender toggle
   - Fixed all button hover animations: consistent `transform: translateY(-1px)` lift + shadow on hover
   - Fixed reset buttons on Inverso/Verifica: replaced broken `var(--gray-500)` inline style with `.btn-secondary-alt` class
 - **Tool page UI/UX redesign** (Mar 2026):

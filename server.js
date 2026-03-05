@@ -224,6 +224,15 @@ function getStructuredData(siteUrl, routeKey) {
   if (routeKey === '') {
     schemas.push(jsonLd(buildFaqSchema(homeFaqs)));
   }
+  if (routeKey === 'calcola') {
+    schemas.push(jsonLd(buildFaqSchema([
+      { q: 'Quali dati servono per calcolare un codice fiscale?', a: 'Servono esattamente cinque informazioni: cognome, nome, sesso, data di nascita (giorno, mese, anno) e luogo di nascita (comune italiano o stato estero). Senza tutti e cinque i dati non è possibile generare un codice fiscale valido e completo.' },
+      { q: 'Come si calcola il codice fiscale?', a: "Il codice fiscale si calcola in sei passaggi: (1) estrarre le prime tre consonanti del cognome; (2) estrarre tre consonanti dal nome con una regola speciale per nomi con 4+ consonanti; (3) prendere le ultime due cifre dell'anno di nascita; (4) convertire il mese di nascita nella lettera corrispondente; (5) codificare il giorno di nascita, sommando 40 per le femmine; (6) usare il codice catastale Belfiore per il comune o stato estero." },
+      { q: 'Il codice fiscale calcolato è affidabile?', a: "Il codice fiscale calcolato è affidabile nella stragrande maggioranza dei casi, poiché lo strumento applica lo stesso algoritmo ufficiale. L'unica eccezione è l'omocodia: quando due persone condividono tutti i dati anagrafici, l'Agenzia delle Entrate assegna un codice modificato noto solo al loro database." },
+      { q: 'Come influisce il sesso sul codice fiscale?', a: 'Il sesso influenza i caratteri 10–11 del codice fiscale. Per i maschi, le due cifre mostrano direttamente il giorno di nascita (01–31). Per le femmine, al giorno viene sommato 40 (41–71).' },
+      { q: 'I miei dati vengono salvati durante il calcolo?', a: 'No. Il calcolo viene eseguito localmente nel browser. Nessun dato personale viene inviato ai server, memorizzato in alcun database, o elaborato in alcun modo oltre alla generazione del codice sullo schermo.' }
+    ])));
+  }
   if (routeKey === 'codice-fiscale') {
     schemas.push(jsonLd(buildFaqSchema(pillarFaqs)));
   }
@@ -388,7 +397,7 @@ function getStructuredData(siteUrl, routeKey) {
 
 const routes = {
   '': { page: 'home', title: 'Calcola Codice Fiscale Online Gratis | ' + SITE_NAME, description: 'Calcola il tuo Codice Fiscale italiano online gratis. Strumento veloce, preciso e facile da usare. Genera il codice fiscale in pochi secondi.' },
-  'calcola': { page: 'tool', title: 'Calcola Codice Fiscale - Generatore Online Gratuito | ' + SITE_NAME, description: 'Genera il tuo Codice Fiscale italiano inserendo i tuoi dati anagrafici. Strumento gratuito, veloce e preciso con validazione in tempo reale.' },
+  'calcola': { page: 'tool', title: 'Calcola Codice Fiscale Online Gratis – Generatore CF | ' + SITE_NAME, description: 'Calcola il codice fiscale italiano online gratis: inserisci cognome, nome, data e luogo di nascita e genera il CF in pochi secondi. Strumento gratuito basato su algoritmo ufficiale.' },
   'codice-fiscale': { page: 'codice-fiscale-pillar', title: 'Codice Fiscale: Guida Completa al Codice Fiscale Italiano | ' + SITE_NAME, description: "Guida completa al Codice Fiscale italiano: cos'è, come si calcola, come ottenerlo, recuperarlo e quando è obbligatorio. Aggiornata al " + new Date().getFullYear() + '.' },
   'cos-e-il-codice-fiscale': { page: 'articles/what-is-codice-fiscale', title: "Cos'è il Codice Fiscale? Guida Completa | " + SITE_NAME, description: "Scopri cos'è il Codice Fiscale italiano, a cosa serve, come è composto e perché è fondamentale per ogni cittadino e residente in Italia." },
   'come-si-calcola-il-codice-fiscale': { page: 'articles/how-is-codice-fiscale-calculated', title: 'Come si Calcola il Codice Fiscale? Spiegazione Completa | ' + SITE_NAME, description: "Guida dettagliata su come viene calcolato il Codice Fiscale italiano. Scopri l'algoritmo, le regole e ogni passaggio del calcolo." },
