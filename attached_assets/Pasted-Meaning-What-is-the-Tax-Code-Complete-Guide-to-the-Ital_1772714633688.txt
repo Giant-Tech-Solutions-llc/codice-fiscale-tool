@@ -1,0 +1,354 @@
+Meaning
+
+What is the Tax Code: Complete Guide to the Italian CF (2026)
+
+
+
+Elemento
+
+
+
+
+Contenuto
+Meta Title
+
+
+
+
+Cos'è il Codice Fiscale: Guida Completa al CF Italiano (2026)
+Meta Description
+
+
+
+
+Cos'è il codice fiscale italiano? Scopri a cosa serve, chi lo rilascia, dove trovarlo e come funziona. Guida completa per italiani e stranieri. ✓ Tutto sul CF
+URL
+
+
+
+
+/cose-il-codice-fiscale/
+
+
+Cos'è il Codice Fiscale: Guida Completa al CF Italiano
+Il codice fiscale (CF) è un codice alfanumerico univoco che identifica ogni persona fisica e giuridica nei rapporti con lo Stato italiano e la Pubblica Amministrazione. Per le persone fisiche è composto da 16 caratteri, mentre per le aziende da 11 cifre. Viene rilasciato esclusivamente dall'Agenzia delle Entrate.
+Se ti stai chiedendo cos'è il codice fiscale, sei nel posto giusto. In questa guida completa ti spiego tutto quello che devi sapere: a cosa serve, chi lo rilascia, dove trovarlo, come funziona e come richiederlo. Che tu sia italiano o straniero, qui trovi tutte le risposte.
+📌 Fatto importante: Il codice fiscale è stato introdotto in Italia con il D.P.R. n. 605 del 29 settembre 1973 sotto il Ministro delle Finanze Bruno Visentini. Lo scopo era migliorare l'efficienza dell'Anagrafe tributaria, il sistema informatico che gestisce i dati fiscali di tutti i contribuenti italiani.
+
+Cosa Significa Codice Fiscale?
+Per capire bene cos'è il codice fiscale, partiamo dal significato delle due parole:
+Codice = una sequenza di caratteri che identifica qualcosa in modo univoco
+Fiscale = relativo al fisco, alle tasse, ai rapporti con lo Stato
+Insieme, "codice fiscale" significa: codice univoco di identificazione fiscale. È il tuo "documento di identità" per tutti i rapporti con lo Stato italiano.
+Se sei straniero, puoi pensarlo come l'equivalente di questi documenti nel tuo paese:
+Paese
+Equivalente del Codice Fiscale
+USA
+Social Security Number (SSN)
+Regno Unito
+National Insurance Number (NIN)
+Germania
+Steueridentifikationsnummer
+Francia
+Numéro de Sécurité Sociale
+Spagna
+Número de Identificación Fiscal (NIF)
+
+💡 Suggerimento: Se sei straniero e ti viene chiesto il "codice fiscale" in Italia, è l'equivalente del tuo numero di identificazione fiscale nel tuo paese d'origine. È indispensabile per quasi tutte le attività amministrative.
+
+CF Cos'è: L'Abbreviazione Spiegata
+Quando vedi scritto CF o C.F. su un documento, significa semplicemente "Codice Fiscale". È l'abbreviazione ufficiale più utilizzata in Italia.
+Abbreviazioni comuni:
+CF = Codice Fiscale (forma più usata)
+C.F. = Codice Fiscale (forma puntata)
+Cod. Fisc. = Codice Fiscale (forma estesa)
+Dove trovi queste abbreviazioni:
+Moduli e documenti ufficiali
+Tessera Sanitaria
+Documenti bancari
+Contratti di lavoro
+Bollette delle utenze
+Fatture e ricevute
+
+A Cosa Serve il Codice Fiscale?
+Il codice fiscale serve a identificarti in modo univoco in tutti i rapporti con lo Stato italiano, la Pubblica Amministrazione e gli enti privati. Senza CF non puoi fare quasi nulla in Italia.
+Ecco i principali utilizzi:
+Ambito
+A Cosa Serve il CF
+Sanità
+Accesso al Servizio Sanitario Nazionale (SSN), visite mediche, ricette
+Lavoro
+Contratti di lavoro, buste paga, contributi INPS e INAIL
+Banche
+Apertura conti correnti, mutui, prestiti, carte di credito
+Fisco
+Dichiarazione dei redditi, pagamento tasse, rimborsi
+Immobili
+Acquisto o affitto casa, contratti di locazione, utenze
+Utenze
+Attivazione luce, gas, acqua, internet, telefono
+Scuola
+Iscrizione scolastica e universitaria
+Auto
+Immatricolazione veicoli, assicurazioni, passaggi di proprietà
+Bonus e Agevolazioni
+Richiesta di bonus statali, agevolazioni fiscali
+
+📌 Fatto importante: Il codice fiscale è obbligatorio per qualsiasi rapporto con la Pubblica Amministrazione italiana. Senza CF non puoi accedere a servizi essenziali come sanità, lavoro regolare o apertura di un conto bancario.
+💡 Suggerimento: Anche per acquistare una SIM telefonica in Italia è necessario fornire il codice fiscale, come previsto dalla normativa antiterrorismo.
+
+Chi Rilascia il Codice Fiscale?
+L'Agenzia delle Entrate è l'UNICO ente autorizzato a rilasciare codici fiscali validi in Italia. Nessun altro soggetto, pubblico o privato, può emettere CF ufficiali.
+Come viene assegnato il codice fiscale:
+Categoria
+Come Viene Assegnato
+Neonati italiani
+Automaticamente alla nascita, tramite il Comune
+Cittadini italiani
+Già in possesso dalla nascita
+Stranieri residenti in Italia
+Su richiesta all'Agenzia delle Entrate
+Stranieri non residenti
+Tramite Consolato italiano all'estero
+Cittadini UE
+Su richiesta all'Agenzia delle Entrate con documento UE
+Aziende e Società
+All'apertura dell'attività presso Camera di Commercio
+
+📌 Fatto importante: Per i neonati, il codice fiscale viene attribuito automaticamente al momento della registrazione della nascita presso l'Ufficio Anagrafe del Comune. Il Comune comunica i dati all'Anagrafe tributaria, che genera il CF e lo invia alla famiglia insieme alla Tessera Sanitaria.
+
+Come Funziona il Codice Fiscale?
+Il codice fiscale delle persone fisiche è composto da 16 caratteri alfanumerici (lettere e numeri). Ogni gruppo di caratteri ha un significato preciso derivato dai tuoi dati anagrafici.
+Struttura dei 16 caratteri:
+Posizione
+Caratteri
+Informazione Codificata
+1-3
+3 lettere
+Cognome
+4-6
+3 lettere
+Nome
+7-8
+2 numeri
+Anno di nascita
+9
+1 lettera
+Mese di nascita
+10-11
+2 numeri
+Giorno di nascita + sesso
+12-15
+4 caratteri
+Codice Belfiore (Comune o Stato estero)
+16
+1 lettera
+Carattere di controllo
+
+Esempio pratico:
+Prendiamo il codice fiscale RSSMRA90E15H501X e decodifichiamolo:
+Parte
+Caratteri
+Significato
+Cognome
+RSS
+Consonanti di "Rossi"
+Nome
+MRA
+Consonanti di "Mario"
+Anno
+90
+Nato nel 1990
+Mese
+E
+Maggio
+Giorno + Sesso
+15
+Giorno 15, maschio
+Comune
+H501
+Roma
+Controllo
+X
+Carattere di verifica
+
+Risultato: Mario Rossi, nato il 15 maggio 1990 a Roma, maschio.
+📌 Fatto importante: Le regole di composizione del codice fiscale sono definite dal D.M. n° 345 del 23 dicembre 1976, emanato dal Ministero delle Finanze. Le donne aggiungono 40 al giorno di nascita: una donna nata il 15 avrà 55 nel codice (15+40).
+
+Dove Trovo il Mio Codice Fiscale?
+Se hai bisogno di trovare il tuo codice fiscale, ecco dove puoi cercarlo:
+1. Tessera Sanitaria
+La Tessera Sanitaria è il documento più comune dove trovare il CF. È una carta plastificata con microchip che contiene:
+Codice fiscale stampato sul fronte
+Dati anagrafici
+Funzione di Carta Nazionale dei Servizi (CNS)
+2. Tesserino Verde (Codice Fiscale)
+Il vecchio tesserino verde in plastica era il documento originale del codice fiscale. Non viene più emesso dal 2011, ma se ne possiedi uno è ancora valido.
+3. Certificato di Attribuzione
+L'Agenzia delle Entrate può rilasciare un certificato di attribuzione cartaceo. È utile per stranieri appena registrati o per chi ha bisogno di un documento ufficiale.
+4. Online
+Puoi trovare il tuo CF anche digitalmente:
+Sito dell'Agenzia delle Entrate (accesso con SPID, CIE o CNS)
+App IO
+Cassetto fiscale online
+Portale Fast It (per italiani all'estero iscritti AIRE)
+💡 Suggerimento: La Tessera Sanitaria ha sostituito il vecchio tesserino verde. Se hai solo il tesserino verde, è ancora valido, ma puoi richiedere la Tessera Sanitaria presso la tua ASL di competenza.
+
+Codice Fiscale per Persone Fisiche vs Aziende
+Non tutti i codici fiscali sono uguali. Esiste una differenza importante tra il CF delle persone fisiche e quello delle aziende.
+Confronto:
+Aspetto
+Persona Fisica
+Persona Giuridica (Azienda)
+Lunghezza
+16 caratteri
+11 cifre
+Composizione
+Alfanumerico (lettere + numeri)
+Solo numeri
+Deriva da
+Dati anagrafici personali
+Numero progressivo
+Assegnazione
+Alla nascita
+All'apertura dell'attività
+Validità
+Permanente
+Permanente
+
+Struttura del CF aziendale (11 cifre):
+Cifre 1-7: Numero di matricola progressivo
+Cifre 8-10: Codice della provincia dell'ufficio
+Cifra 11: Carattere di controllo
+📌 Fatto importante: Per le società di capitali (Srl, Spa) e le società di persone (Snc, Sas), il codice fiscale a 11 cifre spesso coincide con la Partita IVA. Per le imprese individuali, invece, il CF è quello personale del titolare (16 caratteri) e non coincide mai con la Partita IVA.
+
+Differenza tra Codice Fiscale e Partita IVA
+Molte persone confondono il codice fiscale con la Partita IVA. Sono due cose diverse.
+Confronto diretto:
+Aspetto
+Codice Fiscale
+Partita IVA
+Scopo
+Identificazione fiscale della persona
+Identificazione dell'attività economica
+Chi lo ha
+Tutti i cittadini e residenti
+Solo chi svolge attività economica
+Struttura
+16 caratteri (persone) / 11 cifre (società)
+Sempre 11 cifre
+Obbligatorietà
+Per tutti, dalla nascita
+Solo per attività commerciali o professionali
+Rilascio
+Agenzia delle Entrate
+Agenzia delle Entrate
+Permanenza
+Per sempre
+Può essere chiusa
+
+Quando coincidono:
+Società di capitali (Srl, Spa)
+Società di persone (Snc, Sas)
+Quando NON coincidono:
+Imprese individuali
+Liberi professionisti
+Ditte individuali
+⚠️ Attenzione: Non confondere i due codici. Il codice fiscale identifica la PERSONA, la Partita IVA identifica l'ATTIVITÀ ECONOMICA. Un commerciante ha entrambi, ma sono codici diversi con funzioni diverse.
+
+Il Codice Fiscale Scade?
+No, il codice fiscale NON scade mai.
+Una volta assegnato, il tuo codice fiscale rimane valido per tutta la vita. Non esiste una data di scadenza.
+Cosa PUÒ scadere:
+La Tessera Sanitaria (il supporto fisico) ha una data di scadenza
+Ma il codice fiscale stampato su di essa rimane sempre valido
+Basta richiedere il rinnovo della tessera alla propria ASL
+Cosa NON cambia il codice fiscale:
+Matrimonio
+Cambio di residenza (anche all'estero)
+Cambio di cittadinanza
+Divorzio o vedovanza
+📌 Fatto importante: Il codice fiscale è permanente e immutabile. Anche se ti trasferisci all'estero, cambi nome legalmente o acquisti una nuova cittadinanza, il tuo CF originale rimane valido. Solo in rarissimi casi (errori anagrafici gravi) l'Agenzia delle Entrate può modificarlo.
+
+Come Richiedere il Codice Fiscale
+La procedura per richiedere il codice fiscale varia in base alla tua situazione.
+Per Cittadini Italiani
+I cittadini italiani ricevono il codice fiscale automaticamente alla nascita. Non devono fare nulla. Il Comune comunica i dati all'Agenzia delle Entrate che genera il CF.
+Per Stranieri in Italia
+Situazione
+Dove Richiederlo
+Documenti Necessari
+Residente in Italia (extra-UE)
+Agenzia delle Entrate o Questura
+Passaporto, permesso di soggiorno
+Cittadino UE
+Agenzia delle Entrate
+Documento d'identità UE valido
+Non residente (dall'estero)
+Consolato italiano
+Passaporto, motivazione
+Ingresso per lavoro
+Sportello Unico Immigrazione
+Documenti richiesti per il visto
+
+Procedura per stranieri in Italia:
+Recati all'ufficio locale dell'Agenzia delle Entrate
+Compila il modello AA4/8
+Presenta documento di identità valido
+Ricevi il codice fiscale immediatamente
+💡 Suggerimento: Il codice fiscale per stranieri viene rilasciato gratuitamente e immediatamente presso qualsiasi ufficio dell'Agenzia delle Entrate. Non sono necessari appuntamenti per questa pratica.
+
+Codice Fiscale per Stranieri in Italia
+Se sei straniero e devi trasferirti o lavorare in Italia, avrai sicuramente bisogno del codice fiscale.
+Chi DEVE averlo:
+Chiunque lavori in Italia (dipendente o autonomo)
+Studenti universitari stranieri
+Proprietari di immobili in Italia
+Chiunque apra un conto bancario italiano
+Residenti UE che si trasferiscono in Italia
+Chiunque debba firmare contratti
+Chi NON ne ha bisogno:
+Turisti per brevi soggiorni
+Chi non ha rapporti economici o amministrativi con l'Italia
+Risposte alle domande più comuni degli stranieri:
+Domanda
+Risposta
+È gratuito?
+Sì, sempre gratuito
+Quanto tempo ci vuole?
+Rilascio immediato
+Serve il permesso di soggiorno?
+Sì per extra-UE, no per cittadini UE
+Posso calcolarlo online?
+Sì, ma solo quello dell'Agenzia delle Entrate è ufficialmente valido
+Dove lo richiedo?
+Agenzia delle Entrate, Questura o Consolato
+
+
+Domande Frequenti sul Codice Fiscale
+Cosa si intende con codice fiscale?
+Il codice fiscale è un codice univoco di identificazione assegnato a ogni persona fisica e giuridica in Italia. Serve a identificare i cittadini nei loro rapporti con lo Stato, la Pubblica Amministrazione e tutti gli enti pubblici e privati. È composto da 16 caratteri alfanumerici per le persone fisiche e da 11 cifre per le aziende.
+Come spiegare il codice fiscale in modo semplice?
+Il codice fiscale è come un "documento di identità fiscale" che ti identifica in modo univoco in Italia. È formato da lettere e numeri che derivano dal tuo nome, cognome, data e luogo di nascita. Ogni cittadino italiano lo riceve alla nascita, mentre gli stranieri lo ottengono registrandosi all'Agenzia delle Entrate. Senza CF non puoi lavorare, aprire un conto in banca o accedere alla sanità.
+Chi ti dà il codice fiscale?
+L'unico ente autorizzato a rilasciare il codice fiscale è l'Agenzia delle Entrate. Per i neonati italiani viene assegnato automaticamente tramite il Comune di nascita che comunica i dati all'Anagrafe tributaria. Gli stranieri possono richiederlo presso qualsiasi ufficio dell'Agenzia delle Entrate in Italia o presso il Consolato italiano nel loro paese.
+Dove trovo il numero di codice fiscale?
+Puoi trovare il tuo codice fiscale sulla Tessera Sanitaria (stampato sul fronte), sul vecchio tesserino verde, su qualsiasi documento fiscale a tuo nome (buste paga, dichiarazioni, contratti), o accedendo al sito dell'Agenzia delle Entrate con SPID, CIE o CNS. È presente anche sull'app IO e nel cassetto fiscale online.
+Il codice fiscale scade?
+No, il codice fiscale non scade mai. Una volta assegnato rimane valido per tutta la vita. Quello che può scadere è la Tessera Sanitaria (il supporto fisico), ma il codice fiscale stampato su di essa rimane sempre valido. Basta richiedere il rinnovo della tessera alla propria ASL.
+È possibile avere due codici fiscali?
+No, ogni persona può avere un solo codice fiscale. Se per errore ne sono stati assegnati due (situazione rara), l'Agenzia delle Entrate provvede a unificarli mantenendone solo uno valido. Se sospetti di avere due CF, contatta l'Agenzia delle Entrate per verificare e risolvere la situazione.
+Qual è la differenza tra codice fiscale calcolato e assegnato?
+Il codice fiscale calcolato è quello che ottieni applicando le regole pubbliche di calcolo (come nei calcolatori online). Il codice fiscale assegnato è quello ufficialmente rilasciato dall'Agenzia delle Entrate. In casi di omocodia (due persone con gli stessi dati), solo l'Agenzia può assegnare codici diversi. Per questo motivo, i codici calcolati online sono "presunti" e non sempre coincidono con quello ufficiale.
+
+Riepilogo: Cos'è il Codice Fiscale in Sintesi
+Ecco i punti chiave da ricordare sul codice fiscale italiano:
+✅ È un identificativo univoco per tutti i rapporti con lo Stato italiano
+✅ Per le persone fisiche: 16 caratteri alfanumerici
+✅ Per le aziende: 11 cifre numeriche
+✅ Rilasciato esclusivamente dall'Agenzia delle Entrate
+✅ Non scade mai — è permanente per tutta la vita
+✅ Gli stranieri possono richiederlo gratuitamente in Italia
+✅ Si trova sulla Tessera Sanitaria e sul vecchio tesserino verde
+✅ È diverso dalla Partita IVA (non confonderli!)
+Ora sai tutto quello che serve sul codice fiscale italiano. Hai bisogno di calcolare o verificare un codice fiscale? Usa il nostro strumento gratuito per generare o decodificare qualsiasi CF in pochi secondi.
