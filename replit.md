@@ -107,8 +107,8 @@ Italian Tax ID Code (Codice Fiscale) generator website built with Node.js/Expres
 - GET /robots.txt - Robots file
 
 ## Tool Pages
-- / (homepage) — Main calculator tool (centered single-column card layout with breadcrumb, trust row, disclaimer, learn-more pills)
-- /calcola — Main calculator tool (legacy route, same view as homepage)
+- / (homepage) — Main calculator tool (two-column hero layout with radio pill gender toggle, trust list, guide cards, FAQ)
+- /calcola — Dedicated calculator tool page (centered single-column card layout with breadcrumb, trust row, disclaimer, learn-more pills)
 - /codice-fiscale-inverso — Reverse decoder tool (two-column hero layout, fully client-side JS)
 - /verifica-codice-fiscale — Validator tool (two-column hero layout, fully client-side JS)
 
@@ -140,15 +140,15 @@ Italian Tax ID Code (Codice Fiscale) generator website built with Node.js/Expres
 - **Reverse Lookup**: COMUNI_REVERSE map built from comuni.json for cadastral code → municipality name
 
 ## Recent Changes
-- **Homepage redesign + button hover fixes** (Mar 2026):
-  - Homepage rebuilt from two-column hero to centered single-column card layout
-  - Breadcrumb, centered `.tool-card` (green header, form, trust row, amber disclaimer inside card)
-  - Gender selector changed from radio pill toggle to `<select>` dropdown
-  - Added "Scopri di più" section with pill links to articles (`.learn-more-section`, `.learn-more-pill`)
+- **Calcola page redesign + button hover fixes** (Mar 2026):
+  - Homepage (`/`) kept as two-column hero layout with radio pill gender toggle (unchanged)
+  - `/calcola` page (`views/tool.ejs`) redesigned to centered single-column card layout
+  - Breadcrumb (`<ol>/<li>`), centered `.tool-card` (green header, form, trust row, disclaimer inside card)
+  - `/calcola` uses `<select>` dropdown for gender; homepage keeps radio pill toggle
+  - Added "Scopri di più" section with pill links below the card (`.learn-more-section`, `.learn-more-pill`)
   - New CSS: `.tool-trust-row`, `.tool-trust-item`, `.learn-more-section`, `.learn-more-pill`, `.btn-secondary-alt`, `.required`
   - Fixed all button hover animations: consistent `transform: translateY(-1px)` lift + shadow on hover
   - Fixed reset buttons on Inverso/Verifica: replaced broken `var(--gray-500)` inline style with `.btn-secondary-alt` class
-  - Updated `app.js` to handle `<select>` for gender instead of radio buttons
 - **Tool page UI/UX redesign** (Mar 2026):
   - Redesigned Inverso and Verifica tool pages to two-column hero-grid layout
   - Removed 3 extra tools: `/codice-comune`, `/carattere-controllo`, `/stampa`
