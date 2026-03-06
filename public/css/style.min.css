@@ -544,6 +544,7 @@ img{max-width:100%;height:auto;display:block}
   background:var(--primary);
   box-shadow:0 4px 12px rgba(30,127,79,.2);
 }
+.step-card:nth-child(2) .step-number{background:var(--white);color:var(--primary);border:2px solid var(--primary);box-shadow:0 4px 12px rgba(30,127,79,.12)}
 .step-card:last-child .step-number{background:var(--accent);box-shadow:0 4px 12px rgba(230,57,70,.2)}
 .step-card h3{font-size:1.0625rem;font-weight:600;margin-bottom:.375rem;color:var(--text)}
 .step-card p{font-size:.875rem;color:var(--text-secondary);line-height:1.6;max-width:260px;margin:0 auto}
