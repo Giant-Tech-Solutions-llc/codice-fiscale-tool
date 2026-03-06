@@ -27,7 +27,8 @@ module.exports = function createToolsRouter(getLocals, getStructuredData) {
         "@type": "BreadcrumbList",
         "itemListElement": [
           {"@type":"ListItem","position":1,"name":"Home","item":"${locals.siteUrl}/"},
-          {"@type":"ListItem","position":2,"name":"Codice Fiscale Inverso","item":"${locals.siteUrl}/codice-fiscale-inverso"}
+          {"@type":"ListItem","position":2,"name":"Strumenti"},
+          {"@type":"ListItem","position":3,"name":"Codice Fiscale Inverso"}
         ]
       }
     },
@@ -91,7 +92,8 @@ module.exports = function createToolsRouter(getLocals, getStructuredData) {
         "@type": "BreadcrumbList",
         "itemListElement": [
           {"@type":"ListItem","position":1,"name":"Home","item":"${locals.siteUrl}/"},
-          {"@type":"ListItem","position":2,"name":"Verifica Codice Fiscale","item":"${locals.siteUrl}/verifica-codice-fiscale"}
+          {"@type":"ListItem","position":2,"name":"Strumenti"},
+          {"@type":"ListItem","position":3,"name":"Verifica Codice Fiscale"}
         ]
       }
     },

@@ -19,7 +19,7 @@
         <% } %>
 
         <% var fd = (typeof formData !== 'undefined' && formData) ? formData : { cognome: '', nome: '', sesso: '', data_nascita: '', comune: '' }; %>
-        <form id="cf-form" method="POST" action="/tools/codice-fiscale-generator" novalidate>
+        <form id="cf-form" method="POST" action="/calcola" novalidate>
           <div class="cf-field">
             <label class="cf-label" for="cognome">Cognome</label>
             <input class="cf-input" type="text" id="cognome" name="cognome" placeholder="Es. Rossi" required autocomplete="family-name" value="<%= fd.cognome %>">

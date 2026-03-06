@@ -41,13 +41,13 @@
       <section id="introduzione">
         <h2>Introduzione all'algoritmo del codice fiscale</h2>
         <p>
-          Il <strong>codice fiscale italiano</strong> è un codice alfanumerico di 16 caratteri che identifica in modo univoco ogni cittadino e residente ai fini fiscali. L'algoritmo per il suo calcolo è stato definito dal Decreto del Presidente della Repubblica n. 605 del 29 settembre 1973 e successivi aggiornamenti dall'Agenzia delle Entrate.
+          Il <strong>codice fiscale italiano</strong> è un codice alfanumerico di 16 caratteri che identifica in modo univoco ogni cittadino e residente ai fini fiscali. Se vuoi generare il tuo codice subito, puoi <a href="/calcola">calcola il codice fiscale</a> con il nostro strumento gratuito. L'algoritmo per il suo calcolo è stato definito dal Decreto del Presidente della Repubblica n. 605 del 29 settembre 1973 e successivi aggiornamenti dall'Agenzia delle Entrate.
         </p>
         <p>
           Il codice viene generato a partire da cinque dati anagrafici fondamentali: <strong>cognome</strong>, <strong>nome</strong>, <strong>data di nascita</strong>, <strong>sesso</strong> e <strong>comune (o stato estero) di nascita</strong>. Ogni dato viene codificato in un segmento specifico del codice fiscale secondo regole precise e deterministiche.
         </p>
         <p>
-          L'intero processo si basa su operazioni di estrazione di consonanti e vocali, conversioni numeriche e una funzione di checksum che garantisce l'integrità del codice. Comprendere questo algoritmo è fondamentale per chi lavora in ambito fiscale, amministrativo o informatico.
+          L'intero processo si basa su operazioni di estrazione di consonanti e vocali, conversioni numeriche e una funzione di checksum che garantisce l'integrità del codice. Per un approfondimento divulgativo, consulta il nostro articolo su <a href="/blog/come-si-calcola-il-codice-fiscale">come si calcola il codice fiscale</a>. Comprendere questo algoritmo è fondamentale per chi lavora in ambito fiscale, amministrativo o informatico.
         </p>
       </section>
 
@@ -84,7 +84,7 @@
           <li>Se il nome ha meno di tre lettere, si completa con X.</li>
         </ol>
         <p>
-          Questa regola speciale per i nomi con quattro o più consonanti serve a <strong>ridurre i casi di omocodia</strong>, cioè la generazione di codici fiscali identici per persone diverse.
+          Questa regola speciale per i nomi con quattro o più consonanti serve a <strong>ridurre i casi di omocodia</strong>, cioè la generazione di codici fiscali identici per persone diverse. Per una panoramica completa di tutti i 16 caratteri, consulta la guida sulla <a href="/guida/struttura">struttura del codice fiscale</a>.
         </p>
         <p>
           Esempio: per il nome <strong>"Mario"</strong>, le consonanti sono M, R → meno di tre, aggiungiamo la vocale A → <strong class="mono">MRA</strong>. Per il nome <strong>"Giovanni"</strong>, le consonanti sono G, V, N, N → quattro consonanti, si prendono la 1ª, 3ª e 4ª → <strong class="mono">GNN</strong>.
@@ -102,7 +102,7 @@
         </p>
         <h3>Mese (posizione 9)</h3>
         <p>
-          Il mese viene codificato con una <strong>lettera</strong> secondo la seguente tabella:
+          Il mese viene codificato con una <strong>lettera</strong> secondo la seguente tabella (consulta la guida completa sulle <a href="/guida/lettere-mesi">lettere dei mesi</a> per approfondire):
         </p>
         <table class="guide-table guide-table--compact" aria-label="Codici mese del codice fiscale">
           <thead>
