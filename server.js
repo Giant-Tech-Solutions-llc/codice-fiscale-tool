@@ -119,7 +119,7 @@ function buildToolSchema(siteUrl) {
     '@context': 'https://schema.org',
     '@type': 'WebApplication',
     name: 'Calcola Codice Fiscale Online',
-    url: siteUrl + '/tools/codice-fiscale-generator',
+    url: siteUrl + '/calcola',
     description: 'Genera il tuo Codice Fiscale italiano inserendo i tuoi dati anagrafici. Strumento gratuito, veloce e preciso con algoritmo ufficiale.',
     applicationCategory: 'UtilityApplication',
     operatingSystem: 'All',
