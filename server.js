@@ -180,7 +180,7 @@ const pillarFaqs = [
 
 const routeBreadcrumbs = {
   '': [{ name: 'Home', url: '/' }],
-  'calcola': [{ name: 'Home', url: '/' }, { name: 'Calcola Codice Fiscale' }],
+  'calcola': [{ name: 'Home', url: '/' }, { name: 'Strumenti' }, { name: 'Calcola Codice Fiscale' }],
   'codice-fiscale': [{ name: 'Home', url: '/' }, { name: 'Guida Codice Fiscale' }],
   'cos-e-il-codice-fiscale': [{ name: 'Home', url: '/' }, { name: 'Guida', url: '/codice-fiscale' }, { name: "Cos'è il Codice Fiscale" }],
   'come-si-calcola-il-codice-fiscale': [{ name: 'Home', url: '/' }, { name: 'Guida', url: '/codice-fiscale' }, { name: 'Come si Calcola' }],
@@ -537,7 +537,7 @@ app.use('/tools', (req, res, next) => {
     'tools' + req.path
   );
   const siteUrl = getSiteUrl(req);
-  const toolCrumbs = [{ name: 'Home', url: '/' }, { name: 'Calcola Codice Fiscale' }];
+  const toolCrumbs = [{ name: 'Home', url: '/' }, { name: 'Strumenti' }, { name: 'Calcola Codice Fiscale' }];
   locals.structuredData = [
     jsonLd(buildOrganizationSchema(siteUrl)),
     jsonLd(buildBreadcrumbSchema(siteUrl, toolCrumbs)),
