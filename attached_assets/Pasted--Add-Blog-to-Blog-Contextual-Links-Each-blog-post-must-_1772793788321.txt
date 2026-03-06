@@ -1,0 +1,57 @@
+ Add Blog-to-Blog Contextual Links
+Each blog post must link to 2–3 related posts. These links go inside the body paragraphs where the topic genuinely overlaps — not in a "related posts" list at the bottom.
+Follow this exact map:
+come-si-calcola must link to:
+
+composizione-codice-fiscale — anchor: composizione del codice fiscale
+mesi-codice-fiscale — anchor: lettere dei mesi nel codice fiscale
+codice-fiscale-donna — anchor: codice fiscale delle donne
+
+composizione must link to:
+
+come-si-calcola — anchor: come si calcola il codice fiscale
+come-leggere — anchor: come leggere il codice fiscale
+mesi-codice-fiscale — anchor: lettere dei mesi
+
+come-leggere must link to:
+
+composizione — anchor: composizione del codice fiscale
+mesi-codice-fiscale — anchor: tabella delle lettere dei mesi
+codice-fiscale-donna — anchor: codice fiscale femminile
+
+mesi-codice-fiscale must link to:
+
+come-leggere — anchor: leggere il codice fiscale
+come-si-calcola — anchor: calcolo del codice fiscale
+composizione — anchor: struttura del codice fiscale
+
+codice-fiscale-donna must link to:
+
+come-si-calcola — anchor: calcolo del codice fiscale
+come-leggere — anchor: come leggere il codice fiscale
+cose-il-codice-fiscale — anchor: cos'è il codice fiscale
+
+cose-il-codice-fiscale must link to:
+
+come-si-calcola — anchor: come si calcola il codice fiscale
+come-trovare — anchor: come trovare il codice fiscale di una persona
+codice-fiscale-neonato — anchor: codice fiscale del neonato
+
+come-trovare must link to:
+
+cose-il-codice-fiscale — anchor: cos'è il codice fiscale
+codice-fiscale-neonato — anchor: codice fiscale per il neonato
+come-si-calcola — anchor: come si calcola il codice fiscale
+
+codice-fiscale-neonato must link to:
+
+cose-il-codice-fiscale — anchor: cos'è il codice fiscale
+come-trovare — anchor: come trovare il codice fiscale
+come-si-calcola — anchor: calcolo del codice fiscale
+
+Rules for this step:
+
+Maximum 2 internal links per paragraph
+Each link must appear naturally inside a sentence
+Never link the same destination twice in the same post
+Never create a paragraph that exists only to hold a link
