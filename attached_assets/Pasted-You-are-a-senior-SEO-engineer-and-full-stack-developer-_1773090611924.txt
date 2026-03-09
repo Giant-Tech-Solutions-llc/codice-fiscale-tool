@@ -1,0 +1,247 @@
+You are a senior SEO engineer and full-stack developer specializing in technical SEO for SaaS and tool websites.
+
+Your task is to implement a complete SEO infrastructure for this website:
+
+https://www.calcolocodicefiscale.it.com
+
+The site is a tool-based platform with calculators, guides, blog content, and legal pages.
+
+Follow these instructions carefully and do not break existing functionality.
+
+---
+
+1. CREATE ADVANCED ROBOTS.TXT
+
+---
+
+Create robots.txt in the root directory.
+
+Requirements:
+
+* Allow all major search engines
+* Block unnecessary crawl paths
+* Allow AI crawlers
+* Include sitemap reference
+
+robots.txt content:
+
+User-agent: *
+Allow: /
+
+Disallow: /api/
+Disallow: /_next/
+Disallow: /tmp/
+Disallow: /private/
+Disallow: /*?*
+
+Allow: /calcola
+Allow: /codice-fiscale-inverso
+Allow: /verifica-codice-fiscale
+
+User-agent: bingbot
+Crawl-delay: 2
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://www.calcolocodicefiscale.it.com/sitemap-index.xml
+
+---
+
+2. IMPLEMENT SITEMAP INDEX SYSTEM
+
+---
+
+Create a sitemap index instead of a single sitemap.
+
+File:
+sitemap-index.xml
+
+It should reference multiple sitemaps:
+
+* sitemap-tools.xml
+* sitemap-guides.xml
+* sitemap-blog.xml
+* sitemap-pages.xml
+
+This improves crawl efficiency and indexing speed.
+
+Structure example:
+
+<sitemapindex>
+<sitemap>
+<loc>https://www.calcolocodicefiscale.it.com/sitemap-tools.xml</loc>
+</sitemap>
+<sitemap>
+<loc>https://www.calcolocodicefiscale.it.com/sitemap-guides.xml</loc>
+</sitemap>
+<sitemap>
+<loc>https://www.calcolocodicefiscale.it.com/sitemap-blog.xml</loc>
+</sitemap>
+<sitemap>
+<loc>https://www.calcolocodicefiscale.it.com/sitemap-pages.xml</loc>
+</sitemap>
+</sitemapindex>
+
+---
+
+3. TOOL SITEMAP (HIGH PRIORITY)
+
+---
+
+Create sitemap-tools.xml.
+
+Include:
+
+/calcola
+/codice-fiscale-inverso
+/verifica-codice-fiscale
+/codice-fiscale
+
+Rules:
+priority: 1.0
+changefreq: weekly
+
+---
+
+4. GUIDE SITEMAP
+
+---
+
+Create sitemap-guides.xml.
+
+Include all URLs inside /guida/.
+
+Rules:
+priority: 0.7
+changefreq: monthly
+
+---
+
+5. BLOG SITEMAP
+
+---
+
+Create sitemap-blog.xml.
+
+Include all blog URLs.
+
+Rules:
+priority: 0.6
+changefreq: monthly
+
+---
+
+6. STATIC PAGE SITEMAP
+
+---
+
+Create sitemap-pages.xml.
+
+Include:
+
+/chi-siamo
+/contatti
+/privacy-policy
+/termini-condizioni
+/disclaimer
+/cookie-policy
+/dmca
+/politica-editoriale
+/gdpr
+/mappa-del-sito
+
+Rules:
+priority: 0.3
+changefreq: yearly
+
+---
+
+7. AUTOMATIC LASTMOD
+
+---
+
+Implement automatic lastmod generation.
+
+If using:
+
+* Next.js
+* Express
+* Node
+
+The sitemap should dynamically use the last file update time or build time.
+
+Example format: <lastmod>2026-03-10</lastmod>
+
+---
+
+8. ADD STRUCTURED DATA
+
+---
+
+Add JSON-LD schema to tool pages.
+
+Use SoftwareApplication schema for calculator pages.
+
+Include:
+
+name
+applicationCategory
+operatingSystem
+url
+description
+
+---
+
+9. ADD BASIC SEO HEAD TAGS
+
+---
+
+Ensure each page includes:
+
+title
+meta description
+canonical tag
+open graph tags
+
+Example:
+
+<link rel="canonical" href="https://www.calcolocodicefiscale.it.com/calcola">
+
+---
+
+10. PERFORMANCE SEO
+
+---
+
+Ensure:
+
+* gzip or compression enabled
+* sitemap files served with correct XML headers
+* pages return HTTP 200
+* no crawl errors
+
+---
+
+11. VERIFY FINAL OUTPUT
+
+---
+
+After implementation confirm these URLs work:
+
+https://www.calcolocodicefiscale.it.com/robots.txt
+https://www.calcolocodicefiscale.it.com/sitemap-index.xml
+https://www.calcolocodicefiscale.it.com/sitemap-tools.xml
+https://www.calcolocodicefiscale.it.com/sitemap-guides.xml
+https://www.calcolocodicefiscale.it.com/sitemap-blog.xml
+https://www.calcolocodicefiscale.it.com/sitemap-pages.xml
+
+Ensure deployment works correctly and no existing functionality breaks.
+
+Output a final verification checklist after completing the implementation.

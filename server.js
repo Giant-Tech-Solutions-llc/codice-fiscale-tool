@@ -115,7 +115,7 @@ function buildBreadcrumbSchema(siteUrl, items) {
 }
 
 function buildToolSchema(siteUrl) {
-  return {
+  return [{
     '@context': 'https://schema.org',
     '@type': 'WebApplication',
     name: 'Calcola Codice Fiscale Online',
@@ -142,6 +142,53 @@ function buildToolSchema(siteUrl) {
       'Gratuito e senza limiti di utilizzo'
     ],
     inLanguage: 'it'
+  }, {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'Calcolo Codice Fiscale Online',
+    url: siteUrl + '/calcola',
+    description: 'Calcolatore gratuito del codice fiscale italiano. Inserisci i dati anagrafici e genera il CF in pochi secondi con algoritmo ufficiale.',
+    applicationCategory: 'UtilityApplication',
+    operatingSystem: 'Windows, macOS, Linux, Android, iOS',
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'EUR'
+    }
+  }];
+}
+
+function buildInversoToolSchema(siteUrl) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'Codice Fiscale Inverso - Decodifica CF',
+    url: siteUrl + '/codice-fiscale-inverso',
+    description: 'Decodifica un codice fiscale italiano e scopri data di nascita, sesso e comune di nascita. Strumento gratuito di calcolo inverso.',
+    applicationCategory: 'UtilityApplication',
+    operatingSystem: 'Windows, macOS, Linux, Android, iOS',
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'EUR'
+    }
+  };
+}
+
+function buildVerificaToolSchema(siteUrl) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'Verifica Codice Fiscale Online',
+    url: siteUrl + '/verifica-codice-fiscale',
+    description: 'Verifica la validità di un codice fiscale italiano. Controlla formato, data di nascita e carattere di controllo istantaneamente.',
+    applicationCategory: 'UtilityApplication',
+    operatingSystem: 'Windows, macOS, Linux, Android, iOS',
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'EUR'
+    }
   };
 }
 
@@ -228,7 +275,16 @@ function getStructuredData(siteUrl, routeKey) {
     schemas.push(jsonLd(buildBreadcrumbSchema(siteUrl, crumbs)));
   }
   if (routeKey === '' || routeKey === 'calcola') {
-    schemas.push(jsonLd(buildToolSchema(siteUrl)));
+    const toolSchemas = buildToolSchema(siteUrl);
+    for (const s of toolSchemas) {
+      schemas.push(jsonLd(s));
+    }
+  }
+  if (routeKey === 'codice-fiscale-inverso') {
+    schemas.push(jsonLd(buildInversoToolSchema(siteUrl)));
+  }
+  if (routeKey === 'verifica-codice-fiscale') {
+    schemas.push(jsonLd(buildVerificaToolSchema(siteUrl)));
   }
   if (routeKey === '') {
     schemas.push(jsonLd(buildFaqSchema(homeFaqs)));
@@ -573,10 +629,11 @@ app.use('/tools', (req, res, next) => {
   );
   const siteUrl = getSiteUrl(req);
   const toolCrumbs = [{ name: 'Home', url: '/' }, { name: 'Strumenti' }, { name: 'Calcola Codice Fiscale' }];
+  const toolSchemaArr = buildToolSchema(siteUrl);
   locals.structuredData = [
     jsonLd(buildOrganizationSchema(siteUrl)),
     jsonLd(buildBreadcrumbSchema(siteUrl, toolCrumbs)),
-    jsonLd(buildToolSchema(siteUrl))
+    ...toolSchemaArr.map(s => jsonLd(s))
   ].join('\n');
   Object.assign(res.locals, locals);
   next();
@@ -684,12 +741,58 @@ app.post('/api/verifica', (req, res) => {
 });
 
 app.get('/sitemap.xml', (req, res) => {
-  res.sendFile('sitemap.xml', { root: './public' });
+  res.sendFile('sitemap-index.xml', { root: './public' });
+});
+
+app.get('/sitemap-index.xml', (req, res) => {
+  res.sendFile('sitemap-index.xml', { root: './public' });
+});
+
+app.get('/sitemap-tools.xml', (req, res) => {
+  res.sendFile('sitemap-tools.xml', { root: './public' });
+});
+
+app.get('/sitemap-guides.xml', (req, res) => {
+  res.sendFile('sitemap-guides.xml', { root: './public' });
+});
+
+app.get('/sitemap-blog.xml', (req, res) => {
+  res.sendFile('sitemap-blog.xml', { root: './public' });
+});
+
+app.get('/sitemap-pages.xml', (req, res) => {
+  res.sendFile('sitemap-pages.xml', { root: './public' });
 });
 
 app.get('/robots.txt', (req, res) => {
   res.type('text/plain');
-  res.send(`User-agent: *\nAllow: /\nSitemap: https://www.calcolocodicefiscale.it.com/sitemap.xml\n`);
+  res.send(`User-agent: *
+Allow: /
+
+Disallow: /api/
+Disallow: /_next/
+Disallow: /tmp/
+Disallow: /private/
+Disallow: /*?*
+
+Allow: /calcola
+Allow: /codice-fiscale-inverso
+Allow: /verifica-codice-fiscale
+
+User-agent: bingbot
+Crawl-delay: 2
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://www.calcolocodicefiscale.it.com/sitemap-index.xml
+`);
 });
 
 function renderPage(req, res, routeKey) {

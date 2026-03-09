@@ -42,6 +42,15 @@ module.exports = function createToolsRouter(getLocals, getStructuredData) {
       ]
     },
     {
+      "@type": "SoftwareApplication",
+      "name": "Codice Fiscale Inverso - Decodifica CF",
+      "url": "${locals.siteUrl}/codice-fiscale-inverso",
+      "description": "Decodifica un codice fiscale italiano e scopri data di nascita, sesso e comune di nascita. Strumento gratuito di calcolo inverso.",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Windows, macOS, Linux, Android, iOS",
+      "offers": {"@type":"Offer","price":"0","priceCurrency":"EUR"}
+    },
+    {
       "@type": "FAQPage",
       "mainEntity": [
         {
@@ -105,6 +114,15 @@ module.exports = function createToolsRouter(getLocals, getStructuredData) {
         {"@type":"HowToStep","name":"Clicca Verifica","text":"Premi il pulsante per avviare la validazione automatica."},
         {"@type":"HowToStep","name":"Leggi il risultato","text":"Il sistema risponde con VALIDO o NON VALIDO, indicando l'eventuale errore specifico trovato."}
       ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Verifica Codice Fiscale Online",
+      "url": "${locals.siteUrl}/verifica-codice-fiscale",
+      "description": "Verifica la validità di un codice fiscale italiano. Controlla formato, data di nascita e carattere di controllo istantaneamente.",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Windows, macOS, Linux, Android, iOS",
+      "offers": {"@type":"Offer","price":"0","priceCurrency":"EUR"}
     },
     {
       "@type": "FAQPage",
