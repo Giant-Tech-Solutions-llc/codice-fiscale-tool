@@ -684,66 +684,12 @@ app.post('/api/verifica', (req, res) => {
 });
 
 app.get('/sitemap.xml', (req, res) => {
-  const siteUrl = getSiteUrl(req);
-  const todayISO = new Date().toISOString().split('T')[0];
-  const urls = [
-    { path: '', priority: '1.0' },
-    { path: 'calcola', priority: '0.9' },
-    { path: 'codice-fiscale-inverso', priority: '0.9' },
-    { path: 'verifica-codice-fiscale', priority: '0.9' },
-    { path: 'codice-fiscale', priority: '0.9' },
-    { path: 'cos-e-il-codice-fiscale', priority: '0.8' },
-    { path: 'come-si-calcola-il-codice-fiscale', priority: '0.8' },
-    { path: 'codice-fiscale-vs-partita-iva', priority: '0.7' },
-    { path: 'codice-fiscale-estero', priority: '0.7' },
-    { path: 'recupero-codice-fiscale', priority: '0.7' },
-    { path: 'utilizzi-legali-codice-fiscale', priority: '0.7' },
-    { path: 'esempi-codice-fiscale', priority: '0.7' },
-    { path: 'guida/codice-fiscale-inverso', priority: '0.8' },
-    { path: 'guida/verifica-codice-fiscale', priority: '0.8' },
-    { path: 'guida/come-si-calcola', priority: '0.8' },
-    { path: 'guida/struttura', priority: '0.8' },
-    { path: 'guida/come-leggere', priority: '0.8' },
-    { path: 'guida/lettere-mesi', priority: '0.8' },
-    { path: 'guida/donna-uomo', priority: '0.8' },
-    { path: 'guida/cose-il-codice-fiscale', priority: '0.8' },
-    { path: 'guida/come-trovare', priority: '0.8' },
-    { path: 'guida/neonato', priority: '0.8' },
-    { path: 'blog', priority: '0.7' },
-    { path: 'blog/come-si-calcola-il-codice-fiscale', priority: '0.7' },
-    { path: 'blog/composizione-codice-fiscale', priority: '0.7' },
-    { path: 'blog/come-leggere-il-codice-fiscale', priority: '0.7' },
-    { path: 'blog/mesi-codice-fiscale', priority: '0.7' },
-    { path: 'blog/codice-fiscale-donna', priority: '0.7' },
-    { path: 'blog/cose-il-codice-fiscale', priority: '0.7' },
-    { path: 'blog/come-trovare-il-codice-fiscale', priority: '0.7' },
-    { path: 'blog/codice-fiscale-neonato', priority: '0.7' },
-    { path: 'chi-siamo', priority: '0.5' },
-    { path: 'contatti', priority: '0.5' },
-    { path: 'privacy-policy', priority: '0.3' },
-    { path: 'termini-condizioni', priority: '0.3' },
-    { path: 'disclaimer', priority: '0.3' },
-    { path: 'cookie-policy', priority: '0.3' },
-    { path: 'dmca', priority: '0.3' },
-    { path: 'politica-editoriale', priority: '0.3' },
-    { path: 'gdpr', priority: '0.3' },
-    { path: 'mappa-del-sito', priority: '0.3' }
-  ];
-
-  res.type('application/xml');
-  let xml = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
-  for (const u of urls) {
-    const freq = parseFloat(u.priority) >= 0.8 ? 'weekly' : 'monthly';
-    xml += `  <url>\n    <loc>${siteUrl}/${u.path}</loc>\n    <lastmod>${todayISO}</lastmod>\n    <changefreq>${freq}</changefreq>\n    <priority>${u.priority}</priority>\n  </url>\n`;
-  }
-  xml += '</urlset>';
-  res.send(xml);
+  res.sendFile('sitemap.xml', { root: './public' });
 });
 
 app.get('/robots.txt', (req, res) => {
-  const siteUrl = getSiteUrl(req);
   res.type('text/plain');
-  res.send(`User-agent: *\nAllow: /\nSitemap: ${siteUrl}/sitemap.xml\n`);
+  res.send(`User-agent: *\nAllow: /\nSitemap: https://www.calcolocodicefiscale.it.com/sitemap.xml\n`);
 });
 
 function renderPage(req, res, routeKey) {
