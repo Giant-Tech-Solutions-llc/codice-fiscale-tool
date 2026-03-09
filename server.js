@@ -741,27 +741,27 @@ app.post('/api/verifica', (req, res) => {
 });
 
 app.get('/sitemap.xml', (req, res) => {
-  res.sendFile('sitemap-index.xml', { root: './public' });
+  res.sendFile('sitemap-index.xml', { root: path.join(__dirname, 'public') });
 });
 
 app.get('/sitemap-index.xml', (req, res) => {
-  res.sendFile('sitemap-index.xml', { root: './public' });
+  res.sendFile('sitemap-index.xml', { root: path.join(__dirname, 'public') });
 });
 
 app.get('/sitemap-tools.xml', (req, res) => {
-  res.sendFile('sitemap-tools.xml', { root: './public' });
+  res.sendFile('sitemap-tools.xml', { root: path.join(__dirname, 'public') });
 });
 
 app.get('/sitemap-guides.xml', (req, res) => {
-  res.sendFile('sitemap-guides.xml', { root: './public' });
+  res.sendFile('sitemap-guides.xml', { root: path.join(__dirname, 'public') });
 });
 
 app.get('/sitemap-blog.xml', (req, res) => {
-  res.sendFile('sitemap-blog.xml', { root: './public' });
+  res.sendFile('sitemap-blog.xml', { root: path.join(__dirname, 'public') });
 });
 
 app.get('/sitemap-pages.xml', (req, res) => {
-  res.sendFile('sitemap-pages.xml', { root: './public' });
+  res.sendFile('sitemap-pages.xml', { root: path.join(__dirname, 'public') });
 });
 
 app.get('/robots.txt', (req, res) => {
@@ -796,15 +796,27 @@ Sitemap: https://www.calcolocodicefiscale.it.com/sitemap-index.xml
 });
 
 function renderPage(req, res, routeKey) {
-  const routeData = routes[routeKey];
-  if (!routeData) {
-    res.status(404);
-    const locals = getLocals(req, 'Pagina non trovata | ' + SITE_NAME, 'La pagina che stai cercando non esiste.', '404');
-    return res.render('404', locals);
+  try {
+    const routeData = routes[routeKey];
+    if (!routeData) {
+      res.status(404);
+      const locals = getLocals(req, 'Pagina non trovata | ' + SITE_NAME, 'La pagina che stai cercando non esiste.', '404');
+      return res.render('404', locals);
+    }
+    const locals = getLocals(req, routeData.title, routeData.description, routeKey);
+    locals.structuredData = getStructuredData(locals.siteUrl, routeKey);
+    res.render(routeData.page, locals, (err, html) => {
+      if (err) {
+        console.error('Render error for route:', routeKey, err.message, err.stack);
+        res.status(500).send('Internal Server Error');
+      } else {
+        res.send(html);
+      }
+    });
+  } catch (err) {
+    console.error('renderPage error for route:', routeKey, err.message, err.stack);
+    res.status(500).send('Internal Server Error');
   }
-  const locals = getLocals(req, routeData.title, routeData.description, routeKey);
-  locals.structuredData = getStructuredData(locals.siteUrl, routeKey);
-  res.render(routeData.page, locals);
 }
 
 app.get('/', (req, res) => renderPage(req, res, ''));
@@ -819,6 +831,14 @@ app.use((req, res) => {
   const locals = getLocals(req, 'Pagina non trovata | ' + SITE_NAME, 'La pagina che stai cercando non esiste.', '404');
   res.render('404', locals);
 });
+
+app.use((err, req, res, next) => {
+  console.error('Unhandled error:', err.message);
+  console.error('Stack:', err.stack);
+  console.error('URL:', req.originalUrl);
+  res.status(500).send('Internal Server Error');
+});
+
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server running on http://0.0.0.0:${PORT}`);
 });
