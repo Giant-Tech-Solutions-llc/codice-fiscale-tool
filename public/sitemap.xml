@@ -1,164 +1,296 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
+<!-- Core Tools -->
+
 <url>
 <loc>https://www.calcolocodicefiscale.it.com/calcola</loc>
+<lastmod>2026-03-10</lastmod>
+<changefreq>weekly</changefreq>
+<priority>1.0</priority>
 </url>
 
 <url>
 <loc>https://www.calcolocodicefiscale.it.com/codice-fiscale-inverso</loc>
+<lastmod>2026-03-10</lastmod>
+<changefreq>weekly</changefreq>
+<priority>0.95</priority>
 </url>
 
 <url>
 <loc>https://www.calcolocodicefiscale.it.com/verifica-codice-fiscale</loc>
+<lastmod>2026-03-10</lastmod>
+<changefreq>weekly</changefreq>
+<priority>0.95</priority>
 </url>
 
 <url>
 <loc>https://www.calcolocodicefiscale.it.com/codice-fiscale</loc>
+<lastmod>2026-03-10</lastmod>
+<changefreq>weekly</changefreq>
+<priority>0.9</priority>
 </url>
+
+<!-- Important informational pages -->
 
 <url>
 <loc>https://www.calcolocodicefiscale.it.com/cos-e-il-codice-fiscale</loc>
+<lastmod>2026-03-10</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.85</priority>
 </url>
 
 <url>
 <loc>https://www.calcolocodicefiscale.it.com/come-si-calcola-il-codice-fiscale</loc>
+<lastmod>2026-03-10</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.85</priority>
 </url>
 
 <url>
 <loc>https://www.calcolocodicefiscale.it.com/codice-fiscale-vs-partita-iva</loc>
+<lastmod>2026-03-10</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
 </url>
 
 <url>
 <loc>https://www.calcolocodicefiscale.it.com/codice-fiscale-estero</loc>
+<lastmod>2026-03-10</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
 </url>
 
 <url>
 <loc>https://www.calcolocodicefiscale.it.com/recupero-codice-fiscale</loc>
+<lastmod>2026-03-10</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
 </url>
 
 <url>
 <loc>https://www.calcolocodicefiscale.it.com/utilizzi-legali-codice-fiscale</loc>
+<lastmod>2026-03-10</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.75</priority>
 </url>
 
 <url>
 <loc>https://www.calcolocodicefiscale.it.com/esempi-codice-fiscale</loc>
+<lastmod>2026-03-10</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.75</priority>
 </url>
+
+<!-- Guides -->
 
 <url>
 <loc>https://www.calcolocodicefiscale.it.com/guida/codice-fiscale-inverso</loc>
+<lastmod>2026-03-10</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
 </url>
 
 <url>
 <loc>https://www.calcolocodicefiscale.it.com/guida/verifica-codice-fiscale</loc>
+<lastmod>2026-03-10</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
 </url>
 
 <url>
 <loc>https://www.calcolocodicefiscale.it.com/guida/come-si-calcola</loc>
+<lastmod>2026-03-10</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
 </url>
 
 <url>
 <loc>https://www.calcolocodicefiscale.it.com/guida/struttura</loc>
+<lastmod>2026-03-10</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
 </url>
 
 <url>
 <loc>https://www.calcolocodicefiscale.it.com/guida/come-leggere</loc>
+<lastmod>2026-03-10</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
 </url>
 
 <url>
 <loc>https://www.calcolocodicefiscale.it.com/guida/lettere-mesi</loc>
+<lastmod>2026-03-10</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.65</priority>
 </url>
 
 <url>
 <loc>https://www.calcolocodicefiscale.it.com/guida/donna-uomo</loc>
+<lastmod>2026-03-10</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.65</priority>
 </url>
 
 <url>
 <loc>https://www.calcolocodicefiscale.it.com/guida/cose-il-codice-fiscale</loc>
+<lastmod>2026-03-10</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.65</priority>
 </url>
 
 <url>
 <loc>https://www.calcolocodicefiscale.it.com/guida/come-trovare</loc>
+<lastmod>2026-03-10</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.65</priority>
 </url>
 
 <url>
 <loc>https://www.calcolocodicefiscale.it.com/guida/neonato</loc>
+<lastmod>2026-03-10</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.65</priority>
 </url>
+
+<!-- Blog -->
 
 <url>
 <loc>https://www.calcolocodicefiscale.it.com/blog</loc>
+<lastmod>2026-03-10</lastmod>
+<changefreq>weekly</changefreq>
+<priority>0.6</priority>
 </url>
 
 <url>
 <loc>https://www.calcolocodicefiscale.it.com/blog/come-si-calcola-il-codice-fiscale</loc>
+<lastmod>2026-03-10</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
 </url>
 
 <url>
 <loc>https://www.calcolocodicefiscale.it.com/blog/composizione-codice-fiscale</loc>
+<lastmod>2026-03-10</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
 </url>
 
 <url>
 <loc>https://www.calcolocodicefiscale.it.com/blog/come-leggere-il-codice-fiscale</loc>
+<lastmod>2026-03-10</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
 </url>
 
 <url>
 <loc>https://www.calcolocodicefiscale.it.com/blog/mesi-codice-fiscale</loc>
+<lastmod>2026-03-10</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.55</priority>
 </url>
 
 <url>
 <loc>https://www.calcolocodicefiscale.it.com/blog/codice-fiscale-donna</loc>
+<lastmod>2026-03-10</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.55</priority>
 </url>
 
 <url>
 <loc>https://www.calcolocodicefiscale.it.com/blog/cose-il-codice-fiscale</loc>
+<lastmod>2026-03-10</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.55</priority>
 </url>
 
 <url>
 <loc>https://www.calcolocodicefiscale.it.com/blog/come-trovare-il-codice-fiscale</loc>
+<lastmod>2026-03-10</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.55</priority>
 </url>
 
 <url>
 <loc>https://www.calcolocodicefiscale.it.com/blog/codice-fiscale-neonato</loc>
+<lastmod>2026-03-10</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.55</priority>
 </url>
+
+<!-- Company -->
 
 <url>
 <loc>https://www.calcolocodicefiscale.it.com/chi-siamo</loc>
+<lastmod>2026-03-10</lastmod>
+<changefreq>yearly</changefreq>
+<priority>0.4</priority>
 </url>
 
 <url>
 <loc>https://www.calcolocodicefiscale.it.com/contatti</loc>
+<lastmod>2026-03-10</lastmod>
+<changefreq>yearly</changefreq>
+<priority>0.4</priority>
 </url>
+
+<!-- Legal -->
 
 <url>
 <loc>https://www.calcolocodicefiscale.it.com/privacy-policy</loc>
+<lastmod>2026-03-10</lastmod>
+<changefreq>yearly</changefreq>
+<priority>0.3</priority>
 </url>
 
 <url>
 <loc>https://www.calcolocodicefiscale.it.com/termini-condizioni</loc>
+<lastmod>2026-03-10</lastmod>
+<changefreq>yearly</changefreq>
+<priority>0.3</priority>
 </url>
 
 <url>
 <loc>https://www.calcolocodicefiscale.it.com/disclaimer</loc>
+<lastmod>2026-03-10</lastmod>
+<changefreq>yearly</changefreq>
+<priority>0.3</priority>
 </url>
 
 <url>
 <loc>https://www.calcolocodicefiscale.it.com/cookie-policy</loc>
+<lastmod>2026-03-10</lastmod>
+<changefreq>yearly</changefreq>
+<priority>0.3</priority>
 </url>
 
 <url>
 <loc>https://www.calcolocodicefiscale.it.com/dmca</loc>
+<lastmod>2026-03-10</lastmod>
+<changefreq>yearly</changefreq>
+<priority>0.3</priority>
 </url>
 
 <url>
 <loc>https://www.calcolocodicefiscale.it.com/politica-editoriale</loc>
+<lastmod>2026-03-10</lastmod>
+<changefreq>yearly</changefreq>
+<priority>0.3</priority>
 </url>
 
 <url>
 <loc>https://www.calcolocodicefiscale.it.com/gdpr</loc>
+<lastmod>2026-03-10</lastmod>
+<changefreq>yearly</changefreq>
+<priority>0.3</priority>
 </url>
 
 <url>
 <loc>https://www.calcolocodicefiscale.it.com/mappa-del-sito</loc>
+<lastmod>2026-03-10</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.4</priority>
 </url>
 
 </urlset>
